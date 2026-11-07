@@ -1,0 +1,350 @@
+﻿
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Index of /cloudbridge</title>
+
+<style>
+body {
+    margin: 8px;
+    background: white;
+    color: black;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+}
+
+h1 {
+    margin: 0 0 30px 5px;
+    font-size: 38px;
+    line-height: 1.15;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+col.name        { width: 49%; }
+col.modified    { width: 27%; }
+col.size        { width: 10%; }
+col.description { width: 14%; }
+
+thead tr {
+    border-bottom: 2px solid #666;
+}
+
+th {
+    padding: 4px 5px 15px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+td {
+    height: 25px;
+    padding: 2px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+
+td.name-cell {
+    padding-left: 0;
+}
+
+a {
+    color: #0000ee;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #551a8b;
+}
+
+a:hover {
+    color: red;
+}
+
+.file-icon {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    margin-right: 5px;
+    vertical-align: -5px;
+}
+
+.name-link {
+    display: inline-block;
+    max-width: calc(100% - 34px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+}
+
+hr {
+    margin-top: 12px;
+    border: 0;
+    border-top: 1px solid #888;
+}
+
+.message {
+    padding: 12px 4px;
+}
+
+@media (max-width: 650px) {
+    body {
+        font-size: 15px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    th {
+        font-size: 15px;
+    }
+
+    col.name        { width: 52%; }
+    col.modified    { width: 25%; }
+    col.size        { width: 12%; }
+    col.description { width: 11%; }
+
+    td {
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1 id="heading">Index of /cloudbridge</h1>
+
+<table aria-label="Directory listing">
+
+<colgroup>
+    <col class="name">
+    <col class="modified">
+    <col class="size">
+    <col class="description">
+</colgroup>
+
+<thead>
+<tr>
+    <th><a href="?C=N;O=A">Name</a></th>
+    <th><a href="?C=M;O=A">Last modified</a></th>
+    <th><a href="?C=S;O=A">Size</a></th>
+    <th><a href="?C=D;O=A">Description</a></th>
+</tr>
+</thead>
+
+<tbody id="listing">
+<tr>
+    <td class="message" colspan="4">
+        Loading directory contents...
+    </td>
+</tr>
+</tbody>
+
+</table>
+
+<hr>
+
+<script>
+(function () {
+    "use strict";
+
+    const OWNER = "estranhosidade";
+    const REPO = "cloudbridge";
+    const BRANCH = "main";
+
+    const API =
+        `https://api.github.com/repos/${OWNER}/${REPO}/contents/?ref=${BRANCH}`;
+
+    const listing = document.getElementById("listing");
+
+    function escapeHTML(value) {
+        return String(value ?? "").replace(/[&<>"']/g, function (c) {
+            return {
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;"
+            }[c];
+        });
+    }
+
+    function formatSize(bytes) {
+        if (bytes == null) return "—";
+        if (bytes < 1024) return bytes + "B";
+
+        const units = ["K", "M", "G"];
+        let i = -1;
+
+        do {
+            bytes /= 1024;
+            i++;
+        } while (bytes >= 1024 && i < units.length - 1);
+
+        return (bytes >= 10 ? bytes.toFixed(0) : bytes.toFixed(1))
+            .replace(/\.0$/, "") + units[i];
+    }
+
+    function fileIcon(type) {
+
+        if (type === "dir") {
+            return `
+            <svg class="file-icon" viewBox="0 0 24 24">
+                <path fill="#d6ad35" stroke="#333"
+                    d="M2 5h8l2 2h10v13H2z"/>
+                <path fill="#f3d66b" stroke="#333"
+                    d="M2 8h20l-2 11H2z"/>
+            </svg>`;
+        }
+
+        if (type === "image") {
+            return `
+            <svg class="file-icon" viewBox="0 0 24 24">
+                <path fill="#fff" stroke="#333"
+                    d="M4 1h11l5 5v17H4z"/>
+                <path fill="#ddd" stroke="#555"
+                    d="M15 1v5h5"/>
+                <rect x="6" y="10" width="12" height="9"
+                    fill="#c9e4ef" stroke="#555"/>
+                <circle cx="14.5" cy="12.5" r="2"
+                    fill="#e74b43"/>
+                <path d="M7 18l4-5 2 2 2-2 3 5z"
+                    fill="#26984a"/>
+            </svg>`;
+        }
+
+        return `
+        <svg class="file-icon" viewBox="0 0 24 24">
+            <path fill="#fff" stroke="#333"
+                d="M4 1h11l5 5v17H4z"/>
+            <path fill="#ddd" stroke="#555"
+                d="M15 1v5h5"/>
+            <path stroke="#777"
+                d="M7 10h10M7 13h10M7 16h10M7 19h7"/>
+        </svg>`;
+    }
+
+    function createRow(item) {
+        const isDirectory = item.type === "dir";
+
+        const isImage =
+            /\.(png|jpe?g|gif|webp|svg|bmp|ico)$/i.test(item.name);
+
+        const type = isDirectory
+            ? "dir"
+            : isImage ? "image" : "file";
+
+        const href = isDirectory
+            ? `https://github.com/${OWNER}/${REPO}/tree/${BRANCH}/${item.path}`
+            : item.download_url || item.html_url;
+
+        return `
+        <tr>
+            <td class="name-cell">
+                ${fileIcon(type)}
+                <a class="name-link" href="${escapeHTML(href)}">
+                    ${escapeHTML(item.name)}
+                </a>
+            </td>
+
+            <td>—</td>
+
+            <td>
+                ${isDirectory ? "—" : escapeHTML(formatSize(item.size))}
+            </td>
+
+            <td></td>
+        </tr>`;
+    }
+
+    function createParentRow() {
+        return `
+        <tr>
+            <td class="name-cell">
+                ${fileIcon("dir")}
+                <a class="name-link" href="https://github.com/${OWNER}">
+                    Parent Directory
+                </a>
+            </td>
+            <td></td>
+            <td>—</td>
+            <td></td>
+        </tr>`;
+    }
+
+    fetch(API, {
+        headers: {
+            "Accept": "application/vnd.github+json"
+        }
+    })
+
+    .then(function (response) {
+        if (!response.ok) {
+            throw new Error("GitHub API returned HTTP " + response.status);
+        }
+
+        return response.json();
+    })
+
+    .then(function (items) {
+
+        if (!Array.isArray(items)) {
+            throw new Error("Unexpected GitHub API response");
+        }
+
+        // Don't list the index page itself.
+        items = items.filter(function (item) {
+            return item.name !== "index.html"
+                && item.name !== ".nojekyll";
+        });
+
+        // Directories first, then alphabetical filenames.
+        items.sort(function (a, b) {
+
+            if (a.type === "dir" && b.type !== "dir") return -1;
+            if (a.type !== "dir" && b.type === "dir") return 1;
+
+            return a.name.localeCompare(
+                b.name,
+                undefined,
+                { sensitivity: "base" }
+            );
+        });
+
+        let output = [createParentRow()];
+
+        items.forEach(function (item) {
+            output.push(createRow(item));
+        });
+
+        listing.innerHTML = output.join("");
+    })
+
+    .catch(function (error) {
+
+        listing.innerHTML = `
+        <tr>
+            <td class="message" colspan="4">
+                Unable to read directory: ${escapeHTML(error.message)}
+                <br>
+                Check that the repository is public and the branch name is correct.
+            </td>
+        </tr>`;
+    });
+
+})();
+</script>
+
+</body>
+</html>
