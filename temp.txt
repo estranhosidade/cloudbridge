@@ -1,0 +1,219 @@
+; ==============================================================================
+; WINDOWS CLIPBOARD → DESKTOP → WSL UPLOAD
+; AutoHotkey v1.1
+; ==============================================================================
+
+#NoEnv
+#NoTrayIcon
+#SingleInstance Force
+SendMode Input
+SetWorkingDir, %A_ScriptDir%
+
+waitingForClipboard := false
+
+
+; ============================================================
+; ALT + V — WAIT FOR CLIPBOARD CHANGE
+; ============================================================
+
+#v::
+!v::
+    waitingForClipboard := true
+    ToolTip, Waiting for clipboard change...
+return
+
+
+; ============================================================
+; CLIPBOARD CHANGE HANDLER
+; ============================================================
+
+OnClipboardChange:
+    if (!waitingForClipboard)
+        return
+
+    waitingForClipboard := false
+    ToolTip
+
+    ; Paste into the currently focused window.
+    SendInput, ^v
+
+    ; Give the target application time to process the paste.
+    Sleep, 300
+
+    ; Save clipboard and upload.
+    file := SaveClipboardToDesktop()
+
+    if (file = "")
+        return
+
+    ; Convert Windows path to WSL path.
+    wslPath := WindowsPathToWSL(file)
+
+    if (wslPath = "")
+        return
+
+    ; Build upload command.
+    bashCommand := "send_to_cloudbridge '" . StrReplace(wslPath, "'", "'\''") . "'"
+
+    ; Launch WSL.
+    commandLine := "wsl.exe -d Ubuntu -- bash -ic "
+        . Chr(34) . bashCommand . Chr(34)
+
+    Run, %commandLine%,, Maximize
+return
+
+
+; ============================================================
+; MAIN FUNCTION
+; ============================================================
+
+SaveClipboardToDesktop()
+{
+    dir := A_Desktop
+
+    png := dir "\temp.png"
+    txt := dir "\temp.txt"
+    bmp := A_Temp "\clipboard-temp.bmp"
+
+    ; Detect clipboard formats.
+    hasImage := DllCall("IsClipboardFormatAvailable", "UInt", 2)
+             || DllCall("IsClipboardFormatAvailable", "UInt", 8)
+             || DllCall("IsClipboardFormatAvailable", "UInt", 17)
+
+    hasFiles := DllCall("IsClipboardFormatAvailable", "UInt", 15)
+
+    hasText := DllCall("IsClipboardFormatAvailable", "UInt", 13)
+            || DllCall("IsClipboardFormatAvailable", "UInt", 1)
+
+    ; Remove previous output.
+    FileDelete, %png%
+    FileDelete, %txt%
+    FileDelete, %bmp%
+
+    ; --------------------------------------------------------
+    ; IMAGE → temp.png
+    ; --------------------------------------------------------
+
+    if (hasImage)
+    {
+        RunWait, nircmd.exe clipboard saveimage "%bmp%",, Hide UseErrorLevel
+
+        if (ErrorLevel || !FileExist(bmp))
+            return ""
+
+        RunWait, magick "%bmp%" "%png%",, Hide UseErrorLevel
+
+        FileDelete, %bmp%
+
+        if (ErrorLevel || !FileExist(png))
+            return ""
+
+        return png
+    }
+
+    ; --------------------------------------------------------
+    ; FILES → temp.txt
+    ; --------------------------------------------------------
+
+    if (hasFiles)
+    {
+        paths := GetClipboardFilePaths()
+
+        if (paths = "")
+            return ""
+
+        FileAppend, %paths%, %txt%, UTF-8-RAW
+
+        return FileExist(txt) ? txt : ""
+    }
+
+    ; --------------------------------------------------------
+    ; TEXT → temp.txt
+    ; --------------------------------------------------------
+
+    if (hasText)
+    {
+        content := Clipboard
+
+        if (content = "")
+            return ""
+
+        content := StrReplace(content, Chr(160), " ")
+        content := StrReplace(content, "`r", "")
+
+        FileAppend, %content%, %txt%, UTF-8-RAW
+
+        return FileExist(txt) ? txt : ""
+    }
+
+    return ""
+}
+
+
+; ============================================================
+; GET CLIPBOARD FILE PATHS
+; ============================================================
+
+GetClipboardFilePaths()
+{
+    if !DllCall("IsClipboardFormatAvailable", "UInt", 15)
+        return ""
+
+    if !DllCall("OpenClipboard", "Ptr", 0)
+        return ""
+
+    hDrop := DllCall("GetClipboardData", "UInt", 15, "Ptr")
+    files := ""
+
+    if (hDrop)
+    {
+        count := DllCall("Shell32\DragQueryFileW"
+            , "Ptr", hDrop
+            , "UInt", 0xFFFFFFFF
+            , "Ptr", 0
+            , "UInt", 0)
+
+        Loop, %count%
+        {
+            len := DllCall("Shell32\DragQueryFileW"
+                , "Ptr", hDrop
+                , "UInt", A_Index - 1
+                , "Ptr", 0
+                , "UInt", 0)
+
+            VarSetCapacity(buf, (len + 1) * 2, 0)
+
+            DllCall("Shell32\DragQueryFileW"
+                , "Ptr", hDrop
+                , "UInt", A_Index - 1
+                , "Ptr", &buf
+                , "UInt", len + 1)
+
+            path := StrGet(&buf, "UTF-16")
+
+            files .= (files ? "`n" : "") . path
+        }
+    }
+
+    DllCall("CloseClipboard")
+
+    return files
+}
+
+
+; ============================================================
+; WINDOWS PATH → WSL PATH
+; ============================================================
+
+WindowsPathToWSL(path)
+{
+    if !RegExMatch(path, "i)^([a-z]):\\(.*)$", match)
+        return ""
+
+    drive := match1
+    StringLower, drive, drive
+
+    rest := StrReplace(match2, "\", "/")
+
+    return "/mnt/" . drive . "/" . rest
+}
