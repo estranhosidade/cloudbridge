@@ -1,0 +1,4 @@
+﻿Several errors on channel page
+1) No channel thumbnail
+2) Also, when going to channel, remove "Inicio" page (keep the code, but as legacy concept), we always want to go "Video", instead, because "Inicio" show a bunch of unrelated stuff like old videos, while inicio, show the current last videos
+3) Also, much like search, home suggestion, create a number to how many videos we want to by colum (i'm not sure if that's the case, but create 3 toggles , the channel toggle must also apply to things like shorts, live, etc..
