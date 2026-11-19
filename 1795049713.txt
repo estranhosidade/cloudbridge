@@ -1,0 +1,381 @@
+function send_to_cloudbridge() {
+    local REPO="estranhosidade/cloudbridge"
+    local BRANCH="main"
+    local API="https://api.github.com/repos/$REPO"
+    local TOKEN="${GITHUB_TOKEN:-}"
+    local DEST="${GITHUB_UPLOAD_DIR:-}"
+
+    local TMP ENTRIES_FILE TREE_FILE
+    local B64_FILE PAYLOAD_FILE PAIRS_FILE DIR_FILES
+    local RESPONSE HEAD_SHA BASE_TREE TREE_SHA COMMIT_SHA VERIFY_SHA
+    local FILE ROOT ITEM REL TARGET BLOB_SHA ENCODED_PATH
+    local ROOT_NAME CMD
+    local COUNT=0
+
+    local -a URLS=()
+    local -a PIPE_CODES=()
+    local -a GH_HEADERS
+
+    local -A SEEN=()
+
+    if [[ -z "$TOKEN" ]]; then
+        echo "Error: GITHUB_TOKEN is not set."
+        return 1
+    fi
+
+    # No arguments: upload the current directory.
+    if (($# == 0)); then
+        set -- .
+    fi
+
+    for CMD in curl jq base64 realpath find iconv clip.exe; do
+        command -v "$CMD" >/dev/null 2>&1 || {
+            echo "Missing dependency: $CMD"
+            return 1
+        }
+    done
+
+    DEST="${DEST#/}"
+    DEST="${DEST%/}"
+
+    case "/$DEST/" in
+        *"/../"*|*"/./"*)
+            echo "Invalid destination directory."
+            return 1
+            ;;
+    esac
+
+    GH_HEADERS=(
+        -H "Authorization: Bearer $TOKEN"
+        -H "Accept: application/vnd.github+json"
+        -H "X-GitHub-Api-Version: 2022-11-28"
+    )
+
+    TMP=$(mktemp -d) || return 1
+
+    ENTRIES_FILE="$TMP/entries.jsonl"
+    TREE_FILE="$TMP/tree.json"
+    B64_FILE="$TMP/blob.b64"
+    PAYLOAD_FILE="$TMP/blob.json"
+    PAIRS_FILE="$TMP/files.list"
+    DIR_FILES="$TMP/directory-files.list"
+
+    touch "$ENTRIES_FILE" "$PAIRS_FILE"
+
+    echo "Reading repository branch..."
+
+    RESPONSE=$(curl -fsS "${GH_HEADERS[@]}" \
+        "$API/git/ref/heads/$BRANCH") || {
+        echo "Could not read branch."
+        rm -rf "$TMP"
+        return 1
+    }
+
+    HEAD_SHA=$(jq -r '.object.sha // empty' <<< "$RESPONSE")
+
+    if [[ -z "$HEAD_SHA" ]]; then
+        echo "Invalid branch response."
+        rm -rf "$TMP"
+        return 1
+    fi
+
+    RESPONSE=$(curl -fsS "${GH_HEADERS[@]}" \
+        "$API/git/commits/$HEAD_SHA") || {
+        echo "Could not read current commit."
+        rm -rf "$TMP"
+        return 1
+    }
+
+    BASE_TREE=$(jq -r '.tree.sha // empty' <<< "$RESPONSE")
+
+    if [[ -z "$BASE_TREE" ]]; then
+        echo "Invalid commit response."
+        rm -rf "$TMP"
+        return 1
+    fi
+
+    # --------------------------------------------------
+    # Collect files from all selected files and folders.
+    # Each record contains: absolute filename + Git path.
+    # --------------------------------------------------
+
+    echo
+    echo "Scanning selected paths..."
+
+    for FILE in "$@"; do
+        if [[ ! -e "$FILE" ]]; then
+            echo "Skipping missing path: $FILE"
+            continue
+        fi
+
+        ROOT=$(realpath -e -- "$FILE") || {
+            echo "Could not resolve path: $FILE"
+            rm -rf "$TMP"
+            return 1
+        }
+
+        if [[ -d "$ROOT" ]]; then
+            # Upload the entire directory recursively.
+            # Hidden files are included automatically by find.
+
+            ROOT_NAME="${ROOT##*/}"
+            [[ -n "$ROOT_NAME" ]] || ROOT_NAME="root"
+
+            echo "Scanning folder: $ROOT"
+
+            if ! find "$ROOT" -type f -print0 > "$DIR_FILES"; then
+                echo "Failed to scan folder: $ROOT"
+                rm -rf "$TMP"
+                return 1
+            fi
+
+            while IFS= read -r -d '' ITEM; do
+                REL="${ITEM#"$ROOT"/}"
+
+                # Preserve the selected folder name.
+                TARGET="$ROOT_NAME/$REL"
+
+                [[ -n "$DEST" ]] && TARGET="$DEST/$TARGET"
+
+                printf '%s\0%s\0' "$ITEM" "$TARGET" \
+                    >> "$PAIRS_FILE" || {
+                    echo "Failed to register file: $ITEM"
+                    rm -rf "$TMP"
+                    return 1
+                }
+
+            done < "$DIR_FILES"
+
+        elif [[ -f "$ROOT" ]]; then
+            # Individual file.
+            TARGET="${ROOT##*/}"
+
+            [[ -n "$DEST" ]] && TARGET="$DEST/$TARGET"
+
+            printf '%s\0%s\0' "$ROOT" "$TARGET" \
+                >> "$PAIRS_FILE" || {
+                echo "Failed to register file: $ROOT"
+                rm -rf "$TMP"
+                return 1
+            }
+        else
+            echo "Skipping unsupported path: $ROOT"
+        fi
+    done
+
+    if [[ ! -s "$PAIRS_FILE" ]]; then
+        echo "No files to upload."
+        rm -rf "$TMP"
+        return 1
+    fi
+
+    # --------------------------------------------------
+    # Upload every collected file as a Git blob.
+    # --------------------------------------------------
+
+    echo
+    echo "Uploading files..."
+
+    while IFS= read -r -d '' FILE &&
+          IFS= read -r -d '' TARGET; do
+
+        if [[ -n "${SEEN[$TARGET]+yes}" ]]; then
+            echo "Duplicate destination path: $TARGET"
+            rm -rf "$TMP"
+            return 1
+        fi
+
+        SEEN["$TARGET"]=1
+
+        echo "Uploading: $TARGET"
+
+        base64 -w 0 "$FILE" > "$B64_FILE" || {
+            echo "Failed to encode: $FILE"
+            rm -rf "$TMP"
+            return 1
+        }
+
+        jq -n --rawfile content "$B64_FILE" \
+            '{content:$content,encoding:"base64"}' \
+            > "$PAYLOAD_FILE" || {
+            echo "Failed to create blob payload."
+            rm -rf "$TMP"
+            return 1
+        }
+
+        RESPONSE=$(curl -fsS "${GH_HEADERS[@]}" \
+            -X POST "$API/git/blobs" \
+            --data-binary "@$PAYLOAD_FILE") || {
+            echo "Blob upload failed: $TARGET"
+            rm -rf "$TMP"
+            return 1
+        }
+
+        BLOB_SHA=$(jq -r '.sha // empty' <<< "$RESPONSE")
+
+        if [[ -z "$BLOB_SHA" ]]; then
+            echo "Invalid blob response: $TARGET"
+            rm -rf "$TMP"
+            return 1
+        fi
+
+        jq -nc \
+            --arg path "$TARGET" \
+            --arg sha "$BLOB_SHA" \
+            '{
+                path:$path,
+                mode:"100644",
+                type:"blob",
+                sha:$sha
+            }' >> "$ENTRIES_FILE" || {
+            rm -rf "$TMP"
+            return 1
+        }
+
+        ENCODED_PATH=$(jq -rn --arg path "$TARGET" \
+            '$path | split("/") | map(@uri) | join("/")')
+
+        URLS+=("https://github.com/$REPO/blob/$BRANCH/$ENCODED_PATH")
+
+        COUNT=$((COUNT + 1))
+
+    done < "$PAIRS_FILE"
+
+    if ((COUNT == 0)); then
+        echo "No files to upload."
+        rm -rf "$TMP"
+        return 1
+    fi
+
+    # --------------------------------------------------
+    # Create Git tree.
+    # --------------------------------------------------
+
+    echo
+    echo "Building Git tree with $COUNT file(s)..."
+
+    jq -s --arg base_tree "$BASE_TREE" \
+        '{base_tree:$base_tree,tree:.}' \
+        "$ENTRIES_FILE" > "$TREE_FILE" || {
+        echo "Failed to build tree JSON."
+        rm -rf "$TMP"
+        return 1
+    }
+
+    RESPONSE=$(curl -fsS "${GH_HEADERS[@]}" \
+        -X POST "$API/git/trees" \
+        --data-binary "@$TREE_FILE") || {
+        echo "Failed to create Git tree."
+        rm -rf "$TMP"
+        return 1
+    }
+
+    TREE_SHA=$(jq -r '.sha // empty' <<< "$RESPONSE")
+
+    if [[ -z "$TREE_SHA" ]]; then
+        echo "Invalid tree response."
+        rm -rf "$TMP"
+        return 1
+    fi
+
+    # --------------------------------------------------
+    # Create commit.
+    # --------------------------------------------------
+
+    echo "Creating commit..."
+
+    RESPONSE=$(curl -fsS "${GH_HEADERS[@]}" \
+        -X POST "$API/git/commits" \
+        -d "$(jq -n \
+            --arg message "Upload $COUNT file(s) via SendTo" \
+            --arg tree "$TREE_SHA" \
+            --arg parent "$HEAD_SHA" \
+            '{
+                message:$message,
+                tree:$tree,
+                parents:[$parent]
+            }')") || {
+        echo "Failed to create commit."
+        rm -rf "$TMP"
+        return 1
+    }
+
+    COMMIT_SHA=$(jq -r '.sha // empty' <<< "$RESPONSE")
+
+    if [[ -z "$COMMIT_SHA" ]]; then
+        echo "Invalid commit response."
+        rm -rf "$TMP"
+        return 1
+    fi
+
+    # --------------------------------------------------
+    # Publish commit.
+    # --------------------------------------------------
+
+    echo "Publishing commit..."
+
+    RESPONSE=$(curl -fsS "${GH_HEADERS[@]}" \
+        -X PATCH "$API/git/refs/heads/$BRANCH" \
+        -d "$(jq -n --arg sha "$COMMIT_SHA" \
+            '{sha:$sha,force:false}')") || {
+        echo "Failed to publish commit."
+        rm -rf "$TMP"
+        return 1
+    }
+
+    # --------------------------------------------------
+    # Verify publication.
+    # --------------------------------------------------
+
+    echo "Verifying upload..."
+
+    RESPONSE=$(curl -fsS "${GH_HEADERS[@]}" \
+        "$API/git/ref/heads/$BRANCH") || {
+        echo "Could not verify published commit."
+        rm -rf "$TMP"
+        return 1
+    }
+
+    VERIFY_SHA=$(jq -r '.object.sha // empty' <<< "$RESPONSE")
+
+    if [[ "$VERIFY_SHA" != "$COMMIT_SHA" ]]; then
+        echo "Verification failed: branch does not point to our commit."
+        rm -rf "$TMP"
+        return 1
+    fi
+
+    # --------------------------------------------------
+    # Success.
+    # --------------------------------------------------
+
+    echo
+    echo "Successfully uploaded and verified $COUNT file(s)."
+    echo
+    echo "FILE ADDRESSES:"
+
+    printf '%s\n' "${URLS[@]}"
+
+    echo
+    echo "Copying file addresses to Windows clipboard..."
+
+    printf '%s\n' "${URLS[@]}" | iconv -f UTF-8 -t UTF-16LE | clip.exe
+    PIPE_CODES=("${PIPESTATUS[@]}")
+
+    if ((PIPE_CODES[0] != 0 || PIPE_CODES[1] != 0 || PIPE_CODES[2] != 0)); then
+        echo "Warning: Upload succeeded, but clipboard copying failed."
+        echo "Pipeline exit codes: ${PIPE_CODES[*]}"
+        echo "The URLs are printed above."
+        rm -rf "$TMP"
+        return 1
+    fi
+
+    rm -rf "$TMP"
+
+    echo
+    echo "Windows clipboard updated with $COUNT file address(es)."
+    echo
+    echo "COMMIT:"
+    echo "https://github.com/$REPO/commit/$COMMIT_SHA"
+
+    return 0
+}
