@@ -1,0 +1,196 @@
+﻿
+#NoEnv
+#NoTrayIcon
+#SingleInstance Force
+SendMode Input
+SetBatchLines, -1
+SetWorkingDir, %A_ScriptDir%
+
+uploadRunning := false
+uploadPID := 0
+savedClipboardFile := ""
+
+!v::
+    if (uploadRunning)
+        return
+
+    savedClipboardFile := SaveClipboardToDesktop()
+
+    if (!savedClipboardFile || !FileExist(savedClipboardFile))
+        return
+
+    wslPath := WindowsPathToWSL(savedClipboardFile)
+
+    if (!wslPath) {
+        savedClipboardFile := ""
+        return
+    }
+
+    ; Start the upload asynchronously.
+    escapedPath := StrReplace(wslPath, "'", "'\''")
+    commandLine := "wsl.exe -d Ubuntu -- bash -ic ""send_to_cloudbridge '" . escapedPath . "'"""
+
+    Run, %commandLine%,, Hide UseErrorLevel, uploadPID
+
+    if (ErrorLevel = "ERROR") {
+        uploadPID := 0
+        return
+    }
+
+    uploadRunning := true
+
+    ; Construct the GitHub URL immediately.
+    SplitPath, savedClipboardFile, fileName
+    Clipboard := "https://github.com/estranhosidade/cloudbridge/blob/main/" . fileName
+
+    ; Wait only for the Alt+V hotkey keys to be released.
+    ; This prevents the original V key from interfering with Ctrl+V.
+    KeyWait, v
+    KeyWait, Alt
+
+    ; Paste immediately. No waiting for the upload.
+    SendInput, ^v
+
+    ; Monitor the upload separately.
+    SetTimer, CheckUploadCompletion, 250
+return
+
+
+CheckUploadCompletion:
+    if (!uploadPID)
+        return
+
+    Process, Exist, %uploadPID%
+
+    if (ErrorLevel)
+        return
+
+    SetTimer, CheckUploadCompletion, Off
+
+    uploadRunning := false
+    uploadPID := 0
+
+    ; Delete only after the WSL process has finished.
+    DeleteFileWithRetry(savedClipboardFile)
+    savedClipboardFile := ""
+return
+
+
+SaveClipboardToDesktop() {
+    desktop := A_Desktop
+    timestamp := GetUnixTimestamp()
+
+    ; Clipboard contains an image.
+    if (DllCall("IsClipboardFormatAvailable", "UInt", 2)
+     || DllCall("IsClipboardFormatAvailable", "UInt", 8)
+     || DllCall("IsClipboardFormatAvailable", "UInt", 17)) {
+
+        tempPng := desktop . "\clipboard_" . timestamp . ".png"
+
+        RunWait, %ComSpec% /c nircmd.exe clipboard saveimage "%tempPng%",, Hide UseErrorLevel
+
+        if (FileExist(tempPng))
+            return tempPng
+
+        return ""
+    }
+
+    ; Clipboard contains copied file paths.
+    paths := GetClipboardFilePaths()
+
+    if (paths.Length()) {
+        fileList := ""
+
+        for index, path in paths
+            fileList .= (index > 1 ? "`r`n" : "") . path
+
+        outputFile := desktop . "\clipboard_" . timestamp . ".txt"
+        FileAppend, %fileList%, %outputFile%, UTF-8
+
+        return FileExist(outputFile) ? outputFile : ""
+    }
+
+    ; Plain text clipboard.
+    if (Clipboard != "") {
+        outputFile := desktop . "\clipboard_" . timestamp . ".txt"
+        FileAppend, %Clipboard%, %outputFile%, UTF-8
+
+        return FileExist(outputFile) ? outputFile : ""
+    }
+
+    return ""
+}
+
+
+GetClipboardFilePaths() {
+    paths := []
+
+    if (!DllCall("OpenClipboard", "Ptr", 0))
+        return paths
+
+    hDrop := DllCall("GetClipboardData", "UInt", 15, "Ptr")
+
+    if (hDrop) {
+        count := DllCall("shell32\DragQueryFileW"
+            , "Ptr", hDrop
+            , "UInt", 0xFFFFFFFF
+            , "Ptr", 0
+            , "UInt", 0)
+
+        Loop, %count% {
+            length := DllCall("shell32\DragQueryFileW"
+                , "Ptr", hDrop
+                , "UInt", A_Index - 1
+                , "Ptr", 0
+                , "UInt", 0)
+
+            VarSetCapacity(buffer, (length + 1) * 2, 0)
+
+            DllCall("shell32\DragQueryFileW"
+                , "Ptr", hDrop
+                , "UInt", A_Index - 1
+                , "Ptr", &buffer
+                , "UInt", length + 1)
+
+            paths.Push(StrGet(&buffer, "UTF-16"))
+        }
+    }
+
+    DllCall("CloseClipboard")
+    return paths
+}
+
+
+WindowsPathToWSL(path) {
+    if (!RegExMatch(path, "^([A-Za-z]):\\(.*)$", match))
+        return ""
+
+    drive := SubStr(path, 1, 1)
+    StringLower, drive, drive
+
+    remainder := StrReplace(match2, "\", "/")
+
+    return "/mnt/" . drive . "/" . remainder
+}
+
+
+DeleteFileWithRetry(path) {
+    if (path = "")
+        return
+
+    Loop, 20 {
+        FileDelete, %path%
+
+        if (!FileExist(path))
+            return
+
+        Sleep, 500
+    }
+}
+
+
+GetUnixTimestamp() {
+    now := A_NowUTC
+    EnvSub, now, 19700101000000, Seconds
+    return now
+}
