@@ -1,0 +1,252 @@
+﻿
+#NoEnv
+#NoTrayIcon
+#SingleInstance Force
+#MenuMaskKey vkE8
+SendMode Input
+SetBatchLines, -1
+SetWorkingDir, %A_ScriptDir%
+
+uploadRunning := false
+uploadPID := 0
+savedClipboardFile := ""
+
+$!v::
+    if (uploadRunning)
+        return
+
+    ; Preserve the original clipboard in memory.
+    clipboardBackup := ClipboardAll
+
+    ; Determine what we're uploading.
+    if (DllCall("IsClipboardFormatAvailable", "UInt", 2)
+     || DllCall("IsClipboardFormatAvailable", "UInt", 8)
+     || DllCall("IsClipboardFormatAvailable", "UInt", 17)) {
+        clipboardType := "image"
+        extension := "png"
+    }
+    else if (DllCall("IsClipboardFormatAvailable", "UInt", 15)) {
+        clipboardType := "files"
+        extension := "txt"
+    }
+    else if (Clipboard != "") {
+        clipboardType := "text"
+        extension := "txt"
+    }
+    else {
+        clipboardBackup := ""
+        return
+    }
+
+    ; Generate the filename and GitHub URL before saving anything.
+    timestamp := GetUnixTimestamp()
+    fileName := "clipboard_" . timestamp . "_" . A_MSec . "." . extension
+    savedClipboardFile := A_Desktop . "\" . fileName
+
+    ; Avoid filename collisions.
+    suffix := 1
+    while (FileExist(savedClipboardFile)) {
+        fileName := "clipboard_" . timestamp . "_" . A_MSec . "_" . suffix . "." . extension
+        savedClipboardFile := A_Desktop . "\" . fileName
+        suffix++
+    }
+
+    wslPath := WindowsPathToWSL(savedClipboardFile)
+
+    if (!wslPath) {
+        clipboardBackup := ""
+        return
+    }
+
+    targetUrl := "https://github.com/estranhosidade/cloudbridge/blob/main/" . fileName
+
+    uploadRunning := true
+
+    ; -------------------------------------------------
+    ; FIRST: Paste the GitHub URL.
+    ; -------------------------------------------------
+
+    Clipboard := targetUrl
+    ClipWait, 1
+
+    if (ErrorLevel) {
+        Clipboard := clipboardBackup
+        clipboardBackup := ""
+        uploadRunning := false
+        return
+    }
+
+    ; Wait for the hotkey to be released.
+    KeyWait, v
+    KeyWait, Alt
+
+    SendInput, ^v
+
+    ; Allow the receiving application to read the URL.
+    Sleep, 100
+
+    ; -------------------------------------------------
+    ; SECOND: Restore and save the original clipboard.
+    ; -------------------------------------------------
+
+    Clipboard := clipboardBackup
+    clipboardBackup := ""
+
+    savedClipboardFile := SaveClipboardToDesktop(savedClipboardFile, clipboardType)
+
+    ; Keep the GitHub URL on the clipboard.
+    Clipboard := targetUrl
+
+    if (!savedClipboardFile || !FileExist(savedClipboardFile)) {
+        uploadRunning := false
+        return
+    }
+
+    ; -------------------------------------------------
+    ; THIRD: Start the upload asynchronously.
+    ; -------------------------------------------------
+
+    escapedPath := StrReplace(wslPath, "'", "'\''")
+    commandLine := "wsl.exe -d Ubuntu -- bash -ic ""send_to_cloudbridge '" . escapedPath . "'"""
+
+    Run, %commandLine%,, Hide UseErrorLevel, uploadPID
+
+    if (ErrorLevel = "ERROR") {
+        uploadPID := 0
+        uploadRunning := false
+        return
+    }
+
+    SetTimer, CheckUploadCompletion, 250
+return
+
+
+CheckUploadCompletion:
+    if (!uploadPID)
+        return
+
+    Process, Exist, %uploadPID%
+
+    if (ErrorLevel)
+        return
+
+    SetTimer, CheckUploadCompletion, Off
+
+    uploadRunning := false
+    uploadPID := 0
+
+    ; Delete the temporary file after the upload finishes.
+    DeleteFileWithRetry(savedClipboardFile)
+    savedClipboardFile := ""
+return
+
+
+SaveClipboardToDesktop(outputFile, clipboardType) {
+    ; Clipboard contains an image.
+    if (clipboardType = "image") {
+        ; Run NirCmd directly, without launching cmd.exe.
+        RunWait, nircmd.exe clipboard saveimage "%outputFile%",, Hide UseErrorLevel
+
+        return FileExist(outputFile) ? outputFile : ""
+    }
+
+    ; Clipboard contains copied file paths.
+    if (clipboardType = "files") {
+        paths := GetClipboardFilePaths()
+
+        if (!paths.Length())
+            return ""
+
+        fileList := ""
+
+        for index, path in paths
+            fileList .= (index > 1 ? "`r`n" : "") . path
+
+        FileAppend, %fileList%, %outputFile%, UTF-8
+
+        return FileExist(outputFile) ? outputFile : ""
+    }
+
+    ; Plain text clipboard.
+    if (Clipboard != "") {
+        FileAppend, %Clipboard%, %outputFile%, UTF-8
+
+        return FileExist(outputFile) ? outputFile : ""
+    }
+
+    return ""
+}
+
+
+GetClipboardFilePaths() {
+    paths := []
+
+    if (!DllCall("OpenClipboard", "Ptr", 0))
+        return paths
+
+    hDrop := DllCall("GetClipboardData", "UInt", 15, "Ptr")
+
+    if (hDrop) {
+        count := DllCall("shell32\DragQueryFileW"
+            , "Ptr", hDrop
+            , "UInt", 0xFFFFFFFF
+            , "Ptr", 0
+            , "UInt", 0)
+
+        Loop, %count% {
+            length := DllCall("shell32\DragQueryFileW"
+                , "Ptr", hDrop
+                , "UInt", A_Index - 1
+                , "Ptr", 0
+                , "UInt", 0)
+
+            VarSetCapacity(buffer, (length + 1) * 2, 0)
+
+            DllCall("shell32\DragQueryFileW"
+                , "Ptr", hDrop
+                , "UInt", A_Index - 1
+                , "Ptr", &buffer
+                , "UInt", length + 1)
+
+            paths.Push(StrGet(&buffer, "UTF-16"))
+        }
+    }
+
+    DllCall("CloseClipboard")
+    return paths
+}
+
+
+WindowsPathToWSL(path) {
+    if (!RegExMatch(path, "^([A-Za-z]):\\(.*)$", match))
+        return ""
+
+    drive := SubStr(path, 1, 1)
+    StringLower, drive, drive
+
+    remainder := StrReplace(match2, "\", "/")
+
+    return "/mnt/" . drive . "/" . remainder
+}
+
+
+DeleteFileWithRetry(path) {
+    if (path = "")
+        return
+
+    Loop, 20 {
+        FileDelete, %path%
+
+        if (!FileExist(path))
+            return
+
+        Sleep, 500
+    }
+}
+
+
+GetUnixTimestamp() {
+    now := A_NowUTC
+    EnvSub, now, 19700101000000, Seconds
+    return now
+}
