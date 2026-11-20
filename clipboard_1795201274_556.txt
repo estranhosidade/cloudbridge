@@ -1,0 +1,14 @@
+﻿[yt-dlp] [FFmpeg stderr] Stream mapping:
+[yt-dlp] [FFmpeg stderr] Stream #0:0 -> #0:0 (copy)
+[yt-dlp] [FFmpeg stderr] Stream #1:0 -> #0:1 (copy)
+[runtime] Merging or converting media with FFmpeg-WASM…
+[yt-dlp] [FFmpeg stderr] frame= 1 fps=0.0 q=-1.0 size= 1kB time=00:00:00.00 bitrate=6688.0kbits/s speed=N/A
+[runtime] Merging or converting media with FFmpeg-WASM…
+[yt-dlp] [FFmpeg stderr] frame= 5678 fps=0.0 q=-1.0 Lsize= 8846kB time=00:03:47.14 bitrate= 319.0kbits/s speed= 835x
+[runtime] Merging or converting media with FFmpeg-WASM…
+[yt-dlp] [FFmpeg stderr] video:4718kB audio:4024kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 1.194106%
+[yt-dlp] [FFmpeg stderr] Aborted()
+[yt-dlp] Deleting original file /dl/Radiohead - No Surprises [u5CVsCnxyXg].f251.webm (pass -k to keep)
+[yt-dlp] Deleting original file /dl/Radiohead - No Surprises [u5CVsCnxyXg].f398.mp4 (pass -k to keep)
+
+Merging or converting media with FFmpeg-WASM…
