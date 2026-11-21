@@ -1,0 +1,32 @@
+﻿(() => {
+  const root = document.documentElement;
+  const style = document.getElementById("mini-window-navbar-test");
+
+  console.log("Mini Window:", root.getAttribute("mini-window"));
+  console.log("Test stylesheet exists:", !!style);
+  console.log("Test stylesheet:", style?.textContent);
+
+  console.table([
+    "nav-bar",
+    "nav-bar-customization-target",
+    "urlbar-container"
+  ].map(id => {
+    const el = document.getElementById(id);
+    const s = getComputedStyle(el);
+    const r = el.getBoundingClientRect();
+
+    return {
+      id,
+      x: r.x,
+      width: r.width,
+      left: s.left,
+      right: s.right,
+      widthCSS: s.width,
+      minWidth: s.minWidth,
+      maxWidth: s.maxWidth,
+      flex: s.flex,
+      margin: s.margin,
+      display: s.display
+    };
+  }));
+})();
