@@ -1,0 +1,9 @@
+﻿console.table() debugger eval code:26:11
+(index)	id	x	width	right	position	display	flex	widthCSS	minWidth	maxWidth	overflow
+0	nav-bar	5	340	345	absolute	flex	0 1 auto	340px	1px	none	visible
+1	navigator-toolbox	0	350	350	absolute	flex	0 1 auto	350px	240px	454.5px	visible
+2	browser	0	909	909	relative	flex	1 1 0%	909px	0px	none	visible
+3	zen-main-app-wrapper	0	909	909	static	flex	1 1 0%	909px	auto	none	visible
+4	html:body	0	909	909	relative	flex	1 1 0%	909px	0px	none	clip
+5	main-window	0	909	909	static	block	0 1 auto	909px	0px	90000px	clip
+undefined 
