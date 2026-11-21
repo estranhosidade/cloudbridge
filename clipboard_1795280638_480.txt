@@ -1,0 +1,144 @@
+﻿EN MINI WINDOW — COMPLETE LAYOUT DIAGNOSTIC debugger eval code:124:11
+1. WINDOW AND ROOT debugger eval code:126:11
+Object { miniWindow: "true", tabsHidden: true, croppedMiniWindow: true, innerWidth: 909, innerHeight: 495, devicePixelRatio: 1, documentClientWidth: 909, documentScrollWidth: 909, visualViewportWidth: 0, visualViewportScale: 1 }
+zentral_logger.uc.js:249:15
+2. ELEMENT MEASUREMENTS debugger eval code:142:11
+console.table() debugger eval code:143:11
+(index)	id	tag	parent	x	y	right	width	height	offsetWidth	clientWidth	scrollWidth	display	position	boxSizing	widthCSS	minWidth	maxWidth	flex	flexBasis	flexGrow
+0	navigator-toolbox	toolbox	browser	0	-53	0px	350	54	350	350	350	flex	absolute	border-box	350px	240px	454.5px	0 1 auto	auto	0
+1	nav-bar	toolbar	navigator-toolbox	5	-53	5px	340	37	340	340	340	flex	absolute	border-box	340px	1px	none	0 1 auto	auto	0
+2	nav-bar-customization-target	hbox	nav-bar	5	-51.5	auto	280	34	280	280	280	flex	static	border-box	280px	0px	none	1 1 0%	0%	1
+3	urlbar-container	toolbaritem	nav-bar-customization-target	5	-51.5	auto	280	34	280	280	280	flex	static	border-box	280px	10px	none	1 1 auto	auto	1
+4	urlbar	moz-urlbar	urlbar-container	5	-51.5	0px	280	34	280	280	280	flex	relative	border-box	280px	1px	none	1 1 0%	0%	1
+5	urlbar-input	input	div	16.22	-49.5	auto	257.57	30	258	258	258	block	static	content-box	257.567px	0px	none	1 1 0%	0%	1
+6	back-button	toolbarbutton	zen-sidebar-top-buttons-customization-target	0	0	auto	0	0	0	0	0	none	static	border-box	auto	0px	none	0 1 auto	auto	0
+7	forward-button	toolbarbutton	zen-sidebar-top-buttons-customization-target	0	0	auto	0	0	0	0	0	none	static	border-box	auto	0px	none	0 1 auto	auto	0
+8	stop-reload-button	toolbaritem	zen-sidebar-top-buttons-customization-target	315	-46.5	auto	30	28	30	30	30	flex	static	border-box	30px	auto	none	0 1 auto	auto	0
+9	identity-box	box	div	280	-47.5	auto	0	26	0	0	0	flex	static	border-box	0px	auto	none	0 1 auto	auto	0
+10	unified-extensions-button	toolbarbutton	zen-sidebar-top-buttons-customization-target	0	0	auto	0	0	0	0	0	none	static	border-box	auto	0px	none	0 1 auto	auto	0
+11	PanelUI-button	toolbaritem	zen-sidebar-top-buttons-customization-target	0	0	auto	0	0	0	0	0	none	static	border-box	auto	0px	none	0 1 auto	auto	0
+12	customizableui-special-spring1	toolbarspring	nav-bar-customization-target	0	0	auto	0	0	0	0	0	none	static	border-box	auto	1px	112px	80 80 0%	0%	80
+13	vertical-spacer	toolbarspring	nav-bar-customization-target	0	0	auto	0	0	0	0	0	none	static	border-box	40px	20px	112px	1 1 0%	0%	1
+3. ALL DIRECT NAVBAR CHILDREN debugger eval code:149:11
+console.table() debugger eval code:153:13
+(index)	id	tag	parent	x	y	right	width	height	offsetWidth	clientWidth	scrollWidth	display	position	boxSizing	widthCSS	minWidth	maxWidth	flex	flexBasis	flexGrow
+0	taskbar-tabs-favicon	img	nav-bar	0	0	auto	0	0	0	0	0	none	static	content-box	16px	0px	none	0 1 auto	auto	0
+1	hbox	hbox	nav-bar	0	0	auto	0	0	0	0	0	none	static	border-box	40px	0px	none	0 1 auto	auto	0
+2	toolbartabstop	toolbartabstop	nav-bar	5	-34.5	auto	0	0	0	0	0	flex	static	border-box	0px	auto	none	0 1 auto	auto	0
+3	nav-bar-customization-target	hbox	nav-bar	5	-51.5	auto	280	34	280	280	280	flex	static	border-box	280px	0px	none	1 1 0%	0%	1
+4	document-pip-return-to-opener-button	toolbarbutton	nav-bar	0	0	auto	0	0	0	0	0	none	static	border-box	auto	0px	none	0 1 auto	auto	0
+5	taskbar-tabs-audio	toolbarbutton	nav-bar	0	0	auto	0	0	0	0	0	none	static	border-box	auto	0px	none	0 1 auto	auto	0
+6	mini-window-audio-button	toolbarbutton	nav-bar	0	0	auto	0	0	0	0	0	none	static	border-box	auto	0px	none	0 1 auto	auto	0
+7	mini-window-restore-button	toolbarbutton	nav-bar	285	-48.5	auto	30	28	30	30	30	flex	static	border-box	30px	auto	none	0 1 auto	auto	0
+8	mini-window-close-button	toolbarbutton	nav-bar	315	-48.5	auto	30	28	30	30	30	flex	static	border-box	30px	auto	none	0 1 auto	auto	0
+9	smartwindow-ask-button	toolbaritem	nav-bar	0	0	auto	0	0	0	0	0	none	static	border-box	auto	0px	none	0 1 auto	auto	0
+10	hbox	hbox	nav-bar	0	0	auto	0	0	0	0	0	none	static	border-box	40px	0px	none	0 1 auto	auto	0
+11	hbox	hbox	nav-bar	0	0	auto	0	0	0	0	0	none	static	border-box	auto	0px	none	0 1 auto	auto	0
+12	toolbarbutton	toolbarbutton	nav-bar	0	0	auto	0	0	0	0	0	none	static	border-box	auto	0px	none	0 1 auto	auto	0
+13	toolbarbutton	toolbarbutton	nav-bar	0	0	auto	0	0	0	0	0	none	static	border-box	auto	0px	none	0 1 auto	auto	0
+4. NAVBAR DESCENDANTS debugger eval code:157:11
+console.table() debugger eval code:159:13
+(index)	id	tag	parent	x	y	right	width	height	offsetWidth	clientWidth	scrollWidth	display	position	boxSizing	widthCSS	minWidth	maxWidth	flex	flexBasis	flexGrow
+0	nav-bar-customization-target	hbox	nav-bar	5	-51.5	auto	280	34	280	280	280	flex	static	border-box	280px	0px	none	1 1 0%	0%	1
+1	urlbar-container	toolbaritem	nav-bar-customization-target	5	-51.5	auto	280	34	280	280	280	flex	static	border-box	280px	10px	none	1 1 auto	auto	1
+2	urlbar	moz-urlbar	urlbar-container	5	-51.5	0px	280	34	280	280	280	flex	relative	border-box	280px	1px	none	1 1 0%	0%	1
+3	div	div	urlbar	6	-50.5	0px	278	32	278	278	278	block	absolute	content-box	278px	0px	none	0 1 auto	auto	0
+4	div	div	urlbar	6	-50.5	0px	278	32	278	278	278	flex	relative	border-box	278px	0px	none	1 1 0%	0%	1
+5	identity-box	box	div	280	-47.5	auto	0	26	0	0	0	flex	static	border-box	0px	auto	none	0 1 auto	auto	0
+6	zen-site-data-icon-button	box	identity-box	280	-47.5	0px	8	26	8	8	8	flex	relative	border-box	8px	auto	none	0 1 auto	auto	0
+7	div	div	div	16.22	-51.5	0px	257.57	34	258	258	258	flex	relative	content-box	257.567px	30%	none	1 1 0%	0%	1
+8	urlbar-scheme	input	div	16.22	-49.5	97.5667px	160	34	160	160	160	block	absolute	content-box	160px	0px	none	1 1 0%	0%	1
+9	urlbar-input	input	div	16.22	-49.5	auto	257.57	30	258	258	258	block	static	content-box	257.567px	0px	none	1 1 0%	0%	1
+10	mini-window-restore-button	toolbarbutton	nav-bar	285	-48.5	auto	30	28	30	30	30	flex	static	border-box	30px	auto	none	0 1 auto	auto	0
+11	image	image	mini-window-restore-button	286	-48.5	auto	28	28	28	28	28	flex	static	border-box	28px	auto	none	0 1 auto	auto	0
+12	mini-window-close-button	toolbarbutton	nav-bar	315	-48.5	auto	30	28	30	30	30	flex	static	border-box	30px	auto	none	0 1 auto	auto	0
+13	image	image	mini-window-close-button	316	-48.5	auto	28	28	28	28	28	flex	static	border-box	28px	auto	none	0 1 auto	auto	0
+5. ANCESTOR LAYOUT debugger eval code:170:11
+console.table() debugger eval code:183:13
+(index)	id	tag	parent	x	y	right	width	height	offsetWidth	clientWidth	scrollWidth	display	position	boxSizing	widthCSS	minWidth	maxWidth	flex	flexBasis	flexGrow
+0	urlbar-container	toolbaritem	nav-bar-customization-target	5	-51.5	auto	280	34	280	280	280	flex	static	border-box	280px	10px	none	1 1 auto	auto	1
+1	nav-bar-customization-target	hbox	nav-bar	5	-51.5	auto	280	34	280	280	280	flex	static	border-box	280px	0px	none	1 1 0%	0%	1
+2	nav-bar	toolbar	navigator-toolbox	5	-53	5px	340	37	340	340	340	flex	absolute	border-box	340px	1px	none	0 1 auto	auto	0
+3	navigator-toolbox	toolbox	browser	0	-53	0px	350	54	350	350	350	flex	absolute	border-box	350px	240px	454.5px	0 1 auto	auto	0
+4	browser	hbox	zen-main-app-wrapper	0	0	0px	909	495	909	909	909	flex	relative	border-box	909px	0px	none	1 1 0%	0%	1
+5	zen-main-app-wrapper	hbox	body	0	0	auto	909	495	909	909	909	flex	static	border-box	909px	auto	none	1 1 0%	0%	1
+6	body	body	main-window	0	0	0px	909	495	909	909	965	flex	relative	content-box	909px	0px	none	1 1 0%	0%	1
+7	main-window	html	undefined	0	0	auto	909	495	909	909	909	block	static	content-box	909px	0px	90000px	0 1 auto	auto	0
+6. MATCHED CSS RULES debugger eval code:187:11
+#navigator-toolbox debugger eval code:198:13
+Inline style: width: 350px; --zen-sidebar-width: 350px; --zen-toolbox-min-width: 152px; max-width: 500px; zentral_logger.uc.js:249:15
+Computed: 
+Object { id: "navigator-toolbox", tag: "toolbox", parent: "browser", x: 0, y: -53, right: "0px", width: 350, height: 54, offsetWidth: 350, clientWidth: 350, … }
+zentral_logger.uc.js:249:15
+Matching CSS rules: 
+Array [ "Error: InspectorUtils.getCSSStyleRules is not a function" ]
+zentral_logger.uc.js:249:15
+#nav-bar debugger eval code:198:13
+Inline style: null zentral_logger.uc.js:249:15
+Computed: 
+Object { id: "nav-bar", tag: "toolbar", parent: "navigator-toolbox", x: 5, y: -53, right: "5px", width: 340, height: 37, offsetWidth: 340, clientWidth: 340, … }
+zentral_logger.uc.js:249:15
+Matching CSS rules: 
+Array [ "Error: InspectorUtils.getCSSStyleRules is not a function" ]
+zentral_logger.uc.js:249:15
+#nav-bar-customization-target debugger eval code:198:13
+Inline style: null zentral_logger.uc.js:249:15
+Computed: 
+Object { id: "nav-bar-customization-target", tag: "hbox", parent: "nav-bar", x: 5, y: -51.5, right: "auto", width: 280, height: 34, offsetWidth: 280, clientWidth: 280, … }
+zentral_logger.uc.js:249:15
+Matching CSS rules: 
+Array [ "Error: InspectorUtils.getCSSStyleRules is not a function" ]
+zentral_logger.uc.js:249:15
+#urlbar-container debugger eval code:198:13
+Inline style: <empty string> zentral_logger.uc.js:249:15
+Computed: 
+Object { id: "urlbar-container", tag: "toolbaritem", parent: "nav-bar-customization-target", x: 5, y: -51.5, right: "auto", width: 280, height: 34, offsetWidth: 280, clientWidth: 280, … }
+zentral_logger.uc.js:249:15
+Matching CSS rules: 
+Array [ "Error: InspectorUtils.getCSSStyleRules is not a function" ]
+zentral_logger.uc.js:249:15
+#urlbar debugger eval code:198:13
+Inline style: --urlbar-height: 38px; --urlbar-width: 10px; --zen-urlbar-top: 81px; --zen-urlbar-width: 606px; zentral_logger.uc.js:249:15
+Computed: 
+Object { id: "urlbar", tag: "moz-urlbar", parent: "urlbar-container", x: 5, y: -51.5, right: "0px", width: 280, height: 34, offsetWidth: 280, clientWidth: 280, … }
+zentral_logger.uc.js:249:15
+Matching CSS rules: 
+Array [ "Error: InspectorUtils.getCSSStyleRules is not a function" ]
+zentral_logger.uc.js:249:15
+7. TEST STYLESHEETS debugger eval code:211:11
+console.table() debugger eval code:219:11
+(index)	id	installed	css
+0	mini-window-navbar-test	true	:root[mini-window="true"] #nav-bar {
+      left: 5px !important;
+      right: 5px !important;
+      width: auto !important;
+    }
+1	mini-window-urlbar-test	true	:root[mini-window="true"] #urlbar-container {
+      max-width: none !important;
+    }
+2	mini-window-navbar-fill-test	true	:root[mini-window="true"] #nav-bar-customization-target {
+      width: calc(100% - 30px) !important;
+      min-width: 0 !important;
+      flex: 0 0 calc(100% - 30px) !important;
+    }
+
+    :root[mini-window="true"] #urlbar-container {
+      max-width: none !important;
+      width: 100% !important;
+      flex: 1 1 auto !important;
+    }
+8. NESTED SELECTOR TEST debugger eval code:231:11
+Object { selector: "#navigator-toolbox[tabs-hidden] > #nav-bar", matches: true, toolboxExists: true, toolboxTabsHidden: true, navIsDirectChild: true, toolboxWidth: 350, navWidth: 340, viewportWidth: 909, width100vw: "340px" }
+zentral_logger.uc.js:249:15
+9. WIDTH DIFFERENCES debugger eval code:260:11
+console.table() debugger eval code:271:11
+(index)	measurement	width
+0	Toolbox	350
+1	Navbar	340
+2	Customization target	280
+3	URL bar	280
+4	Stop/reload	30
+5	Navbar minus target	60
+6	Target minus URL bar	0
+7	Navbar minus viewport	-569
+"Diagnostic complete. Copy all console output." 
