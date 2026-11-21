@@ -1,0 +1,11 @@
+﻿console.table() debugger eval code:8:11
+(index)	id	x	width	flex	justifyContent	alignItems	marginLeft	marginRight	position	order
+0	nav-bar	5	70	0 1 auto	normal	center	0px	0px	absolute	0
+1	nav-bar-customization-target	5	10	1 1 0%	normal	normal	0px	0px	static	0
+2	urlbar-container	5	10	400 0 auto	normal	center	0px	0px	static	0
+console.table() debugger eval code:27:11
+(index)	id	x	right	width	display	flex	margin
+0	customizableui-special-spring1	0	0	0	none	80 80 0%	0px
+1	vertical-spacer	0	0	0	none	1 1 0%	0px
+2	urlbar-container	5	15	10	flex	400 0 auto	0px auto
+3	customizableui-special-spring2	0	0	0	none	80 80 0%	0px
