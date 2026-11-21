@@ -1,0 +1,1 @@
+﻿; Each Alt+V press queues one complete upload operation.
