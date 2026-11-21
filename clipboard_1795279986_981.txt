@@ -1,0 +1,17 @@
+﻿(() => {
+  const root = document.documentElement;
+  const style = document.getElementById("mini-window-navbar-test");
+
+  console.log("Mini Window:", root.getAttribute("mini-window"));…
+Mini Window: true zentral_logger.uc.js:249:15
+Test stylesheet exists: false zentral_logger.uc.js:249:15
+Test stylesheet: undefined zentral_logger.uc.js:249:15
+console.table() debugger eval code:9:11
+(index)	id	x	width	left	right	widthCSS	minWidth	maxWidth	flex	margin	display
+0	nav-bar	5	70	5px	275px	70px	1px	none	0 1 auto	0px	flex
+1	nav-bar-customization-target	5	10	auto	auto	10px	0px	none	1 1 0%	0px	flex
+2	urlbar-container	5	10	auto	auto	10px	10px	60%	400 0 auto	0px auto	flex
+undefined
+
+​
+
