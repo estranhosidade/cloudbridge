@@ -1,0 +1,31 @@
+﻿index)    element    parent    x    right    width    display    position    flex    flexGrow    flexShrink    flexBasis    widthCSS    minWidth    maxWidth    justifyContent    alignItems    alignSelf    marginLeft    marginRight    paddingLeft
+0    navigator-toolbox    browser    0    350    350    flex    absolute    0 1 auto    0    1    auto    350px    240px    773px    normal    normal    auto    0px    0px    5px
+1    nav-bar    navigator-toolbox    5    1551    1546    flex    absolute    0 1 auto    0    1    auto    1546px    1px    none    normal    center    auto    0px    0px    0px
+2    nav-bar-customization-target    nav-bar    5    1491    1486    flex    static    1 1 0%    1    1    0%    1486px    0px    none    normal    normal    auto    0px    0px    0px
+3    urlbar-container    nav-bar-customization-target    302.2    1193.8    891.6    flex    static    400 0 auto    400    0    auto    891.6px    10px    60%    normal    center    auto    297.2px    297.2px    0px
+4    browser    zen-main-app-wrapper    0    1546    1546    flex    relative    1 1 0%    1    1    0%    1546px    0px    none    normal    normal    auto    0px    0px    0px
+console.table() debugger eval code:59:11
+(index)    element    parent    x    right    width    display    position    flex    flexGrow    flexShrink    flexBasis    widthCSS    minWidth    maxWidth    justifyContent    alignItems    alignSelf    marginLeft    marginRight    paddingLeft
+0    customizableui-special-spring1    nav-bar-customization-target    0    0    0    none    static    80 80 0%    80    80    0%    auto    1px    112px    normal    normal    auto    0px    0px    0px
+1    vertical-spacer    nav-bar-customization-target    0    0    0    none    static    1 1 0%    1    1    0%    40px    20px    112px    normal    normal    auto    0px    0px    0px
+2    urlbar-container    nav-bar-customization-target    302.2    1193.8    891.6    flex    static    400 0 auto    400    0    auto    891.6px    10px    60%    normal    center    auto    297.2px    297.2px    0px
+3    toolbartabstop    urlbar-container    302.2    302.2    0    flex    static    0 1 auto    0    1    auto    0px    auto    none    normal    normal    auto    0px    0px    0px
+4    urlbar    urlbar-container    302.2    1193.8    891.6    flex    relative    1 1 0%    1    1    0%    891.6px    1px    none    normal    normal    auto    0px    0px    1px
+5    toolbartabstop    urlbar-container    1193.8    1193.8    0    flex    static    0 1 auto    0    1    auto    0px    auto    none    normal    normal    auto    0px    0px    0px
+6    customizableui-special-spring2    nav-bar-customization-target    0    0    0    none    static    80 80 0%    80    80    0%    auto    1px    112px    normal    normal    auto    0px    0px    0px
+console.table() debugger eval code:106:11
+(index)    stylesheet    context    selector    declarations
+0    chrome://browser/content/zen-styles/zen-tabs.css    :root:not([zen-compact-mode="true"]) > &:not([zen-right-side="true"]):not([zen-sidebar-expanded="true"]):not([zen-window-buttons-reversed="true"]), &[zen-right-side="true"]:not([zen-sidebar-expanded="true"])[zen-window-buttons-reversed="true"]    & #nav-bar    width: calc(100% + var(--zen-toolbox-max-width) - var(--zen-element-separation));
+1    chrome://browser/content/zen-styles/zen-browser-ui.css    <empty string>    #nav-bar, #navigator-toolbox    position: inherit;
+2    chrome://browser/content/zen-styles/zen-omnibox.css    <empty string>    #urlbar-container    padding-block: 0px !important;
+3    chrome://browser/content/zen-styles/zen-omnibox.css    <empty string>    #nav-bar, #zen-sidebar-top-buttons    min-height: var(--zen-toolbar-height) !important; height: var(--zen-toolbar-height) !important; max-height: var(--zen-toolbar-height) !important; display: flex; align-items: center;
+4    chrome://browser/content/zen-styles/zen-omnibox.css    :root:not([zen-single-toolbar="true"])    &[zen-right-side="true"]:not([zen-window-buttons-reversed="true"]) #nav-bar    margin-inline-start: var(--zen-element-separation);
+5    chrome://browser/content/zen-styles/zen-omnibox.css    :root:not([zen-single-toolbar="true"])    &:not([zen-right-side="true"])[zen-window-buttons-reversed="true"] #nav-bar    margin-inline-end: var(--zen-element-separation);
+6    chrome://browser/content/zen-styles/zen-omnibox.css    <empty string>    #nav-bar-customization-target    min-width: 0px; --toolbarbutton-padding-inner: var(--zen-toolbar-button-inner-padding);
+7    chrome://browser/content/zen-styles/zen-omnibox.css    #urlbar[open][zen-floating-urlbar="true"]    #urlbar-container:has(&)    border-radius: var(--border-radius-medium); background: var(--toolbarbutton-background-color-hover); height: var(--urlbar-height) !important; margin-inline: calc(0.15 * var(--space-large)) !important;
+8    chrome://browser/content/zen-styles/zen-compact-mode.css    :root[zen-compact-mode="true"]:not([customizing]):not([inDOMFullscreen="true"]) > -moz-pref("zen.view.compact.hide-tabbar") or -moz-pref("zen.view.use-single-toolbar") > &:not([zen-compact-animating])    &[zen-window-buttons-reversed="true"] #zen-appcontent-navbar-wrapper #nav-bar    margin-right: var(--zen-element-separation) !important; margin-left: calc(var(--zen-element-separation) - 3px) !important;
+9    chrome://browser/content/zen-styles/zen-compact-mode.css    :root[zen-compact-mode="true"]:not([customizing]):not([inDOMFullscreen="true"]) > -moz-pref("zen.view.compact.hide-tabbar") or -moz-pref("zen.view.use-single-toolbar") > &:not([zen-compact-animating]) > & #navigator-toolbox    &:not([zen-right-side="true"]) #nav-bar    margin-left: 0px !important;
+Matching CSS rules: 10 zentral_logger.uc.js:249:15
+Inaccessible stylesheets: 0 zentral_logger.uc.js:249:15
+undefined
+ZenSessionManager: Saving Zen session data with 29 tabs
