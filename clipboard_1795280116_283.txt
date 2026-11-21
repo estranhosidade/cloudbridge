@@ -1,0 +1,12 @@
+﻿(index)	id	x	width	right	flex	minWidth	maxWidth	margin	display
+0	nav-bar	5	340	345	0 1 auto	1px	none	0px 0px	flex
+1	nav-bar-customization-target	5	280	285	1 1 0%	0px	none	0px 0px	flex
+2	urlbar-container	5	280	285	400 0 auto	10px	none	0px 0px	flex
+3	back-button	0	0	0	0 1 auto	0px	none	0px 0px	none
+4	forward-button	0	0	0	0 1 auto	0px	none	0px 0px	none
+5	stop-reload-button	315	30	345	0 1 auto	auto	none	0px 0px	flex
+6	identity-box	280	0	280	0 1 auto	auto	none	0px 0px	flex
+7	urlbar	5	280	285	1 1 0%	1px	none	0px 0px	flex
+8	unified-extensions-button	0	0	0	0 1 auto	0px	none	0px 0px	none
+9	PanelUI-button	0	0	0	0 1 auto	0px	none	0px 0px	none
+Object { navWidth: 340, targetWidth: 280, targetScrollWidth: 280, remainingWidth: 0 }
