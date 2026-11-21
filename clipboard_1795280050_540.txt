@@ -1,0 +1,18 @@
+﻿Mini Window: true zentral_logger.uc.js:249:15
+Test stylesheet exists: true zentral_logger.uc.js:249:15
+Test stylesheet: 
+    :root[mini-window="true"] #nav-bar {
+      left: 5px !important;
+      right: 5px !important;
+      width: auto !important;
+    }
+  zentral_logger.uc.js:249:15
+console.table() debugger eval code:9:11
+(index)	id	x	width	left	right	widthCSS	minWidth	maxWidth	flex	margin	display
+0	nav-bar	5	340	5px	5px	340px	1px	none	0 1 auto	0px	flex
+1	nav-bar-customization-target	5	280	auto	auto	280px	0px	none	1 1 0%	0px	flex
+2	urlbar-container	61	168	auto	auto	168px	10px	60%	400 0 auto	0px auto	flex
+undefined
+
+​
+
