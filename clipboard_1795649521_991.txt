@@ -1,0 +1,1 @@
+﻿On upnext, on classic theme, could if the title will be "longer than 3 " lines, could we add "..." to avoid situations like like
