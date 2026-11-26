@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ⚡ Gbar
-// @version      1.6.12
+// @version      1.6.13
 // @description  Vertical-aware search box with live Google suggestions, configurable Search/Web navigation order and labels, device-theme-aware settings, navigation-matched Settings control, reliable hover submenus, tracking-only Google search URL cleanup that preserves result modes, redirect link cleaning, Google direct-links, and image downloads.
 // @include      https://scholar.google.com*
 // @include      https://www.google.com/
@@ -95,7 +95,7 @@
 //   08.3  Download action
 //
 // MODULE 09 — CUSTOM FAVICON
-//   09.1  Final favicon installation
+//   09.1  ICO-to-PNG conversion and persistent favicon installation
 //
 // ============================================================================
 // ############################################################################
@@ -5345,34 +5345,65 @@ init();
 
 // ############################################################################
 // MODULE 09 — CUSTOM FAVICON
-// Applies the custom ICO favicon after the other Gbar modules.
+// Converts the supplied ICO to PNG and keeps it last among page favicon links.
 // ############################################################################
 (function () {
     "use strict";
 
     const FAVICON_LINK_ID = "gp-gbar-custom-favicon";
     const FAVICON_DATA_URL =
-        "data:image/x-icon;base64,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";
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAEG0lEQVR4AQEQBO/7AO//8//u//8Ar9L6/wATVgCqtsIA/v/jANYfDf8fVvf//////+f5//8gLsX/DxKf/7zX/wD3//sA///////07f8AFj+//w4qywAdQrQAYoSpAOT29gD///8A0R8d/xlf2//+//T/+P/hAODm/AAoJosACxakAImP2f/n+f8A/P/zAAD/////////APX7//////////j////09P/bJRr/FWvSAO7//wD3////9////+T2/wBXc7z/GiWPABMsoP8TMcUAADy1RP88tUQAPLVE/zy1RAA8tUQAPLVEANwaAP83W9b///P///7/4wD/////////AP///wD///8A//////////8ATLQ7/0y0OwBMtDsATLQ7/zy1RP88tUQAPLVE/zy1RP88tUT/PLVEADy1RP88tUQAPLVEADy1RP88tUT/PLVEAABMtDv/TLQ7AEy0OwBMtDsATLQ7AEy0OwBMtDv/TLQ7/0y0O/9MtDsATLQ7/0y0OwBMtDsATLQ7AEy0OwBMtDv/AEy0O/9MtDv/TLQ7AEy0O/9MtDsATLQ7AEy0O/9MtDv/TLQ7/0y0OwBMtDv/TLQ7/0y0O/9MtDv/TLQ7/0y0OwAATLQ7/0y0O/9MtDv/TLQ7AEy0OwBMtDv/TLQ7AEy0O/9MtDsATLQ7/0y0O/9MtDsATLQ7/0y0OwBMtDsATLQ7/wBMtDv/TLQ7AEy0OwBMtDsATLQ7/0y0O/9MtDsATLQ7AEy0O/9MtDsATLQ7/0y0O/9MtDsATLQ7/0y0O/9MtDv/AEy0O/9MtDv/TLQ7AEy0OwBMtDsATLQ7/0y0O/9MtDv/TLQ7/0y0OwBMtDv/TLQ7/0y0OwBMtDv/TLQ7AEy0OwAATLQ7/0y0O/9MtDv/TLQ7AEy0OwBMtDsATLQ7/0y0OwBMtDv/TLQ7AEy0O/9MtDsATLQ7AEy0O/9MtDv/TLQ7AABMtDv/TLQ7/0y0O/9MtDsATLQ7AEy0O/9MtDsATLQ7AEy0O/9MtDsATLQ7AEy0O/9MtDsATLQ7AEy0OwBMtDv/AEy0O/9MtDsATLQ7AEy0O/9MtDv/TLQ7AEy0OwBMtDv/TLQ7AEy0O/9MtDv/TLQ7AEy0O/9MtDv/TLQ7AEy0OwAATLQ7/0y0OwBMtDv/TLQ7/0y0O/9MtDv/TLQ7/0y0O/9MtDsATLQ7/0y0O/9MtDv/TLQ7/0y0O/9MtDsATLQ7AABMtDv/TLQ7AEy0OwBMtDsATLQ7AEy0O/9MtDv/TLQ7/0y0O/9MtDsATLQ7/0y0OwBMtDv/TLQ7/0y0OwBMtDv/AEy0O/9MtDsATLQ7AEy0OwBMtDv/TLQ7/0y0OwBMtDsATLQ7AEy0O/9MtDv/TLQ7AEy0O/9MtDv/TLQ7AEy0O/8+8fzwLyhaZwAAAABJRU5ErkJggg==";
 
     function installFavicon() {
         const head = document.head || document.getElementsByTagName("head")[0];
-        if (!head) {
-            return;
+        if (!head) return false;
+
+        let favicon = document.getElementById(FAVICON_LINK_ID);
+        if (!favicon || favicon.tagName !== "LINK") {
+            favicon = document.createElement("link");
+            favicon.id = FAVICON_LINK_ID;
         }
 
-        // Reuse our link if the script is evaluated again; otherwise create one.
-        const favicon =
-            document.getElementById(FAVICON_LINK_ID) ||
-            document.createElement("link");
+        if (favicon.getAttribute("rel") !== "icon") {
+            favicon.setAttribute("rel", "icon");
+        }
+        if (favicon.getAttribute("type") !== "image/png") {
+            favicon.setAttribute("type", "image/png");
+        }
+        if (favicon.getAttribute("sizes") !== "16x16") {
+            favicon.setAttribute("sizes", "16x16");
+        }
+        if (favicon.getAttribute("href") !== FAVICON_DATA_URL) {
+            favicon.setAttribute("href", FAVICON_DATA_URL);
+        }
 
-        favicon.id = FAVICON_LINK_ID;
-        favicon.setAttribute("rel", "icon");
-        favicon.setAttribute("type", "image/x-icon");
-        favicon.setAttribute("href", FAVICON_DATA_URL);
+        // Make our icon the last declared icon; Google can add its own later.
+        const iconLinks = head.querySelectorAll(
+            'link[rel~="icon"], link[rel~="shortcut"]'
+        );
+        if (
+            favicon.parentNode !== head ||
+            iconLinks.length === 0 ||
+            iconLinks[iconLinks.length - 1] !== favicon
+        ) {
+            head.appendChild(favicon);
+        }
 
-        // Append last so this link takes precedence over the site's native icon.
-        head.appendChild(favicon);
+        return true;
     }
 
     installFavicon();
+
+    // Re-assert only when the page changes favicon links/attributes.
+    const head = document.head || document.getElementsByTagName("head")[0];
+    if (head && typeof MutationObserver !== "undefined") {
+        const observer = new MutationObserver(installFavicon);
+        observer.observe(head, {
+            childList: true,
+            attributes: true,
+            attributeFilter: ["href", "rel", "type", "sizes"]
+        });
+    }
+
+    window.addEventListener("pageshow", installFavicon);
 })();
