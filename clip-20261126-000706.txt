@@ -27,7 +27,6 @@
 @var range			spreadsheet_hue_rotation	"Invert ROUGHLY colors if Spreadsheet's invert mode enabled (180deg recommended)" [180, 0, 360, 15, "deg"]
 
 ==/UserStyle== */
-/* Zero-specificity guard: never style descendants of #gp-gbar-inner. */
 @-moz-document regexp("https:\\/\\/(?:www\\.)?(?!(?:mail|script|voice)\\b)\\w+\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/.*") {
 	/*other iframes, business, workspace */
 	.pGxpHc > header > [role="navigation"]:where(:not(#gp-gbar-inner *)), .lP1Oxd:where(:not(#gp-gbar-inner *)), .eVtbOe:where(:not(#gp-gbar-inner *)), #T2Ybvb6:where(:not(#gp-gbar-inner *)), .DBGuVe:where(:not(#gp-gbar-inner *)), .jmG9nb:where(:not(#gp-gbar-inner *)), .zoa7Ve:where(:not(#gp-gbar-inner *)){
@@ -5210,4 +5209,18 @@ filter: invert(92%) hue-rotate(180deg) saturate(100%) !important;
 	.vk-cap.vk-sf-b:where(:not(#gp-gbar-inner *)), .vk-t-btn:where(:not(#gp-gbar-inner *)), a[class^="gb_"][title][aria-expanded][role="button"][href*="about/products?tab="]:not([guidedhelpid]):where(:not(#gp-gbar-inner *)), .dbXO9:where(:not(#gp-gbar-inner *)), .ZeafDf:where(:not(#gp-gbar-inner *)){
 		filter: invert(100%) !important;
 	}
+
+    
+    /* Google Search top strip: match the page's main surface, including its layered backgrounds. */
+    #searchform:where(:not(#gp-gbar-inner *)),
+    #searchform.CvDJxb.big:where(:not(.minidiv)):where(:not(#gp-gbar-inner *)),
+    #searchform.CvDJxb.big.minidiv:where(:not(#gp-gbar-inner *)),
+    #searchform .sfbg:where(:not(#gp-gbar-inner *)),
+    #searchform > div > .sfbg:where(:not(#gp-gbar-inner *)),
+    :not(#viewport) > #searchform > div > .sfbg:where(:not(#gp-gbar-inner *)),
+    #gb:where(:not(#gp-gbar-inner *)),
+    #gb[role="banner"]:where(:not(#gp-gbar-inner *)),
+    body > div > div#gb > div:where(:not(#gp-gbar-inner *)) {
+        background-color: @backgroundGlobalColor !important;
+    }
 }
