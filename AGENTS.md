@@ -126,3 +126,22 @@ Use this scoped Less/CSS rule:
 Keep the `#gp-gbar-inner` exclusion on both selector branches. Do not broaden this to `:root`, `html`, or `body` without explicitly checking inheritance into the protected Google bar. If a future page places its `#gp-gbar-inner` inside one of these main containers, choose a more specific content root that does not contain it.
 
 Current source-level checks after this change: `.xrOgrb` is no longer in the `#161616` group; it has a separate `#1C1C1C` rule; the `--YLNNHc` override is scoped to `.main` and `#main`; no border-radius declarations remain; and the existing Google-bar selector exclusions remain present.
+
+
+## Global shade normalization: `#161616` → `#1C1C1C`
+
+The user wants **every occurrence** of the exact color literal `#161616` in this stylesheet changed to `#1C1C1C`.
+
+This is a stylesheet-wide normalization, not just a search-header fix. It applies wherever the literal appears: backgrounds, text colors, border colors, SVG fills, gradients, and other CSS color values.
+
+Rules for future edits:
+
+- Do not introduce new `#161616` declarations or color values.
+- When importing or editing rules that contain `#161616`, use `#1C1C1C` instead.
+- Do not limit this change to `.xrOgrb`, `#searchform`, or one page scope. The intended change covers the entire stylesheet.
+- Preserve the Google-bar exclusion on ordinary selectors. This color normalization does not authorize adding unguarded selectors or changing the protected `#gp-gbar-inner` descendants.
+- Do not alter other shades such as `#1C1C1C`, `#2C2C2C`, `#3C3C3C`, or `#4C4C4C`.
+
+The source was globally normalized on 2026-11-26: all 51 remaining `#161616` occurrences were replaced with `#1C1C1C`. A post-write fetch confirmed **zero** `#161616` occurrences, while the border-radius removal, `#gp-gbar-inner` exclusions, `.xrOgrb` correction, Search-header correction, and scoped `--YLNNHc` override remained present.
+
+For verification after future edits, search the complete stylesheet for the literal `#161616`; the expected count is zero.
