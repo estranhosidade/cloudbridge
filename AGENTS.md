@@ -97,3 +97,32 @@ At the time this document was added:
 - The source was checked after the latest commit, but the user's browser still needs to be used for final visual confirmation.
 
 **User intent takes priority over cosmetic simplification:** preserve Google's native UI inside `#gp-gbar-inner`, preserve native Google border radii, and make the Search top strip visually match the main page background.
+
+
+## Additional fixes: `.xrOgrb` and `--YLNNHc`
+
+The later shared `#161616` background selector group included `.xrOgrb`, but this particular surface must be `#1C1C1C`.
+
+- Keep `.xrOgrb:not(#gp-gbar-inner *)` **out of** the shared `#161616` selector group.
+- Give it its own rule, placed after the shared dark group / near the final Google Search background corrections:
+
+```css
+.xrOgrb:not(#gp-gbar-inner *) {
+    background-color: #1C1C1C !important;
+}
+```
+
+Google's `--YLNNHc` token is used as a dark primary-text color in some Google interfaces. The stylesheet should turn that token white only within the main content roots, rather than changing it on `:root` (a root-level custom-property change would inherit into the protected Google bar).
+
+Use this scoped Less/CSS rule:
+
+```css
+.main:not(#gp-gbar-inner *),
+#main:not(#gp-gbar-inner *) {
+    --YLNNHc: #fff !important;
+}
+```
+
+Keep the `#gp-gbar-inner` exclusion on both selector branches. Do not broaden this to `:root`, `html`, or `body` without explicitly checking inheritance into the protected Google bar. If a future page places its `#gp-gbar-inner` inside one of these main containers, choose a more specific content root that does not contain it.
+
+Current source-level checks after this change: `.xrOgrb` is no longer in the `#161616` group; it has a separate `#1C1C1C` rule; the `--YLNNHc` override is scoped to `.main` and `#main`; no border-radius declarations remain; and the existing Google-bar selector exclusions remain present.
