@@ -2,7 +2,7 @@
 // @name           Font Changer
 // @description    Manage Firefox interface and web-page fonts. Ctrl+Shift+F opens a centered, draggable font window.
 // @author         OpenAI
-// @version        7.2.3-tweet-top-icon-subtree-protection
+// @version        7.2.4-navigation-safe-shadow-scan
 // ==/UserScript==
 
 (() => {
@@ -12,7 +12,7 @@
   // Configuration
   // ========================================================================
 
-  const VERSION = "7.2.3-tweet-top-icon-subtree-protection";
+  const VERSION = "7.2.4-navigation-safe-shadow-scan";
   const PREFIX = "[FontChanger]";
   const RUNTIME_KEY = "__ucFontChangerRuntime_v6";
 
@@ -1509,16 +1509,13 @@
 
   const shadowDocumentStates = new Map();
   const shadowRootRecords = new Map();
-  const attachShadowPatchRecords = new WeakMap();
+  const shadowBrowserScanTimers = new Map();
 
   let shadowTabOpenHandler = null;
-  let shadowTabSelectHandler = null;
   let shadowProgressListener = null;
   let shadowProgressListenerInstalled = false;
+  let shadowIntegrationInstalled = false;
   let shadowMutationBatches = 0;
-  let shadowAttachHookCount = 0;
-  let shadowInterceptedClosedRoots = 0;
-  let shadowOpenRootsDiscovered = 0;
 
   function shadowFontValue() {
     return `${cssString(settings.font)}, sans-serif`;
@@ -1673,6 +1670,41 @@
     }
   }
 
+  // Coalesce duplicate MutationObserver records. If a parent and one of its
+  // descendants were both inserted during the same batch, inspecting the
+  // parent already covers the descendant. This keeps SPA-heavy pages from
+  // repeatedly walking the same inserted subtree.
+  function processAddedNodeBatch(records, docState) {
+    const addedNodes = new Set();
+
+    for (const mutation of records || []) {
+      if (mutation.type !== "childList") continue;
+      for (const node of mutation.addedNodes || []) {
+        if (node?.nodeType === 1) addedNodes.add(node);
+      }
+    }
+
+    if (!addedNodes.size) return 0;
+
+    for (const node of addedNodes) {
+      let ancestor = node.parentElement;
+      let nestedInAddedNode = false;
+
+      while (ancestor) {
+        if (addedNodes.has(ancestor)) {
+          nestedInAddedNode = true;
+          break;
+        }
+        ancestor = ancestor.parentElement;
+      }
+
+      if (!nestedInAddedNode) processShadowSubtree(node, docState);
+    }
+
+    shadowMutationBatches++;
+    return addedNodes.size;
+  }
+
   function processShadowSubtree(node, docState) {
     if (!node || !docState) return;
 
@@ -1689,10 +1721,7 @@
       try {
         const root = element.shadowRoot;
         if (root) {
-          registerShadowRoot(root, docState, {
-            mode: root.mode || "open",
-            intercepted: false,
-          });
+          registerShadowRoot(root, docState);
         }
       } catch (err) {
         // Closed roots created before the hook are expected to be invisible.
@@ -1712,16 +1741,12 @@
         inspectElement(descendant);
       }
 
-      // Frame elements might themselves be inside a just-added subtree.
-      for (const frame of node.querySelectorAll?.("iframe, frame") || []) {
-        watchShadowFrame(frame, docState);
-      }
     } catch (err) {
       warn("Could not inspect added DOM subtree:", docState.label, err);
     }
   }
 
-  function registerShadowRoot(root, docState, details = {}) {
+  function registerShadowRoot(root, docState) {
     if (!root || !docState || !root.querySelectorAll) return null;
 
     const existing = shadowRootRecords.get(root);
@@ -1730,12 +1755,11 @@
       return existing;
     }
 
-    const mode = details.mode || root.mode || "unknown";
+    const mode = root.mode || "open";
     const record = {
       root,
       docState,
       mode,
-      intercepted: !!details.intercepted,
       iconHostExcluded: isIconProtectedElement(root.host),
       style: null,
       sheet: null,
@@ -1747,11 +1771,7 @@
     shadowRootRecords.set(root, record);
     docState.roots.add(root);
 
-    if (mode === "closed" && details.intercepted) {
-      shadowInterceptedClosedRoots++;
-    } else if (mode !== "closed") {
-      shadowOpenRootsDiscovered++;
-    }
+
 
     updateShadowRootStyle(record);
 
@@ -1761,18 +1781,7 @@
 
       if (ObserverCtor) {
         record.observer = new ObserverCtor(records => {
-          let added = 0;
-
-          for (const mutation of records) {
-            if (mutation.type !== "childList") continue;
-
-            for (const addedNode of mutation.addedNodes) {
-              added++;
-              processShadowSubtree(addedNode, docState);
-            }
-          }
-
-          if (added) shadowMutationBatches++;
+          processAddedNodeBatch(records, docState);
         });
 
         record.observer.observe(root, {
@@ -1796,142 +1805,11 @@
     log("Shadow DOM root discovered:", {
       host: root.host?.localName || "unknown",
       mode,
-      intercepted: !!details.intercepted,
       font: settings.font,
       pagesEnabled: settings.pages,
     });
 
     return record;
-  }
-
-  function patchDocumentAttachShadow(docState) {
-    try {
-      // Use the page realm's real DOM prototype where available. Access through
-      // wrappedJSObject is necessary from privileged chrome code in Gecko.
-      let pageWindow = docState.win;
-      try {
-        pageWindow = docState.win.wrappedJSObject || docState.win;
-      } catch (_) {}
-
-      const ElementCtor = pageWindow?.Element;
-      const proto = ElementCtor?.prototype;
-      if (!proto) return false;
-
-      const existingRecord = attachShadowPatchRecords.get(proto);
-      if (existingRecord) {
-        existingRecord.states.add(docState);
-        docState.attachPatchRecord = existingRecord;
-        return true;
-      }
-
-      const descriptor = Object.getOwnPropertyDescriptor(proto, "attachShadow");
-      const original = descriptor?.value || proto.attachShadow;
-      if (typeof original !== "function") return false;
-
-      const record = {
-        proto,
-        original,
-        descriptor,
-        wrapped: null,
-        states: new Set([docState]),
-      };
-
-      const wrapped = function(init) {
-        // Preserve the native method, arguments, exceptions and return value.
-        const root = Reflect.apply(original, this, arguments);
-
-        try {
-          const ownerDocument = this?.ownerDocument;
-          let matchingState = null;
-
-          // Each JavaScript realm normally owns its own Element prototype.
-          // Prefer an exact document match when wrappers compare equal; if
-          // Gecko exposes different Xray identities, use that realm's sole
-          // registered document state as the safe fallback.
-          for (const state of record.states) {
-            try {
-              if (
-                state.doc === ownerDocument ||
-                state.win?.document === ownerDocument
-              ) {
-                matchingState = state;
-                break;
-              }
-            } catch (_) {}
-          }
-          if (!matchingState && record.states.size === 1) {
-            matchingState = record.states.values().next().value;
-          }
-
-          if (matchingState && root) {
-            registerShadowRoot(root, matchingState, {
-              mode: init?.mode || root.mode || "unknown",
-              intercepted: true,
-            });
-          }
-        } catch (err) {
-          // Styling failures must never change attachShadow's native result.
-          warn("attachShadow hook could not style a newly created root:", err);
-        }
-
-        return root;
-      };
-
-      record.wrapped = wrapped;
-
-      const patchedDescriptor = descriptor
-        ? { ...descriptor, value: wrapped }
-        : {
-            configurable: true,
-            enumerable: false,
-            writable: true,
-            value: wrapped,
-          };
-
-      Object.defineProperty(proto, "attachShadow", patchedDescriptor);
-      attachShadowPatchRecords.set(proto, record);
-      docState.attachPatchRecord = record;
-      shadowAttachHookCount++;
-
-      log("Installed attachShadow discovery hook:", docState.label);
-      return true;
-    } catch (err) {
-      // Some realms/prototypes may be non-configurable. Existing open-root
-      // discovery and MutationObservers still work as a fallback.
-      warn("Could not instrument attachShadow in this document realm:", docState.label, err);
-      return false;
-    }
-  }
-
-  function unpatchDocumentAttachShadow(docState) {
-    const record = docState?.attachPatchRecord;
-    if (!record) return;
-
-    try {
-      record.states.delete(docState);
-
-      if (!record.states.size) {
-        if (record.proto.attachShadow === record.wrapped) {
-          if (record.descriptor) {
-            Object.defineProperty(
-              record.proto,
-              "attachShadow",
-              record.descriptor
-            );
-          } else {
-            delete record.proto.attachShadow;
-          }
-        } else {
-          log("attachShadow was changed by page code; preserving its replacement during cleanup.");
-        }
-
-        attachShadowPatchRecords.delete(record.proto);
-      }
-    } catch (err) {
-      warn("Could not restore attachShadow prototype:", err);
-    }
-
-    docState.attachPatchRecord = null;
   }
 
   function watchShadowFrame(frame, parentState) {
@@ -1999,7 +1877,6 @@
       }
 
       state.roots.clear();
-      unpatchDocumentAttachShadow(state);
     } catch (err) {
       warn("Shadow DOM document cleanup failed:", state.label, err);
     }
@@ -2019,12 +1896,10 @@
       return false;
     }
 
-    const existing = shadowDocumentStates.get(doc);
-    if (existing) {
-      patchDocumentAttachShadow(existing);
-      scanShadowDocument(doc, existing);
-      return true;
-    }
+    // An installed document already has a MutationObserver. Re-scanning its
+    // entire DOM on tab selection or repeated progress notifications is both
+    // redundant and expensive; new nodes are handled incrementally.
+    if (shadowDocumentStates.has(doc)) return true;
 
     const MutationObserverCtor =
       targetWindow.MutationObserver || window.MutationObserver;
@@ -2042,21 +1917,15 @@
       pageHideHandler: null,
       frames: new Map(),
       roots: new Set(),
-      attachPatchRecord: null,
     };
 
     try {
-      // Install interception before scanning so any roots created during the
-      // initial scan or subsequent component upgrades are caught as well.
-      patchDocumentAttachShadow(state);
+      // Do not patch page-realm prototypes. Discover existing open roots once,
+      // then inspect only DOM subtrees that are subsequently inserted.
       shadowDocumentStates.set(doc, state);
 
       state.observer = new MutationObserverCtor(records => {
-        for (const mutation of records) {
-          for (const node of mutation.addedNodes) {
-            processShadowSubtree(node, state);
-          }
-        }
+        processAddedNodeBatch(records, state);
       });
 
       state.observer.observe(doc.documentElement, {
@@ -2081,84 +1950,92 @@
       return true;
     } catch (err) {
       state.observer?.disconnect();
-      unpatchDocumentAttachShadow(state);
       shadowDocumentStates.delete(doc);
       error("Could not install generic Shadow DOM observer:", label, err);
       return false;
     }
   }
 
-  function scheduleShadowBrowserScan(browser, label = "tab") {
-    if (!browser) return;
+  function scheduleShadowBrowserScan(browser, label = "tab", delay = 90) {
+    if (!browser || !settings?.pages || cleanedUp) return;
 
-    const scan = () => {
+    // Keep at most one pending scan per browser. Navigation start/location
+    // notifications are intentionally not used; the completed-document event
+    // below schedules a single scan after Gecko has committed the new document.
+    const previousTimer = shadowBrowserScanTimers.get(browser);
+    if (previousTimer) window.clearTimeout(previousTimer);
+
+    const timer = window.setTimeout(() => {
+      shadowBrowserScanTimers.delete(browser);
+      if (cleanedUp || !settings?.pages) return;
+
       try {
         const contentWindow = browser.contentWindow;
         if (contentWindow) installShadowDocument(contentWindow, label);
       } catch (err) {
         warn("Browser document scan failed:", label, err);
       }
-    };
+    }, Math.max(0, delay));
 
-    // The immediate pass catches the currently exposed inner window. Short
-    // follow-ups catch docshell swaps during navigation without periodic polling.
-    scan();
-    window.setTimeout(scan, 0);
-    window.setTimeout(scan, 40);
-    window.setTimeout(scan, 120);
+    shadowBrowserScanTimers.set(browser, timer);
   }
 
   function installShadowDOMIntegration() {
+    if (!settings?.pages || shadowIntegrationInstalled || cleanedUp) return;
+
     const gBrowser = window.gBrowser;
     if (!gBrowser) {
       warn("gBrowser unavailable; generic tab integration not installed.");
       return;
     }
 
+    shadowIntegrationInstalled = true;
+
     try {
       const browsers = Array.from(gBrowser.browsers || []);
       browsers.forEach((browser, index) => {
-        scheduleShadowBrowserScan(browser, `tab-${index + 1}`);
+        // Stagger startup scans slightly so a browser with many restored tabs
+        // does not synchronously inspect every document in one burst.
+        scheduleShadowBrowserScan(
+          browser,
+          `tab-${index + 1}`,
+          index === 0 ? 0 : Math.min(index * 35, 700)
+        );
       });
-      log("Scanned existing tabs for generic Shadow DOM roots:", browsers.length);
+      log("Scheduled one-time open-Shadow-DOM discovery for existing tabs:", browsers.length);
     } catch (err) {
       warn("Could not enumerate existing browser tabs:", err);
     }
 
     shadowTabOpenHandler = event => {
       const browser = event.target?.linkedBrowser;
-      if (browser) scheduleShadowBrowserScan(browser, "new tab");
-    };
-
-    shadowTabSelectHandler = () => {
-      try {
-        scheduleShadowBrowserScan(gBrowser.selectedBrowser, "selected tab");
-      } catch (_) {}
+      if (browser) scheduleShadowBrowserScan(browser, "new tab", 180);
     };
 
     try {
       gBrowser.addEventListener("TabOpen", shadowTabOpenHandler, true);
-      gBrowser.addEventListener("TabSelect", shadowTabSelectHandler, true);
     } catch (err) {
-      warn("Could not install tab event hooks:", err);
+      warn("Could not install tab-open hook:", err);
+      shadowTabOpenHandler = null;
     }
 
     try {
       const flags = Ci.nsIWebProgressListener;
       shadowProgressListener = {
-        onLocationChange(browser) {
-          scheduleShadowBrowserScan(browser, "navigated tab");
-        },
+        // A completed top-level document is the only navigation event that
+        // needs a discovery pass. SPA route changes are covered by the
+        // document's MutationObserver, without observing history or clicks.
         onStateChange(browser, _progress, _request, stateFlags) {
           try {
             if (
               (stateFlags & flags.STATE_IS_DOCUMENT) &&
-              (stateFlags & (flags.STATE_START | flags.STATE_STOP))
+              (stateFlags & flags.STATE_STOP)
             ) {
-              scheduleShadowBrowserScan(browser, "document navigation");
+              scheduleShadowBrowserScan(browser, "completed document navigation", 90);
             }
           } catch (_) {}
         },
+        onLocationChange() {},
         onProgressChange() {},
         onStatusChange() {},
         onSecurityChange() {},
@@ -2167,9 +2044,10 @@
 
       gBrowser.addTabsProgressListener(shadowProgressListener);
       shadowProgressListenerInstalled = true;
-      log("Generic Shadow DOM tab-navigation listener installed.");
+      log("Navigation-safe Shadow DOM discovery listener installed (document stop only).");
     } catch (err) {
-      warn("Tab progress listener unavailable; tab-open/select hooks remain:", err);
+      warn("Tab progress listener unavailable; tab-open discovery remains:", err);
+      shadowProgressListener = null;
     }
   }
 
@@ -2215,19 +2093,17 @@
 
   function shadowDOMStatus() {
     let openRoots = 0;
-    let interceptedClosedRoots = 0;
     let activeObservers = 0;
     let observedFrames = 0;
-    let adoptedStylesheets = 0;
+    let adoptedStyleSheets = 0;
     let styleElementFallbacks = 0;
     let iconProtectedRoots = 0;
 
     for (const record of shadowRootRecords.values()) {
-      if (record.mode === "closed") interceptedClosedRoots++;
-      else openRoots++;
+      if (record.mode !== "closed") openRoots++;
       if (record.iconHostExcluded) iconProtectedRoots++;
       if (record.observer) activeObservers++;
-      if (record.styleMode === "adoptedStyleSheets") adoptedStylesheets++;
+      if (record.styleMode === "adoptedStyleSheets") adoptedStyleSheets++;
       if (record.styleMode === "style-element-fallback") styleElementFallbacks++;
     }
 
@@ -2236,25 +2112,33 @@
     }
 
     return {
+      integrationEnabled: shadowIntegrationInstalled,
       observedDocuments: shadowDocumentStates.size,
       discoveredShadowRoots: shadowRootRecords.size,
       openShadowRoots: openRoots,
-      closedRootsInterceptedAfterHook: interceptedClosedRoots,
+      closedRootsInterceptedAfterHook: 0,
       activeRootObservers: activeObservers,
       iconProtectedRoots,
-      adoptedStyleSheets: adoptedStylesheets,
+      adoptedStyleSheets,
       styleElementFallbacks,
       observedIframes: observedFrames,
-      attachShadowHooks: shadowAttachHookCount,
+      attachShadowHooks: 0,
+      attachShadowInterception: false,
+      pendingBrowserScans: shadowBrowserScanTimers.size,
       mutationBatches: shadowMutationBatches,
       pagesFontEnabled: !!settings?.pages,
       genericSelectors: true,
       applicationSpecificSelectors: false,
-      limitation: "Existing closed roots and inaccessible documents cannot be inspected; roots created after attachShadow interception can be styled.",
+      limitation: "Only discoverable open Shadow DOM roots are styled. Closed roots are deliberately not intercepted to preserve page-native JavaScript behavior.",
     };
   }
 
   function cleanupShadowDOMIntegration() {
+    for (const timer of shadowBrowserScanTimers.values()) {
+      try { window.clearTimeout(timer); } catch (_) {}
+    }
+    shadowBrowserScanTimers.clear();
+
     for (const doc of [...shadowDocumentStates.keys()]) {
       cleanupShadowDocument(doc);
     }
@@ -2263,9 +2147,6 @@
     try {
       if (gBrowser && shadowTabOpenHandler) {
         gBrowser.removeEventListener("TabOpen", shadowTabOpenHandler, true);
-      }
-      if (gBrowser && shadowTabSelectHandler) {
-        gBrowser.removeEventListener("TabSelect", shadowTabSelectHandler, true);
       }
       if (gBrowser && shadowProgressListenerInstalled && shadowProgressListener) {
         gBrowser.removeTabsProgressListener(shadowProgressListener);
@@ -2277,7 +2158,7 @@
     shadowProgressListenerInstalled = false;
     shadowProgressListener = null;
     shadowTabOpenHandler = null;
-    shadowTabSelectHandler = null;
+    shadowIntegrationInstalled = false;
   }
 
   // ========================================================================
@@ -3202,12 +3083,20 @@
   // Reapply the stylesheet and refresh controls after preferences change.
   // This is shared by the font selector, bookmark changes and cross-window sync.
   function applyAll() {
-    // Both stylesheet operations are synchronous. Force the current browser
-    // and active page to flush style/layout and redraw before returning.
     applyPageStyle();
     applyInterfaceStyle();
     refreshPanel();
-    refreshShadowDOMStyles();
+
+    // Page observers exist only while page-font styling is enabled. Turning
+    // the option off disconnects every observer and removes injected Shadow
+    // DOM styles instead of leaving a background scanner attached to sites.
+    if (settings.pages) {
+      installShadowDOMIntegration();
+      refreshShadowDOMStyles();
+    } else {
+      cleanupShadowDOMIntegration();
+    }
+
     forceImmediateRefresh();
   }
 
@@ -3480,7 +3369,7 @@
     window.addEventListener("keydown", onKeyDown, true);
     prefs.addObserver(PREF_ROOT, prefObserver);
 
-    installShadowDOMIntegration();
+    if (settings.pages) installShadowDOMIntegration();
 
     applyPageStyle();
     applyInterfaceStyle();
@@ -3499,7 +3388,7 @@
     log("Apply Font updates page/interface styles synchronously and refreshes the visible page.");
     log("Separate interface font toggle is OFF by default; when enabled, the Firefox UI can use an independent font.");
     log("Generic Firefox and extension tooltips use a dedicated AGENT_SHEET.");
-    log("Generic open Shadow DOM roots and accessible iframe documents are monitored for page-font updates.");
+    log("Discoverable open Shadow DOM roots and accessible iframe documents are monitored without modifying page prototypes.");
     log("Ctrl+Alt+F is suppressed as a legacy shortcut.");
     log(`Installed font families: ${installedFonts.length}`);
     log(`Saved bookmarks: ${settings.bookmarks.length}`);
