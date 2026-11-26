@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ⚡ Gbar
-// @version      1.6.11
+// @version      1.6.12
 // @description  Vertical-aware search box with live Google suggestions, configurable Search/Web navigation order and labels, device-theme-aware settings, navigation-matched Settings control, reliable hover submenus, tracking-only Google search URL cleanup that preserves result modes, redirect link cleaning, Google direct-links, and image downloads.
 // @include      https://scholar.google.com*
 // @include      https://www.google.com/
@@ -94,6 +94,9 @@
 //   08.2  Thumbnail button injection
 //   08.3  Download action
 //
+// MODULE 09 — CUSTOM FAVICON
+//   09.1  Final favicon installation
+//
 // ============================================================================
 // ############################################################################
 // MODULE 01 — SEARCH BOX
@@ -101,20 +104,7 @@
 // Originally "⚡ Gbar 01".
 // ############################################################################
 
-modify to use this icon instead, and append favicon as last modification
 
-  
-//FAVICON//
-
-var head = document.getElementsByTagName('head')[0];
-var icon = document.createElement('link');
-
-icon.setAttribute('type', 'image/x-icon');
-icon.setAttribute('rel', 'icon');
-
-icon.setAttribute('href', 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGnRFWHRTb2Z0d2FyZQBQYWludC5ORVQgdjMuNS4xMDD0cqEAAAM5SURBVDhPTZN9TNVVGMefey62ZCTwh21NLdbKTGOtzeLlSqQtFqymzdRoU7cs/8le/urFbi3BS2GpmEaCvbJ2E3MGFOidhZVa5BioCytI3rIk7xW4F3b1+rvcT8/vWFt/PHvOOTvft+d3fgKIk4TOvmFy1gZJe+gTqvafIpVKkoiOcbS4kB6PcMUYpkS0DHHdj+raxUrSQS/DsspDyKoQZl0nM574mt//ilmS+M89nM9I/xfstd0liEgag0YQF+w4DrdsaEPWdSDru5Hy76j84rQlVg4GS0pIiIekV2wfV6KwkgwombgX3PL52zGrf8Cs78A8foxV27rUoWNJzi5fxqQq/udiQsF/6rrXeJWAKdyqaDyNLA+R9uQJzGPfUF7TwZSLvgw/3j6P72+4hua52bTlZNOZNc3ad2cjfUMXrcpINM68Da3Io4eZsTpEqPucPa9r3sOc53OQd/Pw1hYh7/iYXn0PhU/lsmVBJnLbmo/Y334GlWMsluDjI/30Dl+06oFDdUjFHXjrfXh3FyK1eXhqC/Ds0PXOYjxvLEFmrtxL1tL3WfJckM0N7XbybvYjvT9hXrwJ2XM3UpeH1Ct41yJbsj0fz5YiJbhXHZQ3MHvFp1xb9iHZD+5mYCRq1Yci55hb/wiyK9eqmvd8us63EWS7gpVAqnV/c+k28td8wMrXWni25lu6e0ctgTvYcCxMyd6n8WzNVfuq7IL/T7BZK3j4JOFR/RI6sCvjPYycbaK/u5ZLExeunulLKw0+oyTzNbcq1vgwbxUgbyphQMuNPPH3Sbqa8hloSuePVmH4gOFM43yikd/sTH4ZGeS6qmIFF+B9exGmWpUDmn+T1mVnks5gHmNfCanjBudoOvH26VzYJ/Q1lV2NoyK37lihmRciWzVCVRHTNt2PvKoEsUg/vzbM4lIoi2gog1hrJuMtmUx+OYvzn98JiQniToo5gTIF6jADi7Wri9fvQ15RJ04yxcDBtUQ+y2C8+XqiLTMtOLrvRkaP+e0cGk8cxPvCXXgq9T1UaBRXeaPWy+rC/s6TEcLH/Yy1LSXa/ID2h4l37SThxDk11M/sl0oVsBDjV7DfVdbhbVysUOQfPFOSQg11AUoAAAAASUVORK5CYII=');
-
-head.appendChild(icon);
 
 
 
@@ -5353,3 +5343,36 @@ init();
 // END MODULE 08
 // ############################################################################
 
+// ############################################################################
+// MODULE 09 — CUSTOM FAVICON
+// Applies the custom ICO favicon after the other Gbar modules.
+// ############################################################################
+(function () {
+    "use strict";
+
+    const FAVICON_LINK_ID = "gp-gbar-custom-favicon";
+    const FAVICON_DATA_URL =
+        "data:image/x-icon;base64,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";
+
+    function installFavicon() {
+        const head = document.head || document.getElementsByTagName("head")[0];
+        if (!head) {
+            return;
+        }
+
+        // Reuse our link if the script is evaluated again; otherwise create one.
+        const favicon =
+            document.getElementById(FAVICON_LINK_ID) ||
+            document.createElement("link");
+
+        favicon.id = FAVICON_LINK_ID;
+        favicon.setAttribute("rel", "icon");
+        favicon.setAttribute("type", "image/x-icon");
+        favicon.setAttribute("href", FAVICON_DATA_URL);
+
+        // Append last so this link takes precedence over the site's native icon.
+        head.appendChild(favicon);
+    }
+
+    installFavicon();
+})();
