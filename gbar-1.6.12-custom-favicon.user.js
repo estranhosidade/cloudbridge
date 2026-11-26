@@ -1,0 +1,5431 @@
+// ==UserScript==
+// @name         ⚡ Gbar
+// @version      1.6.12
+// @description  Google/Ecosia search customization with live suggestions, custom navigation, link cleaning, direct image links and downloads, plus a persistent custom favicon.
+// @include      https://scholar.google.com*
+// @include      https://www.google.com/
+// @include      https://www.google.com/search?q=*&*=gws-wiz-modeless-web-only*
+// @include      https://www.google.com/search?*
+// @include      https://www.ecosia.org/*
+// @include      https://www.ecosia.org/search*
+// @include      https://www.ecosia.org/images*
+// @include      /^https?://(?:www|encrypted|ipv[46])\.google\.[^/]+/(?:$|[#?]|search|webhp|imgres)/
+// @match        https://news.google.com/*
+// @match        https://cse.google.com/cse/*
+// @exclude      https://www.google.com/sorry/index?continue=*
+// @exclude      https://www.google.com/recaptcha/*
+// @exclude      https://www.google.com/search?vsrid=*
+// @exclude      https://gemini.google.com/*
+// @connect      suggestqueries.google.com
+// @connect      *
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_deleteValue
+// @grant        GM_xmlhttpRequest
+// @grant        GM.getValue
+// @grant        GM.setValue
+// @grant        GM_download
+// @grant        unsafeWindow
+// @run-at       document-end
+// @inject-into  content
+// @license      MIT
+// ==/UserScript==
+// ============================================================================
+// GBAR — GOOGLE SEARCH CUSTOMIZATION
+// ============================================================================
+//
+// MODULE 01 — SEARCH BOX
+//   01.1  Configuration and state
+//   01.2  Styles
+//   01.3  Google autocomplete API
+//   01.4  Search context and session tokens
+//   01.5  Suggestions dropdown
+//   01.6  Keyboard navigation and input synchronization
+//   01.7  Search box creation and event handlers
+//   01.8  Target discovery and replacement
+//   01.9  Initialization and dynamic DOM handling
+//
+// MODULE 02 — RESTORED GBAR
+//   02.1  Preferences and configuration
+//   02.2  Google URL-state cleanup
+//   02.3  Settings dialog: markup and styles
+//   02.4  Settings persistence and event handlers
+//   02.5  Main navigation bar: markup and styles
+//   02.6  Dropdown state management
+//   02.7  Submenu interactions and hover timing
+//   02.8  Navigation link configuration
+//   02.9  Search-aware URL generation
+//   02.10 Responsive layout
+//   02.11 Current-page detection
+//
+// MODULE 03 — GOOGLE NEWS RESULT INTERACTIONS
+//   03.1  Selectors and saved anchor state
+//   03.2  Element and exception detection
+//   03.3  Anchor state management
+//   03.4  Pointer tracking and activation blocking
+//   03.5  Text-selection styles
+//
+// MODULE 04 — GOOGLE SEARCH RESULT INTERACTIONS
+//   04.1  Configuration and initial cleanup
+//   04.2  Click handling
+//   04.3  Dynamic DOM cleanup
+//
+// MODULE 05 — GOOGLE SEARCH TEXT SELECTION
+//   05.1  State and initialization guard
+//   05.2  Caret detection
+//   05.3  Gutter and target detection
+//   05.4  Range and selection management
+//   05.5  Pointer-drag lifecycle
+//
+// MODULE 06 — LINK CLEANING
+//   06.1  Redirect URL parsing and cleaning
+//   06.2  Dynamic DOM link processing
+//
+// MODULE 07 — GOOGLE DIRECT LINKS (PAGES & IMAGES)
+//   07.1  Image preview click blocking
+//   07.2  Space-key hijack prevention
+//   07.3  Direct-link handling outside result blocks
+//   07.4  Image source-link styling
+//   07.5  Storage compatibility and options
+//   07.6  Direct-link processor
+//
+// MODULE 08 — IMAGE DOWNLOAD BUTTON
+//   08.1  Configuration and helpers
+//   08.2  Thumbnail button injection
+//   08.3  Download action
+//
+// MODULE 09 — CUSTOM FAVICON
+//   09.1  Install and maintain the supplied tab icon
+
+// ============================================================================
+// ############################################################################
+// MODULE 01 — SEARCH BOX
+// Replaces site search forms with an enhanced search box and live suggestions.
+// Originally "⚡ Gbar 01".
+// ############################################################################
+(function () {
+"use strict";
+
+// ------------------------------------------------------------------------
+// 01.1 — Configuration
+// ------------------------------------------------------------------------
+const TARGET_SELECTORS = [
+".H0PQec",
+".RNNXgb",
+".search-form__mobile-wrapper",
+// Generic search forms.
+".emcav.A8SBwf",
+// Search inputs.
+'input[name="q"]',
+'textarea[name="q"]',
+];
+// URLs on which the site's native search bar must remain untouched.
+// Add more regular expressions to this list as needed.
+const SEARCHBAR_REPLACEMENT_EXCEPTIONS = [
+    /^https:\/\/www\.google\.com\/webhp(?:[/?#]|$)/i,
+];
+
+function isSearchbarReplacementExcluded() {
+    const currentUrl = window.location.href;
+    return SEARCHBAR_REPLACEMENT_EXCEPTIONS.some((pattern) =>
+        pattern.test(currentUrl)
+    );
+}
+const GOOGLE_SUGGEST_URL =
+"https://suggestqueries.google.com/complete/search";
+const MAX_RESULTS = 8;
+const DEBOUNCE_TIME = 120;
+// Internal toggle: when true, a trailing "OR"-joined chain of search
+// operators (e.g. "site:a.com OR site:b.com") is hidden from the visible
+// input while the full query is preserved for submission. Set to false to
+// disable the behaviour entirely.
+const HIDE_SEARCH_OPERATOR = true;
+
+// ------------------------------------------------------------------------
+// 01.1 — State
+// ------------------------------------------------------------------------
+let activeInput = null;
+let activeDropdown = null;
+let suggestions = [];
+let selectedIndex = -1;
+// Preserve the user's original text while navigating suggestions.
+let typedValue = "";
+let requestId = 0;
+let debounceTimer = null;
+// Prevent concurrent initialization passes from racing each other.
+let initializationRunning = false;
+
+// ------------------------------------------------------------------------
+// 01.2 — Styles
+// ------------------------------------------------------------------------
+const STYLE = `
+.custom-google-search {
+position: relative !important;
+display: inline-block !important;
+margin: 0;
+width: 650px;
+max-width: 100%;
+box-sizing: border-box;
+font-family: Arial, Helvetica, sans-serif;
+z-index: 999999;
+}
+.custom-google-search-input-wrap {
+position: relative;
+display: flex;
+align-items: center;
+width: 100%;
+box-sizing: border-box;
+}
+.custom-google-search-input {
+width: 100%;
+height: 44px;
+box-sizing: border-box;
+padding: 0 52px 0 16px;
+border: 1px solid #dfe1e5;
+border-radius: 24px;
+outline: none;
+background: #ffffff;
+color: #202124;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 16px;
+transition:
+box-shadow 0.15s ease,
+border-color 0.15s ease;
+}
+.custom-google-search-input:hover {
+border-color: #dfe1e5;
+box-shadow: 0 1px 6px rgba(32, 33, 36, 0.18);
+}
+.custom-google-search-input:focus {
+border-color: transparent;
+box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+}
+.custom-google-search-input::placeholder {
+color: #9aa0a6;
+}
+.custom-google-search-button {
+position: absolute;
+right: 6px;
+top: 50%;
+transform: translateY(-50%);
+width: 36px;
+height: 36px;
+padding: 0;
+margin: 0;
+border: 0;
+border-radius: 50%;
+background: transparent;
+color: #5f6368;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 25px;
+line-height: 36px;
+text-align: center;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.custom-google-search-button:hover {
+background: rgba(60, 64, 67, 0.08);
+}
+.custom-google-search-reveal {
+position: absolute;
+right: 46px;
+top: 50%;
+transform: translateY(-50%);
+width: 30px;
+height: 30px;
+padding: 0;
+margin: 0;
+border: 0;
+border-radius: 50%;
+background: transparent;
+color: #5f6368;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 0;
+font-weight: 400;
+line-height: 30px;
+text-align: center;
+cursor: pointer;
+display: none;
+align-items: center;
+justify-content: center;
+}
+.custom-google-search-reveal.visible {
+display: inline-flex;
+}
+.custom-google-search-reveal svg {
+width: 21px;
+height: 21px;
+display: block;
+}
+.custom-google-search-reveal:hover {
+background: rgba(60, 64, 67, 0.08);
+}
+.custom-google-search-input.has-hidden-operator {
+padding-right: 84px;
+}
+.custom-google-search-dropdown {
+position: absolute;
+top: calc(100% + 4px);
+left: 0;
+right: 0;
+box-sizing: border-box;
+background: #ffffff;
+border-radius: 8px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+overflow: hidden;
+display: none;
+z-index: 1000000;
+}
+.custom-google-search-dropdown.visible {
+display: block;
+}
+.custom-google-search-item {
+width: 100%;
+min-height: 40px;
+box-sizing: border-box;
+padding: 9px 16px;
+display: flex;
+align-items: center;
+cursor: pointer;
+color: #202124;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 15px;
+line-height: 20px;
+user-select: none;
+}
+.custom-google-search-item:hover,
+.custom-google-search-item.selected {
+background: #f1f3f4;
+}
+.custom-google-search-item-icon {
+flex: 0 0 auto;
+width: 20px;
+margin-right: 12px;
+color: #9aa0a6;
+font-size: 17px;
+text-align: center;
+}
+.custom-google-search-item-text {
+min-width: 0;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+/* Dark mode. */
+@media (prefers-color-scheme: dark) {
+.custom-google-search-input {
+background: #202124;
+color: #e8eaed;
+border-color: #5f6368;
+}
+.custom-google-search-input:hover {
+border-color: #8ab4f8;
+box-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+}
+.custom-google-search-input:focus {
+border-color: #8ab4f8;
+box-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+}
+.custom-google-search-input::placeholder {
+color: #9aa0a6;
+}
+.custom-google-search-button {
+color: #bdc1c6;
+}
+.custom-google-search-button:hover {
+background: rgba(232, 234, 237, 0.08);
+}
+.custom-google-search-reveal {
+color: #bdc1c6;
+}
+.custom-google-search-reveal:hover {
+background: rgba(232, 234, 237, 0.08);
+}
+.custom-google-search-dropdown {
+background: #202124;
+box-shadow: 0 4px 16px rgba(0, 0, 0, 0.65);
+}
+.custom-google-search-item {
+color: #e8eaed;
+}
+.custom-google-search-item:hover,
+.custom-google-search-item.selected {
+background: #303134;
+}
+.custom-google-search-item-icon {
+color: #9aa0a6;
+}
+}
+/* Mobile layout. */
+@media (max-width: 700px) {
+.custom-google-search {
+width: 100% !important;
+max-width: 100% !important;
+}
+.custom-google-search-input {
+height: 42px;
+font-size: 16px;
+}
+.custom-google-search-dropdown {
+max-height: 60vh;
+overflow-y: auto;
+}
+}
+`;
+
+// ------------------------------------------------------------------------
+// 01.2 — Style installation
+// ------------------------------------------------------------------------
+function installStyle() {
+if (document.getElementById("custom-google-search-style")) {
+return;
+}
+const style = document.createElement("style");
+style.id = "custom-google-search-style";
+style.textContent = STYLE;
+(document.head || document.documentElement).appendChild(style);
+}
+
+// ------------------------------------------------------------------------
+// 01.3 — Google autocomplete API
+// ------------------------------------------------------------------------
+function getGoogleSuggestions(query) {
+// GM_xmlhttpRequest instead of JSONP:
+// page CSP blocks suggestion script tags on Google pages,
+// and content-script isolation prevents ordinary page callbacks.
+// The request also avoids the CORS restrictions of fetch().
+return new Promise((resolve) => {
+if (!query || !query.trim()) {
+resolve([]);
+return;
+}
+let finished = false;
+const finish = (result) => {
+if (finished) {
+return;
+}
+finished = true;
+resolve(
+Array.isArray(result)
+? result.slice(0, MAX_RESULTS)
+: []
+);
+};
+// client=chrome returns plain JSON:
+// [query, [suggestion, ...], ...]
+const params = new URLSearchParams({
+client: "chrome",
+hl: "en",
+q: query,
+});
+try {
+GM_xmlhttpRequest({
+method: "GET",
+url: GOOGLE_SUGGEST_URL + "?" + params.toString(),
+timeout: 5000,
+onload: (response) => {
+try {
+const data = JSON.parse(response.responseText);
+const rawSuggestions =
+Array.isArray(data) &&
+Array.isArray(data[1])
+? data[1]
+: [];
+const result = [];
+for (const item of rawSuggestions) {
+let value = "";
+if (typeof item === "string") {
+value = item;
+} else if (Array.isArray(item)) {
+value = item[0];
+}
+if (
+typeof value === "string" &&
+value.trim() &&
+!result.includes(value)
+) {
+result.push(value);
+}
+if (result.length >= MAX_RESULTS) {
+break;
+}
+}
+finish(result);
+} catch {
+finish([]);
+}
+},
+onerror: () => {
+finish([]);
+},
+ontimeout: () => {
+finish([]);
+},
+});
+} catch {
+// Treat unavailable GM_xmlhttpRequest as a failed request.
+finish([]);
+}
+});
+}
+
+// ------------------------------------------------------------------------
+// 01.4 — Search context and session tokens
+// ------------------------------------------------------------------------
+// Harvest Google's sxsrf token from the current URL, a hidden input,
+// or an existing link.
+function findGoogleSessionToken() {
+try {
+const value = new URL(window.location.href)
+.searchParams
+.get("sxsrf");
+if (value) {
+return value;
+}
+} catch {}
+const hiddenInput =
+document.querySelector('input[name="sxsrf"]');
+if (hiddenInput && hiddenInput.value) {
+return hiddenInput.value;
+}
+const link = document.querySelector('a[href*="sxsrf="]');
+if (link) {
+const match = link.href.match(/[?&]sxsrf=([^&]+)/);
+if (match) {
+try {
+return decodeURIComponent(match[1]);
+} catch {
+return match[1];
+}
+}
+}
+return null;
+}
+// Locate Google's original form so its live hidden inputs can be copied.
+function findOriginalGoogleForm() {
+const selectors = [
+"form#tsf",
+'form[name="f"]',
+'form[action="/search"]',
+'form[action^="/search?"]',
+];
+for (const selector of selectors) {
+let candidate = null;
+try {
+candidate = document.querySelector(selector);
+} catch {
+candidate = null;
+}
+if (
+candidate &&
+!candidate.classList?.contains("custom-google-search")
+) {
+return candidate;
+}
+}
+return null;
+}
+// Build the correct native GET-form context for the current search page.
+function applySearchContext(form) {
+let url = null;
+try {
+url = new URL(window.location.href);
+} catch {
+url = null;
+}
+const host = url ? url.hostname : "";
+const path = url ? url.pathname : "";
+// Remove context inputs created by a previous invocation.
+form
+.querySelectorAll("input[data-custom-google-context]")
+.forEach((input) => input.remove());
+const contextNames = new Set();
+const addHidden = (name, value) => {
+const input = document.createElement("input");
+input.type = "hidden";
+input.name = name;
+input.value = value;
+input.dataset.customGoogleContext = "true";
+contextNames.add(name);
+form.appendChild(input);
+};
+// Google Scholar.
+if (host === "scholar.google.com") {
+form.action = "https://scholar.google.com/scholar";
+addHidden("hl", "en");
+return;
+}
+// Ecosia always performs a standard web search.
+if (
+host === "www.ecosia.org" ||
+host === "ecosia.org"
+) {
+form.action = "https://www.ecosia.org/search";
+return;
+}
+// Google Search.
+form.action = "https://www.google.com/search";
+// Preserve live Google session inputs, including current hidden
+// form values such as ei, sxsrf, sca_esv and viewport state.
+const managedNames = new Set([
+"q",
+"client",
+"hl",
+"gl",
+"num",
+"udm",
+"tbm",
+]);
+const originalForm = findOriginalGoogleForm();
+if (originalForm) {
+let liveInputs = [];
+try {
+liveInputs = originalForm.querySelectorAll(
+'input[type="hidden"][name]'
+);
+} catch {
+liveInputs = [];
+}
+for (const input of liveInputs) {
+if (!input.name || !input.value) {
+continue;
+}
+if (managedNames.has(input.name)) {
+continue;
+}
+// Ignore inputs that belong to our own search box.
+if (
+input.closest &&
+input.closest(".custom-google-search")
+) {
+continue;
+}
+addHidden(input.name, input.value);
+}
+}
+// Preserve relevant URL parameters for Google search pages.
+if (
+url &&
+(
+path === "/search" ||
+path === "/webhp" ||
+path === "/"
+)
+) {
+for (const name of ["client", "hl", "gl", "num"]) {
+const value = url.searchParams.get(name);
+if (value) {
+addHidden(name, value);
+}
+}
+const vertical =
+url.searchParams.get("udm") ||
+url.searchParams.get("tbm");
+if (vertical) {
+if (/^\d+$/.test(vertical)) {
+addHidden("udm", vertical);
+} else if (/^[a-z]+$/.test(vertical)) {
+addHidden("tbm", vertical);
+}
+}
+}
+// Keep session continuity if the live form did not provide the token.
+if (!contextNames.has("sxsrf")) {
+const sessionToken = findGoogleSessionToken();
+if (sessionToken) {
+addHidden("sxsrf", sessionToken);
+}
+}
+}
+
+// ------------------------------------------------------------------------
+// 01.5 — Suggestions dropdown
+// ------------------------------------------------------------------------
+function hideSuggestions() {
+if (!activeDropdown) {
+return;
+}
+activeDropdown.classList.remove("visible");
+activeDropdown.innerHTML = "";
+suggestions = [];
+selectedIndex = -1;
+typedValue = "";
+}
+function showSuggestions(items) {
+if (!activeDropdown) {
+return;
+}
+activeDropdown.innerHTML = "";
+suggestions = items || [];
+selectedIndex = -1;
+typedValue = "";
+if (!suggestions.length) {
+hideSuggestions();
+return;
+}
+suggestions.forEach((suggestion, index) => {
+const item = document.createElement("div");
+item.className = "custom-google-search-item";
+item.dataset.index = String(index);
+const icon = document.createElement("span");
+icon.className = "custom-google-search-item-icon";
+icon.textContent = "⌕";
+const text = document.createElement("span");
+text.className = "custom-google-search-item-text";
+text.textContent = suggestion;
+item.appendChild(icon);
+item.appendChild(text);
+// Keep the input focused long enough to process the click.
+item.addEventListener("mousedown", (event) => {
+event.preventDefault();
+});
+item.addEventListener("click", () => {
+if (!activeInput) {
+return;
+}
+activeInput.value = suggestion;
+// A chosen suggestion is a fresh query; drop any hidden operator.
+activeInput._gpOperator = "";
+activeInput._gpRevealed = false;
+syncOperatorUI(activeInput);
+const form = activeInput.form;
+hideSuggestions();
+if (!form) {
+return;
+}
+// Let the browser construct the URL from the GET form.
+if (form.requestSubmit) {
+form.requestSubmit();
+} else {
+form.submit();
+}
+});
+activeDropdown.appendChild(item);
+});
+activeDropdown.classList.add("visible");
+}
+function updateSelection() {
+if (!activeDropdown) {
+return;
+}
+const items = activeDropdown.querySelectorAll(
+".custom-google-search-item"
+);
+items.forEach((item, index) => {
+item.classList.toggle(
+"selected",
+index === selectedIndex
+);
+});
+if (
+selectedIndex >= 0 &&
+selectedIndex < items.length
+) {
+items[selectedIndex].scrollIntoView({
+block: "nearest",
+});
+}
+}
+
+// ------------------------------------------------------------------------
+// 01.6 — Keyboard navigation and input synchronization
+// ------------------------------------------------------------------------
+// Mirror the highlighted suggestion into the input.
+// Restore the original typed query when selection is cleared.
+function syncInputToSelection(input) {
+if (!input) {
+return;
+}
+if (
+selectedIndex >= 0 &&
+selectedIndex < suggestions.length
+) {
+input.value = suggestions[selectedIndex];
+} else {
+input.value = typedValue;
+}
+// Keep the caret at the end.
+const end = input.value.length;
+try {
+input.setSelectionRange(end, end);
+} catch {
+// Ignore unsupported input types.
+}
+}
+// Debounced autocomplete requests with stale-request protection.
+function requestSuggestions(input, query) {
+clearTimeout(debounceTimer);
+const thisRequest = ++requestId;
+debounceTimer = setTimeout(async () => {
+if (!input || !input.isConnected) {
+return;
+}
+query = String(query || "").trim();
+if (!query) {
+if (input === activeInput) {
+hideSuggestions();
+}
+return;
+}
+const result = await getGoogleSuggestions(query);
+// Ignore stale requests.
+if (thisRequest !== requestId) {
+return;
+}
+// Ignore requests for a non-active input.
+if (input !== activeInput) {
+return;
+}
+// Ignore results if the query changed during the request.
+if (input.value.trim() !== query) {
+return;
+}
+showSuggestions(result);
+}, DEBOUNCE_TIME);
+}
+
+// ------------------------------------------------------------------------
+// 01.7 — Search box creation, operator hiding, and event handlers
+// ------------------------------------------------------------------------
+// Split a trailing site operator or a trailing "(site:x OR site:y ...)" chain
+// off the query. A single site: operator is supported; AND is not a supported
+// separator and mixed site chains containing AND are deliberately rejected.
+// Returns { clean, operator, full } when a trailing site operator is present.
+function splitSearchOperator(value) {
+if (!HIDE_SEARCH_OPERATOR) {
+return null;
+}
+const text = String(value || "");
+// Site values never include whitespace or parentheses, so "(site:a.com)"
+// does not glue the closing paren onto the domain the way \S+ did.
+// Optional wrapping parens are part of the hidden operator (they are
+// required to keep "query (site:a OR site:b)" scoped correctly).
+const SITE = "\\bsite:[^\\s()]+";
+const WRAP_OPEN = "(?:\\(\\s*)*";
+const WRAP_CLOSE = "(?:\\s*\\))*";
+// Reject a trailing site-chain that mixes OR with AND, rather than hiding only
+// its final site: term and leaving a misleading partial expression visible.
+const mixedOperatorTail = text.match(
+new RegExp(
+"\\s*" + WRAP_OPEN + SITE + "(?:\\s+(?:OR|AND)\\s+" + SITE + ")+" + WRAP_CLOSE + "\\s*$",
+"i"
+)
+);
+if (mixedOperatorTail && /\s+AND\s+/i.test(mixedOperatorTail[0])) {
+return null;
+}
+// The repeated OR segment is optional, so "query site:example.com" works too.
+// The whole tail (including any wrapping parens) is the hidden operator.
+const match = text.match(
+new RegExp(
+"\\s*" + WRAP_OPEN + SITE + "(?:\\s+OR\\s+" + SITE + ")*" + WRAP_CLOSE + "\\s*$",
+"i"
+)
+);
+if (!match) {
+return null;
+}
+const operator = match[0].trim();
+const clean = text.slice(0, match.index).trim();
+// Keep clean empty when the entire query consists of a site: operator. That
+// lets the user reveal/edit it while still submitting the original query.
+return {
+clean: clean,
+operator: operator,
+full: text.trim()
+};
+}
+// The toggle is enabled only when the current page URL's q parameter
+// contains a supported operator chain. The live input alone is not enough.
+function getPageSearchOperator() {
+try {
+const url = new URL(window.location.href);
+return splitSearchOperator(url.searchParams.get("q") || "");
+} catch {
+return null;
+}
+}
+// Monochrome inline book icons use currentColor, matching the search button's
+// restrained single-colour glyph rather than platform-coloured emoji.
+const REVEAL_ICON_CLOSED =
+  '<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h11.5A2.5 2.5 0 0 1 19 7v12H7a2 2 0 0 1-2-2V4.5Z"/><path d="M8 4.5v14"/><path d="M8 8h8"/></svg>';
+const REVEAL_ICON_OPEN =
+  '<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7.2C9.7 5.4 6.3 5.1 3 6v13c3.3-.9 6.7-.6 9 1.2"/><path d="M12 7.2C14.3 5.4 17.7 5.1 21 6v13c-3.3-.9-6.7-.6-9 1.2"/><path d="M12 7.2v13"/></svg>';
+
+function setRevealIcon(reveal, expanded) {
+reveal.innerHTML = expanded ? REVEAL_ICON_OPEN : REVEAL_ICON_CLOSED;
+}
+
+// Show/hide the reveal button and adjust input padding for an input.
+function syncOperatorUI(input) {
+const reveal = input._gpRevealEl;
+if (!reveal) {
+return;
+}
+if (input._gpOperator) {
+reveal.classList.add("visible");
+input.classList.add("has-hidden-operator");
+if (input._gpRevealed) {
+setRevealIcon(reveal, true);
+reveal.classList.add("active");
+reveal.setAttribute("aria-expanded", "true");
+reveal.setAttribute("aria-label", "Hide search operators");
+reveal.title = "Hide search operators";
+} else {
+setRevealIcon(reveal, false);
+reveal.classList.remove("active");
+reveal.setAttribute("aria-expanded", "false");
+reveal.setAttribute("aria-label", "Show hidden search operators");
+reveal.title = "Show hidden search operators";
+}
+} else {
+reveal.classList.remove("visible");
+reveal.classList.remove("active");
+reveal.setAttribute("aria-expanded", "false");
+input.classList.remove("has-hidden-operator");
+input._gpRevealed = false;
+}
+}
+// Effective query that must be submitted (operator re-attached when hidden).
+function effectiveOperatorValue(input) {
+if (input._gpOperator && !input._gpRevealed) {
+const clean = String(input.value || "").trim();
+return clean ? clean + " " + input._gpOperator : input._gpOperator;
+}
+return input.value;
+}
+
+function createSearchBox() {
+const container = document.createElement("form");
+container.className = "custom-google-search";
+container.action = "https://www.google.com/search";
+container.method = "get";
+container.setAttribute("role", "search");
+// Input and button layout.
+const inputWrap = document.createElement("div");
+inputWrap.className = "custom-google-search-input-wrap";
+const input = document.createElement("input");
+input.type = "search";
+input.name = "q";
+input.className = "custom-google-search-input";
+input.placeholder = "Search Google";
+input.autocomplete = "off";
+input.spellcheck = false;
+input.setAttribute("aria-label", "Search Google");
+const button = document.createElement("button");
+button.type = "submit";
+button.className = "custom-google-search-button";
+button.setAttribute("aria-label", "Search");
+button.textContent = "⌕";
+// Small button that reveals a hidden "site:… OR site:…" operator chain.
+const reveal = document.createElement("button");
+reveal.type = "button";
+reveal.className = "custom-google-search-reveal";
+reveal.setAttribute("aria-label", "Show hidden search operators");
+reveal.setAttribute("aria-expanded", "false");
+reveal.title = "Show hidden search operators";
+setRevealIcon(reveal, false);
+// Operator-hiding state for this input.
+input._gpRevealEl = reveal;
+input._gpOperator = "";
+input._gpRevealed = false;
+reveal.addEventListener("click", (event) => {
+event.preventDefault();
+if (!input._gpOperator && !input._gpRevealed) {
+return;
+}
+if (!input._gpRevealed) {
+// Expand: compute the full query BEFORE changing the revealed state.
+// Otherwise effectiveOperatorValue() sees an expanded input and returns
+// only the clean text, which makes the toggle appear to fail.
+const fullQuery = effectiveOperatorValue(input);
+input.value = fullQuery;
+input._gpRevealed = true;
+} else {
+// Collapse: re-split the edited text so collapsing works even after
+// editing the query or the operator chain.
+const parts = splitSearchOperator(input.value);
+if (parts) {
+input._gpOperator = parts.operator;
+input.value = parts.clean;
+} else {
+// No supported trailing operator chain remains; preserve the edited
+// query as-is and remove the now-unneeded toggle.
+input._gpOperator = "";
+}
+input._gpRevealed = false;
+}
+syncOperatorUI(input);
+input.focus();
+const end = input.value.length;
+try {
+input.setSelectionRange(end, end);
+} catch {
+// Ignore unsupported input types.
+}
+});
+const dropdown = document.createElement("div");
+dropdown.className = "custom-google-search-dropdown";
+inputWrap.appendChild(input);
+inputWrap.appendChild(reveal);
+inputWrap.appendChild(button);
+container.appendChild(inputWrap);
+container.appendChild(dropdown);
+// Initialize the page-specific submission context.
+applySearchContext(container);
+// Refresh context immediately before submission in case the page
+// URL or Google's session inputs changed. Do not change input.value here:
+// doing so visibly flashes the full operator chain during navigation.
+container.addEventListener("submit", () => {
+applySearchContext(container);
+});
+// Override the submitted form data instead of exposing hidden operators in
+// the visible input. The formdata event fires after submit handlers and lets
+// us send the full q value without mutating what the user sees.
+container.addEventListener("formdata", (event) => {
+if (input._gpOperator && !input._gpRevealed) {
+event.formData.set("q", effectiveOperatorValue(input));
+}
+});
+// Input events.
+input.addEventListener("input", () => {
+activeInput = input;
+activeDropdown = dropdown;
+// Typing never enables the toggle: operators collapse only on page
+// load, and the toggle only changes via the reveal button.
+requestSuggestions(
+input,
+input.value
+);
+});
+// Keyboard navigation.
+input.addEventListener("keydown", (event) => {
+// Our form can be nested in Google's native form.
+// Stop handled keys from reaching Google's original handlers.
+// Arrow Down.
+if (event.key === "ArrowDown") {
+if (!suggestions.length) {
+return;
+}
+event.preventDefault();
+event.stopPropagation();
+if (selectedIndex === -1) {
+typedValue = input.value;
+}
+if (selectedIndex < suggestions.length - 1) {
+selectedIndex += 1;
+}
+updateSelection();
+syncInputToSelection(input);
+return;
+}
+// Arrow Up.
+if (event.key === "ArrowUp") {
+if (!suggestions.length) {
+return;
+}
+event.preventDefault();
+event.stopPropagation();
+if (selectedIndex === -1) {
+return;
+}
+selectedIndex -= 1;
+updateSelection();
+syncInputToSelection(input);
+return;
+}
+// Enter.
+if (event.key === "Enter") {
+event.preventDefault();
+event.stopPropagation();
+if (
+selectedIndex >= 0 &&
+selectedIndex < suggestions.length
+) {
+input.value = suggestions[selectedIndex];
+// A committed suggestion is a fresh query; drop any hidden operator.
+input._gpOperator = "";
+input._gpRevealed = false;
+syncOperatorUI(input);
+}
+hideSuggestions();
+if (input.value.trim()) {
+applySearchContext(container);
+if (container.requestSubmit) {
+container.requestSubmit(button);
+} else {
+container.submit();
+}
+}
+return;
+}
+// Escape.
+if (event.key === "Escape") {
+event.stopPropagation();
+hideSuggestions();
+return;
+}
+});
+// Focus.
+input.addEventListener("focus", () => {
+activeInput = input;
+activeDropdown = dropdown;
+if (input.value.trim()) {
+requestSuggestions(
+input,
+input.value
+);
+}
+});
+// Blur.
+input.addEventListener("blur", () => {
+// Allow time for a suggestion click to be processed.
+setTimeout(() => {
+if (!container.contains(document.activeElement)) {
+hideSuggestions();
+}
+}, 150);
+});
+// Mouse entry.
+container.addEventListener("mouseenter", () => {
+activeInput = input;
+activeDropdown = dropdown;
+});
+return container;
+}
+
+// ------------------------------------------------------------------------
+// 01.8 — Target discovery and replacement
+// ------------------------------------------------------------------------
+function formAlreadyProcessed(form) {
+if (!form) {
+return false;
+}
+return !!form.querySelector(".custom-google-search");
+}
+function replaceTarget(target) {
+if (!target || !target.isConnected) {
+return false;
+}
+// Never process our own generated search box.
+if (target.classList?.contains("custom-google-search")) {
+return false;
+}
+if (target.closest?.(".custom-google-search")) {
+return false;
+}
+// Determine the parent form.
+const parentForm = target.closest("form");
+// Duplicate protection: one replacement per form.
+if (parentForm) {
+if (formAlreadyProcessed(parentForm)) {
+parentForm.dataset.customGoogleSearchProcessed = "true";
+return false;
+}
+if (
+parentForm.dataset.customGoogleSearchProcessed === "true"
+) {
+return false;
+}
+}
+// Prevent replacing the same element twice.
+if (target.dataset.customGoogleSearchReplaced === "true") {
+return false;
+}
+// Preserve the existing query.
+let currentValue = "";
+if (
+target instanceof HTMLInputElement ||
+target instanceof HTMLTextAreaElement
+) {
+currentValue = target.value || "";
+} else {
+const existingInput = target.querySelector?.(
+'input[name="q"], textarea[name="q"], input[type="search"]'
+);
+if (existingInput) {
+currentValue = existingInput.value || "";
+}
+}
+// Create the replacement.
+const searchBox = createSearchBox();
+const newInput = searchBox.querySelector(
+".custom-google-search-input"
+);
+if (newInput) {
+// Do not infer toggle state from text being typed into the search field.
+// Only a supported operator chain in the page URL's q parameter enables
+// the toggle. This means a newly typed chain is submitted normally, then
+// appears collapsed on the resulting search-results page.
+const pageParts = getPageSearchOperator();
+if (pageParts) {
+newInput._gpOperator = pageParts.operator;
+newInput._gpRevealed = false;
+newInput.value = pageParts.clean;
+syncOperatorUI(newInput);
+} else if (currentValue) {
+// A normal URL query (or a page without q) must not show the toggle,
+// even if the live input currently contains operator-looking text.
+newInput.value = currentValue;
+}
+}
+// Preserve the target's approximate width.
+try {
+const rect = target.getBoundingClientRect();
+if (rect.width > 0) {
+searchBox.style.width =
+Math.min(rect.width, 650) + "px";
+} else {
+searchBox.style.width = "650px";
+}
+} catch {
+searchBox.style.width = "650px";
+}
+// Mark before replacement to protect against MutationObserver races.
+target.dataset.customGoogleSearchReplaced = "true";
+if (parentForm) {
+parentForm.dataset.customGoogleSearchProcessed = "true";
+}
+target.replaceWith(searchBox);
+return true;
+}
+function findTargets(root = document) {
+if (!root || !root.querySelectorAll) {
+return [];
+}
+const targets = [];
+const elements = root.querySelectorAll(
+TARGET_SELECTORS.join(",")
+);
+const seenForms = new Set();
+const seenElements = new Set();
+for (const element of elements) {
+if (!element || !element.isConnected) {
+continue;
+}
+// Ignore our generated UI.
+if (element.classList?.contains("custom-google-search")) {
+continue;
+}
+if (element.closest?.(".custom-google-search")) {
+continue;
+}
+// Avoid duplicate selector matches.
+if (seenElements.has(element)) {
+continue;
+}
+seenElements.add(element);
+const form = element.closest("form");
+// A form receives exactly one replacement.
+if (form) {
+if (
+form.dataset.customGoogleSearchProcessed === "true"
+) {
+continue;
+}
+if (form.querySelector(".custom-google-search")) {
+form.dataset.customGoogleSearchProcessed = "true";
+continue;
+}
+if (seenForms.has(form)) {
+continue;
+}
+seenForms.add(form);
+}
+targets.push(element);
+}
+return targets;
+}
+
+// ------------------------------------------------------------------------
+// 01.9 — Initialization and dynamic DOM handling
+// ------------------------------------------------------------------------
+function initialize(root = document) {
+// Keep Google's native search bar on explicitly excluded pages.
+ if (isSearchbarReplacementExcluded()) {
+ return;
+}
+
+ if (initializationRunning) {
+return;
+}
+initializationRunning = true;
+try {
+const targets = findTargets(root);
+for (const target of targets) {
+replaceTarget(target);
+}
+} finally {
+initializationRunning = false;
+}
+}
+function startObserver() {
+const observer = new MutationObserver((mutations) => {
+for (const mutation of mutations) {
+for (const node of mutation.addedNodes) {
+if (node.nodeType !== Node.ELEMENT_NODE) {
+continue;
+}
+// Ignore our generated box and descendants.
+if (
+node.classList?.contains("custom-google-search")
+) {
+continue;
+}
+if (node.closest?.(".custom-google-search")) {
+continue;
+}
+initialize(node);
+}
+}
+});
+observer.observe(document.body, {
+childList: true,
+subtree: true,
+});
+}
+function start() {
+installStyle();
+initialize();
+startObserver();
+}
+// Wait for document.body if necessary.
+if (document.body) {
+start();
+} else {
+const bodyObserver = new MutationObserver(() => {
+if (document.body) {
+bodyObserver.disconnect();
+start();
+}
+});
+bodyObserver.observe(document.documentElement, {
+childList: true,
+subtree: true,
+});
+}
+})();
+// ############################################################################
+// MODULE 02 — RESTORED GBAR
+// URL cleaner, navigation bar, settings and dropdown menus.
+// ############################################################################
+(function () {
+"use strict";
+
+// ------------------------------------------------------------------------
+// 02.1 — Preferences and configuration
+// ------------------------------------------------------------------------
+var GPGBAR_GOOGLINK = GM_getValue(
+"GPGBAR_GOOGLINK",
+"https://www.google.com/"
+);
+// When enabled, swap the Search and Web navigation positions and labels.
+var GPGBAR_SWAP_SEARCH_WEB =
+GM_getValue("GPGBAR_SWAP_SEARCH_WEB", false) === true;
+// Hover-menu delay in milliseconds.
+// Default: 200 ms. Zero opens submenus immediately.
+var GPGBAR_HOVERDELAY =
+Number(GM_getValue("GPGBAR_HOVERDELAY", 200)) || 0;
+if (!(GPGBAR_HOVERDELAY >= 0)) {
+GPGBAR_HOVERDELAY = 200;
+}
+function GPGBAR_getHoverDelay() {
+var v = Number(
+GM_getValue(
+"GPGBAR_HOVERDELAY",
+GPGBAR_HOVERDELAY
+)
+);
+if (!(v >= 0)) {
+return 200;
+}
+return Math.min(2000, v);
+}
+
+// ------------------------------------------------------------------------
+// 02.2 — Google URL-state cleanup
+// ------------------------------------------------------------------------
+// Remove telemetry/session parameters only. Search-mode parameters (udm/tbm)
+// are semantic state and must remain available for vertical detection.
+var GPGBAR_JUNK_PARAMS = [
+"client",
+"sclient",
+"source",
+"sxsrf",
+"aqs",
+"ie",
+"oe",
+"sa",
+"ved",
+"uact",
+"ei",
+"gs_lcp",
+"sca_esv",
+"sca_upv",
+"iflsig",
+"rctx",
+"jr",
+"dpr",
+"gbv",
+"sei",
+"stick",
+"vsrc",
+"wscr",
+"vsrid",
+// Google viewport/session parameters.
+"hs",
+"biw",
+"bih",
+];
+function GPGBAR_cleanStateUrl(input) {
+try {
+var u = new URL(
+input,
+window.location.href
+);
+if (!/\/search(\?|$)/.test(u.pathname + u.search)) {
+return null;
+}
+var changed = false;
+GPGBAR_JUNK_PARAMS.forEach(function (k) {
+if (u.searchParams.has(k)) {
+u.searchParams.delete(k);
+changed = true;
+}
+});
+// Preserve semantic result-mode parameters such as udm=14 (Web).
+// They select the active Google vertical; they are not tracking data.
+if (!changed) {
+return null;
+}
+var out =
+u.pathname +
+(
+u.searchParams.toString()
+? "?" + u.searchParams.toString()
+: ""
+) +
+u.hash;
+return out;
+} catch (e) {
+return null;
+}
+}
+// Detect Google's dedicated Web-results mode before the generic /search
+// fallback. Google currently accepts both the legacy numeric value (14)
+// and the newer named value (web) for this vertical.
+function GPGBAR_isWebSearchUrl(input) {
+try {
+var url = new URL(input || window.location.href, window.location.href);
+if (!/^\/search\/?$/i.test(url.pathname)) {
+return false;
+}
+return url.searchParams.getAll("udm").some(function (value) {
+var mode = String(value || "").trim().toLowerCase();
+return mode === "14" || mode === "web";
+});
+} catch (e) {
+return false;
+}
+}
+
+// Additional Google search URL prefixes that should activate the navigation
+// item labelled "Search" when Search/Web positions are swapped.
+// Match against pathname + query string, so the q= value may be empty or
+// contain an encoded search query. Add more prefixes to this list as needed.
+var GPGBAR_SEARCH_URL_SUFFIXES = [
+    "/search?gl=us&hl=en&q=",
+];
+function GPGBAR_isConfiguredSearchUrl(input) {
+try {
+var url = new URL(input || window.location.href, window.location.href);
+if (url.hostname !== "www.google.com" && url.hostname !== "google.com") {
+return false;
+}
+var pathAndQuery = url.pathname + url.search;
+return GPGBAR_SEARCH_URL_SUFFIXES.some(function (suffix) {
+return pathAndQuery.toLowerCase().startsWith(suffix.toLowerCase());
+});
+} catch (e) {
+return false;
+}
+}
+
+function GPGBAR_applyCleanJunkToHistory(method, args) {
+try {
+if (
+args &&
+args.length >= 3 &&
+typeof args[2] === "string"
+) {
+var cleaned = GPGBAR_cleanStateUrl(args[2]);
+if (cleaned) {
+var next = args.slice
+? args.slice()
+: [args[0], args[1], args[2]];
+next[2] = cleaned;
+return next;
+}
+}
+} catch (e) {}
+return args;
+}
+function GPGBAR_initCleanJunkState() {
+try {
+if (window.__gpgbarCleanJunkPatched) {
+return;
+}
+window.__gpgbarCleanJunkPatched = true;
+["pushState", "replaceState"].forEach(function (m) {
+try {
+var orig = history[m];
+if (!orig || orig.__gpgbarPatched) {
+return;
+}
+var fn = function () {
+var args = Array.prototype.slice.call(arguments);
+args = GPGBAR_applyCleanJunkToHistory(
+m,
+args
+);
+return orig.apply(this, args);
+};
+fn.__gpgbarPatched = true;
+history[m] = fn;
+} catch (e) {}
+});
+var cleaned = GPGBAR_cleanStateUrl(
+window.location.href
+);
+if (cleaned) {
+try {
+history.replaceState(
+history.state,
+document.title,
+cleaned
+);
+} catch (e) {}
+}
+} catch (e) {}
+}
+// Apply URL cleanup immediately.
+GPGBAR_initCleanJunkState();
+
+// ------------------------------------------------------------------------
+// 02.3 — Settings dialog: styles and markup
+// ------------------------------------------------------------------------
+let container = document.querySelector("html");
+const newElem = document.createElement("div");
+newElem.id = "gp-gbar-settings";
+newElem.innerHTML = `
+<style>
+/* Device appearance is handled entirely by CSS media preferences. */
+#gp-gbar-settings {
+    color-scheme: light;
+    --gp-settings-backdrop: rgba(0, 0, 0, .28);
+    --gp-settings-surface: #ffffff;
+    --gp-settings-header: #f7f8fa;
+    --gp-settings-footer: #f1f3f4;
+    --gp-settings-text: #202124;
+    --gp-settings-muted: #5f6368;
+    --gp-settings-border: #dadce0;
+    --gp-settings-control: #ffffff;
+    --gp-settings-control-border: #9aa0a6;
+    --gp-settings-hover: #f1f3f4;
+    --gp-settings-active: #e8eaed;
+    --gp-settings-accent: #1a73e8;
+    --gp-settings-accent-hover: #1765cc;
+    --gp-settings-accent-active: #1557b0;
+    --gp-settings-accent-text: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+    #gp-gbar-settings {
+        color-scheme: dark;
+        --gp-settings-backdrop: rgba(0, 0, 0, .68);
+        --gp-settings-surface: #202124;
+        --gp-settings-header: #292a2d;
+        --gp-settings-footer: #292a2d;
+        --gp-settings-text: #e8eaed;
+        --gp-settings-muted: #bdc1c6;
+        --gp-settings-border: #3c4043;
+        --gp-settings-control: #303134;
+        --gp-settings-control-border: #5f6368;
+        --gp-settings-hover: #35363a;
+        --gp-settings-active: #3c4043;
+        /* Keep the primary action dark enough for high-contrast white text. */
+        --gp-settings-accent: #1967d2;
+        --gp-settings-accent-hover: #185abc;
+        --gp-settings-accent-active: #174ea6;
+        --gp-settings-accent-text: #ffffff;
+    }
+    #gp-gbar-settings #gp-settings-dd {
+        color-scheme: dark;
+    }
+    #gp-gbar-settings .gp-jfk-button-inner > span {
+        color: #ffffff !important;
+    }
+}
+
+
+#gp-settings-dd-fence {
+width: 100vw;
+height: 100vh;
+left: 0;
+top: 0;
+position: fixed;
+display: flex;
+align-items: center;
+z-index: 2000;
+pointer-events: none;
+/* Dim the page with a neutral dark backdrop in either theme. */
+background: var(--gp-settings-backdrop);
+}
+#gp-settings-dd {
+margin: 0 auto;
+padding: 10px;
+background: var(--gp-settings-surface);
+border: 1px solid var(--gp-settings-border);
+position: relative;
+z-index: 2000;
+pointer-events: all !important;
+width: 850px;
+min-height: 620px;
+max-height: 620px;
+overflow: hidden;
+font-family: arial ;
+}
+#gp-settings-dd-main {
+height: 505px;
+margin-top: 8px;
+display: flex;
+}
+#gp-settings-dd-sidebar {
+width: 143px;
+position: relative;
+border-right: 1px solid var(--gp-settings-border);
+height: 100%;
+display: none;
+}
+.gp-dd-sidebar-item {
+font-size: 12px;
+color: var(--gp-settings-text);
+width: 136px;
+border-radius: 2px;
+cursor: pointer;
+border: 1px solid transparent;
+margin: 4px 0;
+height: 29px;
+display: flex;
+align-items: center;
+}
+.gp-dd-sidebar-item:hover {
+background: var(--gp-settings-hover);
+border: 1px solid var(--gp-settings-border);
+}
+.gp-dd-sidebar-item.active {
+background: var(--gp-settings-active);
+border: 1px solid var(--gp-settings-border);
+font-weight: 600;
+}
+.gp-dd-sidebar-item.active::before {
+content: '';
+border-width: 8px 0 8px 8px;
+border-style: solid;
+position: absolute;
+margin-right: -132px;
+margin-left: 133.5px;
+margin-top: 2px;
+border-color: transparent var(--gp-settings-border);
+}
+.gp-dd-sidebar-item.active::after {
+content: '';
+border-width: 7px 0 7px 7px;
+border-style: solid;
+border-color: transparent var(--gp-settings-active);
+position: absolute;
+margin-right: -137.5px;
+margin-left: 133.5px;
+margin-top: 2px;
+}
+.gp-dd-sidebar-item:hover::before {
+content: '';
+border-width: 8px 0 8px 8px;
+border-style: solid;
+position: absolute;
+margin-right: -132px;
+margin-left: 133.5px;
+margin-top: 2px;
+border-color: transparent var(--gp-settings-border);
+}
+.gp-dd-sidebar-item:hover::after {
+content: '';
+border-width: 7px 0 7px 7px;
+border-style: solid;
+border-color: transparent var(--gp-settings-hover);
+position: absolute;
+margin-right: -137.5px;
+margin-left: 133.5px;
+margin-top: 2px;
+}
+.gp-dd-sidebar-item-inner {
+padding-left: 8px;
+}
+html:not([options-dd-open]) #gp-settings-dd-fence,
+html:not([options-dd-open]) #gp-settings-dd {
+z-index: -1;
+pointer-events: none !important;
+opacity: 0;
+}
+#gp-settings-dd-moreoptions > div {
+position: relative;
+}
+#gp-settings-dd-moreoptions > div::after {
+content: " >";
+position: absolute;
+right: 10px;
+top: 50%;
+transform: translateY(-50%);
+color: var(--gp-settings-muted);
+font-weight: bold;
+}
+.gp-settings-section {
+padding: 0 10px;
+}
+#gp-settings-dd-header {
+height: 40px;
+}
+.gp-settings-dd-titlecard {
+color: var(--gp-settings-text);
+font-weight: bold;
+font-size: 16px;
+background: var(--gp-settings-header);
+border-bottom: 1px solid var(--gp-settings-border);
+position: absolute;
+top: 0;
+width: 100%;
+left: 0;
+padding: 15px;
+}
+.gp-settings-section .gp-settings-dd-title {
+color: var(--gp-settings-text);
+font-weight: bold;
+font-size: 14px;
+padding: 10px 0;
+}
+#gp-settings-dd-footer {
+position: absolute;
+bottom: 0;
+height: 45px;
+display: flex;
+align-items: center;
+width: 100%;
+left: 0;
+border-top: 1px solid var(--gp-settings-border);
+background: var(--gp-settings-footer);
+}
+#gp-settings-dd-ok {
+margin-left: auto;
+margin-right: 10px;
+}
+.gp-jfk-button {
+border: 1px solid var(--gp-settings-border);
+background: var(--gp-settings-header);
+color: var(--gp-settings-text);
+font-weight: bold;
+font-size: 11px;
+height: 29px;
+padding: 0 10px;
+display: flex;
+align-items: center;
+cursor: pointer;
+box-shadow: none;
+border-radius: 2px;
+text-decoration: none !important;
+}
+.gp-jfk-button:hover {
+border: 1px solid var(--gp-settings-border);
+color: var(--gp-settings-text);
+background: var(--gp-settings-hover);
+box-shadow: none;
+}
+.gp-jfk-button:active {
+box-shadow: none;
+background: var(--gp-settings-active);
+color: var(--gp-settings-text);
+}
+.gp-jfk-button-blue {
+border: 1px solid var(--gp-settings-accent);
+background: var(--gp-settings-accent);
+color: var(--gp-settings-accent-text);
+box-shadow: none;
+}
+.gp-jfk-button-blue:hover {
+background: var(--gp-settings-accent-hover);
+border: 1px solid var(--gp-settings-accent);
+color: var(--gp-settings-accent-text);
+}
+.gp-jfk-button-blue:active {
+background: var(--gp-settings-accent-active);
+border: 1px solid var(--gp-settings-accent);
+box-shadow: none;
+}
+.gp-jfk-button-red {
+background: linear-gradient(to bottom, #dd4b39, #d14836);
+border: 1px solid #d14836;
+color: #ffffff;
+box-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+.gp-jfk-button-red:hover {
+background: linear-gradient(to bottom, #dd4b39, #c53727);
+border: 1px solid #b0281a;
+color: #ffffff;
+box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+border-bottom-color: #af301f;
+}
+.gp-jfk-button-red:active {
+background: linear-gradient(to bottom, #dd4b39, #b0281a);
+border: 1px solid #992a1b;
+color: #ffffff;
+box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+border-top: 1px solid #992a1b;
+}
+.gp-jfk-button span::selection {
+background: none !important;
+}
+#gp-settings-dd input[type="radio"] {
+opacity: 0;
+position: absolute;
+cursor: pointer;
+width: 93%;
+height: 20px;
+margin-top: -2px;
+}
+#gp-settings-dd input[type="checkbox"] {
+width: 14px;
+height: 14px;
+margin: 0;
+flex: 0 0 auto;
+cursor: pointer;
+}
+.gp-setting-toggle {
+display: flex;
+align-items: center;
+gap: 8px;
+cursor: pointer;
+}
+.gp-setting-toggle .setting-text {
+cursor: pointer;
+}
+.gp-radio {
+box-shadow: none;
+width: 16px;
+height: 16px;
+border: 1px solid var(--gp-settings-border);
+display: inline-block;
+vertical-align: middle;
+cursor: pointer;
+border-radius: 50%;
+margin-right: 5px;
+}
+.gp-setting {
+margin-bottom: 10px;
+font-size: 13px;
+}
+input:checked + .gp-radio {
+background: var(--gp-settings-accent);
+border-color: var(--gp-settings-accent);
+box-shadow: none;
+}
+input:checked + .gp-radio::after {
+content: "";
+display: block;
+width: 6px;
+height: 6px;
+margin: 4px auto;
+border-radius: 50%;
+background: var(--gp-settings-accent-text);
+}
+html:not([options-dd-open]) #beyond-the-fence-2 {
+z-index: -1;
+pointer-events: none;
+opacity: 0;
+}
+#beyond-the-fence-2 {
+position: fixed;
+z-index: 1917;
+width: 100vw;
+height: 100vh;
+background: transparent;
+top: 0;
+left: 0;
+}
+#gp-settings-dd-moreoptions > div {
+position: relative;
+}
+#gp-settings-dd-moreoptions > div::after {
+content: " >";
+position: absolute;
+right: 10px;
+top: 50%;
+transform: translateY(-50%);
+color: var(--gp-settings-muted);
+font-weight: bold;
+}
+
+
+#gp-settings-dd {
+color-scheme: light;
+}
+#gp-settings-dd input[type="checkbox"],
+#gp-settings-dd input[type="radio"] {
+accent-color: var(--gp-settings-accent);
+}
+#gp-settings-dd input[type="number"] {
+box-sizing: border-box;
+min-height: 28px;
+padding: 3px 7px;
+color: var(--gp-settings-text);
+background: var(--gp-settings-control);
+border: 1px solid var(--gp-settings-control-border);
+border-radius: 3px;
+color-scheme: inherit;
+}
+#gp-settings-dd input:focus-visible,
+#gp-settings-dd button:focus-visible,
+#gp-settings-dd a:focus-visible {
+outline: 2px solid var(--gp-settings-accent);
+outline-offset: 2px;
+}
+@media (prefers-color-scheme: dark) {
+#gp-gbar-settings #gp-settings-dd {
+color-scheme: dark;
+}
+}
+</style>
+<div
+id="beyond-the-fence-2"
+onclick="document.querySelector('html').removeAttribute('options-dd-open');">
+</div>
+<div id="gp-settings-dd-fence">
+<div id="gp-settings-dd">
+<div id="gp-settings-dd-inner">
+<div id="gp-settings-dd-header" class="gp-dd-header">
+<div class="gp-settings-dd-titlecard">
+<div class="gp-settings-dd-title">
+<span>Google Gbar Restored Settings</span>
+</div>
+</div>
+<div class="gp-settings-dd-tabs">
+<div class="gp-settings-dd-tabs-inner">
+<div class="gp-settings-tab active">
+<div class="gp-settings-tab-inner">
+<span>Main</span>
+</div>
+</div>
+<div class="gp-settings-tab">
+<div class="gp-settings-tab-inner">
+<span>Anti-Main</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="gp-settings-dd-main" class="gp-dd-main">
+<div
+id="gp-settings-dd-sidebar"
+class="gp-dd-sidebar">
+<div class="gp-dd-sidebar-section">
+<div class="gp-dd-sidebar-item active">
+<div class="gp-dd-sidebar-item-inner">
+<span>Category 1</span>
+</div>
+</div>
+<div class="gp-dd-sidebar-item">
+<div class="gp-dd-sidebar-item-inner">
+<span>Category 2</span>
+</div>
+</div>
+</div>
+</div>
+<div id="gp-settings-dd-content" class="gp-dd-content">
+<div class="gp-settings-section">
+<div class="gp-settings-dd-title">
+<span>Search/Web Link</span>
+</div>
+<div class="gp-settings-content">
+<div
+class="gp-setting"
+id="gp-set-googlink-google">
+<input
+type="radio"
+name="GPGBAR_GOOGLINK"
+class="settings"
+value="https://www.google.com/"
+style="display:inline-block;">
+<span class="gp-radio"></span>
+<span class="setting-text">
+Google (https://www.google.com/)
+</span>
+</div>
+<div
+class="gp-setting"
+id="gp-set-googlink-startpage">
+<input
+type="radio"
+name="GPGBAR_GOOGLINK"
+class="settings"
+value="https://www.startpage.com/"
+style="display:inline-block;">
+<span class="gp-radio"></span>
+<span class="setting-text">
+Startpage (https://www.startpage.com/)
+</span>
+</div>
+</div>
+<div class="gp-settings-dd-title">
+<span>Navigation layout</span>
+</div>
+<div class="gp-settings-content">
+<div class="gp-setting" id="gp-set-swap-search-web">
+<label class="gp-setting-toggle" for="gp-swap-search-web-input">
+<input
+type="checkbox"
+id="gp-swap-search-web-input"
+name="GPGBAR_SWAP_SEARCH_WEB"
+class="settings">
+<span class="setting-text">
+Swap Search and Web positions (rename them to “Modern Google” and “Search”)
+</span>
+</label>
+</div>
+</div>
+<div class="gp-settings-dd-title">
+<span>URL options</span>
+</div>
+<div class="gp-settings-content">
+<div class="gp-setting" id="gp-set-hoverdelay">
+<span class="setting-text">
+Hover-menu delay (ms):
+</span>
+<input
+type="number"
+id="gp-hoverdelay-input"
+name="GPGBAR_HOVERDELAY"
+class="settings"
+min="0"
+max="2000"
+step="50"
+style="width:80px;">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="gp-settings-dd-footer">
+<a
+id="gp-settings-dd-ok"
+class="gp-jfk-button gp-jfk-button-blue"
+onclick='document.querySelector("html").removeAttribute("options-dd-open");'>
+<div class="gp-jfk-button-inner">
+<span>OK</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+`;
+// Insert the settings dialog into the document.
+container.insertBefore(newElem, container.children[1]);
+
+// ------------------------------------------------------------------------
+// 02.4 — Settings persistence and event handlers
+// ------------------------------------------------------------------------
+document.querySelector(
+`input[type="radio"][value="${GPGBAR_GOOGLINK}"]`
+).checked = true;
+document.querySelector("#gp-set-googlink-google")
+.addEventListener("click", function () {
+GM_setValue(
+"GPGBAR_GOOGLINK",
+"https://www.google.com/"
+);
+});
+document.querySelector("#gp-set-googlink-startpage")
+.addEventListener("click", function () {
+GM_setValue(
+"GPGBAR_GOOGLINK",
+"https://www.startpage.com/"
+);
+});
+var swapSearchWebInput = document.querySelector(
+"#gp-swap-search-web-input"
+);
+if (swapSearchWebInput) {
+swapSearchWebInput.checked = GPGBAR_SWAP_SEARCH_WEB;
+swapSearchWebInput.addEventListener("change", function () {
+GPGBAR_SWAP_SEARCH_WEB = swapSearchWebInput.checked;
+GM_setValue(
+"GPGBAR_SWAP_SEARCH_WEB",
+GPGBAR_SWAP_SEARCH_WEB
+);
+applyGbarLinkLayout();
+});
+}
+var hoverDelayInput = document.querySelector(
+"#gp-hoverdelay-input"
+);
+if (hoverDelayInput) {
+hoverDelayInput.value = GPGBAR_getHoverDelay();
+hoverDelayInput.addEventListener("change", function () {
+var v = Math.max(
+0,
+Math.min(
+2000,
+Number(hoverDelayInput.value) || 0
+)
+);
+hoverDelayInput.value = v;
+GPGBAR_HOVERDELAY = v;
+GM_setValue("GPGBAR_HOVERDELAY", v);
+});
+}
+function closeGbarSettingsDialog() {
+document.documentElement.removeAttribute("options-dd-open");
+document.querySelector("#gp-gbar-settings-button")
+?.setAttribute("aria-expanded", "false");
+}
+document.querySelector("#gp-settings-dd-ok")
+.addEventListener("click", closeGbarSettingsDialog);
+document.querySelector("#beyond-the-fence-2")
+.addEventListener("click", closeGbarSettingsDialog);
+
+// ------------------------------------------------------------------------
+// 02.5 — Main navigation bar: styles and markup
+// ------------------------------------------------------------------------
+let container2 = document.querySelector("html");
+const newElem2 = document.createElement("div");
+newElem2.id = "gp-gbar";
+newElem2.innerHTML = `
+<style>
+[location="ads"] #gp-gbar,
+[location="image-viewer"] #gp-gbar,
+[layout="google-2015"] #gp-gbar,
+[layout="google-2016"] #gp-gbar,
+[layout="google-2017"] #gp-gbar,
+[layout="google-2018"] #gp-gbar {
+display: none;
+}
+#gp-gbar {
+position: relative;
+z-index: 999;
+font-family: arial;
+}
+#gp-gbar-inner {
+display: flex;
+align-items: center;
+height: 29px;
+background: #2d2d2d;
+}
+#gp-gbar-inner.gp-gbar-split {
+flex-wrap: wrap;
+height: auto;
+}
+#gp-gbar-inner.gp-gbar-split .gp-gbar-link {
+height: 29px;
+}
+.gp-gbar-link {
+white-space: nowrap;
+text-decoration: none !important;
+color: #bbb !important;
+font-weight: bold;
+font-size: 13px;
+height: 100%;
+display: flex;
+align-items: center;
+cursor: pointer;
+}
+.gp-gbar-link-inner {
+padding: 0 9px;
+height: 100%;
+display: flex;
+align-items: center;
+}
+.gp-gbar-link:hover,
+.gp-gbar-link.active {
+color: #fff !important;
+}
+#gp-gbar-dd-fence {
+display: none;
+}
+html:not([gbar-dd-open]) #gp-gbar-dd-fence,
+html:not([gbar-dd-open]) #gp-gbar-dd {
+display: none;
+}
+html:not([gbar-dd-open-images]) #gp-gbar-dd-fence,
+html:not([gbar-dd-open-images]) #gp-gbar-dd-images {
+display: none;
+}
+html:not([gbar-dd-open-news]) #gp-gbar-dd-fence,
+html:not([gbar-dd-open-news]) #gp-gbar-dd-news {
+display: none;
+}
+#gp-gbar-dd-fence {
+width: 100vw;
+height: 100vh;
+left: 0;
+top: 0;
+position: fixed;
+}
+[options-dd-open] #gp-gbar {
+pointer-events: none;
+opacity: 0.33;
+}
+#gp-gbar-more,
+#gp-gbar-more-news,
+#gp-gbar-more-images {
+position: relative;
+}
+#gp-gbar-more .arrow,
+#gp-gbar-more-news .arrow {
+content: "";
+position: relative;
+top: 2px;
+border-style: solid dashed dashed;
+border-color: transparent;
+display: inline-block;
+font-size: 0;
+height: 0;
+line-height: 0;
+width: 0;
+border-width: 3px 3px 0;
+padding-top: 3px;
+left: 4px;
+border-top-color: #aaa;
+}
+#gp-gbar-more:hover .arrow,
+#gp-gbar-more-news:hover .arrow {
+border-top-color: #fff;
+}
+[gbar-dd-open] #gp-gbar-more .gp-gbar-link-inner,
+[gbar-dd-open-news] #gp-gbar-more-news .gp-gbar-link-inner {
+background: #fff;
+border: 1px solid #bebebe;
+position: relative;
+z-index: 111029;
+border-bottom: none;
+}
+[gbar-dd-open] #gp-gbar-more .arrow,
+[gbar-dd-open-news] #gp-gbar-more-news .arrow {
+border-top-color: #000;
+}
+[gbar-dd-open] #gp-gbar-more .gp-gbar-link-inner,
+[gbar-dd-open-news] #gp-gbar-more-news .gp-gbar-link-inner {
+background: #2d2d2d;
+border-color: #000;
+}
+#gp-gbar-dd,
+#gp-gbar-dd-images,
+#gp-gbar-dd-news {
+left: 0;
+top: 27px;
+position: absolute;
+background: #fff;
+border: 1px solid #bebebe;
+box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+z-index: 300;
+white-space: nowrap;
+cursor: default;
+}
+#gp-gbar-dd {
+left: 0;
+}
+[not-gecko] #gp-gbar-dd {
+left: 571px;
+}
+.gbar-dd-section[role="menuitem"][tabindex="0"] {
+position: relative;
+}
+.gbar-dd-section {
+padding: 2px 0;
+}
+.gbar-dd-section-title {
+position: relative;
+padding: 1px 25px 1px 10px;
+color: #bbb;
+cursor: pointer;
+-webkit-user-select: none;
+user-select: none;
+}
+.gbar-dd-section-title::after {
+content: "\\25B6";
+position: absolute;
+right: 8px;
+top: 50%;
+transform: translateY(-50%);
+font-size: 0.8em;
+color: #bbb;
+}
+.gbar-dd-section[role="menuitem"][tabindex="0"]:hover
+> .gbar-dd-section-title {
+background: #444;
+color: #fff;
+}
+.gbar-dd-section-link {
+padding: 3px 11px;
+display: block;
+color: #bbb !important;
+font-weight: bold;
+text-decoration: none !important;
+cursor: pointer;
+-webkit-user-select: none;
+user-select: none;
+}
+.gbar-dd-section-link:hover {
+background: #444;
+color: #fff !important;
+}
+.gbar-dd-section:last-of-type {
+border-top: 1px solid #bebebe;
+}
+/* Keep the settings entry visible: the associated dialog contains the
+   Search/Web order and naming preference. */
+#gp-gbar-settings-button {
+margin-left: auto;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 0;
+border: 0;
+border-radius: 0;
+background: transparent;
+appearance: none;
+-webkit-appearance: none;
+font-family: inherit;
+font-size: 13px;
+font-weight: bold;
+line-height: normal;
+}
+/* Reuse the exact inner spacing and alignment used by every Gbar entry. */
+#gp-gbar-settings-button .gp-gbar-link-inner {
+gap: 6px;
+}
+#gp-gbar-settings-button:hover,
+#gp-gbar-settings-button:focus-visible {
+color: #fff !important;
+background: transparent;
+}
+#gp-gbar-settings-button:focus-visible {
+outline: 2px solid #8ab4f8;
+outline-offset: -2px;
+}
+#gp-gbar-settings-icon {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+font-size: 16px;
+line-height: 1;
+height: 17px;
+width: 16px;
+flex: 0 0 16px;
+}
+/* Maps. */
+[location="maps"] #app-container {
+margin-top: 29px;
+}
+/* Play. */
+[location="play"] header[role="banner"] {
+margin-top: 29px;
+}
+[location="play"] body > c-wiz:nth-of-type(2) {
+margin-top: 110px;
+}
+[location="play"] #gp-gbar {
+position: fixed !important;
+width: 100vw;
+}
+/* News. */
+[location="news"] header[role="banner"],
+[location="news"] main {
+margin-top: 29px;
+}
+[location="news"] #gp-gbar {
+width: 100vw;
+}
+/* Translate. */
+[location="translate"] header[role="banner"],
+[location="translate"] body > c-wiz > div > div > c-wiz {
+margin-top: 29px;
+}
+[location="translate"] #gp-gbar {
+position: fixed !important;
+width: 100vw;
+}
+/* Chrome Web Store. */
+[location="cws"] #gp-gbar {
+position: fixed !important;
+width: 100vw;
+}
+[location="cws"] header[role="banner"] {
+margin-top: 29px;
+}
+[location="cws"] body > c-wiz > div {
+top: 29px;
+}
+/* My Account. */
+[location="myacc"] #gp-gbar {
+position: fixed !important;
+width: 100vw;
+}
+[location="myacc"] header[role="banner"] {
+margin-top: 29px;
+}
+[location="myacc"] body > c-wiz {
+margin-top: 29px;
+}
+[location="myacc"] c-wiz > c-wiz > div > div {
+top: 93px !important;
+}
+/* Chrome Web Store development pages. */
+[location="cwsdev"] #gp-gbar {
+position: fixed !important;
+width: 100vw;
+}
+[location="cwsdev"] header[role="banner"] {
+margin-top: 29px;
+}
+[location="cwsdev"] body > div > c-wiz {
+margin-top: 29px;
+}
+#gp-gbar-dd-fence {
+z-index: 299;
+}
+#gp-gbar-advanced-search-dd {
+display: none;
+position: absolute;
+background-color: #f9f9f9;
+}
+.gbar-dd-section .gbar-dd-submenu {
+display: none;
+padding: 0;
+}
+</style>
+<div id="gp-gbar-inner">
+<!-- Main navigation and dropdown controls are inserted here. -->
+<div
+id="gp-gbar-more"
+class="gp-gbar-link"
+role="button"
+aria-haspopup="true"
+aria-expanded="false">
+<div
+class="gp-gbar-link-inner"
+id="gp-gbar-advanced-search"
+tabindex="0">
+<span>More options</span>
+<span class="arrow"></span>
+</div>
+<div
+id="gp-gbar-dd"
+role="menu"
+style="width: 200px; background: #2d2d2d; border-color: #000;">
+<div class="gbar-dd-section">
+<a
+class="gbar-dd-section-link"
+href="https://www.google.com/advanced_search"
+role="menuitem">
+Advanced Search
+</a>
+</div>
+<div
+class="gbar-dd-section"
+role="menuitem"
+tabindex="0">
+<div class="gbar-dd-section-title">
+Any language
+</div>
+<div
+class="gbar-dd-submenu"
+style="position: absolute; right: 100%; top: -10px; background: #2d2d2d; border: 1px solid #000; box-shadow: 0 2px 4px rgba(0,0,0,.2);">
+<a class="gbar-dd-section-link" id="dd-lang-any" href="#">
+Any language
+</a>
+<a class="gbar-dd-section-link" id="dd-lang-en" href="#">
+Search pages in English
+</a>
+</div>
+</div>
+<div
+class="gbar-dd-section"
+role="menuitem"
+tabindex="0">
+<div class="gbar-dd-section-title">
+Any time
+</div>
+<div
+class="gbar-dd-submenu"
+style="position: absolute; right: 100%; top: -10px; background: #2d2d2d; border: 1px solid #000; box-shadow: 0 2px 4px rgba(0,0,0,.2);">
+<a class="gbar-dd-section-link" id="dd-time-any" href="#">
+Any time
+</a>
+<a class="gbar-dd-section-link" id="dd-time-h" href="#">
+Last hour
+</a>
+<a class="gbar-dd-section-link" id="dd-time-d" href="#">
+Last 24 hours
+</a>
+<a class="gbar-dd-section-link" id="dd-time-w" href="#">
+Last week
+</a>
+<a class="gbar-dd-section-link" id="dd-time-m" href="#">
+Last month
+</a>
+<a class="gbar-dd-section-link" id="dd-time-y" href="#">
+Last year
+</a>
+</div>
+</div>
+<div
+class="gbar-dd-section"
+role="menuitem"
+tabindex="0">
+<div class="gbar-dd-section-title">
+All results
+</div>
+<div
+class="gbar-dd-submenu"
+style="position: absolute; right: 100%; top: -10px; background: #2d2d2d; border: 1px solid #000; box-shadow: 0 2px 4px rgba(0,0,0,.2);">
+<a class="gbar-dd-section-link" id="dd-results-all" href="#">
+All results
+</a>
+<a class="gbar-dd-section-link" id="dd-results-verb" href="#">
+Verbatim
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- News-specific options. -->
+<div
+id="gp-gbar-more-news"
+class="gp-gbar-link"
+role="button"
+aria-haspopup="true"
+aria-expanded="false"
+style="display: none;">
+<div
+class="gp-gbar-link-inner"
+id="gp-gbar-advanced-search-news"
+tabindex="0">
+<span>More options</span>
+<span class="arrow"></span>
+</div>
+<div
+id="gp-gbar-dd-news"
+role="menu"
+style="width: 200px; background: #2d2d2d; border-color: #000;">
+<div class="gbar-dd-section">
+<a
+class="gbar-dd-section-link"
+href="https://www.google.com/advanced_search"
+role="menuitem">
+Advanced Search
+</a>
+</div>
+<div class="gbar-dd-section" role="menuitem" tabindex="0">
+<div class="gbar-dd-section-title">Language</div>
+<div
+class="gbar-dd-submenu"
+style="position: absolute; right: 100%; top: -10px; background: #2d2d2d; border: 1px solid #000; box-shadow: 0 2px 4px rgba(0,0,0,.2);">
+<a class="gbar-dd-section-link" id="dd-nws-lang-any" href="#">
+Any language
+</a>
+<a class="gbar-dd-section-link" id="dd-nws-lang-en" href="#">
+Search pages in English
+</a>
+</div>
+</div>
+<div class="gbar-dd-section" role="menuitem" tabindex="0">
+<div class="gbar-dd-section-title">Time</div>
+<div
+class="gbar-dd-submenu"
+style="position: absolute; right: 100%; top: -10px; background: #2d2d2d; border: 1px solid #000; box-shadow: 0 2px 4px rgba(0,0,0,.2);">
+<a class="gbar-dd-section-link" id="dd-nws-time-any" href="#">
+Recent
+</a>
+<a class="gbar-dd-section-link" id="dd-nws-time-h" href="#">
+Last hour
+</a>
+<a class="gbar-dd-section-link" id="dd-nws-time-d" href="#">
+Last 24 hours
+</a>
+<a class="gbar-dd-section-link" id="dd-nws-time-w" href="#">
+Last week
+</a>
+<a class="gbar-dd-section-link" id="dd-nws-time-m" href="#">
+Last month
+</a>
+<a class="gbar-dd-section-link" id="dd-nws-time-y" href="#">
+Last year
+</a>
+</div>
+</div>
+<div class="gbar-dd-section" role="menuitem" tabindex="0">
+<div class="gbar-dd-section-title">Sort by</div>
+<div
+class="gbar-dd-submenu"
+style="position: absolute; right: 100%; top: -10px; background: #2d2d2d; border: 1px solid #000; box-shadow: 0 2px 4px rgba(0,0,0,.2);">
+<a class="gbar-dd-section-link" id="dd-nws-sort-rel" href="#">
+Relevance
+</a>
+<a class="gbar-dd-section-link" id="dd-nws-sort-date" href="#">
+Date
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Image-specific options. -->
+<div
+id="gp-gbar-more-images"
+class="gp-gbar-link"
+role="button"
+aria-haspopup="true"
+aria-expanded="false"
+style="display: none;">
+<div
+class="gp-gbar-link-inner"
+id="gp-gbar-advanced-search-images"
+tabindex="0">
+<span>More options</span>
+<span class="arrow"></span>
+</div>
+<div
+id="gp-gbar-dd-images"
+role="menu"
+style="width: 200px; background: #2d2d2d; border-color: #000;">
+<div class="gbar-dd-section">
+<a
+class="gbar-dd-section-link"
+href="https://www.google.com/advanced_image_search"
+role="menuitem">
+Advanced Image Search
+</a>
+</div>
+<div class="gbar-dd-section" role="menuitem" tabindex="0">
+<div class="gbar-dd-section-title">Size</div>
+<div
+class="gbar-dd-submenu"
+style="position: absolute; right: 100%; top: -10px; background: #2d2d2d; border: 1px solid #000; box-shadow: 0 2px 4px rgba(0,0,0,.2);">
+<a class="gbar-dd-section-link" id="dd-isz-any" href="#">
+Any size
+</a>
+<a class="gbar-dd-section-link" id="dd-isz-i" href="#">
+Icon
+</a>
+<a class="gbar-dd-section-link" id="dd-isz-m" href="#">
+Medium
+</a>
+<a class="gbar-dd-section-link" id="dd-isz-l" href="#">
+Large
+</a>
+<a class="gbar-dd-section-link" id="dd-isz-10mp" href="#">
+Larger than 10MP
+</a>
+<a class="gbar-dd-section-link" id="dd-isz-30mp" href="#">
+Larger than 30MP
+</a>
+</div>
+</div>
+<div class="gbar-dd-section" role="menuitem" tabindex="0">
+<div class="gbar-dd-section-title">Color</div>
+<div
+class="gbar-dd-submenu"
+style="position: absolute; right: 100%; top: -10px; background: #2d2d2d; border: 1px solid #000; box-shadow: 0 2px 4px rgba(0,0,0,.2);">
+<a class="gbar-dd-section-link" id="dd-ic-any" href="#">
+Any color
+</a>
+<a class="gbar-dd-section-link" id="dd-ic-gray" href="#">
+Black and white
+</a>
+<a class="gbar-dd-section-link" id="dd-ic-trans" href="#">
+Transparent
+</a>
+</div>
+</div>
+<div class="gbar-dd-section" role="menuitem" tabindex="0">
+<div class="gbar-dd-section-title">Type</div>
+<div
+class="gbar-dd-submenu"
+style="position: absolute; right: 100%; top: -10px; background: #2d2d2d; border: 1px solid #000; box-shadow: 0 2px 4px rgba(0,0,0,.2);">
+<a class="gbar-dd-section-link" id="dd-itp-any" href="#">
+Any type
+</a>
+<a class="gbar-dd-section-link" id="dd-itp-clipart" href="#">
+Clip art
+</a>
+<a class="gbar-dd-section-link" id="dd-itp-lineart" href="#">
+Line drawing
+</a>
+<a class="gbar-dd-section-link" id="dd-itp-animated" href="#">
+GIF
+</a>
+</div>
+</div>
+<div class="gbar-dd-section" role="menuitem" tabindex="0">
+<div class="gbar-dd-section-title">Time</div>
+<div
+class="gbar-dd-submenu"
+style="position: absolute; right: 100%; top: -10px; background: #2d2d2d; border: 1px solid #000; box-shadow: 0 2px 4px rgba(0,0,0,.2);">
+<a class="gbar-dd-section-link" id="dd-time-any-img" href="#">
+Any time
+</a>
+<a class="gbar-dd-section-link" id="dd-time-d-img" href="#">
+Past 24 hours
+</a>
+<a class="gbar-dd-section-link" id="dd-time-w-img" href="#">
+Past week
+</a>
+<a class="gbar-dd-section-link" id="dd-time-m-img" href="#">
+Past month
+</a>
+<a class="gbar-dd-section-link" id="dd-time-y-img" href="#">
+Past year
+</a>
+</div>
+</div>
+<div class="gbar-dd-section" role="menuitem" tabindex="0">
+<div class="gbar-dd-section-title">Usage rights</div>
+<div
+class="gbar-dd-submenu"
+style="position: absolute; right: 100%; top: -10px; background: #2d2d2d; border: 1px solid #000; box-shadow: 0 2px 4px rgba(0,0,0,.2);">
+<a class="gbar-dd-section-link" id="dd-sur-any" href="#">
+All
+</a>
+<a class="gbar-dd-section-link" id="dd-sur-cl" href="#">
+Creative Commons licenses
+</a>
+<a class="gbar-dd-section-link" id="dd-sur-ol" href="#">
+Commercial &amp; other licenses
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Visible entry point for the settings dialog. -->
+<button
+id="gp-gbar-settings-button"
+class="gp-gbar-link"
+type="button"
+aria-label="Open Gbar settings"
+aria-haspopup="dialog"
+aria-controls="gp-settings-dd"
+aria-expanded="false"
+title="Gbar settings">
+<span class="gp-gbar-link-inner">
+<span id="gp-gbar-settings-icon" aria-hidden="true">⚙</span>
+<span>Settings</span>
+</span>
+</button>
+</div>
+<div id="gp-gbar-dd-fence"></div>
+`;
+// Insert the navigation bar into the document.
+container2.insertBefore(newElem2, container2.children[1]);
+
+// The settings dialog already contains the Search/Web layout checkbox.
+// Expose it through the visible navbar button and keep its state accessible.
+const gbarSettingsButton = document.getElementById("gp-gbar-settings-button");
+const gbarSettingsDialog = document.getElementById("gp-settings-dd");
+function setGbarSettingsOpen(open) {
+const htmlElement = document.documentElement;
+if (open) {
+htmlElement.setAttribute("options-dd-open", "");
+} else {
+htmlElement.removeAttribute("options-dd-open");
+}
+if (gbarSettingsButton) {
+gbarSettingsButton.setAttribute("aria-expanded", String(open));
+}
+}
+if (gbarSettingsButton && gbarSettingsDialog) {
+gbarSettingsButton.addEventListener("click", function (event) {
+event.preventDefault();
+setGbarSettingsOpen(
+!document.documentElement.hasAttribute("options-dd-open")
+);
+});
+}
+document.addEventListener("keydown", function (event) {
+if (
+event.key === "Escape" &&
+document.documentElement.hasAttribute("options-dd-open")
+) {
+setGbarSettingsOpen(false);
+gbarSettingsButton?.focus();
+}
+});
+
+// ------------------------------------------------------------------------
+// 02.6 — Dropdown state management
+// ------------------------------------------------------------------------
+const moreMenuButton = document.querySelector("#gp-gbar-more");
+const moreMenuImagesButton = document.querySelector("#gp-gbar-more-images");
+const moreMenuNewsButton = document.querySelector("#gp-gbar-more-news");
+const fence = document.querySelector("#gp-gbar-dd-fence");
+const toggleMenu = (menuType) => {
+const htmlEl = document.querySelector("html");
+const isMainOpen = htmlEl.hasAttribute("gbar-dd-open");
+const isImagesOpen = htmlEl.hasAttribute("gbar-dd-open-images");
+const isNewsOpen = htmlEl.hasAttribute("gbar-dd-open-news");
+// Close all menus first.
+htmlEl.removeAttribute("gbar-dd-open");
+htmlEl.removeAttribute("gbar-dd-open-images");
+htmlEl.removeAttribute("gbar-dd-open-news");
+moreMenuButton.setAttribute("aria-expanded", "false");
+moreMenuImagesButton.setAttribute("aria-expanded", "false");
+moreMenuNewsButton.setAttribute("aria-expanded", "false");
+// Toggle the requested menu.
+if (menuType === "main" && !isMainOpen) {
+htmlEl.setAttribute("gbar-dd-open", "");
+moreMenuButton.setAttribute("aria-expanded", "true");
+} else if (menuType === "images" && !isImagesOpen) {
+htmlEl.setAttribute("gbar-dd-open-images", "");
+moreMenuImagesButton.setAttribute("aria-expanded", "true");
+} else if (menuType === "news" && !isNewsOpen) {
+htmlEl.setAttribute("gbar-dd-open-news", "");
+moreMenuNewsButton.setAttribute("aria-expanded", "true");
+}
+};
+moreMenuButton.addEventListener("click", (e) => {
+e.stopPropagation();
+toggleMenu("main");
+});
+moreMenuNewsButton.addEventListener("click", (e) => {
+e.stopPropagation();
+toggleMenu("news");
+});
+moreMenuImagesButton.addEventListener("click", (e) => {
+e.stopPropagation();
+toggleMenu("images");
+});
+// Close dropdowns when clicking outside the navigation bar.
+document.addEventListener("click", (event) => {
+const htmlEl = document.documentElement;
+const isMenuOpen =
+htmlEl.hasAttribute("gbar-dd-open") ||
+htmlEl.hasAttribute("gbar-dd-open-images") ||
+htmlEl.hasAttribute("gbar-dd-open-news");
+if (isMenuOpen) {
+const gbarEl = document.getElementById("gp-gbar");
+if (gbarEl && !gbarEl.contains(event.target)) {
+toggleMenu();
+}
+}
+});
+// Escape closes the main dropdown.
+window.addEventListener("keydown", function (e) {
+if (
+e.key === "Escape" &&
+document
+.querySelector("html")
+.hasAttribute("gbar-dd-open")
+) {
+toggleMenu();
+}
+});
+
+// ------------------------------------------------------------------------
+// 02.7 — Submenu interactions and hover timing
+// ------------------------------------------------------------------------
+function setupSubmenu(menuId) {
+const menu = document.querySelector(menuId);
+if (!menu) {
+return;
+}
+const sections = menu.querySelectorAll(
+'.gbar-dd-section[role="menuitem"][tabindex="0"]'
+);
+sections.forEach((section) => {
+const submenu = section.querySelector(".gbar-dd-submenu");
+const sectionTitle = section.querySelector(".gbar-dd-section-title");
+section.setAttribute("aria-haspopup", "true");
+section.setAttribute("aria-expanded", "false");
+if (submenu) {
+// JavaScript determines submenu direction and position.
+submenu.style.right = "";
+}
+if (sectionTitle) {
+sectionTitle.addEventListener("dblclick", (event) => {
+event.preventDefault();
+event.stopPropagation();
+});
+}
+let hoverTimer = null;
+let openTimer = null;
+// Timer management.
+const clearHoverTimer = () => {
+if (hoverTimer) {
+clearTimeout(hoverTimer);
+hoverTimer = null;
+}
+};
+const clearOpenTimer = () => {
+if (openTimer) {
+clearTimeout(openTimer);
+openTimer = null;
+}
+};
+// Close the current submenu.
+const closeSubmenu = () => {
+if (submenu) {
+submenu.style.display = "none";
+section.setAttribute("aria-expanded", "false");
+}
+};
+const scheduleCloseSubmenu = () => {
+clearHoverTimer();
+clearOpenTimer();
+// Give the pointer time to enter the submenu.
+hoverTimer = setTimeout(closeSubmenu, 200);
+};
+// Position and open the submenu. Repeated calls are harmless.
+const openSubmenu = () => {
+if (!submenu) {
+return;
+}
+clearOpenTimer();
+clearHoverTimer();
+if (submenu.style.display === "block") {
+section.setAttribute("aria-expanded", "true");
+return;
+}
+// Hide every other submenu in this menu.
+menu.querySelectorAll(".gbar-dd-submenu")
+.forEach((sm) => {
+sm.style.display = "none";
+const owner = sm.closest(
+'.gbar-dd-section[role="menuitem"][tabindex="0"]'
+);
+if (owner) {
+owner.setAttribute("aria-expanded", "false");
+}
+});
+const sectionRect = section.getBoundingClientRect();
+// Temporarily display the submenu to measure its width.
+submenu.style.visibility = "hidden";
+submenu.style.position = "absolute";
+submenu.style.display = "block";
+const submenuWidth = submenu.offsetWidth;
+submenu.style.display = "none";
+submenu.style.visibility = "visible";
+const spaceOnRight = window.innerWidth - sectionRect.right;
+const spaceOnLeft = sectionRect.left;
+if (
+submenuWidth > spaceOnRight &&
+submenuWidth <= spaceOnLeft
+) {
+// Use the left side when the right side lacks space.
+submenu.style.left = "auto";
+submenu.style.right = "100%";
+} else {
+// Default to the right.
+submenu.style.left = "100%";
+submenu.style.right = "auto";
+}
+submenu.style.display = "block";
+section.setAttribute("aria-expanded", "true");
+};
+// Schedule delayed opening on hover.
+const scheduleOpenSubmenu = () => {
+clearOpenTimer();
+clearHoverTimer();
+let delay = 200;
+try {
+delay =
+typeof GPGBAR_getHoverDelay === "function"
+? GPGBAR_getHoverDelay()
+: 200;
+} catch (e) {}
+if (!(delay > 0)) {
+openSubmenu();
+return;
+}
+openTimer = setTimeout(openSubmenu, delay);
+};
+// Pointer interaction.
+section.addEventListener(
+"mouseenter",
+scheduleOpenSubmenu
+);
+section.addEventListener(
+"mouseleave",
+scheduleCloseSubmenu
+);
+if (submenu) {
+submenu.addEventListener("mouseenter", () => {
+clearHoverTimer();
+openSubmenu();
+});
+submenu.addEventListener(
+"mouseleave",
+scheduleCloseSubmenu
+);
+}
+// Parent headings act as buttons: click opens but never toggles closed.
+// A click on a submenu link is left untouched so its href remains functional.
+section.addEventListener("click", (event) => {
+event.stopPropagation();
+if (event.target.closest(".gbar-dd-submenu")) {
+return;
+}
+openSubmenu();
+});
+section.addEventListener("dblclick", (event) => {
+event.preventDefault();
+event.stopPropagation();
+});
+});
+// Clicking a normal menu item closes open submenus.
+menu.addEventListener("click", function (e) {
+if (
+!e.target.closest(
+'.gbar-dd-section[role="menuitem"][tabindex="0"]'
+)
+) {
+menu.querySelectorAll(".gbar-dd-submenu")
+.forEach((sm) => {
+sm.style.display = "none";
+});
+}
+});
+}
+// Initialize submenu handlers for all three dropdowns.
+setupSubmenu("#gp-gbar-dd");
+setupSubmenu("#gp-gbar-dd-images");
+setupSubmenu("#gp-gbar-dd-news");
+// Preserve the original empty query for menu-item selection.
+document
+.querySelectorAll(
+'.gbar-dd-section[role="menuitem"][tabindex="0"]'
+)
+.forEach((section) => {});
+
+// ------------------------------------------------------------------------
+// 02.8 — Navigation link configuration
+// ------------------------------------------------------------------------
+const gbarLinksConfig = [
+{
+id: "search",
+href: GPGBAR_GOOGLINK,
+text: "Search",
+active: true,
+},
+{
+id: "images",
+href: "https://images.google.com",
+text: "Images",
+},
+{
+id: "news",
+href: "https://news.google.com",
+text: "News",
+},
+{
+id: "web",
+href: "https://www.google.com/",
+text: "Web",
+},
+{
+id: "ai",
+href: "https://www.google.com/search?udm=50",
+text: "AI Mode",
+},
+{
+id: "maps",
+href: "https://maps.google.com",
+text: "Maps",
+},
+// Optional links retained from the original configuration.
+// {
+//     id: "shopping",
+//     href: "https://www.google.com/search?udm=28",
+//     text: "Shopping",
+// },
+// {
+//     id: "play",
+//     href: "https://play.google.com",
+//     text: "Play",
+// },
+{
+id: "youtube",
+href: "https://www.youtube.com",
+text: "YouTube",
+},
+{
+id: "gmail",
+href: "https://mail.google.com",
+text: "Gmail",
+},
+{
+id: "drive",
+href: "https://drive.google.com",
+text: "Drive",
+},
+{
+id: "scholar",
+href: "https://scholar.google.com",
+text: "Scholar",
+},
+{
+id: "translate",
+href: "https://translate.google.com",
+text: "Translate",
+},
+{
+id: "preference",
+href: "https://www.google.com/preferences",
+text: "Preference",
+},
+{
+id: "preference-region",
+href: "https://www.google.com/preferences?q=example&lang=1&prev=https://www.google.com/preferences?",
+text: "Region Settings",
+},
+];
+function createGbarLink(config) {
+const a = document.createElement("a");
+a.id = `gp-gbar-${config.id}`;
+a.className = "gp-gbar-link";
+if (config.active) {
+a.classList.add("active");
+}
+a.href = config.href;
+const innerDiv = document.createElement("div");
+innerDiv.className = "gp-gbar-link-inner";
+const span = document.createElement("span");
+span.textContent = config.text;
+innerDiv.appendChild(span);
+a.appendChild(innerDiv);
+return a;
+}
+// Create the configured links before the More Options menu.
+const gbarInner = document.getElementById("gp-gbar-inner");
+const moreButton = document.getElementById("gp-gbar-more");
+gbarLinksConfig.forEach((config) => {
+gbarInner.insertBefore(
+createGbarLink(config),
+moreButton
+);
+});
+
+// Apply the configured navigation order while preserving each link's ID,
+// destination, current query, and active state.
+function applyGbarLinkLayout() {
+const orderedConfigs = gbarLinksConfig.slice();
+if (GPGBAR_SWAP_SEARCH_WEB) {
+const searchIndex = orderedConfigs.findIndex(
+(config) => config.id === "search"
+);
+const webIndex = orderedConfigs.findIndex(
+(config) => config.id === "web"
+);
+if (searchIndex !== -1 && webIndex !== -1) {
+[
+orderedConfigs[searchIndex],
+orderedConfigs[webIndex],
+] = [
+orderedConfigs[webIndex],
+orderedConfigs[searchIndex],
+];
+}
+}
+orderedConfigs.forEach((config) => {
+const link = document.getElementById(
+`gp-gbar-${config.id}`
+);
+if (!link) {
+return;
+}
+const label = link.querySelector(
+".gp-gbar-link-inner span"
+);
+if (label) {
+if (GPGBAR_SWAP_SEARCH_WEB && config.id === "search") {
+label.textContent = "Modern Google";
+} else if (GPGBAR_SWAP_SEARCH_WEB && config.id === "web") {
+label.textContent = "Search";
+} else {
+label.textContent = config.text;
+}
+}
+gbarInner.insertBefore(link, moreButton);
+});
+}
+applyGbarLinkLayout();
+
+// ------------------------------------------------------------------------
+// 02.9 — Search-aware URL generation
+// ------------------------------------------------------------------------
+function updateGbarLinks() {
+const urlParams = new URLSearchParams(
+window.location.search
+);
+let query = urlParams.get("q");
+if (!query) {
+query = urlParams.get("as_q");
+}
+const gl = urlParams.get("gl");
+const hl = urlParams.get("hl");
+const udm = urlParams.get("udm");
+const num = urlParams.get("num");
+let langParams = "";
+if (gl) {
+langParams += `&gl=${encodeURIComponent(gl)}`;
+}
+if (hl) {
+langParams += `&hl=${encodeURIComponent(hl)}`;
+}
+// Derive a display name for the current language.
+let derivedLang =
+hl || document.documentElement.lang || "en";
+let shortLang = derivedLang;
+if (!derivedLang.toLowerCase().startsWith("zh")) {
+shortLang = derivedLang.split("-")[0];
+}
+let langLabel = "English";
+try {
+if (
+typeof Intl !== "undefined" &&
+Intl.DisplayNames
+) {
+langLabel = new Intl.DisplayNames(
+["en"],
+{ type: "language" }
+).of(shortLang);
+}
+} catch (e) {}
+if (query) {
+const encodedQuery = encodeURIComponent(query);
+// Main navigation links.
+if (document.querySelector("#gp-gbar-search")) {
+document.querySelector("#gp-gbar-search").href =
+`${GPGBAR_GOOGLINK}search?q=${encodedQuery}`;
+}
+if (document.querySelector("#gp-gbar-images")) {
+document.querySelector("#gp-gbar-images").href =
+`https://www.google.com/search?q=${encodedQuery}&aqs=mobile-gws-lite..0l5&tbm=isch`;
+}
+if (document.querySelector("#gp-gbar-shopping")) {
+document.querySelector("#gp-gbar-shopping").href =
+`https://www.google.com/search?udm=28&fbs=-&q=${encodedQuery}`;
+}
+if (document.querySelector("#gp-gbar-maps")) {
+document.querySelector("#gp-gbar-maps").href =
+`https://www.google.com/maps/search/${encodedQuery}`;
+}
+if (document.querySelector("#gp-gbar-play")) {
+document.querySelector("#gp-gbar-play").href =
+`https://play.google.com/store/search?q=${encodedQuery}&c=apps`;
+}
+if (document.querySelector("#gp-gbar-youtube")) {
+document.querySelector("#gp-gbar-youtube").href =
+`https://www.youtube.com/results?search_query=${encodedQuery}`;
+}
+if (document.querySelector("#gp-gbar-news")) {
+document.querySelector("#gp-gbar-news").href =
+`https://www.google.com/search?q=${encodedQuery}&num=10&tbm=nws&source=lnms&sa=X${langParams}`;
+}
+if (document.querySelector("#gp-gbar-web")) {
+document.querySelector("#gp-gbar-web").href =
+`https://www.google.com/search?q=${encodedQuery}&udm=14`;
+}
+if (document.querySelector("#gp-gbar-scholar")) {
+document.querySelector("#gp-gbar-scholar").href =
+`https://scholar.google.com/scholar?hl=${encodeURIComponent(hl || shortLang || "en")}&as_sdt=0%2C5&q=${encodedQuery}&btnG=`;
+}
+if (document.querySelector("#gp-gbar-ai")) {
+document.querySelector("#gp-gbar-ai").href =
+`https://www.google.com/search?q=${encodedQuery}&udm=50`;
+}
+if (document.querySelector("#gp-gbar-gmail")) {
+document.querySelector("#gp-gbar-gmail").href =
+"https://mail.google.com/mail/";
+}
+if (document.querySelector("#gp-gbar-drive")) {
+document.querySelector("#gp-gbar-drive").href =
+"https://drive.google.com/drive/";
+}
+if (document.querySelector("#gp-gbar-translate")) {
+document.querySelector("#gp-gbar-translate").href =
+`https://translate.google.com/?sl=auto&tl=en&text=${encodedQuery}&op=translate`;
+}
+if (document.querySelector("#gp-gbar-preference-region")) {
+document.querySelector("#gp-gbar-preference-region").href =
+"https://www.google.com/preferences#tabVal=1";
+}
+// Shared base URLs for search filters.
+const baseSearchUrl =
+`https://www.google.com/search?q=${encodedQuery}`;
+let searchParams = baseSearchUrl;
+if (udm) {
+searchParams += `&udm=${udm}`;
+}
+if (num) {
+searchParams += `&num=${num}`;
+}
+// Web search — language.
+if (document.querySelector("#dd-lang-any")) {
+document.querySelector("#dd-lang-any").href =
+searchParams;
+}
+if (document.querySelector("#dd-lang-en")) {
+document.querySelector("#dd-lang-en").textContent =
+`Search pages in ${langLabel}`;
+document.querySelector("#dd-lang-en").href =
+`${searchParams}&lr=lang_${shortLang}`;
+}
+// Web search — time.
+if (document.querySelector("#dd-time-any")) {
+document.querySelector("#dd-time-any").href =
+searchParams;
+}
+if (document.querySelector("#dd-time-h")) {
+document.querySelector("#dd-time-h").href =
+`${searchParams}&tbs=qdr:h`;
+}
+if (document.querySelector("#dd-time-d")) {
+document.querySelector("#dd-time-d").href =
+`${searchParams}&tbs=qdr:d`;
+}
+if (document.querySelector("#dd-time-w")) {
+document.querySelector("#dd-time-w").href =
+`${searchParams}&tbs=qdr:w`;
+}
+if (document.querySelector("#dd-time-m")) {
+document.querySelector("#dd-time-m").href =
+`${searchParams}&tbs=qdr:m`;
+}
+if (document.querySelector("#dd-time-y")) {
+document.querySelector("#dd-time-y").href =
+`${searchParams}&tbs=qdr:y`;
+}
+// Web search — result matching.
+if (document.querySelector("#dd-results-all")) {
+document.querySelector("#dd-results-all").href =
+searchParams;
+}
+if (document.querySelector("#dd-results-verb")) {
+document.querySelector("#dd-results-verb").href =
+`${searchParams}&tbs=li:1`;
+}
+// Image search — base URL.
+const baseImageUrl =
+`${baseSearchUrl}&tbm=isch`;
+// Image search — size.
+if (document.querySelector("#dd-isz-any")) {
+document.querySelector("#dd-isz-any").href =
+baseImageUrl;
+}
+if (document.querySelector("#dd-isz-i")) {
+document.querySelector("#dd-isz-i").href =
+`${baseImageUrl}&tbs=isz:i`;
+}
+if (document.querySelector("#dd-isz-m")) {
+document.querySelector("#dd-isz-m").href =
+`${baseImageUrl}&tbs=isz:m`;
+}
+if (document.querySelector("#dd-isz-l")) {
+document.querySelector("#dd-isz-l").href =
+`${baseImageUrl}&tbs=isz:l`;
+}
+if (document.querySelector("#dd-isz-10mp")) {
+document.querySelector("#dd-isz-10mp").href =
+`${baseImageUrl}&tbs=isz:lt,islt:10mp`;
+}
+if (document.querySelector("#dd-isz-30mp")) {
+document.querySelector("#dd-isz-30mp").href =
+`${baseImageUrl}&tbs=isz:lt,islt:30mp`;
+}
+// Image search — color.
+if (document.querySelector("#dd-ic-any")) {
+document.querySelector("#dd-ic-any").href =
+baseImageUrl;
+}
+if (document.querySelector("#dd-ic-gray")) {
+document.querySelector("#dd-ic-gray").href =
+`${baseImageUrl}&tbs=ic:gray`;
+}
+if (document.querySelector("#dd-ic-trans")) {
+document.querySelector("#dd-ic-trans").href =
+`${baseImageUrl}&tbs=ic:trans`;
+}
+// Image search — type.
+if (document.querySelector("#dd-itp-any")) {
+document.querySelector("#dd-itp-any").href =
+baseImageUrl;
+}
+if (document.querySelector("#dd-itp-clipart")) {
+document.querySelector("#dd-itp-clipart").href =
+`${baseImageUrl}&tbs=itp:clipart`;
+}
+if (document.querySelector("#dd-itp-lineart")) {
+document.querySelector("#dd-itp-lineart").href =
+`${baseImageUrl}&tbs=itp:lineart`;
+}
+if (document.querySelector("#dd-itp-animated")) {
+document.querySelector("#dd-itp-animated").href =
+`${baseImageUrl}&tbs=itp:animated`;
+}
+// Image search — time.
+if (document.querySelector("#dd-time-any-img")) {
+document.querySelector("#dd-time-any-img").href =
+baseImageUrl;
+}
+if (document.querySelector("#dd-time-d-img")) {
+document.querySelector("#dd-time-d-img").href =
+`${baseImageUrl}&tbs=qdr:d`;
+}
+if (document.querySelector("#dd-time-w-img")) {
+document.querySelector("#dd-time-w-img").href =
+`${baseImageUrl}&tbs=qdr:w`;
+}
+if (document.querySelector("#dd-time-m-img")) {
+document.querySelector("#dd-time-m-img").href =
+`${baseImageUrl}&tbs=qdr:m`;
+}
+if (document.querySelector("#dd-time-y-img")) {
+document.querySelector("#dd-time-y-img").href =
+`${baseImageUrl}&tbs=qdr:y`;
+}
+// Image search — usage rights.
+if (document.querySelector("#dd-sur-any")) {
+document.querySelector("#dd-sur-any").href =
+baseImageUrl;
+}
+if (document.querySelector("#dd-sur-cl")) {
+document.querySelector("#dd-sur-cl").href =
+`${baseImageUrl}&tbs=sur:cl`;
+}
+if (document.querySelector("#dd-sur-ol")) {
+document.querySelector("#dd-sur-ol").href =
+`${baseImageUrl}&tbs=sur:ol`;
+}
+// News search — base URL.
+const numParam = urlParams.get("num")
+? `&num=${urlParams.get("num")}`
+: "";
+const baseNewsUrl =
+`https://www.google.com/search?q=${encodedQuery}${numParam}${langParams}&tbm=nws`;
+// News search — language.
+if (document.querySelector("#dd-nws-lang-any")) {
+document.querySelector("#dd-nws-lang-any").href =
+baseNewsUrl;
+}
+if (document.querySelector("#dd-nws-lang-en")) {
+document.querySelector("#dd-nws-lang-en").textContent =
+`Search pages in ${langLabel}`;
+document.querySelector("#dd-nws-lang-en").href =
+`${baseNewsUrl}&lr=lang_${shortLang}`;
+}
+// News search — time.
+if (document.querySelector("#dd-nws-time-any")) {
+document.querySelector("#dd-nws-time-any").href =
+`${baseNewsUrl}&tbs=qdr:a`;
+}
+if (document.querySelector("#dd-nws-time-h")) {
+document.querySelector("#dd-nws-time-h").href =
+`${baseNewsUrl}&tbs=qdr:h&sa=X`;
+}
+if (document.querySelector("#dd-nws-time-d")) {
+document.querySelector("#dd-nws-time-d").href =
+`${baseNewsUrl}&tbs=qdr:d&sa=X`;
+}
+if (document.querySelector("#dd-nws-time-w")) {
+document.querySelector("#dd-nws-time-w").href =
+`${baseNewsUrl}&tbs=qdr:w&sa=X`;
+}
+if (document.querySelector("#dd-nws-time-m")) {
+document.querySelector("#dd-nws-time-m").href =
+`${baseNewsUrl}&tbs=qdr:m&sa=X`;
+}
+if (document.querySelector("#dd-nws-time-y")) {
+document.querySelector("#dd-nws-time-y").href =
+`${baseNewsUrl}&tbs=qdr:y&sa=X`;
+}
+// News search — sort order.
+if (document.querySelector("#dd-nws-sort-rel")) {
+document.querySelector("#dd-nws-sort-rel").href =
+`${baseNewsUrl}&source=lnt&tbs=sbd:1&sa=X&ved=&biw=1605&bih=1012&dpr=1`;
+}
+if (document.querySelector("#dd-nws-sort-date")) {
+document.querySelector("#dd-nws-sort-date").href =
+`${baseNewsUrl}&tbas=0&source=lnt&sa=X&ved=&bih=1012&dpr=1`;
+}
+if (document.querySelector("#dd-nws-clear")) {
+document.querySelector("#dd-nws-clear").href =
+`${baseNewsUrl}&tbs=0`;
+}
+// News advanced-search link.
+if (
+document.querySelector(
+"#gp-gbar-dd-news .gbar-dd-section-link"
+)
+) {
+document.querySelector(
+"#gp-gbar-dd-news .gbar-dd-section-link"
+).href =
+`https://www.google.com/advanced_search?q=${encodedQuery}&tbm=nws`;
+}
+// Retained image-filter assignments from the original script.
+if (document.querySelector("#dd-isz-any")) {
+document.querySelector("#dd-isz-any").href =
+baseImageUrl;
+}
+if (document.querySelector("#dd-isz-i")) {
+document.querySelector("#dd-isz-i").href =
+`${baseImageUrl}&tbs=isz:i`;
+}
+if (document.querySelector("#dd-isz-m")) {
+document.querySelector("#dd-isz-m").href =
+`${baseImageUrl}&tbs=isz:m`;
+}
+if (document.querySelector("#dd-isz-l")) {
+document.querySelector("#dd-isz-l").href =
+`${baseImageUrl}&tbs=isz:l`;
+}
+if (document.querySelector("#dd-isz-10mp")) {
+document.querySelector("#dd-isz-10mp").href =
+`${baseImageUrl}&tbs=isz:lt,islt:10mp`;
+}
+if (document.querySelector("#dd-isz-30mp")) {
+document.querySelector("#dd-isz-30mp").href =
+`${baseImageUrl}&tbs=isz:lt,islt:30mp`;
+}
+if (document.querySelector("#dd-ic-any")) {
+document.querySelector("#dd-ic-any").href =
+baseImageUrl;
+}
+if (document.querySelector("#dd-ic-gray")) {
+document.querySelector("#dd-ic-gray").href =
+`${baseImageUrl}&tbs=ic:gray`;
+}
+if (document.querySelector("#dd-ic-trans")) {
+document.querySelector("#dd-ic-trans").href =
+`${baseImageUrl}&tbs=ic:trans`;
+}
+if (document.querySelector("#dd-itp-any")) {
+document.querySelector("#dd-itp-any").href =
+baseImageUrl;
+}
+if (document.querySelector("#dd-itp-clipart")) {
+document.querySelector("#dd-itp-clipart").href =
+`${baseImageUrl}&tbs=itp:clipart`;
+}
+if (document.querySelector("#dd-itp-lineart")) {
+document.querySelector("#dd-itp-lineart").href =
+`${baseImageUrl}&tbs=itp:lineart`;
+}
+if (document.querySelector("#dd-itp-animated")) {
+document.querySelector("#dd-itp-animated").href =
+`${baseImageUrl}&tbs=itp:animated`;
+}
+if (document.querySelector("#dd-time-any-img")) {
+document.querySelector("#dd-time-any-img").href =
+baseImageUrl;
+}
+if (document.querySelector("#dd-time-d-img")) {
+document.querySelector("#dd-time-d-img").href =
+`${baseImageUrl}&tbs=qdr:d`;
+}
+if (document.querySelector("#dd-time-w-img")) {
+document.querySelector("#dd-time-w-img").href =
+`${baseImageUrl}&tbs=qdr:w`;
+}
+if (document.querySelector("#dd-time-m-img")) {
+document.querySelector("#dd-time-m-img").href =
+`${baseImageUrl}&tbs=qdr:m`;
+}
+if (document.querySelector("#dd-time-y-img")) {
+document.querySelector("#dd-time-y-img").href =
+`${baseImageUrl}&tbs=qdr:y`;
+}
+if (document.querySelector("#dd-sur-any")) {
+document.querySelector("#dd-sur-any").href =
+baseImageUrl;
+}
+if (document.querySelector("#dd-sur-cl")) {
+document.querySelector("#dd-sur-cl").href =
+`${baseImageUrl}&tbs=sur:cl`;
+}
+if (document.querySelector("#dd-sur-ol")) {
+document.querySelector("#dd-sur-ol").href =
+`${baseImageUrl}&tbs=sur:ol`;
+}
+// Use the appropriate advanced-search link for the current vertical.
+if (window.location.href.includes("tbm=isch")) {
+if (
+document.querySelector(
+"#gp-gbar-dd .gbar-dd-section-link"
+)
+) {
+document.querySelector(
+"#gp-gbar-dd .gbar-dd-section-link"
+).href =
+`https://www.google.com/advanced_image_search?q=${encodedQuery}`;
+}
+} else if (
+document.querySelector("#gp-gbar-dd .gbar-dd-section-link")
+) {
+document.querySelector(
+"#gp-gbar-dd .gbar-dd-section-link"
+).href =
+`https://www.google.com/advanced_search?q=${encodedQuery}`;
+}
+}
+}
+
+// ------------------------------------------------------------------------
+// 02.10 — Responsive layout
+// ------------------------------------------------------------------------
+function handleResponsiveGbar() {
+const inner = document.getElementById("gp-gbar-inner");
+if (!inner) {
+return;
+}
+// Remove the split class temporarily to measure natural width.
+inner.classList.remove("gp-gbar-split");
+let totalWidth = 0;
+Array.from(inner.children).forEach((child) => {
+totalWidth += child.offsetWidth;
+});
+const availableWidth = window.innerWidth;
+if (totalWidth > availableWidth) {
+inner.classList.add("gp-gbar-split");
+}
+}
+// Initial URL generation and responsive layout.
+updateGbarLinks();
+handleResponsiveGbar();
+window.addEventListener("resize", handleResponsiveGbar);
+
+// ------------------------------------------------------------------------
+// 02.11 — Current-page detection
+// ------------------------------------------------------------------------
+function parseLocation() {
+const href = window.location.href;
+const html = document.querySelector("html");
+const gbar = document.querySelector("#gp-gbar");
+const setActiveLink = (selector) => {
+// Keep the navigation state mutually exclusive, even if another code path
+// or a prior SPA navigation left more than one active marker behind.
+document.querySelectorAll("#gp-gbar .gp-gbar-link.active")
+.forEach((link) => link.classList.remove("active"));
+if (selector) {
+document.querySelector(selector)
+?.classList.add("active");
+}
+};
+// Pages where the navigation bar should be hidden.
+if (
+href.includes("ogs.google") ||
+href.includes("about:blank") ||
+href.includes("google.com/tools/feedback")
+) {
+gbar.style.display = "none";
+}
+// Google Images.
+else if (
+href.includes("tbm=isch") ||
+href.includes("udm=2")
+) {
+setActiveLink("#gp-gbar-images");
+html.setAttribute("location", "images");
+document.querySelector("#gp-gbar-more").style.display = "none";
+document.querySelector("#gp-gbar-more-images").style.display = "flex";
+}
+// Google News search results.
+else if (href.includes("tbm=nws")) {
+setActiveLink("#gp-gbar-news");
+html.setAttribute("location", "news");
+document.querySelector("#gp-gbar-more").style.display = "none";
+document.querySelector("#gp-gbar-more-news").style.display = "flex";
+}
+// Google AI Mode.
+else if (href.includes("udm=50")) {
+setActiveLink("#gp-gbar-ai");
+html.setAttribute("location", "ai");
+}
+// Google Shopping.
+else if (
+href.includes("udm=28") ||
+href.includes("tbm=shop")
+) {
+setActiveLink("#gp-gbar-shopping");
+html.setAttribute("location", "shopping");
+document.querySelector("#gp-gbar-more").style.display = "none";
+document.querySelector("#gp-gbar-more-news").style.display = "flex";
+}
+// Google Drive.
+else if (href.includes("drive.google.com")) {
+setActiveLink("#gp-gbar-drive");
+html.setAttribute("location", "drive");
+}
+// Gmail.
+else if (href.includes("mail.google.com")) {
+setActiveLink("#gp-gbar-gmail");
+html.setAttribute("location", "gmail");
+}
+// Google Play.
+else if (href.includes("play.google.com")) {
+setActiveLink("#gp-gbar-play");
+html.setAttribute("location", "play");
+}
+// Google Maps.
+else if (href.includes("google.com/maps")) {
+setActiveLink("#gp-gbar-maps");
+html.setAttribute("location", "maps");
+}
+// YouTube.
+else if (href.includes("youtube.com")) {
+setActiveLink("#gp-gbar-youtube");
+html.setAttribute("location", "youtube");
+}
+// Google Images homepage.
+else if (href.includes("images.google.com")) {
+setActiveLink("#gp-gbar-images");
+html.setAttribute("location", "images");
+document.querySelector("#gp-gbar-more").style.display = "none";
+document.querySelector("#gp-gbar-more-images").style.display = "flex";
+}
+// Google News homepage.
+else if (href.includes("news.google.com")) {
+setActiveLink("#gp-gbar-news");
+html.setAttribute("location", "news");
+document.querySelector("#gp-gbar-more").style.display = "flex";
+document.querySelector("#gp-gbar-more-news").style.display = "none";
+}
+// Google Translate.
+else if (href.includes("translate.google.com")) {
+setActiveLink("#gp-gbar-translate");
+html.setAttribute("location", "translate");
+}
+// Google preferences.
+else if (href.includes("google.com/preferences?q=")) {
+setActiveLink("#gp-gbar-preference-region");
+html.setAttribute("location", "translate");
+}
+else if (href.includes("google.com/preferences")) {
+setActiveLink("#gp-gbar-preference");
+html.setAttribute("location", "translate");
+}
+// Google Trends.
+else if (href.includes("trends.google.com")) {
+setActiveLink(null);
+html.setAttribute("location", "trends");
+}
+// Google Accounts.
+else if (href.includes("accounts.google.com")) {
+gbar.style.display = "none";
+}
+// Google Support.
+else if (href.includes("support.google")) {
+setActiveLink(null);
+html.setAttribute("location", "support");
+}
+// Chrome Web Store.
+else if (href.includes("chromewebstore.google.com")) {
+setActiveLink(null);
+html.setAttribute("location", "cws");
+}
+// Google Account.
+else if (href.includes("myaccount.google")) {
+setActiveLink(null);
+html.setAttribute("location", "myacc");
+}
+// Legacy Chrome Web Store.
+else if (href.includes("chrome.google.com/webstore")) {
+setActiveLink(null);
+html.setAttribute("location", "cwsdev");
+}
+// Google Scholar.
+else if (href.includes("scholar.google.com")) {
+setActiveLink("#gp-gbar-scholar");
+html.setAttribute("location", "scholar");
+updateGbarLinks();
+}
+// Standard Google web search and configured Search URL prefixes.
+else if (
+GPGBAR_isWebSearchUrl(href) ||
+GPGBAR_isConfiguredSearchUrl(href)
+) {
+setActiveLink("#gp-gbar-web");
+html.setAttribute("location", "google");
+}
+else if (href.includes("google.com/search")) {
+setActiveLink("#gp-gbar-search");
+html.setAttribute("location", "google");
+updateGbarLinks();
+}
+// Other pages.
+else {
+html.setAttribute("location", "none");
+}
+}
+// Run page detection after the bar and links have been created.
+parseLocation();
+})();
+// ############################################################################
+// MODULE 03 — GOOGLE NEWS RESULT INTERACTIONS
+// Neutralize result-container links while preserving title/image exceptions.
+// ############################################################################
+(() => {
+"use strict";
+
+// ------------------------------------------------------------------------
+// 03.1 — Selectors and saved anchor state
+// ------------------------------------------------------------------------
+const TARGET = ".aI5QMe.r5bEn.lSfe4c";
+const NEWS_TITLE = '[id^="news_title_tsuid_"]';
+const savedAnchors = new WeakMap();
+
+// ------------------------------------------------------------------------
+// 03.2 — Element and exception detection
+// ------------------------------------------------------------------------
+function getElement(target) {
+if (target instanceof Element) {
+return target;
+}
+if (target instanceof Node) {
+return target.parentElement;
+}
+return null;
+}
+function isException(element) {
+if (!element) {
+return false;
+}
+// Preserve news title links.
+if (element.closest(NEWS_TITLE)) {
+return true;
+}
+// Preserve image links.
+if (element.closest(`${TARGET} img`)) {
+return true;
+}
+return false;
+}
+function getTarget(element) {
+return element?.closest?.(TARGET);
+}
+function getAnchor(element) {
+return element?.closest?.("a");
+}
+
+// ------------------------------------------------------------------------
+// 03.3 — Anchor state management
+// ------------------------------------------------------------------------
+function disableAnchor(anchor) {
+if (!(anchor instanceof HTMLAnchorElement)) {
+return;
+}
+if (!savedAnchors.has(anchor)) {
+savedAnchors.set(anchor, {
+href: anchor.getAttribute("href"),
+target: anchor.getAttribute("target"),
+rel: anchor.getAttribute("rel"),
+download: anchor.getAttribute("download"),
+onclick: anchor.getAttribute("onclick"),
+});
+}
+anchor.removeAttribute("href");
+anchor.removeAttribute("target");
+anchor.removeAttribute("download");
+anchor.removeAttribute("onclick");
+}
+function restoreAnchor(anchor) {
+if (!(anchor instanceof HTMLAnchorElement)) {
+return;
+}
+const saved = savedAnchors.get(anchor);
+if (!saved) {
+return;
+}
+if (saved.href !== null) {
+anchor.setAttribute("href", saved.href);
+}
+if (saved.target !== null) {
+anchor.setAttribute("target", saved.target);
+}
+if (saved.rel !== null) {
+anchor.setAttribute("rel", saved.rel);
+}
+if (saved.download !== null) {
+anchor.setAttribute("download", saved.download);
+}
+if (saved.onclick !== null) {
+anchor.setAttribute("onclick", saved.onclick);
+}
+}
+
+// ------------------------------------------------------------------------
+// 03.4 — Pointer tracking and activation blocking
+// ------------------------------------------------------------------------
+function updateAnchor(event) {
+const element = getElement(event.target);
+if (!element) {
+return;
+}
+const target = getTarget(element);
+if (!target) {
+return;
+}
+const anchor = getAnchor(target);
+if (!anchor) {
+return;
+}
+if (isException(element)) {
+restoreAnchor(anchor);
+} else {
+disableAnchor(anchor);
+}
+}
+// Track the pointer to apply the appropriate anchor state.
+for (const type of [
+"pointerover",
+"pointermove",
+"mouseover",
+"mousemove",
+]) {
+window.addEventListener(type, updateAnchor, true);
+}
+// Block activation within the target except for title and image areas.
+for (const type of [
+"click",
+"dblclick",
+"auxclick",
+]) {
+window.addEventListener(
+type,
+event => {
+const element = getElement(event.target);
+if (!element) {
+return;
+}
+const target = getTarget(element);
+if (!target) {
+return;
+}
+if (isException(element)) {
+return;
+}
+event.preventDefault();
+event.stopImmediatePropagation();
+event.stopPropagation();
+const anchor = getAnchor(target);
+if (anchor) {
+disableAnchor(anchor);
+}
+},
+true
+);
+}
+
+// ------------------------------------------------------------------------
+// 03.5 — Text-selection styles
+// ------------------------------------------------------------------------
+const style = document.createElement("style");
+style.textContent = `
+${TARGET},
+${TARGET} * {
+user-select: text !important;
+-webkit-user-select: text !important;
+}
+`;
+(document.head || document.documentElement).appendChild(style);
+})();
+// ############################################################################
+// MODULE 04 — GOOGLE SEARCH RESULT INTERACTIONS
+// Remove inline JavaScript handlers from search containers while preserving
+// normal link navigation.
+// ############################################################################
+(() => {
+"use strict";
+
+// ------------------------------------------------------------------------
+// 04.1 — Configuration and cleanup
+// ------------------------------------------------------------------------
+const selector = "search > div";
+function clean(root) {
+if (
+root.nodeType !== Node.ELEMENT_NODE &&
+root.nodeType !== Node.DOCUMENT_NODE
+) {
+return;
+}
+// Preserve normal links; clean only the container's event handlers.
+if (root.matches?.(selector)) {
+root.removeAttribute("onclick");
+root.removeAttribute("jsaction");
+}
+root.querySelectorAll?.(
+`${selector}[onclick], ${selector}[jsaction]`
+).forEach(el => {
+el.removeAttribute("onclick");
+el.removeAttribute("jsaction");
+});
+}
+// Clean existing search results.
+clean(document);
+
+// ------------------------------------------------------------------------
+// 04.2 — Click handling
+// ------------------------------------------------------------------------
+for (const type of [
+"click",
+"auxclick",
+"dblclick",
+]) {
+document.addEventListener(
+type,
+event => {
+const target = event.target;
+if (!(target instanceof Element)) {
+return;
+}
+const root = target.closest(selector);
+if (!root) {
+return;
+}
+// Allow regular links and everything inside them.
+const link = target.closest("a[href], area[href]");
+if (link && root.contains(link)) {
+return;
+}
+// Block JavaScript activation for non-link content.
+event.stopImmediatePropagation();
+event.stopPropagation();
+},
+true
+);
+}
+
+// ------------------------------------------------------------------------
+// 04.3 — Dynamic DOM cleanup
+// ------------------------------------------------------------------------
+new MutationObserver(records => {
+for (const record of records) {
+for (const node of record.addedNodes) {
+if (node.nodeType !== Node.ELEMENT_NODE) {
+continue;
+}
+clean(node);
+}
+}
+}).observe(document.documentElement, {
+childList: true,
+subtree: true,
+});
+console.log("Scoped click blocking enabled for search > div.");
+})();
+// ############################################################################
+// MODULE 05 — GOOGLE SEARCH TEXT SELECTION
+// Allow selection to begin in the empty gutter beside Google search results.
+// ############################################################################
+(function () {
+"use strict";
+
+// ------------------------------------------------------------------------
+// 05.1 — State and initialization guard
+// ------------------------------------------------------------------------
+if (window.__googleGutterSelectionFix) {
+return;
+}
+window.__googleGutterSelectionFix = true;
+let dragging = false;
+let anchorNode = null;
+let anchorOffset = 0;
+let lastX = 0;
+let lastY = 0;
+
+// ------------------------------------------------------------------------
+// 05.2 — Caret detection
+// ------------------------------------------------------------------------
+function getCaret(x, y) {
+if (document.caretPositionFromPoint) {
+const pos = document.caretPositionFromPoint(x, y);
+if (pos) {
+return {
+node: pos.offsetNode,
+offset: pos.offset,
+};
+}
+}
+if (document.caretRangeFromPoint) {
+const range = document.caretRangeFromPoint(x, y);
+if (range) {
+return {
+node: range.startContainer,
+offset: range.startOffset,
+};
+}
+}
+return null;
+}
+function isTextCaret(caret) {
+return (
+caret &&
+caret.node &&
+caret.node.nodeType === Node.TEXT_NODE &&
+caret.node.textContent.length > 0
+);
+}
+function findTextCaret(x, y) {
+// Prefer the actual pointer position.
+const direct = getCaret(x, y);
+if (isTextCaret(direct)) {
+return direct;
+}
+// If the pointer is in the empty left gutter, scan right along
+// the same horizontal line for the first available text node.
+for (let offset = 2; offset <= 500; offset += 2) {
+const candidate = getCaret(x + offset, y);
+if (isTextCaret(candidate)) {
+return candidate;
+}
+}
+return null;
+}
+
+// ------------------------------------------------------------------------
+// 05.3 — Gutter and target detection
+// ------------------------------------------------------------------------
+function isGutterTarget(target) {
+if (!(target instanceof Element)) {
+return false;
+}
+// Restrict this behavior to Google's main results area.
+const results = target.closest("#rcnt, #search, #rso");
+if (!results) {
+return false;
+}
+// Let native selection and interaction work on controls and links.
+if (
+target.closest(
+"a, button, input, textarea, select, " +
+"[contenteditable='true'], [role='button']"
+)
+) {
+return false;
+}
+return true;
+}
+
+// ------------------------------------------------------------------------
+// 05.4 — Range and selection management
+// ------------------------------------------------------------------------
+function setSelection(focus) {
+if (!anchorNode || !focus || !focus.node) {
+return;
+}
+const selection = window.getSelection();
+if (!selection) {
+return;
+}
+try {
+const range = document.createRange();
+range.setStart(anchorNode, anchorOffset);
+range.setEnd(focus.node, focus.offset);
+selection.removeAllRanges();
+selection.addRange(range);
+} catch (error) {
+// Avoid disrupting selection if Google changes the DOM.
+}
+}
+
+// ------------------------------------------------------------------------
+// 05.5 — Pointer-drag lifecycle
+// ------------------------------------------------------------------------
+document.addEventListener("mousedown", function (event) {
+if (event.button !== 0) {
+return;
+}
+if (!isGutterTarget(event.target)) {
+return;
+}
+const direct = getCaret(event.clientX, event.clientY);
+// Preserve native selection when the browser found a text caret.
+if (isTextCaret(direct)) {
+return;
+}
+const nearest = findTextCaret(event.clientX, event.clientY);
+if (!isTextCaret(nearest)) {
+return;
+}
+anchorNode = nearest.node;
+anchorOffset = nearest.offset;
+lastX = event.clientX;
+lastY = event.clientY;
+dragging = true;
+// This drag began in the empty gutter, so handle it ourselves.
+event.preventDefault();
+event.stopImmediatePropagation();
+const selection = window.getSelection();
+if (selection) {
+selection.collapse(anchorNode, anchorOffset);
+}
+}, true);
+document.addEventListener("mousemove", function (event) {
+if (!dragging || !(event.buttons & 1)) {
+return;
+}
+lastX = event.clientX;
+lastY = event.clientY;
+const focus = getCaret(lastX, lastY);
+if (focus) {
+setSelection(focus);
+}
+}, true);
+document.addEventListener("mouseup", function () {
+dragging = false;
+anchorNode = null;
+anchorOffset = 0;
+}, true);
+window.addEventListener("blur", function () {
+dragging = false;
+anchorNode = null;
+anchorOffset = 0;
+});
+})();
+// ############################################################################
+// MODULE 06 — LINK CLEANING
+// Cleans redirect URLs (e.g., Google Translate, Google Search redirects)
+// to reveal the actual destination URL.
+// ############################################################################
+(function () {
+"use strict";
+
+function cleanLink(url) {
+    if (!url) return url;
+    try {
+        const parsed = new URL(url, window.location.href);
+
+        // Google Translate redirect (e.g., ?u=https://example.com)
+        if (parsed.hostname.includes('translate.google.com') && parsed.searchParams.has('u')) {
+            return decodeURIComponent(parsed.searchParams.get('u'));
+        }
+
+        // Google Search redirect (e.g., /url?q=https://example.com)
+        if (parsed.hostname.includes('google.com') && parsed.pathname === '/url' && parsed.searchParams.has('q')) {
+            return decodeURIComponent(parsed.searchParams.get('q'));
+        }
+
+        // Google Images redirect (e.g., /imgres?imgurl=https://example.com)
+        if (parsed.hostname.includes('google.com') && parsed.pathname === '/imgres' && parsed.searchParams.has('imgurl')) {
+            return decodeURIComponent(parsed.searchParams.get('imgurl'));
+        }
+
+    } catch (e) {
+        // Invalid URL, return as is
+    }
+    return url;
+}
+
+function processLinks(root) {
+    if (!root || !root.querySelectorAll) return;
+    const links = root.querySelectorAll('a[href]');
+    links.forEach(link => {
+        const originalHref = link.getAttribute('href');
+        const cleanedHref = cleanLink(originalHref);
+        if (cleanedHref !== originalHref) {
+            link.setAttribute('href', cleanedHref);
+            // Optional: add a data attribute to mark it as cleaned for debugging
+            link.setAttribute('data-gbar-cleaned-href', originalHref);
+        }
+    });
+}
+
+// Initial cleanup on page load
+processLinks(document);
+
+// Observe for dynamically added links (e.g., infinite scroll)
+new MutationObserver(records => {
+    for (const record of records) {
+        for (const node of record.addedNodes) {
+            if (node.nodeType === Node.ELEMENT_NODE) {
+                // If the added node itself is a link
+                if (node.tagName === 'A' && node.hasAttribute('href')) {
+                    const originalHref = node.getAttribute('href');
+                    const cleanedHref = cleanLink(originalHref);
+                    if (cleanedHref !== originalHref) {
+                        node.setAttribute('href', cleanedHref);
+                        node.setAttribute('data-gbar-cleaned-href', originalHref);
+                    }
+                }
+                // Process links inside the added node
+                processLinks(node);
+            }
+        }
+    }
+}).observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+});
+})();
+
+
+//tooltip
+// Fast, custom tooltip for Google result breadcrumbs. Replaces the slow
+// native "title" tooltip. Shows the full text of "div.Q6A6Dc.ddBkwd" and
+// also triggers when hovering "div.cvP2Ce.kb0PBd" (which wraps that text).
+(() => {
+'use strict';
+const BREADCRUMB = 'div.Q6A6Dc.ddBkwd';
+const HOVER_HOST = 'div.cvP2Ce.kb0PBd';
+const SHOW_DELAY = 120;   // ms — faster than the native ~700ms tooltip
+const HIDE_DELAY = 80;    // ms — small grace to avoid flicker
+let tooltipEl = null;
+let showTimer = null;
+let hideTimer = null;
+let currentEl = null;
+
+// Track mouse position to mimic native tooltip placement
+let mouseX = 0;
+let mouseY = 0;
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    // Native behavior: cursor movement dismisses a visible tooltip.
+    if (tooltipEl && tooltipEl.classList.contains('visible')) {
+        hide();
+    }
+}, true);
+
+function ensureStyle() {
+if (document.getElementById('gp-custom-tooltip-style')) return;
+const style = document.createElement('style');
+style.id = 'gp-custom-tooltip-style';
+style.textContent = [
+'.gp-custom-tooltip{',
+'position:fixed;',
+'z-index:2147483647;',
+'max-width:200px;',
+'padding:3px 7px;',
+'background:var(--gp-tip-bg);',
+'color:var(--gp-tip-fg);',
+'font-size:12px;',
+'border-radius:6px;',
+'border:1px solid var(--gp-tip-border);',
+'box-shadow:0 1px 4px rgba(0,0,0,.4);',
+'pointer-events:none;',
+'opacity:0;',
+'transform:translateY(1px);',
+'transition:opacity .08s ease,transform .08s ease;',
+'white-space:normal;',
+'overflow-wrap:anywhere;',
+'word-break:break-word;',
+'}',
+// Dark theme (default): near-black surface, light border.
+'.gp-custom-tooltip{',
+'--gp-tip-bg:#000;',
+'--gp-tip-fg:#fff;',
+'--gp-tip-border:rgba(255,255,255,.55);',
+'}',
+// Light theme: light surface, dark border.
+'@media (prefers-color-scheme: light){',
+'.gp-custom-tooltip{',
+'--gp-tip-bg:#fff;',
+'--gp-tip-fg:#000;',
+'--gp-tip-border:rgba(0,0,0,.55);',
+'}',
+'}',
+'.gp-custom-tooltip.visible{opacity:1;transform:translateY(0);}'
+].join('');
+(document.head || document.documentElement).appendChild(style);
+}
+
+function ensureTooltip() {
+if (tooltipEl) return tooltipEl;
+ensureStyle();
+tooltipEl = document.createElement('div');
+tooltipEl.className = 'gp-custom-tooltip';
+tooltipEl.setAttribute('role', 'tooltip');
+document.body.appendChild(tooltipEl);
+return tooltipEl;
+}
+
+// Resolve the text element for a hovered node.
+function resolveBreadcrumb(node) {
+if (!node || node.nodeType !== Node.ELEMENT_NODE) return null;
+if (node.matches(BREADCRUMB)) return node;
+const host = node.closest(HOVER_HOST) || node.closest(BREADCRUMB);
+if (!host) return null;
+const inner = host.querySelector(BREADCRUMB);
+if (inner) return inner;
+if (host.matches(BREADCRUMB)) return host;
+const ancestor = host.closest(BREADCRUMB);
+if (ancestor) return ancestor;
+const sibling = host.parentElement && host.parentElement.querySelector(BREADCRUMB);
+return sibling || null;
+}
+
+function place(el) {
+const tip = ensureTooltip();
+const tipRect = tip.getBoundingClientRect();
+
+// Position relative to the mouse cursor (like native tooltips)
+let top = mouseY + 15;
+let left = mouseX + 10;
+
+// Flip to the left if it overflows the right edge
+if (left + tipRect.width > window.innerWidth - 4) {
+    left = mouseX - tipRect.width - 10;
+}
+// Flip to the top if it overflows the bottom edge
+if (top + tipRect.height > window.innerHeight - 4) {
+    top = mouseY - tipRect.height - 10;
+}
+
+// Ensure it stays within the viewport boundaries
+if (left < 4) left = 4;
+if (top < 4) top = 4;
+
+tip.style.top = top + 'px';
+tip.style.left = left + 'px';
+}
+
+function show(el) {
+const text = (el.textContent || '').trim();
+if (!text) return;
+const tip = ensureTooltip();
+tip.textContent = text;
+tip.classList.add('visible');
+place(el);
+}
+
+function hide() {
+clearTimeout(showTimer);
+clearTimeout(hideTimer);
+if (tooltipEl) tooltipEl.classList.remove('visible');
+currentEl = null;
+}
+
+function scheduleShow(el) {
+clearTimeout(hideTimer);
+clearTimeout(showTimer);
+showTimer = setTimeout(() => {
+    currentEl = el;
+    show(el);
+}, SHOW_DELAY);
+}
+
+function scheduleHide() {
+clearTimeout(showTimer);
+clearTimeout(hideTimer);
+hideTimer = setTimeout(hide, HIDE_DELAY);
+}
+
+document.addEventListener('mouseover', (event) => {
+const el = resolveBreadcrumb(event.target);
+if (!el) return;
+scheduleShow(el);
+}, true);
+
+document.addEventListener('mouseout', (event) => {
+if (!currentEl) return;
+const to = event.relatedTarget;
+// Keep visible while moving between the host and the breadcrumb.
+if (to && (currentEl.contains(to) || resolveBreadcrumb(to))) return;
+scheduleHide();
+}, true);
+
+// Native tooltips disappear when the page is scrolled
+window.addEventListener('scroll', hide, true);
+window.addEventListener('resize', hide);
+})();
+
+
+// ############################################################################
+// MODULE 07 — GOOGLE DIRECT LINKS (PAGES & IMAGES)
+// Restores Google redirect URLs to their direct destinations, blocks the
+// image-preview dialog on thumbnail clicks, prevents space-key hijacking,
+// and makes image source bars clickable. Merged from "Google Direct Links".
+// ############################################################################
+(function () {
+"use strict";
+
+// ------------------------------------------------------------------------
+// 07.1 — Image preview click blocking (IMG targets only)
+// ------------------------------------------------------------------------
+(function installImageClickBlocker() {
+function getTarget(event) {
+return event.target instanceof Element
+? event.target
+: (event.target && event.target.parentElement) || null;
+}
+function blockImagePreview(event) {
+const target = getTarget(event);
+// Only affect events whose actual target is an IMG element.
+if (!target || target.tagName !== "IMG") {
+return;
+}
+// Only affect Google Images result thumbnails.
+const result = target.closest(
+'[data-attrid="images universal"]'
+);
+if (!result) {
+return;
+}
+// Don't interfere with images inside the open preview dialog.
+if (target.closest('[role="dialog"]')) {
+return;
+}
+// Any existing native link takes priority.
+if (target.closest("a[href], area[href]")) {
+return;
+}
+// The image has no native destination link; block the preview dialog.
+if (event.cancelable) {
+event.preventDefault();
+}
+event.stopImmediatePropagation();
+event.stopPropagation();
+}
+[
+"pointerdown",
+"mousedown",
+"click",
+"auxclick",
+"dblclick"
+].forEach(type => {
+window.addEventListener(type, blockImagePreview, true);
+});
+})();
+
+// ------------------------------------------------------------------------
+// 07.2 — Space-key hijack prevention
+// ------------------------------------------------------------------------
+[
+"keydown",
+"keyup",
+"keypress"
+].forEach(eventType => {
+window.addEventListener(eventType, function (event) {
+if (event.code === "Space" || event.key === " ") {
+event.stopImmediatePropagation();
+event.stopPropagation();
+}
+}, true);
+});
+
+// ------------------------------------------------------------------------
+// 07.3 — Direct-link handling outside Google result blocks
+// ------------------------------------------------------------------------
+[
+"click",
+"mousedown"
+].forEach(eventType => {
+document.addEventListener(eventType, function (event) {
+const target = event.target &&
+event.target.nodeType === 1
+? event.target
+: (event.target && event.target.parentElement);
+const link = target && target.closest
+? target.closest("a[href]")
+: null;
+if (!link) {
+return;
+}
+// Google result links are handled by the interaction gate.
+if (link.closest("search > div")) {
+return;
+}
+event.stopImmediatePropagation();
+event.stopPropagation();
+link.removeAttribute("onmousedown");
+link.removeAttribute("jsaction");
+}, true);
+});
+
+// ------------------------------------------------------------------------
+// 07.4 — Image source-link styling
+// ------------------------------------------------------------------------
+function addSourceLinkStyle() {
+if (!document.head) {
+return;
+}
+const style = document.createElement("style");
+style.textContent = "a.x_source_link {" + [
+"line-height: 1.0",
+"text-decoration: none !important",
+"color: inherit !important",
+"display: block !important"
+].join(";") + "}";
+document.head.appendChild(style);
+}
+if (document.readyState === "loading") {
+document.addEventListener(
+"DOMContentLoaded",
+addSourceLinkStyle,
+{ once: true }
+);
+} else {
+addSourceLinkStyle();
+}
+
+// ------------------------------------------------------------------------
+// 07.5 — Storage compatibility and options
+// ------------------------------------------------------------------------
+const M = (typeof GM !== "undefined") ? GM : {
+getValue: function (name, alt) {
+const value = GM_getValue(name, alt);
+return {
+then: function (callback) {
+callback(value);
+}
+};
+},
+setValue: function (name, value) {
+GM_setValue(name, value);
+return {
+then: function (callback) {
+callback();
+}
+};
+}
+};
+
+function getOption() {
+let opt_noopen = false;
+switch (location.hash) {
+case "#x-option:open-inplace":
+opt_noopen = true;
+break;
+case "#x-option:no-open-inplace":
+opt_noopen = false;
+break;
+default:
+return M.getValue("opt_noopen", opt_noopen);
+}
+M.setValue("opt_noopen", opt_noopen);
+return {
+then: function (callback) {
+callback(opt_noopen);
+}
+};
+}
+
+function unsafeEval(func, opt) {
+const body = "return (" + func + ").apply(this, arguments)";
+unsafeWindow.Function(body).call(unsafeWindow, opt);
+}
+
+// ------------------------------------------------------------------------
+// 07.6 — Direct-link processor
+// ------------------------------------------------------------------------
+getOption().then(function run(opt_noopen) {
+
+unsafeEval(function (opt_noopen) {
+
+"use strict";
+
+const debug = false;
+let count = 0;
+
+const readyAttribute = "data-x-direct-ready";
+
+const options = {
+noopen: opt_noopen
+};
+
+// Google redirect URLs:
+// Pages:  /url?url=
+// Images: /imgres?imgurl=
+// Custom search engines: /url?q=
+
+const re = /\b(url|imgres)\?[^#]*?[?&](?:imgurl|url|q)=(https?[^&#]+)/i;
+
+function safeDecode(value) {
+try {
+return decodeURIComponent(value);
+} catch (error) {
+return value;
+}
+}
+
+// Convert special Google video URLs directly to YouTube URLs.
+
+const normalizeVideoUrl = function (url) {
+url = String(url || "");
+const match = url.match(/,vid:([^&#]+)/);
+if (!match) {
+return url;
+}
+return "https://youtube.com/watch?v=" + match[1];
+};
+
+// Restore a Google redirect URL to its destination.
+
+const restore = function (link, url) {
+const oldUrl = link.getAttribute("href") || "";
+const newUrl = url || oldUrl;
+const matches = newUrl.match(re);
+if (matches) {
+let destination = safeDecode(matches[2]);
+destination = normalizeVideoUrl(destination);
+link.setAttribute("href", destination);
+enhanceLink(link);
+if (matches[1] === "imgres") {
+if (link.querySelector('img[src^="data:"]')) {
+link._x_href = destination;
+}
+enhanceThumbnail(link, newUrl);
+}
+} else {
+const normalizedUrl = normalizeVideoUrl(newUrl);
+if (url != null || normalizedUrl !== newUrl) {
+link.setAttribute("href", normalizedUrl);
+}
+}
+};
+
+// Remove tracking handlers from links when necessary.
+
+const purifyLink = function (a) {
+if (/\brwt\(/.test(a.getAttribute("onmousedown") || "")) {
+a.removeAttribute("onmousedown");
+}
+if (
+a.parentElement &&
+/\bclick\b/.test(
+a.parentElement.getAttribute("jsaction") || ""
+)
+) {
+if (!a._x_purifyClickListener) {
+a.addEventListener("click", function (event) {
+event.stopImmediatePropagation();
+event.stopPropagation();
+}, true);
+a._x_purifyClickListener = true;
+}
+}
+};
+
+// Enhance a link without cancelling its native navigation.
+
+const enhanceLink = function (a) {
+purifyLink(a);
+a.setAttribute("rel", "noreferrer");
+a.setAttribute("referrerpolicy", "no-referrer");
+if (options.noopen) {
+a.setAttribute("target", "_self");
+if (!a._x_noopenClickListener) {
+a.addEventListener("click", function (event) {
+event.stopImmediatePropagation();
+event.stopPropagation();
+}, true);
+a._x_noopenClickListener = true;
+}
+}
+};
+
+// Make the information bar below an image thumbnail clickable.
+
+const enhanceThumbnail = function (link, url) {
+const infos = [].slice.call(
+link.querySelectorAll("img~div")
+);
+if (infos.length === 0) {
+return;
+}
+const pageMatch = url.match(/[?&]imgrefurl=([^&#]+)/);
+if (!pageMatch) {
+return;
+}
+const pageUrl = normalizeVideoUrl(
+safeDecode(pageMatch[1])
+);
+infos.forEach(function (info) {
+let pagelink = info.querySelector("a.x_source_link");
+if (!pagelink) {
+pagelink = document.createElement("a");
+enhanceLink(pagelink);
+pagelink.href = pageUrl;
+pagelink.className = "x_source_link";
+pagelink.setAttribute(readyAttribute, "1");
+pagelink.textContent = info.textContent;
+info.textContent = "";
+info.appendChild(pagelink);
+}
+});
+};
+
+// Used to normalize URLs without modifying the original anchor.
+
+const fakeLink = document.createElement("a");
+
+const normalizeUrl = function (url) {
+fakeLink.href = url;
+return fakeLink.href;
+};
+
+// Intercept programmatic href assignments.
+// Temporarily mark the link as unready during restoration.
+
+const setter = function (value) {
+this.removeAttribute(readyAttribute);
+try {
+restore(this, String(value));
+this.setAttribute(readyAttribute, "1");
+} catch (error) {
+debug && console.error(
+"Failed to restore link:",
+error
+);
+}
+};
+
+const getter = function () {
+return normalizeUrl(
+this._x_href || this.getAttribute("href")
+);
+};
+
+const blocker = function (event) {
+event.stopPropagation();
+restore(this);
+};
+
+// Process an anchor and mark it ready only after restoration.
+
+const handler = function (a) {
+if (!a || a.nodeName !== "A") {
+return;
+}
+a.removeAttribute(readyAttribute);
+try {
+if (a._x_id) {
+restore(a);
+a.setAttribute(readyAttribute, "1");
+return;
+}
+a._x_id = ++count;
+const parentAction = a.parentElement
+? a.parentElement.getAttribute("jsaction") || ""
+: "";
+if (Object.defineProperty) {
+Object.defineProperty(a, "href", {
+get: getter,
+set: setter
+});
+} else if (a.__defineSetter__) {
+a.__defineSetter__("href", setter);
+a.__defineGetter__("href", getter);
+} else {
+a.onmouseenter =
+a.onmousemove =
+a.onmouseup =
+a.onmousedown =
+a.ondblclick =
+a.onclick =
+a.oncontextmenu = blocker;
+}
+if (
+/^_(?:blank|self)$/.test(
+a.getAttribute("target") || ""
+) ||
+/\brwt\(/.test(
+a.getAttribute("onmousedown") || ""
+) ||
+/\bmouse/.test(
+a.getAttribute("jsaction") || ""
+) ||
+/\bclick\b/.test(parentAction)
+) {
+enhanceLink(a);
+}
+// URL restoration must finish before the link becomes ready.
+restore(a);
+a.setAttribute(readyAttribute, "1");
+} catch (error) {
+// Leave failed links unready so Google cannot hijack
+// clicks on a link that has not been safely processed.
+debug && console.error(
+"Direct-link processing failed:",
+a,
+error
+);
+}
+};
+
+// Process existing links and links that Google inserts or modifies.
+
+const checkAttribute = function (mutation) {
+if (!mutation) {
+return;
+}
+const target = mutation.target;
+if (!target) {
+return;
+}
+if (
+target.nodeName &&
+target.nodeName.toUpperCase() === "A"
+) {
+handler(target);
+} else if (target instanceof Element) {
+target.querySelectorAll("a[href]").forEach(handler);
+}
+};
+
+const checkNewNodes = function (mutations) {
+if (mutations && mutations.target) {
+checkAttribute(mutations);
+} else if (mutations && mutations.forEach) {
+mutations.forEach(checkAttribute);
+}
+};
+
+const MutationObserverClass =
+window.MutationObserver ||
+window.WebKitMutationObserver;
+
+if (MutationObserverClass) {
+const observer = new MutationObserverClass(checkNewNodes);
+// Observing document also works if the script runs before
+// document.documentElement has been created.
+observer.observe(
+document.documentElement || document,
+{
+childList: true,
+attributes: true,
+attributeFilter: ["href"],
+subtree: true
+}
+);
+} else {
+document.addEventListener(
+"DOMAttrModified",
+checkAttribute,
+false
+);
+document.addEventListener(
+"DOMNodeInserted",
+checkNewNodes,
+false
+);
+}
+
+// Process links that already exist instead of waiting for
+// a subsequent DOM mutation.
+
+document.querySelectorAll("a[href]").forEach(handler);
+
+}, opt_noopen);
+
+});
+})();
+// ############################################################################
+// END MODULE 07
+// ############################################################################
+
+// ############################################################################
+// ############################################################################
+// ############################################################################
+// MODULE 08 — IMAGE DOWNLOAD BUTTON
+// Adds a small download button to the bottom-right of each image result
+// thumbnail on Google Images and Ecosia Images search pages only.
+// Clicking it downloads the full-size image taken from the result's
+// [href] big-image link, named after the current search term and a timestamp.
+// ############################################################################
+(function () {
+"use strict";
+// ------------------------------------------------------------------------
+// 08.1 — Configuration and helpers
+// ------------------------------------------------------------------------
+const BTN_CLASS = "gp-dl-btn";
+const processed = new WeakSet();
+const ICON_SVG =
+'<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">' +
+'<path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 11l-5 5-5-5 1.41-1.41L11 12.17V2h2z"/>' +
+"</svg>";
+function injectStyles() {
+if (document.getElementById("gp-dl-style")) {
+return;
+}
+const style = document.createElement("style");
+style.id = "gp-dl-style";
+style.textContent = [
+"." + BTN_CLASS + "{",
+"position:absolute;",
+"right:6px;",
+"bottom:6px;",
+"z-index:2147482000;",
+"width:28px;",
+"height:28px;",
+"display:inline-flex;",
+"align-items:center;",
+"justify-content:center;",
+"padding:0;",
+"margin:0;",
+"border:none;",
+"border-radius:50%;",
+"background:rgba(32,33,36,.72);",
+"color:#fff;",
+"cursor:pointer;",
+"opacity:.55;",
+"box-shadow:0 1px 4px rgba(0,0,0,.35);",
+"transition:opacity .12s ease,transform .12s ease,background .12s ease;",
+"}",
+"." + BTN_CLASS + ":hover{",
+"opacity:1;",
+"background:rgba(26,115,232,.95);",
+"transform:scale(1.08);",
+"}",
+"." + BTN_CLASS + ":focus{",
+"opacity:1;",
+"outline:none;",
+"}",
+"." + BTN_CLASS + ".busy{",
+"opacity:1;",
+"background:rgba(26,115,232,.95);",
+"}"
+].join("");
+(document.head || document.documentElement).appendChild(style);
+}
+// UPDATED: The button only works on Google Images and Ecosia Images searches.
+function isGoogleHost() {
+return /^(?:[a-z0-9-]+\.)*google\.[a-z]{2,}(?:\.[a-z]{2,})?$/i.test(location.hostname);
+}
+function isEcosiaHost() {
+return (
+location.hostname === "ecosia.org" ||
+/\.ecosia\.org$/i.test(location.hostname)
+);
+}
+function isImagesMode() {
+const params = new URLSearchParams(location.search);
+if (isGoogleHost()) {
+// Google image search only: Images tab (udm=2 / tbm=isch) or /imgres page.
+return (
+params.get("udm") === "2" ||
+params.get("tbm") === "isch" ||
+location.pathname === "/imgres"
+);
+}
+if (isEcosiaHost()) {
+// Ecosia image search only: /images?q=... or the images tab parameters.
+return (
+location.pathname === "/images" ||
+location.pathname.indexOf("/images/") === 0 ||
+params.get("ia") === "images" ||
+params.get("iax") === "images" ||
+params.get("tbm") === "isch" ||
+params.get("udm") === "2"
+);
+}
+return false;
+}
+function getSearchTerm() {
+let q = "";
+try {
+q = new URLSearchParams(location.search).get("q") || "";
+} catch (error) {
+q = "";
+}
+return q.trim();
+}
+function sanitizeName(value) {
+return value
+.replace(/[\\/:*?"<>|-]+/g, " ")
+.replace(/[\u0000-\u001f\u007f]/g, "")
+.replace(/\s+/g, " ")
+.trim()
+.slice(0, 120) || "image";
+}
+function extFromUrl(url) {
+const match = String(url || "").match(
+/\.(jpg|jpeg|png|gif|webp|bmp|svg|avif|tiff?)(?:[?#]|$)/i
+);
+if (!match) {
+return "";
+}
+return match[1].toLowerCase().replace("jpeg", "jpg");
+}
+function buildFilename(url) {
+const base = sanitizeName(getSearchTerm());
+const ext = extFromUrl(url) || "jpg";
+const timestamp = Date.now();
+let name = `${base}_${timestamp}.${ext}`;
+return name;
+}
+function stripImageSizing(url) {
+if (!url) {
+return url;
+}
+let previous;
+do {
+previous = url;
+url = url.replace(/[?&](?:width|height)=\d+$/i, "");
+} while (url !== previous);
+return url;
+}
+function extractDirectUrl(href) {
+if (!href) {
+return null;
+}
+const imgres = href.match(/[?&]imgurl=([^&]+)/i);
+if (imgres) {
+let value;
+try {
+value = decodeURIComponent(imgres[1]);
+} catch (error) {
+value = imgres[1];
+}
+return stripImageSizing(value);
+}
+if (/\/url\?/i.test(href)) {
+const urlq = href.match(/[?&](?:url|q)=([^&]+)/i);
+if (urlq) {
+try {
+return decodeURIComponent(urlq[1]);
+} catch (error) {
+return urlq[1];
+}
+}
+}
+return null;
+}
+// UPDATED: Resolve the full-size image from the result's [href] big-image
+// link only. Thumbnails (encrypted-tbn / gstatic previews) are never
+// downloaded: if no big link can be found, no button is injected.
+function isDirectImageLink(url) {
+return /\.(?:jpg|jpeg|png|gif|webp|bmp|svg|avif|tiff|tif)(?:[?#]|$)/i.test(String(url || ""));
+}
+function resolveImageUrl(img) {
+const anchor = img.closest("a[href]");
+if (anchor) {
+const href = anchor.getAttribute("href") || "";
+// Google Images: /imgres?imgurl=... (and /url?... wrappers) hold the big link.
+const fromParams = extractDirectUrl(href);
+if (fromParams) {
+return stripImageSizing(fromParams);
+}
+// Ecosia (and some Google layouts): href already points at the big image.
+let abs = href;
+try {
+abs = new URL(href, location.href).href;
+} catch (error) {}
+if (isDirectImageLink(abs)) {
+return stripImageSizing(abs);
+}
+}
+// Full-size hints carried by the thumbnail element itself.
+const attrs = ["data-iurl", "data-actual-url"];
+for (const attr of attrs) {
+const raw = img.getAttribute(attr);
+if (!raw) continue;
+const direct = extractDirectUrl(raw);
+if (direct) {
+return stripImageSizing(direct);
+}
+let abs = raw;
+try {
+abs = new URL(raw, location.href).href;
+} catch (error) {}
+if (isDirectImageLink(abs)) {
+return stripImageSizing(abs);
+}
+}
+return null;
+}
+function triggerDownload(href, filename) {
+const a = document.createElement("a");
+a.href = href;
+a.download = filename;
+a.rel = "noopener";
+document.body.appendChild(a);
+a.click();
+setTimeout(function () {
+a.remove();
+}, 0);
+}
+function fallbackDownload(url, filename) {
+if (typeof GM_xmlhttpRequest === "function") {
+GM_xmlhttpRequest({
+method: "GET",
+url: url,
+responseType: "blob",
+onload: function (resp) {
+try {
+const blobUrl = URL.createObjectURL(resp.response);
+triggerDownload(blobUrl, filename);
+setTimeout(function () {
+URL.revokeObjectURL(blobUrl);
+}, 60000);
+} catch (error) {
+triggerDownload(url, filename);
+}
+},
+onerror: function () {
+triggerDownload(url, filename);
+}
+});
+return;
+}
+triggerDownload(url, filename);
+}
+function downloadImage(url, btn) {
+if (!url) {
+return;
+}
+const filename = buildFilename(url);
+btn.classList.add("busy");
+const done = function () {
+btn.classList.remove("busy");
+};
+if (typeof GM_download === "function") {
+try {
+GM_download({
+url: url,
+name: filename,
+saveAs: false,
+onload: done,
+onerror: function () {
+fallbackDownload(url, filename);
+done();
+},
+ontimeout: function () {
+fallbackDownload(url, filename);
+done();
+}
+});
+return;
+} catch (error) {
+// Fall through to the manual downloader.
+}
+}
+fallbackDownload(url, filename);
+done();
+}
+// ------------------------------------------------------------------------
+// 08.2 — Thumbnail button injection
+// ------------------------------------------------------------------------
+function injectButton(img) {
+if (processed.has(img)) {
+return;
+}
+const url = resolveImageUrl(img);
+// Only inject when the [href] big-image link could be resolved; thumbnails are never used.
+if (!url) {
+return;
+}
+const rect = img.getBoundingClientRect();
+if (rect.width > 0 && rect.width < 48) {
+return;
+}
+processed.add(img);
+// Find a suitable host container. Prefer a div wrapper if available for better positioning.
+let host = img.closest("div[data-ved]") || img.closest("a[href]") || img.parentElement;
+if (!host || host === img) {
+host = img.parentElement;
+if (!host) {
+return;
+}
+}
+if (host.tagName === "A") {
+const currentHref = host.getAttribute("href") || "";
+const direct = extractDirectUrl(currentHref) ||
+(/^https?:\/\//i.test(currentHref) ? currentHref : null);
+if (direct) {
+host.setAttribute("href", stripImageSizing(direct));
+}
+}
+const hostPos = getComputedStyle(host).position;
+if (hostPos === "static") {
+host.style.position = "relative";
+}
+const btn = document.createElement("button");
+btn.type = "button";
+btn.className = BTN_CLASS;
+btn.title = "Download image";
+btn.setAttribute("aria-label", "Download image");
+btn.innerHTML = ICON_SVG;
+btn._gpUrl = url;
+btn._gpImg = img;
+host.appendChild(btn);
+}
+function scanForThumbnails(root) {
+const scope = root || document;
+// UPDATED: Google + Ecosia selectors; the resolver decides if a real big link exists.
+const images = scope.querySelectorAll(
+'[data-attrid="images universal"] img, ' +
+'div[data-ved] img, ' +
+"img[data-iurl], " +
+'img[src*="encrypted-tbn"], ' + // Google thumbnail host
+'img[src*="gstatic.com"], ' +   // Google image host
+'a[href] img'                   // Ecosia image results (and other wrapped thumbs)
+);
+images.forEach(injectButton);
+}
+// ------------------------------------------------------------------------
+// 08.3 — Initialization
+// ------------------------------------------------------------------------
+window.addEventListener(
+"click",
+function (event) {
+const btn = event.target && event.target.closest
+? event.target.closest("." + BTN_CLASS)
+: null;
+if (!btn) {
+return;
+}
+event.preventDefault();
+event.stopImmediatePropagation();
+event.stopPropagation();
+// Enforce Google/Ecosia image searches only, and re-resolve the [href] big-image link at click time.
+if (!isImagesMode()) {
+return;
+}
+const img = btn._gpImg;
+const url = (img && resolveImageUrl(img)) || btn._gpUrl;
+if (!url) {
+return;
+}
+downloadImage(url, btn);
+},
+true
+);
+function init() {
+injectStyles();
+if (!isImagesMode()) {
+return;
+}
+scanForThumbnails(document);
+const MutationObserverClass =
+window.MutationObserver ||
+window.WebKitMutationObserver;
+if (!MutationObserverClass) {
+return;
+}
+let scheduled = false;
+const observer = new MutationObserverClass(function () {
+if (scheduled) {
+return;
+}
+scheduled = true;
+requestAnimationFrame(function () {
+scheduled = false;
+scanForThumbnails(document);
+});
+});
+observer.observe(document.documentElement, {
+childList: true,
+subtree: true
+});
+}
+if (document.readyState === "loading") {
+document.addEventListener("DOMContentLoaded", init, { once: true });
+} else {
+init();
+}
+})();
+// ############################################################################
+// END MODULE 08
+// ############################################################################
+
+
+
+// ############################################################################
+// MODULE 09 — CUSTOM FAVICON
+// Installs the supplied favicon and restores it if the site injects another
+// tab icon later. Kept separate from the search/navigation modules.
+// ############################################################################
+(function () {
+"use strict";
+
+const CUSTOM_FAVICON_DATA_URI = "data:image/x-icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAA7tEwAsTYEAOmabwD48PAAjyUaAMePfAD/+ecA9//wAPr1/wC1OBwA76xvAP/1/wD/+P8Az2MVAK9oWgAAGtwAvz8WAP/l0AAAKs0A//XBAJYiAABBsU0AvHNXAD24UADoWCEAnxIPAPb/6AD+zsIAuGAxANCPhgDLKg4ABxDRAA4UywC9JQAAwraqAPT7+ACLJigAHR/RAP//6QCxOiQA35mBAOv69gA5s1UA7fT/APLTygAPKNIA9PT/AOmefgD58f8ApBYLAP/56gDz//wA52gdAPj6/wD52dMAGiXbAP//8wCwSRwAxTETAJM7FwDRXhsAgB8VANZTJwDSaxUA6v/0AOn//QDw3r8A7/76AP/u7gBFs00A8//0AP/XvAD/8fcA9lwVAEq2VgDbbkIAACbOANmPiQBAty0ALyDWAPzm4ADZYCIA4//+AP/r3QDWWzcA//LXABkUzgDoYwcA9/X7APT//gDU0soA91YfAPj//gDKXCAAy1smANhbLwD60q8A9vbkAOFhFACphGIA9vD/AP/25AD2/+0A8/n/APPczQAZJNIAujMTAFC4QwD/8/8AtjMlALE3MQBVrU8A+erKAAAjxwAiLswA////AJk1IwCxWhwADR/WAO3/9wDNqaMA2IVlAEq5RwC5biIA///uAPv/9wC0Qh0AUrVNAP//9wDFLiAAxjIaANakegCqKhUA4f/4ANtfGQA5tkgA5v/4AES1PAASGN0A8//vAMp0RgBWEwAA7N/hAIw4HAD/18kA//v1AP/6+wD///gAoCwTANn4/wDj28QAdDApAOb4/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAiYmJiYmJiYmJiYmJiYmJD1RsUnNzc3Nzc3NzkXMMLjc/fICAZRYElDoQHn5jYXMlhlmFUCQxTQYzi3xgjSJSdltzBoEZR31zK3OSET14UlZRQIMhBWaTDFkbboRtHVlpPDhLFCNzSHM4GpZwESxBcWJ8Xjk1ZFk4C1xck3NBlU8+fHt1QVwMC3MMCHNZQDWKGIACCQtcWQw4OC6TWXcMIDSRKDs2gIgHhUYLknNGQRJdUpN5dDJSQ3OTc2haRmctDVxmE4xqUyZzJpCPl0RsH0mTk3xVLw4nggEcCkJGmExfKXNYUiaTZY44A5MLNTByV0qHb0VrKhV/iRd6AE6JiQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+const CUSTOM_FAVICON_ID = "gbar-custom-favicon";
+const FAVICON_SELECTOR = 'link[rel~="icon"]';
+
+let faviconObserver = null;
+let observedHead = null;
+
+function installCustomFavicon() {
+const head = document.head || document.documentElement;
+if (!head) {
+return;
+}
+
+let favicon = document.getElementById(CUSTOM_FAVICON_ID);
+if (favicon && favicon.localName !== "link") {
+favicon.remove();
+favicon = null;
+}
+
+if (!favicon) {
+favicon = document.createElement("link");
+favicon.id = CUSTOM_FAVICON_ID;
+favicon.rel = "icon";
+favicon.type = "image/x-icon";
+favicon.href = CUSTOM_FAVICON_DATA_URI;
+}
+
+if (favicon.getAttribute("rel") !== "icon") {
+favicon.setAttribute("rel", "icon");
+}
+if (favicon.getAttribute("type") !== "image/x-icon") {
+favicon.setAttribute("type", "image/x-icon");
+}
+if (favicon.getAttribute("href") !== CUSTOM_FAVICON_DATA_URI) {
+favicon.setAttribute("href", CUSTOM_FAVICON_DATA_URI);
+}
+
+// Remove all competing tab-icon declarations, including shortcut icons.
+document.querySelectorAll(FAVICON_SELECTOR).forEach((candidate) => {
+if (candidate !== favicon) {
+candidate.remove();
+}
+});
+
+// Keep our link last in <head>, giving it precedence over site declarations.
+if (favicon.parentNode !== head || head.lastElementChild !== favicon) {
+head.appendChild(favicon);
+}
+
+// Observe the active head. This also handles documents where <head> is
+// created after this userscript starts.
+if (
+typeof window.MutationObserver === "function" &&
+observedHead !== head
+) {
+if (faviconObserver) {
+faviconObserver.disconnect();
+}
+observedHead = head;
+faviconObserver = new window.MutationObserver(() => {
+installCustomFavicon();
+});
+faviconObserver.observe(head, {
+childList: true,
+subtree: true,
+attributes: true,
+attributeFilter: ["rel", "href", "type"]
+});
+}
+}
+
+if (document.head || document.documentElement) {
+installCustomFavicon();
+} else if (document.readyState === "loading") {
+document.addEventListener("DOMContentLoaded", installCustomFavicon, {
+once: true
+});
+}
+})();
+// ############################################################################
+// END MODULE 09
+// ############################################################################
