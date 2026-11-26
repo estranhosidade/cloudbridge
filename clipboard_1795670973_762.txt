@@ -1,0 +1,727 @@
+﻿<body id="injected-body" class="body-old-ui body-dark body-pitch-black">
+    <div id="loading-box" data-oldtwitter-owned="shell" hidden="">
+        <div id="loading-box-container">
+            <span id="loading-box-text"></span>
+        </div>
+    </div>
+    <header data-oldtwitter-owned="shell"><div id="navbar">
+    
+    <div id="navbar-container">
+        <div id="navbar-links">
+            <a href="/home" id="home"><span class="nav-text">Home</span></a>
+            <a href="/notifications" id="notifications"><span id="notifications-count" class="nav-count" hidden=""></span><span class="nav-text">Notifications</span></a>
+            <a id="messages" href="/messages"><span id="messages-count" class="nav-count" hidden=""></span><span class="nav-text">Messages</span></a>
+            <a id="pin-profile" href="/safirr999"><span class="nav-text">Me</span></a>
+            <a id="pin-bookmarks" href="/i/bookmarks" hidden=""><span class="nav-text">Bookmarks</span></a>
+            <a id="pin-lists" hidden="" href="/safirr999/lists"><span class="nav-text">Lists</span></a>
+            <a id="pin-likes" hidden="" href="/safirr999/likes"><span class="nav-text">Favorites</span></a>
+        </div>
+        <div id="twitter-logo-div">
+            <a id="twitter-logo" href="/home"></a>
+        </div>
+        <div id="navbar-right">
+            <div id="search" title="F / ALT+F">
+                <input id="search-input" type="text" placeholder="Search Twitter" autocomplete="off" spellcheck="false">
+                <button id="search-icon"></button>
+                <div id="search-results" hidden=""></div>
+            </div>
+            <div id="navbar-user">
+                <img id="navbar-user-avatar" width="32" height="32" alt="Account menu" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" src="https://pbs.twimg.com/profile_images/1906340820447371264/WFZZ9kVF_bigger.jpg">
+                <div id="navbar-user-menu" class="dropdown-menu" hidden="">
+                    <div id="navbar-user-menu-links">
+                        <a href="/safirr999" id="navbar-user-menu-profile">
+                            <div id="navbar-user-menu-username">Pablo Silva</div>
+                            <div style="font-size:12px">Profile</div>
+                        </a>
+                        <hr id="hr1">
+                        <a href="/old/settings" id="navbar-user-menu-settings">Settings</a>
+                        <a href="/safirr999/lists" id="navbar-user-menu-lists">Lists</a>
+                        <a href="/i/bookmarks" id="navbar-user-menu-bookmarks">Bookmarks</a>
+                        <!-- <a href="/old/history" id="navbar-user-menu-history">History</a> -->
+                        <a href="/old/unfollows/followers" id="navbar-user-menu-unfollowers">Unfollowers</a>
+                        <a id="navbar-user-menu-requests" style="display:none">Follow requests <span id="follow-request-count">0</span></a>
+                        <hr id="hr2">
+                        <a href="/account/switch" id="navbar-user-menu-accounts">Manage accounts</a>
+                    </div>
+                    <div id="navbar-user-accounts"><div class="navbar-user-account"><img src="https://pbs.twimg.com/profile_images/1906340820447371264/WFZZ9kVF_bigger.jpg" class="navbar-user-account-avatar" width="16" height="16"> safirr999 <span class="navbar-user-account-notifications">1</span></div></div>
+                    <hr>
+                    <a href="#" id="navbar-user-menu-logout">Logout</a>
+                </div>
+            </div>
+            <button id="navbar-tweet-button" title="N">
+                <span id="navbar-tweet-highlight"></span>
+                <span id="navbar-tweet-button-text">Tweet</span>
+            </button>
+        </div>
+    </div>
+</div>
+<div id="navbar-line"></div></header>
+    <div id="fake-react-root" data-oldtwitter-owned="shell" data-oldtwitter-shell="true" style="padding-left: calc(-100% + 100vw);">
+    <main id="container">
+        <div id="content">
+            <div class="cell" id="left-cell">
+                <div id="user-div" class="box">
+                    <img id="user-banner" height="100" width="300" src="https://abs.twimg.com/images/themes/theme1/bg.png">
+                    <div id="user-data">
+                        <a id="user-avatar-link" href="/safirr999"><img id="user-avatar" width="70" height="70" alt="Profile" src="https://pbs.twimg.com/profile_images/1906340820447371264/WFZZ9kVF_400x400.jpg"></a>
+                        <a id="user-info" href="/safirr999">
+                            <h1 id="user-name" aria-level="2">Pablo Silva</h1>
+                            <h2 id="user-handle" role="none">@safirr999</h2>
+                        </a>
+                        <div id="user-stats">
+                            <a class="user-stat-div" id="user-tweets-div" href="/safirr999">
+                                <h2 role="none">Tweets</h2>
+                                <h1 id="user-tweets" role="none">3,135</h1>
+                            </a>
+                            <a class="user-stat-div" id="user-following-div" href="/safirr999/following">
+                                <h2 role="none">Following</h2>
+                                <h1 id="user-following" role="none">217</h1>
+                            </a>
+                            <a class="user-stat-div" id="user-followers-div" href="/safirr999/followers">
+                                <h2 role="none">Followers</h2>
+                                <h1 id="user-followers" role="none">56</h1>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="trends" class="box">
+                    <h1 aria-level="2">Trends</h1>
+                    <div id="trends-list"><div class="trend">
+                  <b>
+                      <a href="/search?q=Stafford" class="trend-name">
+                          Stafford
+                          
+                      </a> </b><br>
+                  <span class="trend-description">Sports · Trending</span>
+              </div><div class="trend">
+                  <b>
+                      <a href="/search?q=Keldon" class="trend-name">
+                          Keldon
+                          
+                      </a> </b><br>
+                  <span class="trend-description">Sports · Trending</span>
+              </div><div class="trend">
+                  <b>
+                      <a href="/search?q=Gannon" class="trend-name">
+                          Gannon
+                          
+                      </a> </b><br>
+                  <span class="trend-description">Sports · Trending</span>
+              </div><div class="trend">
+                  <b>
+                      <a href="/search?q=Baltic" class="trend-name">
+                          Baltic
+                          
+                      </a> </b><br>
+                  <span class="trend-description">Politics · Trending</span>
+              </div><div class="trend">
+                  <b>
+                      <a href="/search?q=#Survivor51" class="trend-name">
+                          #Survivor51
+                          
+                      </a> </b><br>
+                  <span class="trend-description">Trending in United States</span>
+              </div><div class="trend">
+                  <b>
+                      <a href="/search?q=Tucker Carlson" class="trend-name">
+                          Tucker Carlson
+                          
+                      </a> </b><br>
+                  <span class="trend-description">Trending</span>
+              </div><div class="trend">
+                  <b>
+                      <a href="/search?q=McDuffie" class="trend-name">
+                          McDuffie
+                          
+                      </a> </b><br>
+                  <span class="trend-description">Sports · Trending</span>
+              </div></div>
+                </div>
+                <div class="about" id="about-left">
+                    <span>
+                        Running <a href="https://github.com/dimdenGD/OldTwitter" target="_blank">OldTwitter</a> v<span id="oldtwitter-version-left">1.9.11.14 <div style="display:inline;white-space : nowrap;">(last version: 1.9.10.3)</div></span>.<br>
+                        Created by <a href="/dimden" target="_blank">dimden</a>.
+                    <br></span>
+                    <br>
+                    <div class="about-links">
+                        <span>© 2026 dimden</span> 
+                        <a href="https://dimden.dev/" target="_blank">Website</a>
+                        <a href="/dimden">Twitter</a>
+                        <a href="https://dimden.dev/donate" target="_blank" id="donate-button">Donate</a>
+                    </div>
+                    <div class="about-links">
+                        <span id="twitter-copyright-left">© 2015 Twitter</span> 
+                        <a href="/about">About</a>
+                        <a href="https://support.twitter.com">Help</a>
+                        <a href="/tos">Terms</a>
+                        <a href="/privacy">Privacy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="cell" id="center-cell">
+                <div id="settings" class="box">
+                    <h1>Twitter settings</h1><br>
+                    <a href="/settings/profile">Edit profile</a><br>
+                    <a href="/settings">Edit Twitter settings</a><br>                    
+                    <hr>
+                    <h1>OldTwitter settings</h1><br>
+                    <span>Refresh tabs to apply settings</span><br>      
+                    <label for="show-topic-tweets"><h2>Language</h2></label>
+                    <div class="setting">
+                        <select id="language">
+                            <option value="en">English</option>
+                            <option value="es">Español (Spanish)</option>
+                            <option value="de">Deutsch (German)</option>
+                            <option value="ru">Русский (Russian)</option>
+                            <option value="pt_BR">Português do Brasil (Brazilian Portuguese)</option>
+                            <option value="zh_CN">简体中文 (Simplified Chinese)</option>
+                            <option value="zh_TW">繁體中文 (Traditional Chinese)</option>
+                            <option value="ja">日本語 (Japanese)</option>
+                            <option value="ko">한국어 (Korean)</option>
+                            <option value="fr">Français (French)</option>
+                            <option value="tr">Türkçe (Turkish)</option>
+                            <option value="ar">العربية  (Arabic)</option>
+                            <option value="pl">Polski (Polish)</option>
+                            <option value="uk">Українська (Ukrainian)</option>
+                            <option value="it">Italiano (Italian)</option>
+                            <option value="th">ภาษาไทย (Thai)</option>
+                            <option value="vi">Tiếng Việt (Vietnamese)</option>
+                            <option value="sv">Svenska (Swedish)</option>
+                            <option value="id">Indonesian (Bahasa Indonesia)</option>
+                            <option value="sr">Srpski (Serbian)</option>
+                            <option value="ro">Română (Romanian)</option>
+                            <option value="lv">Latviešu (Latvian)</option>
+                            <option value="cs">Český (Czech)</option>
+                            <option value="el">Ελληνικά (Greek)</option>
+                            <option value="bg">Български (Bulgarian)</option>
+                            <option value="nl">Nederlands (Dutch)</option>
+                            <option value="nb">Norsk Bokmål (Norwegian Bokmål)</option>
+                            <option value="tl">Tagalog (Filipino)</option>
+                            <option value="is">Icelandic (íslenska)</option>
+                            <option value="he">עִברִית (Hebrew)</option>
+                            <option value="ne">नेपाली (Nepali)</option>
+                            <option value="ca">Català (Catalan)</option>
+                            <option value="fi">suomi (Finnish)</option>
+                            <option value="gl">Galego (Galician)</option>
+                        </select>
+                        <br><span id="language-warning" hidden="">Are you interested in translating OldTwitter? <span id="language-warning-button">Click here</span>.</span>
+                    </div>
+                    
+                    <h2>Content you see</h2><br>
+                    <div class="setting">
+                        <select id="tl-type">
+                            <option value="chrono">Reverse chronological</option>
+                            <option value="chrono-no-retweets">Reverse chronological (no retweets)</option>
+                            <option value="chrono-retweets">Reverse chronological (only retweets)</option>
+                            <option value="algo">Algorithmical ("For You")</option>
+                            <option value="popular-from-follows">Popular from follows</option>
+                        </select>
+                        <label for="tl-type">Timeline type</label> <span class="option-help" id="tl-help">?</span>
+                    </div>
+                    <div class="setting" id="stt-div" hidden="">
+                        <input type="checkbox" id="show-topic-tweets"> <label for="show-topic-tweets">Show topic tweets (algo only)</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="disable-personalized-trends"> <label for="disable-personalized-trends">Disable personalized trends</label>
+                    </div>
+                    <h2>Photos &amp; videos</h2><br>
+                    <div class="setting">
+                        <input type="checkbox" id="show-original-images"> <label for="show-original-images">Always show original quality images (might lag on slow computers)</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="media-carousel"> <label for="media-carousel">Show tweets with multiple images as a scrollable carousel</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="block-grok-edit"> <label for="block-grok-edit">Block Grok from editing your uploaded images</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="autoplay-videos"> <label for="autoplay-videos">Autoplay videos</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="disable-gif-autoplay"> <label for="disable-gif-autoplay">Disable GIF autoplay</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="mute-videos"> <label for="mute-videos">Mute videos by default</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="dont-pause-videos"> <label for="dont-pause-videos">Don't pause videos when scrolling from view</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="save-preferred-quality"> <label for="save-preferred-quality">Save preferred video quality. If this is set to true, OldTwitter will save your preferred video quality and use it (or use closest quality to preferred one). If it's off, OldTwitter will select highest quality.</label>
+                    </div>
+                    <h2>Sensitive content</h2><br>
+                    <div class="setting">
+                        <input type="checkbox" id="display-sensitive-content"> <label for="display-sensitive-content">Uncensor media that was marked by Twitter to possibly contain sensitive content automatically</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="uncensor-graphic-violence-automatically"> <label for="uncensor-graphic-violence-automatically">Uncensor media with graphic violence content warning automatically</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="uncensor-adult-content-automatically"> <label for="uncensor-adult-content-automatically">Uncensor media with nudity content warning automatically</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="uncensor-sensitive-content-automatically"> <label for="uncensor-sensitive-content-automatically">Uncensor media with sensitive content content warning automatically</label>
+                    </div>
+                    
+                    <h2>Accessibility</h2><br>
+                    <div class="setting">
+                        <a target="_blank" href="https://github.com/dimdenGD/OldTwitter#hotkeys">See list of hotkeys here.</a>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="disable-retweet-hotkey"> <label for="disable-retweet-hotkey">Disable retweet hotkey (T)</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="disable-like-hotkey"> <label for="disable-like-hotkey">Disable like hotkey (L)</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="disable-find-hotkey"> <label for="disable-find-hotkey">Disable find hotkey (F)</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="disable-hotkeys"> <label for="disable-hotkeys">Disable all hotkeys</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="hide-original-languages"> <label for="hide-original-languages">Hide original languages when translated</label>
+                    </div>
+
+                    <h2>Autotranslation</h2> <span class="option-help" id="autotl-help">?</span><br>
+                    <div class="setting">
+                        <span>Tweet autotranslation mode:</span>
+                        <select id="autotranslation-mode">
+                            <option value="whitelist">Translate when in language list</option>
+                            <option value="blacklist">Translate when not in language list</option>
+                        </select>
+                    </div>
+                    <div class="setting">
+                        <span>Language list:</span>
+                        <div id="autotranslate-languages"></div>
+                    </div>
+                    <div class="setting">
+                        <select id="autotranslate-language-list">
+                            <option value="select">Select language</option>
+                        <option value="en">English</option><option value="ar">Arabic (العربية)</option><option value="bn">Bangla (বাংলা)</option><option value="cs">Czech (čeština)</option><option value="da">Danish (dansk)</option><option value="de">German (Deutsch)</option><option value="el">Greek (Ελληνικά)</option><option value="es">Spanish (español)</option><option value="fa">Persian (فارسی)</option><option value="fi">Finnish (suomi)</option><option value="fil">Filipino (Filipino)</option><option value="fr">French (français)</option><option value="he">Hebrew (עברית)</option><option value="hi">Hindi (हिन्दी)</option><option value="hu">Hungarian (magyar)</option><option value="id">Indonesian (Indonesia)</option><option value="it">Italian (italiano)</option><option value="ja">Japanese (日本語)</option><option value="ko">Korean (한국어)</option><option value="msa">Malay (Melayu)</option><option value="nl">Dutch (Nederlands)</option><option value="no">Norwegian (norsk)</option><option value="pl">Polish (polski)</option><option value="pt">Portuguese (português)</option><option value="ro">Romanian (română)</option><option value="ru">Russian (русский)</option><option value="sv">Swedish (svenska)</option><option value="th">Thai (ไทย)</option><option value="tr">Turkish (Türkçe)</option><option value="uk">Ukrainian (українська)</option><option value="ur">Urdu (اردو)</option><option value="vi">Vietnamese (Tiếng Việt)</option><option value="zh">Chinese (中文)</option><option value="zh-cn">Chinese (China) (中文（中国）)</option><option value="zh-tw">Chinese (Taiwan) (中文（台灣）)</option><option value="pt-BR">Brazilian Portuguese (português (Brasil))</option><option value="pt">Portuguese (português)</option></select>
+                        <button id="add-autotranslate-language" class="nice-button" disabled="">Add</button>
+                    </div>
+                    <div id="mobile-setting" hidden="">
+                        <h2>Mobile</h2><br>
+                        <div class="setting" id="disable-data-saver-div">
+                            <input type="checkbox" id="disable-data-saver"> <label for="disable-data-saver">Disable data saver for cellular connection</label>
+                        </div>
+                        <div class="setting" id="disable-accept-type-div">
+                            <input type="checkbox" id="disable-accept-type"> <label for="disable-accept-type">Disable accept-type when uploading media. This fixes the problem of not being able to access all images on some Android versions.</label>
+                        </div>
+                        <div class="setting" id="show-user-previews-on-mobile-div">
+                            <input type="checkbox" id="show-user-previews-on-mobile"> <label for="show-user-previews-on-mobile">Show user previews on hold (this can be annoying)</label>
+                        </div>
+                        </div>
+                    <h2>Advanced options</h2><br>
+                    <div class="setting">
+                        <input type="checkbox" id="show-boring-indicators"> <label for="show-boring-indicators">Show indicator in followers/following page if last tweet of person is a retweet/quote/non-existent/old</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="use-retweeted-id"> <label for="use-retweeted-id">When liking or retweeting a retweet, notify the user who retweeted.</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="update-timeline-automatically"> <label for="update-timeline-automatically">Update timeline automatically on new tweets.</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="keep-timeline-position"> <label for="keep-timeline-position">Keep timeline position on update.</label>
+                    </div>
+                    <div class="setting" id="enable-iframe-navigation-div" hidden="">
+                        <input type="checkbox" id="enable-iframe-navigation"> <label for="enable-iframe-navigation">Enable experimental page-preserving navigation, this will make it possible to click on links and go back to previous page without reloads. This is experimental and might break and be laggy.</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="extension-compatibility-mode"> <label for="extension-compatibility-mode">Enable extension compatibility mode (only enable if you want to make some extension work with OldTwitter, if it still doesn't work (and most likely won't) disable this again, because this option can make page buggy/laggy)</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="developer-mode"> <label for="developer-mode">Developer mode</label>
+                    </div>
+                    <hr>
+                    <h1>Display</h1><br>
+                    <h2>Dark mode</h2><br>
+                    <div class="setting">
+                        <input type="checkbox" id="dark-mode"> <label for="dark-mode" id="dark-mode-text">Dark mode</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="pitch-black-mode"> <label for="pitch-black-mode">Pitch black mode (only when dark mode is enabled)</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="time-mode"> <label for="time-mode" id="time-mode-text">Enable dark mode between 19:00-09:00</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="system-dark-mode"> <label for="system-dark-mode" id="system-dark-mode-text">Follow system settings for dark mode</label>
+                    </div>
+                    
+                    <h2>Old Twitter look</h2><br>
+                    <div class="setting">
+                        <input type="checkbox" id="modern-ui-switch"> <label for="modern-ui-switch">Use 2018 Twitter design, includes round buttons and symbols</label>
+                    </div>
+                    <div class="setting" title="Disabled in this Firefox build because it embeds the modern X frontend.">
+                        <input type="checkbox" id="use-x-chat" disabled="" aria-describedby="use-x-chat-note"> <label for="use-x-chat">Use X Chat instead of OldTwitter DMs.</label>
+                        <small id="use-x-chat-note" style="display:block; margin:4px 0 0 24px; color:var(--light-gray);">Disabled in Firefox OldTwitter-only mode. Messages use OldTwitter's built-in inbox.</small>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="slow-link-colors-in-tl"> <label for="slow-link-colors-in-tl">Show custom link colors of users in home timeline (This can cause slow downs on some devices!)</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="always-show-link-color"> <label for="always-show-link-color">Always show custom link colors instead of on hover</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="no-big-font"> <label for="no-big-font">Disable large font for short/popular tweets</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="hearts-instead-stars"> <label for="hearts-instead-stars">Show hearts (likes) instead of stars (favorites)</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="use-new-icon"> <label for="use-new-icon">Use new logo as tab icon</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="use-old-style-reply"> <label for="use-old-style-reply">Use old style reply mentions</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="use-old-default-profile-navbar"> <label for="use-old-default-profile-navbar">Set default profile picture to Egg</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="round-avatars-switch"> <label for="round-avatars-switch">Round avatars</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="enable-twemoji"> <label for="enable-twemoji">Enable Twemoji</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="enable-hashflags"> <label for="enable-hashflags">Enable hashtag icons (might slow down page loading a little)</label>
+                    </div>
+                    <div class="setting" style="display: none;">
+                        <input type="checkbox" id="enable-promotion"> <label for="enable-promotion"><b>[DEBUG]</b> Show promoted tweets and trends (Only works for algo V1)</label>
+                    </div>
+
+                    <h2>Navbar</h2><br>
+                    <div class="setting">
+                        <input type="checkbox" id="open-notifs-as-modal"> <label for="open-notifs-as-modal">Open notifications as modal</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="pin-profile-on-navbar"> <label for="pin-profile-on-navbar">Pin Profile link on navbar</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="pin-bookmarks-on-navbar"> <label for="pin-bookmarks-on-navbar">Pin Bookmarks link on navbar</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="pin-lists-on-navbar"> <label for="pin-lists-on-navbar">Pin Lists link on navbar</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="pin-likes-on-navbar"> <label for="pin-likes-on-navbar">Pin Likes link on navbar</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="hide-unfollowers-page"> <label for="hide-unfollowers-page">Hide unfollowers page</label>
+                    </div>
+
+                    <h2>Sidebar</h2><br>
+                    <div class="setting" id="hide-trends-div">
+                        <input type="checkbox" id="hide-trends"> <label for="hide-trends">Hide trends</label>
+                    </div>
+                    <div class="setting" id="hide-wtf-div">
+                        <input type="checkbox" id="hide-wtf"> <label for="hide-wtf">Hide "Who to follow"</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="hide-timeline-types"> <label for="hide-timeline-types">Hide timeline type switch on home page</label>
+                    </div>
+
+                   <h2>Profile</h2><br>
+                    <div class="setting">
+                        <input type="checkbox" id="twitter-blue-checkmarks"> <label for="twitter-blue-checkmarks">Show blue verified checkmarks</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="show-based-in"> <label for="show-based-in">Show where account is based</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="hide-followers"> <label for="hide-followers">Hide follower counts</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="show-media-count"> <label for="show-media-count">Show media count on profiles</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="show-user-follower-counts-in-lists"> <label for="show-user-follower-counts-in-lists">Show users follower counts on follower/following pages.</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="disable-profile-customizations"> <label for="disable-profile-customizations">Disable profile customizations</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="transition-profile-banner"> <label for="transition-profile-banner">Use transition on profile banner</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="new-gallery"> <label for="new-gallery">Use new gallery for profile media page</label>
+                    </div>
+                    
+                    <h2>Tweets &amp; Timeline</h2><br>
+                    <div class="setting">
+                        <input type="checkbox" id="show-bookmark-count"> <label for="show-bookmark-count">Show bookmark count on tweets</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="show-download-button"> <label for="show-download-button">Show download button on tweets with media</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="show-quote-count"> <label for="show-quote-count">Show quote count on tweets</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="see-tweet-views"> <label for="see-tweet-views">See tweets view count</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="hide-likes"> <label for="hide-likes">Hide like, retweet and reply count on tweets</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="hide-community-notes"> <label for="hide-community-notes">Hide community notes</label>
+                    </div>
+                    <div class="setting">
+                        <input type="checkbox" id="show-exact-values"> <label for="show-exact-values">Display the exact number of retweets, likes, followers, etc.</label>
+                    </div>
+                    <div class="setting" id="loc-dig" hidden="">
+                        <input type="checkbox" id="localize-digit"> <label for="localize-digit">Use Asian four-digit notation. (CJK only)</label>
+                    </div>
+                    <div class="setting">
+                        <span>Copy tweet links as</span> 
+                        <select id="copy-links-as">
+                            <option value="twitter.com">twitter.com</option>
+                            <option value="fxtwitter.com">fxtwitter.com</option>
+                            <option value="vxtwitter.com">vxtwitter.com</option>
+                            <option value="fixupx.com">fixupx.com</option>
+                            <option value="nitter.net">nitter.net</option>
+                            <option value="x.com">x.com</option>
+                            <option value="custom">custom</option>
+                        </select>
+                    </div>
+                    
+                    <h2>Font</h2><br>
+                    <div class="setting">
+                        <select id="font"><option value="_custom">&lt;CUSTOM&gt;</option><option value="American Typewriter" style="font-family: American Typewriter;">American Typewriter</option><option value="Andale Mono" style="font-family: Andale Mono;">Andale Mono</option><option value="Arial" style="font-family: Arial;">Arial</option><option value="Arial Black" style="font-family: Arial Black;">Arial Black</option><option value="Arial Narrow" style="font-family: Arial Narrow;">Arial Narrow</option><option value="Arial Rounded MT Bold" style="font-family: Arial Rounded MT Bold;">Arial Rounded MT Bold</option><option value="Arial Unicode MS" style="font-family: Arial Unicode MS;">Arial Unicode MS</option><option value="Avenir" style="font-family: Avenir;">Avenir</option><option value="Avenir Next" style="font-family: Avenir Next;">Avenir Next</option><option value="Avenir Next Condensed" style="font-family: Avenir Next Condensed;">Avenir Next Condensed</option><option value="Bahnschrift" style="font-family: Bahnschrift;">Bahnschrift</option><option value="Baskerville" style="font-family: Baskerville;">Baskerville</option><option value="Big Caslon" style="font-family: Big Caslon;">Big Caslon</option><option value="Bodoni 72" style="font-family: &quot;Bodoni 72&quot;;">Bodoni 72</option><option value="Bodoni 72 Oldstyle" style="font-family: &quot;Bodoni 72 Oldstyle&quot;;">Bodoni 72 Oldstyle</option><option value="Bodoni 72 Smallcaps" style="font-family: &quot;Bodoni 72 Smallcaps&quot;;">Bodoni 72 Smallcaps</option><option value="Bradley Hand" style="font-family: Bradley Hand;">Bradley Hand</option><option value="Brush Script MT" style="font-family: Brush Script MT;">Brush Script MT</option><option value="Calibri" style="font-family: Calibri;">Calibri</option><option value="Cambria" style="font-family: Cambria;">Cambria</option><option value="Cambria Math" style="font-family: Cambria Math;">Cambria Math</option><option value="Candara" style="font-family: Candara;">Candara</option><option value="Chalkboard" style="font-family: Chalkboard;">Chalkboard</option><option value="Chalkboard SE" style="font-family: Chalkboard SE;">Chalkboard SE</option><option value="Chalkduster" style="font-family: Chalkduster;">Chalkduster</option><option value="Charter" style="font-family: Charter;">Charter</option><option value="Chirp" style="font-family: Chirp;">Chirp</option><option value="Cochin" style="font-family: Cochin;">Cochin</option><option value="Comic Sans MS" style="font-family: Comic Sans MS;">Comic Sans MS</option><option value="Consolas" style="font-family: Consolas;">Consolas</option><option value="Constantia" style="font-family: Constantia;">Constantia</option><option value="Copperplate" style="font-family: Copperplate;">Copperplate</option><option value="Corbel" style="font-family: Corbel;">Corbel</option><option value="Courier" style="font-family: Courier;">Courier</option><option value="Courier New" style="font-family: Courier New;">Courier New</option><option value="DIN Alternate" style="font-family: DIN Alternate;">DIN Alternate</option><option value="DIN Condensed" style="font-family: DIN Condensed;">DIN Condensed</option><option value="Didot" style="font-family: Didot;">Didot</option><option value="Ebrima" style="font-family: Ebrima;">Ebrima</option><option value="Franklin Gothic Medium" style="font-family: Franklin Gothic Medium;">Franklin Gothic Medium</option><option value="Futura" style="font-family: Futura;">Futura</option><option value="Gabriola" style="font-family: Gabriola;">Gabriola</option><option value="Gadugi" style="font-family: Gadugi;">Gadugi</option><option value="Geneva" style="font-family: Geneva;">Geneva</option><option value="Georgia" style="font-family: Georgia;">Georgia</option><option value="Gill Sans" style="font-family: Gill Sans;">Gill Sans</option><option value="Helvetica" style="font-family: Helvetica;">Helvetica</option><option value="Helvetica Neue" style="font-family: Helvetica Neue;">Helvetica Neue</option><option value="Herculanum" style="font-family: Herculanum;">Herculanum</option><option value="Hoefler Text" style="font-family: Hoefler Text;">Hoefler Text</option><option value="HoloLens MDL2 Assets" style="font-family: HoloLens MDL2 Assets;">HoloLens MDL2 Assets</option><option value="Impact" style="font-family: Impact;">Impact</option><option value="Ink Free" style="font-family: Ink Free;">Ink Free</option><option value="Javanese Text" style="font-family: Javanese Text;">Javanese Text</option><option value="Leelawadee UI" style="font-family: Leelawadee UI;">Leelawadee UI</option><option value="Lucida Console" style="font-family: Lucida Console;">Lucida Console</option><option value="Lucida Grande" style="font-family: Lucida Grande;">Lucida Grande</option><option value="Lucida Sans Unicode" style="font-family: Lucida Sans Unicode;">Lucida Sans Unicode</option><option value="Luminari" style="font-family: Luminari;">Luminari</option><option value="MS Gothic" style="font-family: MS Gothic;">MS Gothic</option><option value="MS UI Gothic" style="font-family: MS UI Gothic;">MS UI Gothic</option><option value="MV Boli" style="font-family: MV Boli;">MV Boli</option><option value="Malgun Gothic" style="font-family: Malgun Gothic;">Malgun Gothic</option><option value="Marker Felt" style="font-family: Marker Felt;">Marker Felt</option><option value="Marlett" style="font-family: Marlett;">Marlett</option><option value="Menlo" style="font-family: Menlo;">Menlo</option><option value="Microsoft Himalaya" style="font-family: Microsoft Himalaya;">Microsoft Himalaya</option><option value="Microsoft JhengHei" style="font-family: Microsoft JhengHei;">Microsoft JhengHei</option><option value="Microsoft New Tai Lue" style="font-family: Microsoft New Tai Lue;">Microsoft New Tai Lue</option><option value="Microsoft PhagsPa" style="font-family: Microsoft PhagsPa;">Microsoft PhagsPa</option><option value="Microsoft Sans Serif" style="font-family: Microsoft Sans Serif;">Microsoft Sans Serif</option><option value="Microsoft Tai Le" style="font-family: Microsoft Tai Le;">Microsoft Tai Le</option><option value="Microsoft YaHei" style="font-family: Microsoft YaHei;">Microsoft YaHei</option><option value="Microsoft Yi Baiti" style="font-family: Microsoft Yi Baiti;">Microsoft Yi Baiti</option><option value="MingLiU-ExtB" style="font-family: MingLiU-ExtB;">MingLiU-ExtB</option><option value="Monaco" style="font-family: Monaco;">Monaco</option><option value="Mongolian Baiti" style="font-family: Mongolian Baiti;">Mongolian Baiti</option><option value="Myanmar Text" style="font-family: Myanmar Text;">Myanmar Text</option><option value="Nirmala UI" style="font-family: Nirmala UI;">Nirmala UI</option><option value="Noteworthy" style="font-family: Noteworthy;">Noteworthy</option><option value="Optima" style="font-family: Optima;">Optima</option><option value="Palatino" style="font-family: Palatino;">Palatino</option><option value="Palatino Linotype" style="font-family: Palatino Linotype;">Palatino Linotype</option><option value="Papyrus" style="font-family: Papyrus;">Papyrus</option><option value="Phosphate" style="font-family: Phosphate;">Phosphate</option><option value="Rockwell" style="font-family: Rockwell;">Rockwell</option><option value="Savoye LET" style="font-family: Savoye LET;">Savoye LET</option><option value="Segoe MDL2 Assets" style="font-family: Segoe MDL2 Assets;">Segoe MDL2 Assets</option><option value="Segoe Print" style="font-family: Segoe Print;">Segoe Print</option><option value="Segoe Script" style="font-family: Segoe Script;">Segoe Script</option><option value="Segoe UI" style="font-family: Segoe UI;">Segoe UI</option><option value="Segoe UI Emoji" style="font-family: Segoe UI Emoji;">Segoe UI Emoji</option><option value="Segoe UI Historic" style="font-family: Segoe UI Historic;">Segoe UI Historic</option><option value="Segoe UI Symbol" style="font-family: Segoe UI Symbol;">Segoe UI Symbol</option><option value="SignPainter" style="font-family: SignPainter;">SignPainter</option><option value="SimSun" style="font-family: SimSun;">SimSun</option><option value="Sitka" style="font-family: Sitka;">Sitka</option><option value="Skia" style="font-family: Skia;">Skia</option><option value="Snell Roundhand" style="font-family: Snell Roundhand;">Snell Roundhand</option><option value="Sylfaen" style="font-family: Sylfaen;">Sylfaen</option><option value="Symbol" style="font-family: Symbol;">Symbol</option><option value="Tahoma" style="font-family: Tahoma;">Tahoma</option><option value="Terminus" style="font-family: Terminus;">Terminus</option><option value="Terminus (TTF)" style="font-family: &quot;Terminus (TTF)&quot;;">Terminus (TTF)</option><option value="Terminus (TTF) for Windows" style="font-family: &quot;Terminus (TTF) for Windows&quot;;">Terminus (TTF) for Windows</option><option value="Times" style="font-family: Times;">Times</option><option value="Times New Roman" style="font-family: Times New Roman;">Times New Roman</option><option value="Trattatello" style="font-family: Trattatello;">Trattatello</option><option value="Trebuchet MS" style="font-family: Trebuchet MS;">Trebuchet MS</option><option value="Verdana" style="font-family: Verdana;">Verdana</option><option value="Webdings" style="font-family: Webdings;">Webdings</option><option value="Wingdings" style="font-family: Wingdings;">Wingdings</option><option value="Yu Gothic" style="font-family: Yu Gothic;">Yu Gothic</option><option value="Zapfino" style="font-family: Zapfino;">Zapfino</option></select> <label for="font">Font</label>
+                    </div>
+                    <div class="setting">
+                        <select id="tweet-font"><option value="_custom">&lt;CUSTOM&gt;</option><option value="American Typewriter" style="font-family: American Typewriter;">American Typewriter</option><option value="Andale Mono" style="font-family: Andale Mono;">Andale Mono</option><option value="Arial" style="font-family: Arial;">Arial</option><option value="Arial Black" style="font-family: Arial Black;">Arial Black</option><option value="Arial Narrow" style="font-family: Arial Narrow;">Arial Narrow</option><option value="Arial Rounded MT Bold" style="font-family: Arial Rounded MT Bold;">Arial Rounded MT Bold</option><option value="Arial Unicode MS" style="font-family: Arial Unicode MS;">Arial Unicode MS</option><option value="Avenir" style="font-family: Avenir;">Avenir</option><option value="Avenir Next" style="font-family: Avenir Next;">Avenir Next</option><option value="Avenir Next Condensed" style="font-family: Avenir Next Condensed;">Avenir Next Condensed</option><option value="Bahnschrift" style="font-family: Bahnschrift;">Bahnschrift</option><option value="Baskerville" style="font-family: Baskerville;">Baskerville</option><option value="Big Caslon" style="font-family: Big Caslon;">Big Caslon</option><option value="Bodoni 72" style="font-family: &quot;Bodoni 72&quot;;">Bodoni 72</option><option value="Bodoni 72 Oldstyle" style="font-family: &quot;Bodoni 72 Oldstyle&quot;;">Bodoni 72 Oldstyle</option><option value="Bodoni 72 Smallcaps" style="font-family: &quot;Bodoni 72 Smallcaps&quot;;">Bodoni 72 Smallcaps</option><option value="Bradley Hand" style="font-family: Bradley Hand;">Bradley Hand</option><option value="Brush Script MT" style="font-family: Brush Script MT;">Brush Script MT</option><option value="Calibri" style="font-family: Calibri;">Calibri</option><option value="Cambria" style="font-family: Cambria;">Cambria</option><option value="Cambria Math" style="font-family: Cambria Math;">Cambria Math</option><option value="Candara" style="font-family: Candara;">Candara</option><option value="Chalkboard" style="font-family: Chalkboard;">Chalkboard</option><option value="Chalkboard SE" style="font-family: Chalkboard SE;">Chalkboard SE</option><option value="Chalkduster" style="font-family: Chalkduster;">Chalkduster</option><option value="Charter" style="font-family: Charter;">Charter</option><option value="Chirp" style="font-family: Chirp;">Chirp</option><option value="Cochin" style="font-family: Cochin;">Cochin</option><option value="Comic Sans MS" style="font-family: Comic Sans MS;">Comic Sans MS</option><option value="Consolas" style="font-family: Consolas;">Consolas</option><option value="Constantia" style="font-family: Constantia;">Constantia</option><option value="Copperplate" style="font-family: Copperplate;">Copperplate</option><option value="Corbel" style="font-family: Corbel;">Corbel</option><option value="Courier" style="font-family: Courier;">Courier</option><option value="Courier New" style="font-family: Courier New;">Courier New</option><option value="DIN Alternate" style="font-family: DIN Alternate;">DIN Alternate</option><option value="DIN Condensed" style="font-family: DIN Condensed;">DIN Condensed</option><option value="Didot" style="font-family: Didot;">Didot</option><option value="Ebrima" style="font-family: Ebrima;">Ebrima</option><option value="Franklin Gothic Medium" style="font-family: Franklin Gothic Medium;">Franklin Gothic Medium</option><option value="Futura" style="font-family: Futura;">Futura</option><option value="Gabriola" style="font-family: Gabriola;">Gabriola</option><option value="Gadugi" style="font-family: Gadugi;">Gadugi</option><option value="Geneva" style="font-family: Geneva;">Geneva</option><option value="Georgia" style="font-family: Georgia;">Georgia</option><option value="Gill Sans" style="font-family: Gill Sans;">Gill Sans</option><option value="Helvetica" style="font-family: Helvetica;">Helvetica</option><option value="Helvetica Neue" style="font-family: Helvetica Neue;">Helvetica Neue</option><option value="Herculanum" style="font-family: Herculanum;">Herculanum</option><option value="Hoefler Text" style="font-family: Hoefler Text;">Hoefler Text</option><option value="HoloLens MDL2 Assets" style="font-family: HoloLens MDL2 Assets;">HoloLens MDL2 Assets</option><option value="Impact" style="font-family: Impact;">Impact</option><option value="Ink Free" style="font-family: Ink Free;">Ink Free</option><option value="Javanese Text" style="font-family: Javanese Text;">Javanese Text</option><option value="Leelawadee UI" style="font-family: Leelawadee UI;">Leelawadee UI</option><option value="Lucida Console" style="font-family: Lucida Console;">Lucida Console</option><option value="Lucida Grande" style="font-family: Lucida Grande;">Lucida Grande</option><option value="Lucida Sans Unicode" style="font-family: Lucida Sans Unicode;">Lucida Sans Unicode</option><option value="Luminari" style="font-family: Luminari;">Luminari</option><option value="MS Gothic" style="font-family: MS Gothic;">MS Gothic</option><option value="MS UI Gothic" style="font-family: MS UI Gothic;">MS UI Gothic</option><option value="MV Boli" style="font-family: MV Boli;">MV Boli</option><option value="Malgun Gothic" style="font-family: Malgun Gothic;">Malgun Gothic</option><option value="Marker Felt" style="font-family: Marker Felt;">Marker Felt</option><option value="Marlett" style="font-family: Marlett;">Marlett</option><option value="Menlo" style="font-family: Menlo;">Menlo</option><option value="Microsoft Himalaya" style="font-family: Microsoft Himalaya;">Microsoft Himalaya</option><option value="Microsoft JhengHei" style="font-family: Microsoft JhengHei;">Microsoft JhengHei</option><option value="Microsoft New Tai Lue" style="font-family: Microsoft New Tai Lue;">Microsoft New Tai Lue</option><option value="Microsoft PhagsPa" style="font-family: Microsoft PhagsPa;">Microsoft PhagsPa</option><option value="Microsoft Sans Serif" style="font-family: Microsoft Sans Serif;">Microsoft Sans Serif</option><option value="Microsoft Tai Le" style="font-family: Microsoft Tai Le;">Microsoft Tai Le</option><option value="Microsoft YaHei" style="font-family: Microsoft YaHei;">Microsoft YaHei</option><option value="Microsoft Yi Baiti" style="font-family: Microsoft Yi Baiti;">Microsoft Yi Baiti</option><option value="MingLiU-ExtB" style="font-family: MingLiU-ExtB;">MingLiU-ExtB</option><option value="Monaco" style="font-family: Monaco;">Monaco</option><option value="Mongolian Baiti" style="font-family: Mongolian Baiti;">Mongolian Baiti</option><option value="Myanmar Text" style="font-family: Myanmar Text;">Myanmar Text</option><option value="Nirmala UI" style="font-family: Nirmala UI;">Nirmala UI</option><option value="Noteworthy" style="font-family: Noteworthy;">Noteworthy</option><option value="Optima" style="font-family: Optima;">Optima</option><option value="Palatino" style="font-family: Palatino;">Palatino</option><option value="Palatino Linotype" style="font-family: Palatino Linotype;">Palatino Linotype</option><option value="Papyrus" style="font-family: Papyrus;">Papyrus</option><option value="Phosphate" style="font-family: Phosphate;">Phosphate</option><option value="Rockwell" style="font-family: Rockwell;">Rockwell</option><option value="Savoye LET" style="font-family: Savoye LET;">Savoye LET</option><option value="Segoe MDL2 Assets" style="font-family: Segoe MDL2 Assets;">Segoe MDL2 Assets</option><option value="Segoe Print" style="font-family: Segoe Print;">Segoe Print</option><option value="Segoe Script" style="font-family: Segoe Script;">Segoe Script</option><option value="Segoe UI" style="font-family: Segoe UI;">Segoe UI</option><option value="Segoe UI Emoji" style="font-family: Segoe UI Emoji;">Segoe UI Emoji</option><option value="Segoe UI Historic" style="font-family: Segoe UI Historic;">Segoe UI Historic</option><option value="Segoe UI Symbol" style="font-family: Segoe UI Symbol;">Segoe UI Symbol</option><option value="SignPainter" style="font-family: SignPainter;">SignPainter</option><option value="SimSun" style="font-family: SimSun;">SimSun</option><option value="Sitka" style="font-family: Sitka;">Sitka</option><option value="Skia" style="font-family: Skia;">Skia</option><option value="Snell Roundhand" style="font-family: Snell Roundhand;">Snell Roundhand</option><option value="Sylfaen" style="font-family: Sylfaen;">Sylfaen</option><option value="Symbol" style="font-family: Symbol;">Symbol</option><option value="Tahoma" style="font-family: Tahoma;">Tahoma</option><option value="Terminus" style="font-family: Terminus;">Terminus</option><option value="Terminus (TTF)" style="font-family: &quot;Terminus (TTF)&quot;;">Terminus (TTF)</option><option value="Terminus (TTF) for Windows" style="font-family: &quot;Terminus (TTF) for Windows&quot;;">Terminus (TTF) for Windows</option><option value="Times" style="font-family: Times;">Times</option><option value="Times New Roman" style="font-family: Times New Roman;">Times New Roman</option><option value="Trattatello" style="font-family: Trattatello;">Trattatello</option><option value="Trebuchet MS" style="font-family: Trebuchet MS;">Trebuchet MS</option><option value="Verdana" style="font-family: Verdana;">Verdana</option><option value="Webdings" style="font-family: Webdings;">Webdings</option><option value="Wingdings" style="font-family: Wingdings;">Wingdings</option><option value="Yu Gothic" style="font-family: Yu Gothic;">Yu Gothic</option><option value="Zapfino" style="font-family: Zapfino;">Zapfino</option></select> <label for="tweet-font">Tweet text font</label>
+                    </div>
+
+                    <h2>Colors</h2><br>
+                    <div class="setting">
+                        <div class="clr-field"><button type="button" aria-labelledby="clr-open-label"></button><input type="text" id="link-color" data-coloris="" style="color: rgb(75, 172, 210); background-color: rgb(75, 172, 210);"></div> <label for="link-color">Default link color</label>
+                        <button class="color-reset nice-button" id="link-color-reset">Reset</button>
+                    </div>
+                    
+                    <hr>
+                    <h2>Advanced colors</h2><br>
+                    <div class="setting" id="colors"><div class="color-div">
+                <input data-coloris="" class="color-value" type="text" data-var="--background-color" value="#000000ff" style="color: rgb(0, 0, 0); background-color: rgb(0, 0, 0);">
+                <span class="color-name">Background color</span>
+                <button class="color-reset nice-button" disabled="">Reset</button>
+            </div><div class="color-div">
+                <input data-coloris="" class="color-value" type="text" data-var="--dark-background-color" value="#000000ff" style="color: rgb(0, 0, 0); background-color: rgb(0, 0, 0);">
+                <span class="color-name">Dark background color</span>
+                <button class="color-reset nice-button" disabled="">Reset</button>
+            </div><div class="color-div">
+                <input data-coloris="" class="color-value" type="text" data-var="--darker-background-color" value="#000000ff" style="color: rgb(0, 0, 0); background-color: rgb(0, 0, 0);">
+                <span class="color-name">Darker background color</span>
+                <button class="color-reset nice-button" disabled="">Reset</button>
+            </div><div class="color-div">
+                <input data-coloris="" class="color-value" type="text" data-var="--almost-black" value="#d4e3edff" style="color: rgb(212, 227, 237); background-color: rgb(212, 227, 237);">
+                <span class="color-name">Almost black</span>
+                <button class="color-reset nice-button" disabled="">Reset</button>
+            </div><div class="color-div">
+                <input data-coloris="" class="color-value" type="text" data-var="--border" value="#222222ff" style="color: rgb(34, 34, 34); background-color: rgb(34, 34, 34);">
+                <span class="color-name">Border</span>
+                <button class="color-reset nice-button" disabled="">Reset</button>
+            </div><div class="color-div">
+                <input data-coloris="" class="color-value" type="text" data-var="--darker-gray" value="#c9c9c9ff" style="color: rgb(201, 201, 201); background-color: rgb(201, 201, 201);">
+                <span class="color-name">Darker gray</span>
+                <button class="color-reset nice-button" disabled="">Reset</button>
+            </div><div class="color-div">
+                <input data-coloris="" class="color-value" type="text" data-var="--lil-darker-gray" value="#8394a1ff" style="color: rgb(131, 148, 161); background-color: rgb(131, 148, 161);">
+                <span class="color-name">Lil darker gray</span>
+                <button class="color-reset nice-button" disabled="">Reset</button>
+            </div><div class="color-div">
+                <input data-coloris="" class="color-value" type="text" data-var="--light-gray" value="#8394a1ff" style="color: rgb(131, 148, 161); background-color: rgb(131, 148, 161);">
+                <span class="color-name">Light gray</span>
+                <button class="color-reset nice-button" disabled="">Reset</button>
+            </div><div class="color-div">
+                <input data-coloris="" class="color-value" type="text" data-var="--default-text-color" value="#ffffffff" style="color: rgb(255, 255, 255); background-color: rgb(255, 255, 255);">
+                <span class="color-name">Default text color</span>
+                <button class="color-reset nice-button" disabled="">Reset</button>
+            </div><div class="color-div">
+                <input data-coloris="" class="color-value" type="text" data-var="--new-tweet-over" value="#000000eb" style="color: rgba(0, 0, 0, 0.92); background-color: rgba(0, 0, 0, 0.92);">
+                <span class="color-name">New tweet over</span>
+                <button class="color-reset nice-button" disabled="">Reset</button>
+            </div><div class="color-div">
+                <input data-coloris="" class="color-value" type="text" data-var="--input-background" value="#090a0aff" style="color: rgb(9, 10, 10); background-color: rgb(9, 10, 10);">
+                <span class="color-name">Input background</span>
+                <button class="color-reset nice-button" disabled="">Reset</button>
+            </div><div class="color-div">
+                <input data-coloris="" class="color-value" type="text" data-var="--active-message" value="#0c0d0eff" style="color: rgb(12, 13, 14); background-color: rgb(12, 13, 14);">
+                <span class="color-name">Active message</span>
+                <button class="color-reset nice-button" disabled="">Reset</button>
+            </div><div class="color-div">
+                <input data-coloris="" class="color-value" type="text" data-var="--more-color" value="#a088ffff" style="color: rgb(160, 136, 255); background-color: rgb(160, 136, 255);">
+                <span class="color-name">More color</span>
+                <button class="color-reset nice-button" disabled="">Reset</button>
+            </div><div class="color-div">
+                <input data-coloris="" class="color-value" type="text" data-var="--choice-bg" value="#191c1eff" style="color: rgb(25, 28, 30); background-color: rgb(25, 28, 30);">
+                <span class="color-name">Choice bg</span>
+                <button class="color-reset nice-button" disabled="">Reset</button>
+            </div><div class="color-div">
+                <input data-coloris="" class="color-value" type="text" data-var="--list-actions-bg" value="#19212bff" style="color: rgb(25, 33, 43); background-color: rgb(25, 33, 43);">
+                <span class="color-name">List actions bg</span>
+                <button class="color-reset nice-button" disabled="">Reset</button>
+            </div><div class="color-div">
+                <input data-coloris="" class="color-value" type="text" data-var="--menu-bg" value="#101316fa" style="color: rgba(16, 19, 22, 0.98); background-color: rgba(16, 19, 22, 0.98);">
+                <span class="color-name">Menu bg</span>
+                <button class="color-reset nice-button" disabled="">Reset</button>
+            </div></div>
+                    <div class="setting" style="margin-top:10px">
+                        <button class="nice-button" id="reset-all-colors">Reset all</button>
+                        <button class="nice-button" id="import-colors">Import</button>
+                        <button class="nice-button" id="export-colors">Export</button>
+                    </div>
+                    <hr>
+                    <h1>Link color synchronization</h1><br>
+                    <span>
+                        Link color synchronization moved to your profile (pencil button on left from Edit profile button).
+                    </span><br>
+                    <hr>
+                    <h1>Custom CSS</h1><br>
+                    <span>Custom CSS to add on every page.</span>
+                    <br><br>
+                    <div class="setting">
+                        <textarea type="text" style="height: 71px; width: 550px;" id="custom-css" placeholder="body {
+    background-color: blue !important;
+}"></textarea>
+                    </div>
+                    <button class="nice-button" id="custom-css-save">Save CSS</button>
+                    <br>
+                    <hr>
+                    <h1>Custom download template</h1><br>
+                    <span>Allows you to customize the names of the files when downloading a tweet's media.</span><br>
+                    <br><span><code>{user_name}</code>: User's name.</span>
+                    <br><span><code>{user_screen_name}</code>: User's account name. (Example: @dril)</span>
+                    <br><span><code>{timestamp}</code>: Tweet's post date &amp; time.</span>
+                    <br><span><code>{extension}</code>: Downloaded tweet's file extension.</span>
+                    <br><span><code>{id}</code>: Tweet's ID.</span>
+                    <br><span><code>{index}</code>: Index for each file to download. (for posts with multiple media)</span>
+                    <br><span><code>{filename}</code>: Original filename from pbs.twimg.com.</span>
+                    <br><br>
+                    <div class="setting">
+                        <input type="text" style="width: 550px;" id="custom-download" placeholder="{user_screen_name}_{timestamp}_{id}{index}.{extension}">
+                    </div>
+                    <button class="nice-button" id="custom-download-save">Save download template</button>
+                    <hr>
+                    <h1>Advanced options</h1><br>
+                    <div class="setting" id="advanced-settings">
+                        <button class="nice-button" id="import-settings">Import settings</button>
+                        <button class="nice-button" id="export-settings">Export settings</button>
+                        <button class="nice-button" id="import-style">Import style</button>
+                        <button class="nice-button" id="export-style">Export style</button>
+                        <br>
+                        <button class="nice-button nice-red-button" id="reset-settings">Reset settings</button>
+                        <button class="nice-button nice-red-button" id="clear-caches">Clear caches</button>
+                        <button class="nice-button nice-red-button" id="clear-ot-token" hidden="">Clear OldTwitter token</button>
+                    </div>
+                </div>
+            </div>
+            <div class="cell" id="right-cell">
+                <div id="wtf" class="box">
+                    <h1 aria-level="2">Who to follow</h1><br>
+                    <span id="wtf-refresh">Refresh</span> <span id="bulletpoint">·</span> <a id="wtf-viewall" target="_blank" href="/i/connect_people?user_id=1906337933738799104">View all</a>
+                    <br><br>
+                    <div id="wtf-list"><div class="wtf-user" data-user-id="216656200">
+                <a class="tweet-avatar-link" href="/lucas_montano"><img src="https://pbs.twimg.com/profile_images/2076758794017574912/RKFJbdYx_bigger.jpg" alt="montano" class="tweet-avatar" width="48" height="48"></a>
+                <div class="tweet-header wtf-header">
+                    <a class="tweet-header-info wtf-user-link" href="/lucas_montano">
+                        <b class="tweet-header-name wtf-user-name ">montano</b>
+                        <span class="tweet-header-handle wtf-user-handle">@lucas_montano</span>
+                    </a>
+                    <br>
+                    <button class="nice-button discover-follow-btn follow" style="position:relative;bottom: 1px;">
+                        Follow
+                    </button>
+                </div>
+            </div><div class="wtf-user" data-user-id="3381981081">
+                <a class="tweet-avatar-link" href="/LeaoOpressor"><img src="https://pbs.twimg.com/profile_images/1327641002434289665/Opek0OlO_bigger.jpg" alt="Leão Opressor🦁" class="tweet-avatar" width="48" height="48"></a>
+                <div class="tweet-header wtf-header">
+                    <a class="tweet-header-info wtf-user-link" href="/LeaoOpressor">
+                        <b class="tweet-header-name wtf-user-name ">Leão Opressor<img draggable="false" class="emoji" alt="🦁" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/72x72/1f981.png"></b>
+                        <span class="tweet-header-handle wtf-user-handle">@LeaoOpressor</span>
+                    </a>
+                    <br>
+                    <button class="nice-button discover-follow-btn follow" style="position:relative;bottom: 1px;">
+                        Follow
+                    </button>
+                </div>
+            </div><div class="wtf-user" data-user-id="2024058500289339392">
+                <a class="tweet-avatar-link" href="/anonstartupbro"><img src="https://pbs.twimg.com/profile_images/2024062773257506816/sEl1BtZe_bigger.jpg" alt="Startup Bro, Simp for GPUs" class="tweet-avatar" width="48" height="48"></a>
+                <div class="tweet-header wtf-header">
+                    <a class="tweet-header-info wtf-user-link" href="/anonstartupbro">
+                        <b class="tweet-header-name wtf-user-name ">Startup Bro, Simp for GPUs</b>
+                        <span class="tweet-header-handle wtf-user-handle">@anonstartupbro</span>
+                    </a>
+                    <br>
+                    <button class="nice-button discover-follow-btn follow" style="position:relative;bottom: 1px;">
+                        Follow
+                    </button>
+                </div>
+            </div><div class="wtf-user" data-user-id="1014319624270303232">
+                <a class="tweet-avatar-link" href="/fiuzaemello"><img src="https://pbs.twimg.com/profile_images/2125707307237441538/ckyrat_3_bigger.jpg" alt="Rômulo Fiúza e Mello" class="tweet-avatar" width="48" height="48"></a>
+                <div class="tweet-header wtf-header">
+                    <a class="tweet-header-info wtf-user-link" href="/fiuzaemello">
+                        <b class="tweet-header-name wtf-user-name ">Rômulo Fiúza e Mello</b>
+                        <span class="tweet-header-handle wtf-user-handle">@fiuzaemello</span>
+                    </a>
+                    <br>
+                    <button class="nice-button discover-follow-btn follow" style="position:relative;bottom: 1px;">
+                        Follow
+                    </button>
+                </div>
+            </div><div class="wtf-user" data-user-id="765686775708839938">
+                <a class="tweet-avatar-link" href="/FelipePinhoBR"><img src="https://pbs.twimg.com/profile_images/1973640146395246592/Z2AJyRyB_bigger.jpg" alt="Felipe Pinho" class="tweet-avatar" width="48" height="48"></a>
+                <div class="tweet-header wtf-header">
+                    <a class="tweet-header-info wtf-user-link" href="/FelipePinhoBR">
+                        <b class="tweet-header-name wtf-user-name ">Felipe Pinho</b>
+                        <span class="tweet-header-handle wtf-user-handle">@FelipePinhoBR</span>
+                    </a>
+                    <br>
+                    <button class="nice-button discover-follow-btn follow" style="position:relative;bottom: 1px;">
+                        Follow
+                    </button>
+                </div>
+            </div><div class="wtf-user" data-user-id="727219970">
+                <a class="tweet-avatar-link" href="/Nessakins_"><img src="https://pbs.twimg.com/profile_images/2022083135538601985/Tc-P2hVS_bigger.jpg" alt="Vanessa" class="tweet-avatar" width="48" height="48"></a>
+                <div class="tweet-header wtf-header">
+                    <a class="tweet-header-info wtf-user-link" href="/Nessakins_">
+                        <b class="tweet-header-name wtf-user-name ">Vanessa</b>
+                        <span class="tweet-header-handle wtf-user-handle">@Nessakins_</span>
+                    </a>
+                    <br>
+                    <button class="nice-button discover-follow-btn follow" style="position:relative;bottom: 1px;">
+                        Follow
+                    </button>
+                </div>
+            </div></div>
+                </div>
+                <div class="about" id="about-right">
+                    <span>
+                        Running <a href="https://github.com/dimdenGD/OldTwitter" target="_blank">OldTwitter</a> v<span id="oldtwitter-version">1.9.11.14 <div style="display:inline;white-space : nowrap;">(last version: 1.9.10.3)</div></span>.<br>
+                        Created by <a href="/dimden" target="_blank">dimden</a>.
+                    <br></span>
+                    <br>
+                    <div class="about-links">
+                        <span>© 2026 dimden</span> 
+                        <a href="https://dimden.dev/" target="_blank">Website</a>
+                        <a href="/dimden">Twitter</a>
+                        <a href="https://dimden.dev/donate" target="_blank" id="donate-button">Donate</a>
+                    </div>
+                    <div class="about-links">
+                        <span id="twitter-copyright-right">© 2015 Twitter</span> 
+                        <a href="/about">About</a>
+                        <a href="https://support.twitter.com">Help</a>
+                        <a href="/tos">Terms</a>
+                        <a href="/privacy">Privacy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    </div>
+
+
+<iframe style="position: fixed; left: -9999px; top: 0px; border: medium; opacity: 0; pointer-events: none;" width="10" height="10" tabindex="-1" data-oldtwitter-owned="portal" src="moz-extension://a77f19b1-fd72-40b7-b378-6ba1afb0e736/sandbox.html"></iframe><div id="clr-picker" class="clr-picker" data-oldtwitter-quarantined="true"><input id="clr-color-value" name="clr-color-value" class="clr-color" type="text" value="" spellcheck="false" aria-label="Color value field"><div id="clr-color-area" class="clr-gradient" role="application" aria-label="Saturation and brightness selector. Use up, down, left and right arrow keys to select."><div id="clr-color-marker" class="clr-marker" tabindex="0"></div></div><div class="clr-hue"><input id="clr-hue-slider" name="clr-hue-slider" type="range" min="0" max="360" step="1" aria-label="Hue slider"><div id="clr-hue-marker"></div></div><div class="clr-alpha"><input id="clr-alpha-slider" name="clr-alpha-slider" type="range" min="0" max="100" step="1" aria-label="Opacity slider"><div id="clr-alpha-marker"></div><span></span></div><div id="clr-format" class="clr-format"><fieldset class="clr-segmented"><legend>Color format</legend><input id="clr-f1" type="radio" name="clr-format" value="hex"><label for="clr-f1">Hex</label><input id="clr-f2" type="radio" name="clr-format" value="rgb"><label for="clr-f2">RGB</label><input id="clr-f3" type="radio" name="clr-format" value="hsl"><label for="clr-f3">HSL</label><span></span></fieldset></div><div id="clr-swatches" class="clr-swatches"></div><button type="button" id="clr-clear" class="clr-clear" aria-label="Clear the selected color">Clear</button><div id="clr-color-preview" class="clr-preview"><button type="button" id="clr-close" class="clr-close" aria-label="Close color picker">Close</button></div><span id="clr-open-label" hidden="">Open color picker</span><span id="clr-swatch-label" hidden="">Color swatch</span></div><div class="t-wrap" data-oldtwitter-quarantined="true"></div></body>
