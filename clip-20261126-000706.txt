@@ -30,7 +30,7 @@
 @-moz-document regexp("https:\\/\\/(?:www\\.)?(?!(?:mail|script|voice)\\b)\\w+\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/.*") {
 	/*other iframes, business, workspace */
 	.pGxpHc > header > [role="navigation"]:not(#gp-gbar-inner *), .lP1Oxd:not(#gp-gbar-inner *), .eVtbOe:not(#gp-gbar-inner *), #T2Ybvb6:not(#gp-gbar-inner *), .DBGuVe:not(#gp-gbar-inner *), .jmG9nb:not(#gp-gbar-inner *), .zoa7Ve:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	body > .trouble-page:not(#gp-gbar-inner *), .tX9u1b:hover:not(#gp-gbar-inner *), .tX9u1b:hover .Rq5Gcb:not(#gp-gbar-inner *), .tX9u1b:active:not(#gp-gbar-inner *), .tX9u1b:active:focus:not(#gp-gbar-inner *), .tX9u1b:active:hover .Rq5Gcb:not(#gp-gbar-inner *), .Re-mk-Od:not(#gp-gbar-inner *), .B69b2b:not(#gp-gbar-inner *), .eIDnFf:not(#gp-gbar-inner *), .Kk7lMc-ae3xF-tJHJj:not(#gp-gbar-inner *), .Q0hgme-Q7GJAc-NkyfNe-RFnRab-LYNcwc:not(#gp-gbar-inner *), .Q0hgme-Q7GJAc-NkyfNe-RFnRab-LYNcwc .Q0hgme-Q7GJAc-h1U9Be-xhiy4:not(#gp-gbar-inner *), .Sx9Kwc-haAclf:not(#gp-gbar-inner *), .KL4X6e:not(#gp-gbar-inner *), .baszH:not(#gp-gbar-inner *), .TLqcme:not(#gp-gbar-inner *), .iZJb2e:not(#gp-gbar-inner *), iframe.picker + .modal-dialog-bg:not(#gp-gbar-inner *){
@@ -148,7 +148,7 @@
 @-moz-document regexp("https:\\/\\/(www\\.)?(shopping\\.)?google\\.(com|([a-z]{2}))(\\.[a-z]{2})?\\/(advanced_search|advanced_image_search|advanced_video_search|safesearch|shopping|(.*?(\\btbm=shop\\b)[^$]*)).*"), regexp("https:\\/\\/(www\\.)?(adssettings|shopping)\\.google\\.(com|([a-z]{2}))(\\.[a-z]{2})?\\/.*"), regexp("https:\\/\\/(www\\.)?google\\.(com|([a-z]{2}))(.[a-z]{2})?\\/shopping\\/.*"), regexp("https:\\/\\/(www\\.)?google\\.(com|([a-z]{2}))(.[a-z]{2})?\\/storepages.*"), regexp("https:\\/\\/(www\\.)?google\\.(com|([a-z]{2}))(.[a-z]{2})?\\/search\\?psb.*") {
 	/*Advanced search, shopping, adsettings*/
 	#fbar:not(#gp-gbar-inner *), .gb_Sf:not(#gp-gbar-inner *), .gb_If:not(#gp-gbar-inner *), .ExmP5d:not(#gp-gbar-inner *), .sh-h__header:not(#gp-gbar-inner *), .rdRPF:not(#gp-gbar-inner *), .dxkDCb[disabled]:not(#gp-gbar-inner *), header#gb:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	.goog-flat-menu-button:not(#gp-gbar-inner *){
@@ -246,7 +246,7 @@
 @-moz-document regexp("https:\\/\\/(?:www\\.)?google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/alerts.*"), regexp("https:\\/\\/(?:www\\.)?shopping\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/.*") {
 	/*Shopping*/
 	.footer:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	.card.created:not(#gp-gbar-inner *){
@@ -285,11 +285,11 @@
 @-moz-document regexp("https:\\/\\/(www\\.)?(myaccount|accounts|adssettings)\\.google\\.(com|([a-z]{2}))(\\.[a-z]{2})?\\/.*"), regexp("https:\\/\\/(www\\.)?google\\.(com|([a-z]{2}))(\\.[a-z]{2})?\\/((intl\\/)?([a-z]{2}\\/)?)landing\\/2step\\/.*"), regexp("https:\\/\\/(www\\.)?google\\.(com|([a-z]{2}))(\\.[a-z]{2})?\\/(about|sorry|android\\/find)\\/.*"), regexp("https:\\/\\/(www\\.)?aboutme\\.google\\.(com|([a-z]{2}))(\\.[a-z]{2})?\\/.*"), regexp("https:\\/\\/(www\\.)?gds\\.google\\.(com|([a-z]{2}))(\\.[a-z]{2})?\\/web\\/.*"), regexp("https:\\/\\/(www\\.)?admin\\.google\\.(com|([a-z]{2}))(\\.[a-z]{2})?\\/.*") {
 	/*My Account, Accounts, Aboutme*/
 	.google-js.mmfb > body > #maia-header.maia-header:not(#gp-gbar-inner *), .h-c-header__bar:not(#gp-gbar-inner *), .fUAIGf:not(#gp-gbar-inner *), .vOPZCd:not(#gp-gbar-inner *), .SYDc7:not(#gp-gbar-inner *){
-		background: #161616 !important;
+		background: #1C1C1C !important;
 	}
 	
 	#initialView > [role=presentation]:not(#gp-gbar-inner *), .uIZQNc .snByac:not(#gp-gbar-inner *), .jQ9OEf .snByac:not(#gp-gbar-inner *), .GDWqpb:not(#gp-gbar-inner *), .MocG8c.KKjvXb:not(#gp-gbar-inner *), #maia-footer:not(#gp-gbar-inner *), .maia-header:not(#gp-gbar-inner *), #maia-footer-local:not(#gp-gbar-inner *), .CDELXb .snByac.snByac:not(#gp-gbar-inner *), .A3sRAb.CDELXb .snByac.snByac:not(#gp-gbar-inner *), .gb_xc:not(#gp-gbar-inner *), .LOINYe:not(#gp-gbar-inner *), .Q2tXpd:not(#gp-gbar-inner *), .Tf22B:not(#gp-gbar-inner *), .Q2tXpd:not(#gp-gbar-inner *), .tXgqoe:not(#gp-gbar-inner *), .RAYh1e:not(#gp-gbar-inner *), #yDmH0d:not(#gp-gbar-inner *), .ikIPKb:not(#gp-gbar-inner *), .N3Hzgf .AxOyFc.snByac:not(#gp-gbar-inner *), .cGfoab:not(#gp-gbar-inner *), .TtcoFc:not(#gp-gbar-inner *), .kPY6ve:not(#gp-gbar-inner *), .nyGuVb:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 	
 	.fFW7wc.XKSfm-Sx9Kwc-xJ5Hnf:not(#gp-gbar-inner *), .jfk-bubble:not(#gp-gbar-inner *), .u3bW4e .snByac.snByac:not(#gp-gbar-inner *), .ANuIbb:not(#gp-gbar-inner *), .zTjdmb .cF3Bkb:focus:not(#gp-gbar-inner *), .zTjdmb:hover:not(#gp-gbar-inner *), .aAtf2e:not(#gp-gbar-inner *), header[id="banner"]:not(#gp-gbar-inner *), .r6B9Fd li[aria-selected="true"]:not(#gp-gbar-inner *){
@@ -400,7 +400,7 @@ background-image: linear-gradient(270deg,rgba(0, 0, 0, 0) 0, #2C2C2C 50%) !impor
 @-moz-document regexp("https:\\/\\/(?:www\\.)?books\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/.*"), regexp("https:\\/\\/(?:www\\.)?google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/(?:books|search\\?tbm).*") {
 	/*Books*/
 	body > #gb > div:nth-child(1):not(#gp-gbar-inner *), .footerInner:not(#gp-gbar-inner *), .kd-appbar:not(#gp-gbar-inner *), .gb_Fg:not(#gp-gbar-inner *), .gb_Lg .gb_8f:not(#gp-gbar-inner *), .xQ8Iyb:not(#gp-gbar-inner *), .modal-dialog-title:not(#gp-gbar-inner *), #about:not(#gp-gbar-inner *), .GOfDwe:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 	
 	#viewport:not(#gp-gbar-inner *), .modal-dialog:not(#gp-gbar-inner *), .modal-dialog-buttons:not(#gp-gbar-inner *), .modal-dialog-content:not(#gp-gbar-inner *), .DvJlkf:not(#gp-gbar-inner *){
@@ -486,7 +486,7 @@ background-image: linear-gradient(270deg,rgba(0, 0, 0, 0) 0, #2C2C2C 50%) !impor
 @-moz-document regexp("https:\\/\\/(?:www\\.)?books\\.googleusercontent\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/(books)?.*") {
 	/*Books old*/
 	.gb-topbar:not(#gp-gbar-inner *), .gb-statusbar:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	.gb-reader-container:not(#gp-gbar-inner *), .gb-slider-segmen:not(#gp-gbar-inner *){
@@ -539,7 +539,7 @@ background-image: linear-gradient(270deg,rgba(0, 0, 0, 0) 0, #2C2C2C 50%) !impor
 @-moz-document regexp("https:\\/\\/(?:www\\.)?chromewebstore\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/.*") {
 	/*Chrome Web Store*/
 	.DECryd:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 	
 	.vHhHPc:not(#gp-gbar-inner *), .gdqx4d > div[style^="height:"]:not(#gp-gbar-inner *){
@@ -594,7 +594,7 @@ background-image: linear-gradient(270deg,rgba(0, 0, 0, 0) 0, #2C2C2C 50%) !impor
 @-moz-document regexp("https:\\/\\/(?:www\\.)?((console\\.)?developers|explorer\\.apis)\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/.*") {
 	/*Console Developers*/
 	.devsite-top-logo-row-wrapper:not(#gp-gbar-inner *), .cfc-ng2-region .cfc-background-contrast:not(#gp-gbar-inner *), md-toolbar.md-default-theme.md-menu-toolbar:not(#gp-gbar-inner *), md-toolbar.md-menu-toolbar:not(#gp-gbar-inner *), .devsite-header-background:not(#gp-gbar-inner *), .devsite-header-billboard:not(#gp-gbar-inner *), body[theme="white"] devsite-header .devsite-top-logo-row:not(#gp-gbar-inner *), body[theme="white"] devsite-header devsite-tabs.upper-tabs .devsite-tabs-wrapper:not(#gp-gbar-inner *), body[theme="white"] devsite-header cloudx-tabs-nav.upper-tabs .devsite-tabs-wrapper:not(#gp-gbar-inner *), .devsite-top-logo-row:not(#gp-gbar-inner *), devsite-header cloudx-tabs-nav.upper-tabs .devsite-tabs-wrapper:not(#gp-gbar-inner *), devsite-header devsite-tabs.upper-tabs .devsite-tabs-wrapper:not(#gp-gbar-inner *), .devsite-concierge-menu:not(#gp-gbar-inner *), devsite-footer-linkboxes:not(#gp-gbar-inner *), devsite-footer-utility:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	.devsite-top-section:not(#gp-gbar-inner *), .devsite-background-grey:not(#gp-gbar-inner *), .devsite-footer-promos:not(#gp-gbar-inner *), .cfc-platform-bar-white[_ngcontent-c2]:not(#gp-gbar-inner *), devsite-book-nav ~ .devsite-book-nav-blur:not(#gp-gbar-inner *), [background]:not(#gp-gbar-inner *), .devsite-article:not(#gp-gbar-inner *), devsite-book-nav .devsite-nav-item:not(.devsite-nav-accordion):not(.devsite-nav-heading) > .devsite-nav-title:not(.devsite-nav-active):focus:not(#gp-gbar-inner *), devsite-book-nav .devsite-nav-item:not(.devsite-nav-accordion):not(.devsite-nav-heading) > .devsite-nav-title:not(.devsite-nav-active):hover:not(#gp-gbar-inner *), devsite-book-nav .devsite-nav-item:not(.devsite-nav-accordion) > .devsite-expandable-nav > .devsite-nav-title-no-path:focus:not(#gp-gbar-inner *), devsite-book-nav .devsite-nav-item:not(.devsite-nav-accordion) > .devsite-expandable-nav > .devsite-nav-title-no-path:hover:not(#gp-gbar-inner *), devsite-book-nav input[type="text"]:not(#gp-gbar-inner *){
@@ -736,7 +736,7 @@ background-image: linear-gradient(270deg,rgba(0, 0, 0, 0) 0, #2C2C2C 50%) !impor
 	}
 
 	.cfc-platform-bar-white, .devsite-top-logo-row, devsite-header cloudx-tabs-nav.upper-tabs .devsite-tabs-wrapper, devsite-header devsite-tabs.upper-tabs .devsite-tabs-wrapper, devsite-header devsite-tabs.upper-tabs tab[overflow-tab]::after {
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	.content-wrapper > .card, #bootanim, .implementation-path tr:nth-child(2n) td, .c5e-input-container input[type="text"], .c5e-input-container input[type="password"], .c5e-input-container input[type="url"], .c5e-input-container input[type="number"], .c5e-input-container input[type="email"], .c5e-input-container input[type="search"], .c5e-input-container input[type="time"], .c5e-input-container input[type="tel"], .c5e-input-container md-select, .c5e-input-container mat-select, .layout-column.flex, .c5e-input-container md-datepicker[disabled] .md-datepicker-input-container, .c5e-input-container mat-datepicker[disabled] .mat-datepicker-input-container, fb-settings-cameo .c5e-settings-cameo-container, .canvas-theme-container, devsite-user .devsite-devprofile-wrapper .devsite-devprofile-popout {
@@ -876,7 +876,7 @@ background-image: linear-gradient(270deg,rgba(0, 0, 0, 0) 0, #2C2C2C 50%) !impor
 @-moz-document regexp("https:\\/\\/(?:www\\.)?contacts\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?).*") {
 	/*Contacts*/
 	.k831u:not(#gp-gbar-inner *), .tuQOVc:not(#gp-gbar-inner *), .ANsHhf:not(#gp-gbar-inner *), .w0Wlvf:not(#gp-gbar-inner *), #gb[role="banner"]:not(#gp-gbar-inner *), .xn36Yc:not(#gp-gbar-inner *), .MCcOAc:not(#gp-gbar-inner *){
-		background: #161616 !important;
+		background: #1C1C1C !important;
 	}
 
 	.x5zFxb button[disabled]:not(#gp-gbar-inner *){
@@ -1011,7 +1011,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?docs\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?).*"), regexp("https:\\/\\/(?:www\\.)?google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/intl\\/[a-z]{2}\\/(?:docs|sheets|slides|forms)\\/about.*"), regexp("https:\\/\\/(?:www\\.)?drive\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/[^\\/]+\\/embed\\?.*") {
 	/*Docs*/
 	#docs-chrome:not(#gp-gbar-inner *), .docs-material #docs-header .docs-titlebar-buttons:not(#gp-gbar-inner *), .companion-app-switcher-container:not(#gp-gbar-inner *), .docs-explore-sidebar:not(#gp-gbar-inner *), .docs-explore-nuggetscardview-container:not(#gp-gbar-inner *), .docs-explore-searchbar-labelinput:not(#gp-gbar-inner *), .docs-explore-serp-webresultsview-card-container:not(#gp-gbar-inner *), .docs-explore-serp-webresultscard:not(#gp-gbar-inner *), .docs-material #docs-equationtoolbar:not(#gp-gbar-inner *), .docs-material .docs-printpreview-toolbar:not(#gp-gbar-inner *), .Mf-ol-Md:not(#gp-gbar-inner *), .Mf-ll-xg .Mf-ml-Zb-Cf-Yb-wj:not(#gp-gbar-inner *), .docos-streampane-header:not(#gp-gbar-inner *), .gb_6d:not(#gp-gbar-inner *), a[href*="edit?authuser"]:hover:not(#gp-gbar-inner *), .Mf-nl-Md:not(#gp-gbar-inner *), nav[data-nav-name]:not(#gp-gbar-inner *), ul.nav-tertiary:not(#gp-gbar-inner *), ul.nav-tertiary li:not(#gp-gbar-inner *), .docs-homescreen-templates-bar:not(#gp-gbar-inner *), .docs-revisions-chromecover-content-color-default:not(#gp-gbar-inner *), .docs-revisions-sidebar-header:not(#gp-gbar-inner *), .grid-bottom-bar:not(#gp-gbar-inner *), .Nf-nl-Md:not(#gp-gbar-inner *), #maia-footer-local:not(#gp-gbar-inner *), #speakernotes-dragger:not(#gp-gbar-inner *), .Re-fl .Re-ll-Qc-qb:not(#gp-gbar-inner *), .picker-urlview-inner-input:not(#gp-gbar-inner *), .waffle-db-filter-by-value-container:not(#gp-gbar-inner *), .waffle-formula-preview-decorator:not(#gp-gbar-inner *), .le-Bi-hc:not(#gp-gbar-inner *), .app-switcher-button-hover .app-switcher-button-icon-background:not(#gp-gbar-inner *), .docs-docos-activity-sidebar-header:not(#gp-gbar-inner *), .docs-homescreen-gb-container > header#gb:not(#gp-gbar-inner *), #docs-chrome:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 	
 	.modal-dialog-buttons button[disabled]:not(#gp-gbar-inner *), .docs-revisions-sidebar:not(#gp-gbar-inner *), .Mf-nl-hc.Mf-Fg-cb-Md:not(#gp-gbar-inner *), .docs-explore-card:not(#gp-gbar-inner *), .pGOlGd:not(#gp-gbar-inner *), .LEiJIb:not(#gp-gbar-inner *), .Mf-xg-Gd-Xg:not(#gp-gbar-inner *), .Mf-ll-xg .Mf-Gd-Wn-Xn:not(#gp-gbar-inner *), .docs-docos-activitybox:not(#gp-gbar-inner *), .docos-streamdocoview:not(#gp-gbar-inner *), .docs-homescreen-homescreenmain:not(#gp-gbar-inner *), .docs-omnibox-input.jfk-textinput:not(#gp-gbar-inner *), .docs-gm-dialogs .modal-dialog .jfk-textinput[disabled]:not(#gp-gbar-inner *), .docos-input > textarea:not(#gp-gbar-inner *), .docs-homescreen-google-material-update .docs-homescreen-grid-header:not(#gp-gbar-inner *), .docs-homescreen-google-material-update .docs-homescreen-list-header:not(#gp-gbar-inner *), .docs-homescreen-list-item:not(#gp-gbar-inner *), .docs-sheet-tab:not(#gp-gbar-inner *), .waffle-range-selection-container:not(#gp-gbar-inner *), .waffle-conditionalformat-add-another-rule-button:not(#gp-gbar-inner *), .waffle-conditionalformat-add-rule-button:not(#gp-gbar-inner *), .Gd-Sg-Kc:not(#gp-gbar-inner *), .Nf-yg-Gd-Yg:not(#gp-gbar-inner *), .Nf-kl-yg .Nf-Gd-Vn-Wn:not(#gp-gbar-inner *), .gb_wc:not(#gp-gbar-inner *), .gb_zc:not(#gp-gbar-inner *), .docs-homescreen-grid-header:not(#gp-gbar-inner *), .docs-homescreen-list-header:not(#gp-gbar-inner *), .waffle-revisions-container:not(#gp-gbar-inner *), .docs-explore-sidebar-title:not(#gp-gbar-inner *), #gb > .gb_de > div:not(#gp-gbar-inner *), .gb_Hc:not(#gp-gbar-inner *), .freebirdCommonSidebarSidebar:not(#gp-gbar-inner *), .freebirdFormeditorViewColorpickerEl:not(#gp-gbar-inner *), #maia-footer:not(#gp-gbar-inner *), .header:not(#gp-gbar-inner *), .docs-gm #workspace-container:not(#gp-gbar-inner *), .docs-gm .filmstrip:not(#gp-gbar-inner *), .docs-gm .grid-view .punch-filmstrip-scroll:not(#gp-gbar-inner *), .Re-pk-Md:not(#gp-gbar-inner *), .docs-homescreen-floater-header:not(#gp-gbar-inner *), .fjSJOb:not(#gp-gbar-inner *), .yawtRb:not(#gp-gbar-inner *), .docs-userdictionarydialog-list-container:not(#gp-gbar-inner *), .kix-appview-editor:not(#gp-gbar-inner *), .Y7Vyje:not(#gp-gbar-inner *), .GmCard:not(#gp-gbar-inner *), .waffle-chip-promo-content:not(#gp-gbar-inner *), #formula-bar #t-formula-bar-input:not(#gp-gbar-inner *), .goog-menu:not(#gp-gbar-inner *), input[aria-controls="smartinsertlink-suggestions-holder"]:not(#gp-gbar-inner *), .docs-gm .docs-smart-link-searchinput-search-container:not(#gp-gbar-inner *), .docs-gm .docs-link-smartinsertlinkbubble-text-label:not(#gp-gbar-inner *), .goog-menu-filter > input:not(#gp-gbar-inner *), .docos-streampane-zero-state:not(#gp-gbar-inner *), .waffle-filterbox-boolean-condition-picker:not(#gp-gbar-inner *), .waffle-filtermenu:not(#gp-gbar-inner *), .waffle-conditionalformat-custom-toolbar:not(#gp-gbar-inner *), .IzuY1c:not(#gp-gbar-inner *), [class*="Dialog-dialog__surface"]:not(#gp-gbar-inner *), [class*="Datatable-data-table__row"]:not(#gp-gbar-inner *), [class*="levation-elevation__overlay"]:not(#gp-gbar-inner *), .waffle-assistant-overlay-recommendation-card-error-with-description:not(#gp-gbar-inner *), .waffle-unified-formula-help-title-container:not(#gp-gbar-inner *), .waffle-function-autocomplete-row-computed-value:not(#gp-gbar-inner *), .peoplekitComponentsChipChip:not(#gp-gbar-inner *), .docs-tiled-sidebar-header:not(#gp-gbar-inner *), .waffle-data-validation-auto-complete-row-active:not(#gp-gbar-inner *), #speakernotes-dragger:hover:not(#gp-gbar-inner *), .ftJYz[disabled]:not(#gp-gbar-inner *), .building-block-card-content-container.docs-gm3-button-hover:not(#gp-gbar-inner *), .docs-alt-text-tile-title-input:not(#gp-gbar-inner *), .docs-alt-text-tile-advanced-options-container-expanded:not(#gp-gbar-inner *), .waffle-function-category-row:not(#gp-gbar-inner *){
@@ -1308,7 +1308,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 	}
 
 	div[role="dialog"]:not([aria-label]):not(.a-b-cg-k):not(.iWO5td):not([class*="ShareDialog"]):not([class*="Drivesharedialog"]):not([guidedhelpid="drive_share_dialog"]):not(.yHaF5b):not(#gp-gbar-inner *), .e-F-V-Ta.e-Qf-Qd:not(#gp-gbar-inner *), .y-E-gh-D .y-C-Ed-V:not(#gp-gbar-inner *), .le-Ba:not(#gp-gbar-inner *), .y-E:not(#gp-gbar-inner *), .a-t-D-V-j:not(#gp-gbar-inner *), .a-nEbBXb .a-t-D:not(#gp-gbar-inner *), .a-nEbBXb .l-u-xb:not(#gp-gbar-inner *), .Ccie2c > .yIgcPc > .L202Xe > .Wweoae > .a-HZnjzd-xb-x > .a-HZnjzd-xb-dc > .a-HZnjzd-xb-dc-x:not(#gp-gbar-inner *), div[role="group"][aria-label] > div:not(.a-s-T-c-j):not(#gp-gbar-inner *), div[role="group"][aria-label]:not(.a-s-T-j):hover:not(#gp-gbar-inner *), .simple-sharing-link-heading:not(#gp-gbar-inner *), .simple-sharing-people-heading:not(#gp-gbar-inner *), .simple-sharing-contents:not(#gp-gbar-inner *), .a-X-k-V:not(#gp-gbar-inner *), .a-X-k-x:not(#gp-gbar-inner *), .e-dl-k-V:not(#gp-gbar-inner *), .y-C-Ed-V:not(#gp-gbar-inner *), .a-ub-Gd:not(#gp-gbar-inner *), .a-t-D:not(#gp-gbar-inner *), div[target="sidebar"]:not(#gp-gbar-inner *), div[target="sidebar"] > *:not(#gp-gbar-inner *), a[href="https://g.co/getdrive"]:not(#gp-gbar-inner *), .nav-dark .header:not(#gp-gbar-inner *), .goog-menuitem-highlight:not(#gp-gbar-inner *), .goog-menuitem-hover:not(#gp-gbar-inner *), .y-C-ka:not(#gp-gbar-inner *), .a-ub-Gd:not(#gp-gbar-inner *), .glue-header__bar:not(#gp-gbar-inner *), .glue-footer.glue-footer:not(#gp-gbar-inner *), .glue-footer__link:not(#gp-gbar-inner *), .glue-header__cta:not(#gp-gbar-inner *), .OelKyd:not(#gp-gbar-inner *), .xjBc3b:not(#gp-gbar-inner *), .CeSLIf:not(#gp-gbar-inner *), .ZHllM:not(#gp-gbar-inner *), .ALpC8b:not(#gp-gbar-inner *), .YkfxEe:not(#gp-gbar-inner *), .Wp3BKe:hover:not(#gp-gbar-inner *)::before, .Wp3BKe:active:not(#gp-gbar-inner *)::before, .NFRm8d:not(#gp-gbar-inner *), .yYWAMb:not([jscontroller]):not(#gp-gbar-inner *), .h-w:not(#gp-gbar-inner *), .X5Gvkb:not(#gp-gbar-inner *), .ci5qqd:not(#gp-gbar-inner *), .EIlDfe.vhoiae.KkxPLb:not(.LcUz9d):not(:has([role="dialog"]):has([role="heading"])):not(#gp-gbar-inner *), .XKSfm-Sx9Kwc-r4nke:not(.XKSfm-Sx9Kwc-r4nke-GIHV) .XKSfm-Sx9Kwc-bN97Pc:not([id*="contentEl"]):not(#gp-gbar-inner *), .ba-t6O8cf-j:not(#gp-gbar-inner *), .vhoiae .lb-k-x:not([id$="contentEl"]):not([id*=".msg"]):not(#gp-gbar-inner *), .EIlDfe > div[style*="opacity: 0.5"]:not(#gp-gbar-inner *), .vhoiae .lb-k-x:not([id=":am.contentEl"]):not(.lb-k-x):not(#gp-gbar-inner *), .a-b-Ia:not(#gp-gbar-inner *), .jLwBBf:not(#gp-gbar-inner *), .YMooxe:not(#gp-gbar-inner *), .fmXc2b:not(#gp-gbar-inner *), .lb-k-Qc:not(#gp-gbar-inner *), .uW2Fw-k-Qu-lc [role="dialog"] > div:not(#gp-gbar-inner *), .uW2Fw-oclYLd:not(#gp-gbar-inner *), .fVVp2c > div > div:not(#gp-gbar-inner *), .EIlDfe [role="dialog"]:has([role="heading"]) > div:not(#gp-gbar-inner *){
-		background: #161616 !important;
+		background: #1C1C1C !important;
 	}
 
 	html:not(.exportInteractionModeMouse):not(.hMukDb):not([dir="ltr"]):not(:has(#download-form)):not(#gp-gbar-inner *){
@@ -1392,7 +1392,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 	}
 
 	.E3FZic:not(#gp-gbar-inner *), .p2mZSc:not(#gp-gbar-inner *), .clyeee .VUPead:not(#gp-gbar-inner *), .clyeee .VUPead:active:not(#gp-gbar-inner *), [data-active="true"] .Rju2Ue-TfeOUb-ga:not(#gp-gbar-inner *), .oB1s2d.vKmmhc.kDfKi > span:not(#gp-gbar-inner *){
-		color: #161616 !important;
+		color: #1C1C1C !important;
 	}
 
 	.nf-Rc-r:not(#gp-gbar-inner *), .a-Mg-V-T:hover:not(#gp-gbar-inner *), .H-qa-ea-A-ca:hover:not(#gp-gbar-inner *), .aabwZd:not(.KBj6Qd) .GZwC2b .M3pype .YUNZ4c:not(#gp-gbar-inner *), .ca-k-ml-Pr .USrqEe-ml-Pr-gi .ml-Pr-kg a:not(#gp-gbar-inner *), .R7nqif:not(#gp-gbar-inner *), [style ^= "background: #F0F6FF; border"] a:not(#gp-gbar-inner *), .a-Ng-c-ha:not(#gp-gbar-inner *), .P6NGpd:not(#gp-gbar-inner *), .nQPNqb a:not(#gp-gbar-inner *){
@@ -1420,7 +1420,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 	}
 
 	path[fill="#f8f8f8"]:not(#gp-gbar-inner *), .f-Nd circle:not(#gp-gbar-inner *){
-		fill: #161616 !important;
+		fill: #1C1C1C !important;
 	}
 
 	.UHqLAb .vARBRb[aria-selected="true"]:not(#gp-gbar-inner *), .UHqLAb .vARBRb:focus:not(#gp-gbar-inner *), .dc[aria-selected="true"]:not(#gp-gbar-inner *), .dc:focus:not(#gp-gbar-inner *){
@@ -1458,7 +1458,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?one\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/.*") {
 	/*One (Drive)*/
 	.DjbnYe:not(#gp-gbar-inner *), .NuaRqc:not(#gp-gbar-inner *), header:not(#gp-gbar-inner *), .Lqeb5d:not(#gp-gbar-inner *), .KL4X6e:not(#gp-gbar-inner *), .yFkWtc:not(#gp-gbar-inner *), .utyhx:not(#gp-gbar-inner *), .MYblje:not(#gp-gbar-inner *), #gb[role="banner"]:not(#gp-gbar-inner *), .pPWIme:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	.VqLZic:not(#gp-gbar-inner *), .VfPpkd-wZVHld-vqLbZd-eEDwDf:not(#gp-gbar-inner *), .g3VIld:not(#gp-gbar-inner *){
@@ -1537,7 +1537,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?calendar\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/calendar.*"), regexp("https:\\/\\/(?:www\\.)?tasks\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/.*") {
 	/*Calendar and Tasks*/
 	.QQYuzf:not(#gp-gbar-inner *), .UVq0Gb:not(#gp-gbar-inner *), .uqJv0c:not(#gp-gbar-inner *), .R6TFwe:not(#gp-gbar-inner *), .sS0sZd:not(#gp-gbar-inner *), .hek9ae:not(#gp-gbar-inner *), .ko35Z:not(#gp-gbar-inner *), .pp_buttonbar:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	body:not(#gp-gbar-inner *), .v83gc:not(#gp-gbar-inner *), .GENA3c:not(#gp-gbar-inner *), .Gk2izd:not(#gp-gbar-inner *), .qmv2fc:hover:not(#gp-gbar-inner *), .p9lUpf:not(#gp-gbar-inner *), .W0m3G:not(#gp-gbar-inner *)::before, .MDfQ7:not(#gp-gbar-inner *), .NekIXe:not(#gp-gbar-inner *), .pljXM:not(#gp-gbar-inner *), .OCQPo:not(#gp-gbar-inner *), .CCRNT:hover:not(#gp-gbar-inner *), .OWyNBb.m1fiJb:not(#gp-gbar-inner *), .gb_Ce:not(#gp-gbar-inner *), #gb.gb_ja:not(#gp-gbar-inner *), .SU7tYb:not(#gp-gbar-inner *), .tNDBE:not(#gp-gbar-inner *), .XnnJrc .TKMrfe:not(#gp-gbar-inner *), .yEkOpe.F262Ye:not(#gp-gbar-inner *), .K2fuAf:not(#gp-gbar-inner *), .mv-daynames-table:not(#gp-gbar-inner *), .view-cap:not(#gp-gbar-inner *), .view-container-border:not(#gp-gbar-inner *), .wk-weektop:not(#gp-gbar-inner *), .J09ahd:not(#gp-gbar-inner *), .Kk7lMc-ae3xF-bN97Pc-LYNcwc:not(#gp-gbar-inner *), .Kk7lMc-ae3xF-tJHJj:not(#gp-gbar-inner *), .aR1Lv:not(#gp-gbar-inner *), .RAaXne:not(#gp-gbar-inner *), .IOneve:not([aria-selected="true"]):not(.Aibntc) > .r4nke:not(#gp-gbar-inner *), .GwcnVd:not(#gp-gbar-inner *), .aXBtI:not(#gp-gbar-inner *), .pbeTDb:not(#gp-gbar-inner *), .gZ8fdb:not(#gp-gbar-inner *), .logo-plus-button:not(#gp-gbar-inner *), .ncGL0c:not(#gp-gbar-inner *), .KKGfFf textarea:not(#gp-gbar-inner *), .egHqr:not(#gp-gbar-inner *), .rzhoc:not(#gp-gbar-inner *), .ts6Kr > div[role="combobox"]:not(#gp-gbar-inner *), .pw1uU + div > div[role="dialog"] button[disabled]:not(#gp-gbar-inner *), body[data-viewfamily="EVENT"] .tEhMVd:not(#gp-gbar-inner *), body[data-viewfamily="SCHEDULE"] .tEhMVd:not(#gp-gbar-inner *), body[data-viewfamily="SEARCH"] .tEhMVd:not(#gp-gbar-inner *), body[data-viewfamily="TASKS"] .tEhMVd:not(#gp-gbar-inner *), .Wl4EPb:not(#gp-gbar-inner *), .d3Ig7c:not(#gp-gbar-inner *), .vRGQ0d:not(#gp-gbar-inner *), .TNIwx:not(#gp-gbar-inner *), .vKhere:not(#gp-gbar-inner *), .bcwWP:not(#gp-gbar-inner *), .bcwWP span:not(#gp-gbar-inner *), .VL8IS > div:not(#gp-gbar-inner *), .EuOD6:not(#gp-gbar-inner *), .ALkMzc:not(#gp-gbar-inner *), .YWILgc:not(#gp-gbar-inner *){
@@ -1609,7 +1609,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 	}
 
 	.uHMk6b:not(#gp-gbar-inner *){
-		border-color: #161616 !important;
+		border-color: #1C1C1C !important;
 	}
 
 	.N2RpBe:not(.RDPZE):not(#gp-gbar-inner *)::before, .z80M1.RDPZE:not(#gp-gbar-inner *)::before{
@@ -1740,7 +1740,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/(?:((intl)?\\/(?:com|(?:[a-z]{2}))(?:_(?:com|(?:[a-z]{2})))?\\/googlefinance\\/disclaimer\\/)|finance).*"), regexp("https:\\/\\/(?:www\\.)?google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/finance.*") {
 	/*Finance*/
 	.h-c-header__bar:not(#gp-gbar-inner *), .h-c-footer:not(#gp-gbar-inner *), gm-raised-drawer > div:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	section .h-c-table th:not(#gp-gbar-inner *), section .h-c-table .region:not(#gp-gbar-inner *){
@@ -1795,7 +1795,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/(?:flights|travel|destination).*") {
 	/*Flights, Travel*/
 	.gws-flights__footer-row:not(#gp-gbar-inner *), .gws-flights__footer:not(#gp-gbar-inner *), .gb_Fc:not(#gp-gbar-inner *), .gb_Nc:not(#gp-gbar-inner *), .gb_Rc:not(#gp-gbar-inner *), .U4l7Oe:not(#gp-gbar-inner *), .RjOx0c:not(#gp-gbar-inner *), .gb_xc:not(#gp-gbar-inner *), .DbuWcd.ZjAUM:not(#gp-gbar-inner *), .HOOVE:not(#gp-gbar-inner *), .gb_Sc:not(#gp-gbar-inner *), .plvncb:not(#gp-gbar-inner *), .gQSlLe:not(#gp-gbar-inner *), .C1c7Td:not(#gp-gbar-inner *), .ExHZLe:not(#gp-gbar-inner *), .Ot9r0:not(#gp-gbar-inner *), .gb_Oc .gb_Pc:not(#gp-gbar-inner *), .E4DaWc:not(#gp-gbar-inner *), .pWXB0b:not(#gp-gbar-inner *), .zrEnR > div > div:not(#gp-gbar-inner *), .jPcYM:not(#gp-gbar-inner *), .CnnhKb:not(#gp-gbar-inner *), .QbZN0b:not(#gp-gbar-inner *), .MawWP:not(#gp-gbar-inner *), .G3Hgad:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	.jIIwapdBllK__input-container:not(#gp-gbar-inner *), .UK6Qid:not(#gp-gbar-inner *), .gws-flights-results__results:not(#gp-gbar-inner *), .gws-flights-book__trip-summary-container:not(#gp-gbar-inner *), .gws-flights__modal-underlay-light:not(#gp-gbar-inner *), .IqBfM[data-show-ogb="true"] .SSPGKf:not(#gp-gbar-inner *), .fSSWab.sYt5sc:not(.HDland) .lkvzbb:not(#gp-gbar-inner *)::after, .qvWwrd.vrZ86b:not(#gp-gbar-inner *), form.hu1eAd:not(#gp-gbar-inner *), .CUA6hd:not(#gp-gbar-inner *), .R00Jbd:not(#gp-gbar-inner *), .KdjqBc:not(#gp-gbar-inner *), .d5wCYc:not(#gp-gbar-inner *), .s5eFvb:not(#gp-gbar-inner *), .r3PBI.RDPZE:not(#gp-gbar-inner *), .D2ilic:not(#gp-gbar-inner *), .z5aADe:not(#gp-gbar-inner *), .UQzIad:not(#gp-gbar-inner *), .NFIRFd.qh9ymb:not(#gp-gbar-inner *), .D11z6e:not(#gp-gbar-inner *), .nxP2V:not(#gp-gbar-inner *), .fByOBb:not(#gp-gbar-inner *), .WF3FCf:not(#gp-gbar-inner *), .DewWLc:not(#gp-gbar-inner *){
@@ -1932,7 +1932,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?(?:docs\\.)?google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/forms.*") {
 	/*Forms*/
 	.quantumWizMenuPapermenuMenuItem.isHighlighted:not(#gp-gbar-inner *), nav[data-nav-name="mobile"]:not(#gp-gbar-inner *), .nav-tertiary:not(#gp-gbar-inner *), .nav-tertiary li:not(#gp-gbar-inner *), #maia-footer-local:not(#gp-gbar-inner *), .YfC2Ce:not(#gp-gbar-inner *), .feojCc:not(#gp-gbar-inner *), .zdn8pe:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	.freebirdThemedDarkTab .freebirdThemedDarkTabContent:not(#gp-gbar-inner *), [id ^= T2Ybvb].editable:not(#gp-gbar-inner *){
@@ -2052,7 +2052,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?groups\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?).*") {
 	/*Groups*/
 	#__top_header > div > div:nth-child(1):not(#gp-gbar-inner *), .ukNnZe:not(#gp-gbar-inner *), .QJeIJf:not(#gp-gbar-inner *), .ovXSVd:not(#gp-gbar-inner *), .pGxpHc:not(#gp-gbar-inner *), .EWZcud:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	.F0XO1GC-xb-b:not(#gp-gbar-inner *), .BRXD3B-yb-b:not(#gp-gbar-inner *), .feojCc:not(#gp-gbar-inner *), .I7OXgf:not(#gp-gbar-inner *), .D3oBEe .qTs5Xc:not(#gp-gbar-inner *), .doVXWe > h1:not(#gp-gbar-inner *), .NUZAVc:not(#gp-gbar-inner *), .KPwZRb:not(#gp-gbar-inner *), .xFIUGf:not(#gp-gbar-inner *), .RpYYWb:not(#gp-gbar-inner *), .GAoinb:not(#gp-gbar-inner *), .gXHEcc:not(#gp-gbar-inner *), .CYSZae:not(#gp-gbar-inner *), .F7xgad:not(#gp-gbar-inner *), .AdRemc:not(#gp-gbar-inner *), .mfn36d .I9OJHe .snByac:not(#gp-gbar-inner *), .EzxZsf:not(#gp-gbar-inner *), .APVAzc:not(#gp-gbar-inner *), .Eg6YNd:not(#gp-gbar-inner *), .hj86yb > h1:not(#gp-gbar-inner *), [class*="-vyw7Sc-Psmogf"]:not(#gp-gbar-inner *), #gb[role="banner"]:not(#gp-gbar-inner *){
@@ -2156,7 +2156,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/interests.*") {
 	/*Interests*/
 	.piwE7 > .sgPenc:not(#gp-gbar-inner *), .BjLvxe:not(#gp-gbar-inner *), .JBMFfd:not(#gp-gbar-inner *){
-		background: #161616 !important;
+		background: #1C1C1C !important;
 	}
 
 	.dpBgUe:not(#gp-gbar-inner *), .cTh4gf span div > button:not(#gp-gbar-inner *), .cTh4gf div ul:not(#gp-gbar-inner *), .NwF6Sd:not(#gp-gbar-inner *), .Y7usre:not(#gp-gbar-inner *), .wBIrzf button:not(#gp-gbar-inner *), .wBIrzf div > ul:not(#gp-gbar-inner *), .KSWLj:not(#gp-gbar-inner *), .Ix9rie div > div:not(#gp-gbar-inner *), .V0wXVe:not(#gp-gbar-inner *), .nalYvf:not(#gp-gbar-inner *), .z4OW4d:not(#gp-gbar-inner *), .zopPae.dnFGwf:not(#gp-gbar-inner *), div[id^="ucc"][data-menu-uid^="ucc-"]:not(#gp-gbar-inner *), .dnFGwf:not(#gp-gbar-inner *), .kQgOHe:not(#gp-gbar-inner *), .D4oXL:not(#gp-gbar-inner *), .DuPp1d.uN9vBc.hyVnSc:not(#gp-gbar-inner *), #ucj-2[data-stay-open-after-action]:not(#gp-gbar-inner *), .m1Q3If div div[role="dialog"]:not(#gp-gbar-inner *), .m1Q3If div div[role="dialog"] div:has(h2):not(#gp-gbar-inner *), .Ct40Lb:not(#gp-gbar-inner *), .Yo8bWb:not(#gp-gbar-inner *), .bFlMqb:not(#gp-gbar-inner *), .H3jD1d:not(#gp-gbar-inner *){
@@ -2222,7 +2222,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?issuetracker\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/.*") {
 	/*Issuetracker*/
 	.kd-appbar:not(#gp-gbar-inner *), .color-field.status-4:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	.bv2-material .bv2-issue-metadata:not(#gp-gbar-inner *), .bv2-issue-title-box-nowrap:not(#gp-gbar-inner *), .bv2-related-issues-tab:not(#gp-gbar-inner *), .bv2-edit-issue-details-scroll:not(#gp-gbar-inner *), [id ^= "id-details-"]:not(#gp-gbar-inner *), .header-row:not(#gp-gbar-inner *), .mat-autocomplete-trigger:not(#gp-gbar-inner *), .picker.modal-dialog-bg:not(#gp-gbar-inner *), .bg-main:not(#gp-gbar-inner *), .bg-off-main:not(#gp-gbar-inner *), .color-field.status-6:not(#gp-gbar-inner *), .color-field.status-7:not(#gp-gbar-inner *), .color-field.status-8:not(#gp-gbar-inner *), .color-field.status-9:not(#gp-gbar-inner *){
@@ -2281,11 +2281,11 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?(?:maps\\.|timeline\\.|profilewidgets\\.)?google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/(?:alternate-profile|cbk|local\\/business|local\\/imagery|local\\/place|local\\/review|local\\/content|localservices|maps|roadeditor|services|streetview).*") {
 	/*Maps*/
 	.section-header-grey:not(#gp-gbar-inner *), div[style*="background-color: rgb(255\, 255\, 255)"]:not(#gp-gbar-inner *), div[style="background-color: rgb(245\, 245\, 245);"]:not(#gp-gbar-inner *), [class*="-bottom-pane"]:not(#gp-gbar-inner *), .widget-pane-content:not([jsaction]):not(#gp-gbar-inner *), #pane>[class*="pane"]:not(#gp-gbar-inner *), [class*="A1cqac-"]:not(#gp-gbar-inner *), [class*="uc9cqe-"]:not(#gp-gbar-inner *), .section-layout[style*="background-color: rgb(250\, 250\, 250)"]:not(#gp-gbar-inner *), [class*="-header-white"]:not(#gp-gbar-inner *), .x05QPc-header-TY4T7c:not(#gp-gbar-inner *), .DAdBuc:not(#gp-gbar-inner *), #pane>div>[class*="-pane-content"]:not(#gp-gbar-inner *), [role="main"]>[class*="-omnibox"]:not(#gp-gbar-inner *), #bottom-pane [class*="pane-content"]:not(#gp-gbar-inner *), .s35xed>div:not(#gp-gbar-inner *), #pane+div>div[style^= "width"] [class*="pane-content"]:not(#gp-gbar-inner *), #rap-card+#pane>div:not(#gp-gbar-inner *), .ktP5xe:not(#gp-gbar-inner *), .fn8vub:not(#gp-gbar-inner *), .crixKe:not(#gp-gbar-inner *), .SuV3fd:not(#gp-gbar-inner *), .xoLGzf:not(#gp-gbar-inner *), .dBl9De:not(#gp-gbar-inner *), .dp9cUc:not(#gp-gbar-inner *), .b1Ugz:not(#gp-gbar-inner *), div:not(#assistive-chips)> div > div > div > .e07Vkf8:not(#gp-gbar-inner *), .sYmAxe:not(#gp-gbar-inner *), #mapDiv>div div[style^="background-color: white;"]:not(#gp-gbar-inner *), /*.WmlTxc*/ .Pf6XLe:not(#gp-gbar-inner *), .bXBVC:not(#gp-gbar-inner *), .xCBvsb:not(#gp-gbar-inner *), .U8YH1e:not(#gp-gbar-inner *), .wFOa2b:not(#gp-gbar-inner *), .UUjmc:not(#gp-gbar-inner *), .jq95K:not(#gp-gbar-inner *), .RmaIBf:not(#gp-gbar-inner *), .Nn261:not(#gp-gbar-inner *), .CPtD3c:not(#gp-gbar-inner *), #annotation-pane+div>.kA9KIf:not(#gp-gbar-inner *), .directions-mode-distance-time:not(#gp-gbar-inner *), .mq2lA:not(#gp-gbar-inner *), .VRbUD:not(#gp-gbar-inner *), .scene-footer:not(#gp-gbar-inner *), .srXS8c:not(#gp-gbar-inner *), .OqCZI:not(#gp-gbar-inner *), .h-c-header__bar:not(#gp-gbar-inner *), .h-c-footer:not(#gp-gbar-inner *), .timeline-app-bar-header:not(#gp-gbar-inner *), .vDspxb:not(#gp-gbar-inner *), .jwyhYd:not(#gp-gbar-inner *), .XGEUoc:not(#gp-gbar-inner *), .PACTRd:not(#gp-gbar-inner *), .EnboWc:not(#gp-gbar-inner *), body div>#legendPanel:not(#gp-gbar-inner *), #featurecardPanel:not(#gp-gbar-inner *), .f6FIGf:not(#gp-gbar-inner *), .QOU2Hc:not(#gp-gbar-inner *), #featurecardPanel [class $= "-LJTIlf"]:not(#gp-gbar-inner *), #legendPanel [class $= "X9G3K-tJHJj"]:has([aria-label]):not(#gp-gbar-inner *), .tTVLSc>.miFGmb:not(#gp-gbar-inner *), .QA0Szd-mzNpsf-rymPhb:not(#gp-gbar-inner *), .QA0Szd-rymPhb:not(#gp-gbar-inner *), .QA0Szd-s2gQvd-bN97Pc:not(#gp-gbar-inner *), header[role="banner"][style*="background-color:rgba(255\,255\,255"]:not(#gp-gbar-inner *), .glue-header__cta:not(#gp-gbar-inner *), .miFGmb:not(.k7jAl.miFGmb.lJ3Kh):not(.lsLI2d):not(#gp-gbar-inner *), .miFGmb:not(.lsLI2d):not(#gp-gbar-inner *), #docs-editor > div:not(#butterbar-container) > div > div:not(#gp-gbar-inner *), .RdfHX:not(#gp-gbar-inner *){
-		background: #161616 !important;
+		background: #1C1C1C !important;
 	}
 	
 	.s4gWuf .lSDxNd:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	body:not(.EIlDfe):not(#gp-gbar-inner *), [class*="-settings-pane"]:not(#gp-gbar-inner *), .section-listbox-root:not(#gp-gbar-inner *), .section-list-item-button:not(#gp-gbar-inner *), .section-listbox .section-cardbox:not(#gp-gbar-inner *), .section-omnibox-spacer.noprint:not(#gp-gbar-inner *), .loading-pane:not(#gp-gbar-inner *), .loading-pane-section-empty-tab-title-grey:not(#gp-gbar-inner *), .goog-reviews-write-widget-modal-bg:not(#gp-gbar-inner *), .footer-tile:not(#gp-gbar-inner *), #inputtools .ita-kd-icon-button:not(#gp-gbar-inner *), .modal-border:not(#gp-gbar-inner *), .modal-dialog-bg:not(#gp-gbar-inner *), .trip-runway:not(#gp-gbar-inner *), .section-suggestions:not(#gp-gbar-inner *), .suggestions:not(#gp-gbar-inner *), .ozj7Vb3wnYq__section-topappbar-border:not(#gp-gbar-inner *), #issue-card-header:not(#gp-gbar-inner *), .OoU4od:not(#gp-gbar-inner *), .section-layout.section-layout-root:not(#gp-gbar-inner *), .directions-mode-separator .directions-mode-distance-time:not(#gp-gbar-inner *), [class*="_section-topappbar"]:not([aria-label]):not(#gp-gbar-inner *), .qsSAAe:not(#gp-gbar-inner *), .section-sticky-header-container:not(#gp-gbar-inner *), .alias-input-container:not(#gp-gbar-inner *), .geoUxComponentsAppbarBody:not(#gp-gbar-inner *), [class*="_section-omnibox-spacer"]:not(#gp-gbar-inner *), [class*="__section-compact-filters"]:not(#gp-gbar-inner *), .section-homescreen-expand-entrypoint:not(#gp-gbar-inner *), [class*="__section-suggestions"]:not(#gp-gbar-inner *), [class*="_ambient-card-section"]:hover:not(#gp-gbar-inner *), [class $= "_widget-bottom-pane-background"]:not(#gp-gbar-inner *), .Xmhro:not(#gp-gbar-inner *), .xkXnM:not(#gp-gbar-inner *), .id-scene:not(#gp-gbar-inner *), [class $= "_loading-pane"]:not(#gp-gbar-inner *), .widget-bottom-pane:not(#gp-gbar-inner *), [class*="_inner-container"]:not(#gp-gbar-inner *), [class $= "widget-hovercard"]:not(#gp-gbar-inner *), .uUJuub:not(#gp-gbar-inner *), .section-hotel-tip-container:not(#gp-gbar-inner *), [class*="-bottom-pane-"]:not(#gp-gbar-inner *), [class*="GaSlwc-uhFGfc-WsjYwc-open"]:not(#gp-gbar-inner *), .uxOu9-sTGRBb-LgbsSe:hover:not(#gp-gbar-inner *), [class*="XeX5ze-"]:not(#gp-gbar-inner *), [class*="-DX2B6-share"]:not(#gp-gbar-inner *), [class*="n1UuX-header"]:not(#gp-gbar-inner *), [class $= "-bottom-pane"] .widget-pane-content:not(#gp-gbar-inner *), .goog-date-picker:not(#gp-gbar-inner *), #alias-searchbox:not(#gp-gbar-inner *), #searchbox[class*="-searchbox"]:not(#gp-gbar-inner *), .ONmJCb-VtOx3e:not(#gp-gbar-inner *), .tIODN.s4HYse:not(#gp-gbar-inner *), [class $= "ncnKe-header"]:not(#gp-gbar-inner *), .U5xfxc:not(#gp-gbar-inner *), .LenJEf:not(#gp-gbar-inner *), .yu5kgd:not(#gp-gbar-inner *), .n0A5E:not(#gp-gbar-inner *), .UIOtfb:not(#gp-gbar-inner *), .kKWzSd:not(#gp-gbar-inner *), .FCeGud:not(#gp-gbar-inner *), .gmnoprint > div > div:not(#gp-gbar-inner *), /* .lSDxNd, */.haEqGb button[disabled]:not(#gp-gbar-inner *), .Omx71b:not(#gp-gbar-inner *), .info-box:not(#gp-gbar-inner *), .ODXihb:not(#gp-gbar-inner *), .NP7r5c:not(#gp-gbar-inner *), .d0UoQ:not(#gp-gbar-inner *), .bTj1B:not(#gp-gbar-inner *), .XHUDcb:not(#gp-gbar-inner *), .U39Pmb:not(#gp-gbar-inner *), .sKH0qb:not(#gp-gbar-inner *), .fixed-jumpnav:not(#gp-gbar-inner *), .xUNLkc:not(#gp-gbar-inner *), .pw1uU + div > div:not(.ZABK7):not(#gp-gbar-inner *), .fIO7n.picker-dialog:not(#gp-gbar-inner *), .XcbI4e:not(#gp-gbar-inner *), .NUTAPc:not(#gp-gbar-inner *), :not(.lsLI2d) > .e07Vkf:not(#gp-gbar-inner *), .LdrGqe:not(#gp-gbar-inner *), .V2xD3e:not(#gp-gbar-inner *), .PCUzIf:not(#gp-gbar-inner *), .JgEiLc:not(#gp-gbar-inner *), .Qyw4Zb:not(#gp-gbar-inner *), .JBpuLe:not(#gp-gbar-inner *), .obhoOb:not(#gp-gbar-inner *), .UyRfKc:not(#gp-gbar-inner *), .LRBp9d:not(#gp-gbar-inner *), .AHtA5e:not(#gp-gbar-inner *), .qLPauf.NIUBGe:not(#gp-gbar-inner *), .cKbrCd:not(#gp-gbar-inner *), .vH2v5:not(#gp-gbar-inner *), .XltNde:not(#gp-gbar-inner *), .noYW3:not(#gp-gbar-inner *){
@@ -2301,7 +2301,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 	}
 
 	.location-history-setting-nugget .nugget-text-container.paused:not(#gp-gbar-inner *), .VfPpkd-IE5DDf:not(#gp-gbar-inner *){
-		background: #161616 !important;
+		background: #1C1C1C !important;
 		opacity: 0.5 !important;
 	}
 
@@ -2525,7 +2525,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?(?:marketingplatform\\.)?google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/about.*") {
 	/*Marketing platform*/
 	.h-c-header__bar:not(#gp-gbar-inner *), .h-c-footer:not(#gp-gbar-inner *){
-		background-color: #161616 !important
+		background-color: #1C1C1C !important
 	}
 
 	.gmp-page:not(#gp-gbar-inner *), .dd-menu:not(#gp-gbar-inner *), .gmp-header .h-c-header__nav-li-link:focus:not(#gp-gbar-inner *), .photo-tout__content .h-c-grid:not(#gp-gbar-inner *), .photo-tout__content .h-c-grid:not(#gp-gbar-inner *), .photo-tout__background .h-c-grid:not(#gp-gbar-inner *), .h-c-footer__link:focus:not(#gp-gbar-inner *){
@@ -2576,7 +2576,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?myactivity\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?).*"), regexp("https:\\/\\/(?:www\\.)?google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/(?:intl\\/(?:com|(?:[a-z]{2}))(?:\\.[a-z]{2})?|account|history).*") {
 	/*My activity*/
 	md-toolbar.md-default-theme:not(.md-menu-toolbar):not(#gp-gbar-inner *), md-toolbar:not(.md-menu-toolbar):not(#gp-gbar-inner *), .fp-search-filter-content:not(#gp-gbar-inner *), md-toolbar.fp-sidenav-toolbar:not(#gp-gbar-inner *), div[role="region"]:not(#gp-gbar-inner *), .X1clqd:not(#gp-gbar-inner *), .h-c-header__bar:not(#gp-gbar-inner *), .h-c-footer:not(#gp-gbar-inner *), .terms-header:not(#gp-gbar-inner *), .pGxpHc > header#gb:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	md-dialog.main-column:not(#gp-gbar-inner *), md-content.main-column:not(#gp-gbar-inner *), .fp-timeline-time:not(#gp-gbar-inner *), div.fp-search-toolbar-input:not(#gp-gbar-inner *), .gacct-hero-video-clip:not(#gp-gbar-inner *){
@@ -2656,7 +2656,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?news\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?).*") {
 	/*News*/
 	.gb_Ae:not(#gp-gbar-inner *), .gb_8b:hover:not(#gp-gbar-inner *), .MHCEAMC-L-e:not(#gp-gbar-inner *), .pR8Lpf:not(#gp-gbar-inner *), .t1Fcqe:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	.zQTmif:not(#gp-gbar-inner *), #yDmH0d:not(#gp-gbar-inner *), .MHCEAMC-I-b:not(#gp-gbar-inner *), .MHCEAMC-N-d:not(#gp-gbar-inner *), body > div:nth-child(3) > div:nth-child(2) > div:nth-child(1)[style ^= "position: absolute; left: 0px; top: 0px"]:not(#gp-gbar-inner *){
@@ -2719,7 +2719,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?(?:pay|payments)\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/(?:intl|gp|payments).*") {
 	/*Pay and Payments*/
 	.b3-standalone-container-navigation:not(#gp-gbar-inner *), .b3-standalone-container-footer:not(#gp-gbar-inner *), .flyout:not(#gp-gbar-inner *), .b3-standalone-container-content:not(#gp-gbar-inner *), .IRrVdf:not(#gp-gbar-inner *), .xEdDie:not(#gp-gbar-inner *), .cookie-bar:not(#gp-gbar-inner *), .header--promo-bar:not(#gp-gbar-inner *), .header.hide:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	body.main-body.billing-seamless.popup-mode:not(#gp-gbar-inner *), .KL4X6e:not(#gp-gbar-inner *), .EDECTb:not(#gp-gbar-inner *){
@@ -2798,7 +2798,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?passwords\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?).*") {
 	/*Passwords*/
 	.ikIPKb:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	:not(.StrnGf-VfPpkd-rymPhb-OWXEXe-tPcied-hXIJHe) > .StrnGf-VfPpkd-rymPhb-ibnC6b:not(#gp-gbar-inner *)::before, :not(.StrnGf-VfPpkd-rymPhb-OWXEXe-tPcied-hXIJHe) > .StrnGf-VfPpkd-rymPhb-ibnC6b:not(#gp-gbar-inner *)::after, .gShwAe:not(#gp-gbar-inner *){
@@ -2841,7 +2841,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?patents\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?).*"), regexp("https:\\/\\/(?:www\\.)?google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/patents.*") {
 	/*Patents*/
 	header.search-header:not(#gp-gbar-inner *), #footer.search-footer:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	overlay-tooltip:not(#gp-gbar-inner *), #searchHelp.search-ui:not(#gp-gbar-inner *){
@@ -2900,7 +2900,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?(policies|reportcontent)\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?).*") {
 	/*Policies*/
 	.nma0Wb:not(#gp-gbar-inner *), .Uh4Mac:not(#gp-gbar-inner *), .oTqstd:not(#gp-gbar-inner *), #gb[role="banner"]:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	.iCthae:not(#gp-gbar-inner *), .VJdlxb th:not(#gp-gbar-inner *){
@@ -2947,7 +2947,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?photos\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?).*"), regexp("https:\\/\\/(?:www\\.)?google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/photos\\/about.*"), regexp("https:\\/\\/(?:www\\.)?google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/intl\\/(?:com|(?:[a-z]{2}))\\/photos\\/about.*"), regexp("https:\\/\\/(?:www\\.)?get\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/albumarchive.*") {
 	/*Photos*/
 	.QtDoYb:not(.MJvped):not(#gp-gbar-inner *), c-wiz > c-wiz > .QtDoYb:not(#gp-gbar-inner *), .l8aFYc .NRbSyd:not(#gp-gbar-inner *), .dhgHyf:not(#gp-gbar-inner *), #js-header.header:not(#gp-gbar-inner *), .footer:not(#gp-gbar-inner *), .QtDoYb:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	.nCD66e .e6F8je:not(#gp-gbar-inner *), .u3UfMd:not(#gp-gbar-inner *), .section--bg-light:not(#gp-gbar-inner *), html:not(#gp-gbar-inner *), .uj0V6:not(#gp-gbar-inner *), .WjkDEe:not(#gp-gbar-inner *), .MmQ8tc:not(#gp-gbar-inner *), .uGCjIb:not(#gp-gbar-inner *), .tL9Q4c:not(#gp-gbar-inner *), .ts6Kr > div li:not(#gp-gbar-inner *), .pnqisc:not(#gp-gbar-inner *){
@@ -3051,7 +3051,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 	/*Play*/
 
 	.S3WLMd:not(#gp-gbar-inner *), .h-c-header__bar:not(#gp-gbar-inner *), .h-c-footer:not(#gp-gbar-inner *), header.header:not(#gp-gbar-inner *), .footer__lower:not(#gp-gbar-inner *), .f3460e:not(#gp-gbar-inner *), .xXuVfc:not(#gp-gbar-inner *), .kFwPee [style="background-color: rgb(232\, 234\, 237);"]:not(#gp-gbar-inner *), header > div > div[class^="gb"]:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	.gb_Se:not(#gp-gbar-inner *), .section__get-started > div:not(#gp-gbar-inner *), .v2n7Nd:not(:disabled):not(#gp-gbar-inner *), .KKjvXb > .Gggmbb:not(#gp-gbar-inner *){
@@ -3153,7 +3153,7 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?(?:images\\.|lens\\.)?google\\.(?:com|[a-z]{2}(?:\\.[a-z]{2})?)\\/?(?:\\?&(?:bih|gfe_|pccc|hl=|client=|pli|authuser)|preferences|finance|save|covid19|imgres|search|v3\\/upload|webhp|\\?safe|imghp|tbm=pts|authuser|gws_rd=ssl)?.*") {
 	/*Search subpages*/
 .products-nav-outer-wrapper:not(#gp-gbar-inner *), .header:not(#gp-gbar-inner *), .hcfe-content > footer:not(#gp-gbar-inner *), #hdtb.hdtba > #hdtbMenus:not(#gp-gbar-inner *), .flt-calendar:not(#gp-gbar-inner *), .hudp-container:not(#gp-gbar-inner *), .hudp-disabled:not(#gp-gbar-inner *), .hudp-disabled:hover:not(#gp-gbar-inner *), #flt-sponsored-tooltip:not(#gp-gbar-inner *), .MEdqYd:not(#gp-gbar-inner *), .feqqG:not(#gp-gbar-inner *), .qbtbp:not(#gp-gbar-inner *), .sl:not(#gp-gbar-inner *), .CngMb:not(#gp-gbar-inner *), .h-c-header__bar:not(#gp-gbar-inner *), .h-c-header__bar-underside:not(#gp-gbar-inner *), .h-c-footer:not(#gp-gbar-inner *), .imso-shw:not(#gp-gbar-inner *), .rg_anbg:not(#gp-gbar-inner *), .rg_ilmbg:not(#gp-gbar-inner *), .hVgDpd:not(#gp-gbar-inner *), #fbar:not(#gp-gbar-inner *), .glue-header .glue-header__bar:not(#gp-gbar-inner *), .glue-footer:not(#gp-gbar-inner *), .glue-footer__linkm:not(#gp-gbar-inner *), .c93Gbe:not(#gp-gbar-inner *), .sfbg:not(#gp-gbar-inner *), .yg51vc:not(#gp-gbar-inner *), .RdRNsc:disabled:not(#gp-gbar-inner *), .VfPpkd-LgbsSe:disabled:not(#gp-gbar-inner *), .WzenHd:not(#gp-gbar-inner *), .dXdtIf:not(#gp-gbar-inner *), .T1diZc:not(#gp-gbar-inner *), .htyage:not(#gp-gbar-inner *), .tvNLYc:not(#gp-gbar-inner *), .TkL5bb:not(#gp-gbar-inner *), .KL4X6e:not(#gp-gbar-inner *), .BqbP5c:not(#gp-gbar-inner *), .fW22Te:not(#gp-gbar-inner *), .ea0Lbe:not(#gp-gbar-inner *), .qrhhI:not(#gp-gbar-inner *), .Ey3sxb:not(#gp-gbar-inner *), .wr8GYd:not(#gp-gbar-inner *), .header-hidden > .main > .footer:not(#gp-gbar-inner *), .TGGJzf:not(#gp-gbar-inner *), .JgfpDb .b0vFpe:not(#gp-gbar-inner *), .nHPTn:not(#gp-gbar-inner *), .mfkH6e:not(#gp-gbar-inner *), .vC9buf:not(#gp-gbar-inner *), .rNl3nf:not(#gp-gbar-inner *), .UafVBb:not(#gp-gbar-inner *), .tHGbse:not(#gp-gbar-inner *), .goog-reviews-write-widget-modal-content:not(#gp-gbar-inner *), .dodTBe:not(#gp-gbar-inner *), .JiJthb:not(#gp-gbar-inner *), .pGxpHc > #gb[role="banner"]:not(#gp-gbar-inner *), .EIlDfe:has(.d8Etdd.LcUz9d):has(.lv4IMd.UuEGge):not(#gp-gbar-inner *), .Fgyi2e:not(#gp-gbar-inner *), .rfiSsc:not(#gp-gbar-inner *), .b53XLe .Xx7Mif:not(#gp-gbar-inner *), .pHpOfb > .vVRw1d:not(#gp-gbar-inner *), .chr-header-v3__wrapper:not(#gp-gbar-inner *), .chr-footer:not(#gp-gbar-inner *), .umwSD:not(#gp-gbar-inner *), .glue-cookie-notification-bar:not(#gp-gbar-inner *), .glue-footer__link:not(#gp-gbar-inner *), .OEFRze .oVRaIc:not(#gp-gbar-inner *), .ud4r5d:not(#gp-gbar-inner *), .m98u4c:not(#gp-gbar-inner *), .BkX6sc:not(#gp-gbar-inner *), .nxi4gb:not(#gp-gbar-inner *){
-	background-color: #161616 !important;
+	background-color: #1C1C1C !important;
 }
 
 .Z8r5Gb:not(#gp-gbar-inner *), .czHJJ:not(#gp-gbar-inner *), .e8xEad:not(#gp-gbar-inner *), .MEdqYd:hover:not(#gp-gbar-inner *), .feqqG:hover:not(#gp-gbar-inner *), .gb_E.gb_8f:not(#gp-gbar-inner *), .mlo-c:not(#gp-gbar-inner *), input[name="image_url"]:not(#gp-gbar-inner *), .Hr51pb .tb_l:not(#gp-gbar-inner *), .cdr_bg:not(#gp-gbar-inner *), .rg_anbg:not(#gp-gbar-inner *), .rg_ilmbg:not(#gp-gbar-inner *), .goog-reviews-write-widget-modal-bg:not(#gp-gbar-inner *), .sh-rso__modal:not(#gp-gbar-inner *), .dw-sbi:not(#gp-gbar-inner *), .LNn04b:not(#gp-gbar-inner *), .vXQmIe:not(#gp-gbar-inner *), textarea#ipwqjc:not(#gp-gbar-inner *), .Xz5tfb.aID8W:not(#gp-gbar-inner *), .FRQ4Od:not(#gp-gbar-inner *), .OouJcb:not(#gp-gbar-inner *), .rzG2be:not(#gp-gbar-inner *), .goog-date-picker-date:hover:not(#gp-gbar-inner *), .c0dB4b:not(#gp-gbar-inner *), #red.med:not(#gp-gbar-inner *), input.qKoqyc:not(#gp-gbar-inner *), .p29Ibb:not(#gp-gbar-inner *), .hSGhwc:not(#gp-gbar-inner *), .XwutFc:not(#gp-gbar-inner *), .prYvje:not(#gp-gbar-inner *), .iQNRWdc:not(#gp-gbar-inner *), .X26Mkf > textarea:not(#gp-gbar-inner *), .gIYJUc:not(#gp-gbar-inner *), .rl_tile-group:not(#gp-gbar-inner *), .DJbVFb:not(#gp-gbar-inner *), .pT0Pod:not(#gp-gbar-inner *), [class$="__weekday-labels"]:not(#gp-gbar-inner *), .cBoDed:not(#gp-gbar-inner *), .F0mDWe:not(#gp-gbar-inner *), .vYOkbe:not(#gp-gbar-inner *), .wLXL7c:not(#gp-gbar-inner *), .S9imif.z8gr9e:not(#gp-gbar-inner *), .BVHFOd:not(#gp-gbar-inner *), .skqfWb:not(#gp-gbar-inner *), .fp-f:not(#gp-gbar-inner *), .xAmryf:not(#gp-gbar-inner *), .kzKS5c:not(#gp-gbar-inner *), .MhzMZd:not(#gp-gbar-inner *), .Hg3NO:disabled .lv7K9c:not(#gp-gbar-inner *), .Hg3NO[disabled]:not([disabled="false"]) .lv7K9c:not(#gp-gbar-inner *), .GpOaz:not(#gp-gbar-inner *), .jnyxRd:not(#gp-gbar-inner *), .j2uXpd:not(#gp-gbar-inner *), .EIlDfe:has(#thank-you-title):not(#gp-gbar-inner *), .main-dashboard-table .product-row td:not(#gp-gbar-inner *), [class*="__table-rows-component"] td:not(#gp-gbar-inner *), .mXZJrb:not(#gp-gbar-inner *), .XOxW7d:not(#gp-gbar-inner *), .t1tLGb:not(#gp-gbar-inner *), .ePC2Cf:not(#gp-gbar-inner *){
@@ -3253,11 +3253,11 @@ button[disabled] .NMm5M:not(#gp-gbar-inner *){
 }
 
 .gws-travel-calendar__first-day-of-month:not(#gp-gbar-inner *){
-	background: linear-gradient(to right, #161616, #4C4C4C) !important;
+	background: linear-gradient(to right, #1C1C1C, #4C4C4C) !important;
 }
 
 .gws-travel-calendar__last-day-of-month:not(#gp-gbar-inner *){
-	background: linear-gradient(to right, #4C4C4C, #161616) !important;
+	background: linear-gradient(to right, #4C4C4C, #1C1C1C) !important;
 }
 
 .language_list_languages.tw-ll-top:not(#gp-gbar-inner *)::after, .lKiHcd:not(#gp-gbar-inner *)::after{
@@ -3895,7 +3895,7 @@ textarea.gLFyf:not(#gp-gbar-inner *){
 	}
 
 	#gs_hdr:not(#gp-gbar-inner *), #gs_hdr_act_ab:not(#gp-gbar-inner *), .gs_hdr_act_am:hover:not(#gp-gbar-inner *), .gs_hdr_act_am:focus:not(#gp-gbar-inner *), #gs_ab:not(#gp-gbar-inner *), #gs_hdr_drw:not(#gp-gbar-inner *), .gs_md_li:not(#gp-gbar-inner *), .gs_in_cb.gs_md_li:not(#gp-gbar-inner *), .gs_md_li:link:not(#gp-gbar-inner *), .gs_md_li:visited:not(#gp-gbar-inner *), #gs_ftr:not(#gp-gbar-inner *), #maia-header:not(#gp-gbar-inner *), #maia-footer:not(#gp-gbar-inner *), #gs_md_s:not(#gp-gbar-inner *), .gs_md_hdr:not(#gp-gbar-inner *){
-		background: #161616 !important;
+		background: #1C1C1C !important;
 	}
 
 	.gs_md_li:hover:not(#gp-gbar-inner *), .gs_md_li:focus:not(#gp-gbar-inner *), .gs_md_li:hover:not(#gp-gbar-inner *), .gs_md_li:focus:not(#gp-gbar-inner *), #gs_num-b:not(#gp-gbar-inner *), button:not([type="submit"]):not(#gp-gbar-inner *), .gs_md_d:not(#gp-gbar-inner *), .gs_md_ac li:not(#gp-gbar-inner *), .gsc_oic_cb:not(#gp-gbar-inner *), .gs_in_ib.gs_btn_half.gs_btn_lsb:not(#gp-gbar-inner *), .gsc_mp_table:not(#gp-gbar-inner *), .gs_btn_lsb:not(#gp-gbar-inner *), .gs_md_li:not(#gp-gbar-inner *)::before, #gsc_a_trh:not(#gp-gbar-inner *), .gsc_rsb_aa:hover:not(#gp-gbar-inner *), .gsc_rsb_aa:active:not(#gp-gbar-inner *), .gs_erl_sd:not(#gp-gbar-inner *), #gsc_mlbl_table th:not(#gp-gbar-inner *), .gsc_mic_card:not(#gp-gbar-inner *), #gs_alert_scb:not(#gp-gbar-inner *){
@@ -3985,7 +3985,7 @@ textarea.gLFyf:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?(?:docs\\.)?google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?).*") {
 	/*Spreadsheet*/
 	.Yalane:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	.hA3Ymb:not(#gp-gbar-inner *), .VY1pEb:not(#gp-gbar-inner *), .docs-loading-screen-msg:not(#gp-gbar-inner *){
@@ -3998,7 +3998,7 @@ textarea.gLFyf:not(#gp-gbar-inner *){
 
 	& when (@darker_spreadsheet = sp_darker) {
 		.kix-page.kix-page-paginated:not(#gp-gbar-inner *), .kix-page-content-wrapper:not(#gp-gbar-inner *){
-			background-color: #161616 !important;
+			background-color: #1C1C1C !important;
 		}
 
 		.kix-tablerenderer-td[style*="rgb(0\, 0\, 0)"]:not(#gp-gbar-inner *){
@@ -4014,7 +4014,7 @@ textarea.gLFyf:not(#gp-gbar-inner *){
 		}
 
 		.header:not(#gp-gbar-inner *), ul.nav-tertiary:not(#gp-gbar-inner *), ul.nav-tertiary a:not(#gp-gbar-inner *), nav[data-nav-name="mobile"]:not(#gp-gbar-inner *), #maia-footer-local:not(#gp-gbar-inner *), #maia-footer-global:not(#gp-gbar-inner *){
-			background-color: #161616 !important;
+			background-color: #1C1C1C !important;
 		}
 
 		.maia-locales > label > select:not(#gp-gbar-inner *), .headline-cta-section:not(#gp-gbar-inner *){
@@ -4076,11 +4076,11 @@ textarea.gLFyf:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?script\\.google\\.(?:com|(?:[a-z]{2}))(?:\\.[a-z]{2})?.*"), regexp("https:\\/\\/(?:www\\.)?google\\.(?:com|(?:[a-z]{2}))(?:\\.[a-z]{2})?\\/script\\/.*") {
 	/*Script*/
 	#docs-chrome:not(#gp-gbar-inner *), .status-bar:not(#gp-gbar-inner *), .h3yMzd:not(#gp-gbar-inner *), .SBFkwd:not(#gp-gbar-inner *), .monaco-editor:not(#gp-gbar-inner *), .monaco-editor-background:not(#gp-gbar-inner *), .monaco-editor .inputarea.ime-input:not(#gp-gbar-inner *), .CodeMirror:not(#gp-gbar-inner *), .cAmiad:not(#gp-gbar-inner *), .Oy560:not(#gp-gbar-inner *), .Uck9dc:not(#gp-gbar-inner *), .td5WLe:not(#gp-gbar-inner *), .N3bjuf:not(#gp-gbar-inner *), .ZBGfLd:not(#gp-gbar-inner *), .TlbHkc:not(#gp-gbar-inner *), .YQeNmf.TlbHkc:not(#gp-gbar-inner *), .YQeNmf:not(#gp-gbar-inner *), .XOJxwb:not(#gp-gbar-inner *), header[role="banner"][style*="background-color:rgba(255\,255\,255"]:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	#maia-header:not(#gp-gbar-inner *){
-		background: #161616 !important;
+		background: #1C1C1C !important;
 	}
 
 	.FBElVb:not(#gp-gbar-inner *), #docs-toolbar-wrapper:not(#gp-gbar-inner *), .maestro-dialog:not(#gp-gbar-inner *), .maestro-dialog .dialogMiddle:not(#gp-gbar-inner *), .maestro-dialog .Caption:not(#gp-gbar-inner *), .glass-panel:not(#gp-gbar-inner *), .goog-modalpopup:not(#gp-gbar-inner *), .modal-dialog:not(#gp-gbar-inner *), .modal-dialog-title:not(#gp-gbar-inner *), .modal-dialog-content:not(#gp-gbar-inner *), .goog-modalpopup-bg:not(#gp-gbar-inner *), .modal-dialog-bg:not(#gp-gbar-inner *), .gwt-TextBox:not(#gp-gbar-inner *), .search-box:not(#gp-gbar-inner *), .jfk-tooltip:not(#gp-gbar-inner *), .CtOYUe:not(#gp-gbar-inner *), [role="search"][method="get"]:not(#gp-gbar-inner *), .Y7MQLd:not(#gp-gbar-inner *), .z9lUof:not(#gp-gbar-inner *), .MGURAc:not(#gp-gbar-inner *), .ncFHed:not(#gp-gbar-inner *), .VfPpkd-fmcmS-yrriRe-OWXEXe-INsAgc .VfPpkd-fmcmS-wGMbrd:not(#gp-gbar-inner *), .cfWmIb.orScbe:not(#gp-gbar-inner *), .mmfb:not(#gp-gbar-inner *){
@@ -4239,7 +4239,7 @@ textarea.gLFyf:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?translate\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?).*"), regexp("https:\\/\\/(?:www\\.)?\\w+(-\\w+)*\\.translate\\.goog.*") {
 	/*Translate*/
 	:not(#gp-gbar-inner *)::selection, .paper-drawer-panel-0 iron-selector.paper-drawer-panel > #drawer.paper-drawer-panel:not(#gp-gbar-inner *), #maia-header:not(#gp-gbar-inner *), #maia-footer-global:not(#gp-gbar-inner *), .ita-kd-dropdown-menu:not(#gp-gbar-inner *), .gb_wc:not(#gp-gbar-inner *), .gb_zc:not(#gp-gbar-inner *), .phrasebook-top-header:not(#gp-gbar-inner *), .phrasebook-container .nav-bar:not(#gp-gbar-inner *), body > div > div#gb > div:not(#gp-gbar-inner *), .h-c-header__bar:not(#gp-gbar-inner *), .h-c-footer:not(#gp-gbar-inner *), .b7B4sd:not(#gp-gbar-inner *), .j33Gae:not(#gp-gbar-inner *), .gYeeac:not(#gp-gbar-inner *), .ZbtVde:not(#gp-gbar-inner *), .jCAhz.C1N51c:not(#gp-gbar-inner *), \#gb[role="banner"][style*="background-color:rgba(255\,255\,255\,1"]:not(#gp-gbar-inner *), .glue-header .glue-header__cta:not(#gp-gbar-inner *), .glue-header__tier:not(#gp-gbar-inner *), .glue-cookie-notification-bar:not(#gp-gbar-inner *), .ctwFHc.FwR7Pc:not(#gp-gbar-inner *), .GtL14d.FwR7Pc:not(#gp-gbar-inner *), .ngPqIc > div:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	.language-list-toolbar:not(#gp-gbar-inner *), #gt-appbar:not(#gp-gbar-inner *), header > div > div[style ^= "height"]:not(#gp-gbar-inner *), .alt-menu:not(#gp-gbar-inner *), .submit.disabled:not(#gp-gbar-inner *), #speak-with-the-world:not(#gp-gbar-inner *), #your-choice:not(#gp-gbar-inner *), .goog-menu.round-trip-content:not(#gp-gbar-inner *), .language_list_section_header:not(#gp-gbar-inner *), .level-circle.community-badge:not(#gp-gbar-inner *), .goog-menuitem.goog-option-selected:not(#gp-gbar-inner *), .main__common:not(#gp-gbar-inner *), .NWlwsb:not(#gp-gbar-inner *), [id ^="goog-gt-"]:not(#gp-gbar-inner *), [id ^= goog-gt-] div:nth-of-type(3):not(#gp-gbar-inner *), .U8K5nb:not(#gp-gbar-inner *), .wQegqc:hover:not(#gp-gbar-inner *), #yDmH0d:not(#gp-gbar-inner *){
@@ -4427,7 +4427,7 @@ textarea.gLFyf:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?takeout\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?).*") {
 	/*Takeout*/
 	header > div[class^="gb"]:not(#gp-gbar-inner *), .vOPZCd:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	.ROuVee:not(#gp-gbar-inner *), .I7OXgf:not(#gp-gbar-inner *){
@@ -4465,7 +4465,7 @@ textarea.gLFyf:not(#gp-gbar-inner *){
 @-moz-document regexp("https:\\/\\/(?:www\\.)?trends\\.google\\.(?:com|(?:[a-z]{2})(?:\\.[a-z]{2})?)\\/(?:trending|trends|home)(?:\\/)?.*") {
 	/*Trends*/
 	md-sidenav.md-default-theme:not(#gp-gbar-inner *), md-sidenav:not(#gp-gbar-inner *), md-sidenav.md-default-theme md-content:not(#gp-gbar-inner *), md-sidenav md-content:not(#gp-gbar-inner *), .explore-header.tremolo-theme .header-topbar:not(.toolbar-shadow):not(.home-page-shadow):not(#gp-gbar-inner *), .trending-feed-page-wrapper.tremolo-theme .trending-feed-header .header-topbar:not(#gp-gbar-inner *), .trending-feed-page-wrapper.tremolo-theme .trending-feed-tabs:not(#gp-gbar-inner *), .header-wrapper.tremolo-theme .header-topbar:not(#gp-gbar-inner *), [aria-label="navigational drawer"]:not(#gp-gbar-inner *), .trending-searches-footer:not(#gp-gbar-inner *), header[role="banner"][style*="background-color:rgba(255\,255\,255"]:not(#gp-gbar-inner *){
-		background-color: #161616 !important;
+		background-color: #1C1C1C !important;
 	}
 
 	.explore-header ng-transclude:not(#gp-gbar-inner *), .fe-side-nav-bar .fe-sidenav-list-group md-item:hover md-item-content:not(#gp-gbar-inner *), .embed-dialog-wrapper .preview-wrapper:not(#gp-gbar-inner *), .embed-dialog-wrapper md-tabs:not(#gp-gbar-inner *), .explore-header.tremolo-theme .explorepage-content-header .compare-pickers-wrapper .compare-pickers:not(#gp-gbar-inner *), .header-background.opacity-mask:not(#gp-gbar-inner *), .cS5Hrb:not(#gp-gbar-inner *), .jlxk0d:not(#gp-gbar-inner *){
@@ -4599,7 +4599,7 @@ textarea.gLFyf:not(#gp-gbar-inner *){
 	/*GMail*/
 
 .TemplateHeader_header:not(#gp-gbar-inner *), .VF:not(#gp-gbar-inner *){
-	background-color: #161616 !important;
+	background-color: #1C1C1C !important;
 }
 
 .TemplateBackgroundContainer_grey:not(#gp-gbar-inner *), .glue-cookie-notification-bar:not(#gp-gbar-inner *){
@@ -5089,7 +5089,7 @@ filter: invert(92%) hue-rotate(180deg) saturate(100%) !important;
 
 	/*@css {*/
 		div[aria-label][aria-hidden="false"][img-loaded]:not(#gp-gbar-inner *), a[href^="/?authuser="]:hover:not(#gp-gbar-inner *), a[href*="brandaccounts?authuser"]:hover:not(#gp-gbar-inner *), a[href^="/settings/storage?authuser"]:hover:not(#gp-gbar-inner *), a[href^="?authuser"]:hover:not(#gp-gbar-inner *), div[aria-label] > ul[class^="gb_"]:not([aria-dropeffect="move"]):not(#gp-gbar-inner *), .minidiv .sfbg:not(#gp-gbar-inner *), input:not(.goog-toolbar-combo-button-input).jfk-textinput:not(.docs-charts-editor-material-combo-box-input):not(.place-search-input):not(#gp-gbar-inner *), .gb_T:hover .gb_Z:not(#gp-gbar-inner *), .gb_0[href]:hover.gb_z.gb_U > .gb_C:not(#gp-gbar-inner *), .gs_md_d:not(#gp-gbar-inner *), .vk-box:not(#gp-gbar-inner *), [class^="gb_"] > a[href ^= "/document/u/0/"]:not(#gp-gbar-inner *), ul[aria-dropeffect="move"]:not(#gp-gbar-inner *), .jZWadf:not(#gp-gbar-inner *), .qcTKEe:not(#gp-gbar-inner *), #kO001e:not(#gp-gbar-inner *), .FtRlBe:not(#gp-gbar-inner *), :not(#viewport) > #searchform > div > .sfbg:not(#gp-gbar-inner *), .OvJdSb:not(#gp-gbar-inner *), .MUxCJc:not(#gp-gbar-inner *), header > div > div[role="navigation"]:not(#gp-gbar-inner *), .s8GCU:not(#gp-gbar-inner *), .Pvpvv:not(#gp-gbar-inner *), a[class^="gb_"][href^="https://accounts.google.com/AddSession"]:not(#gp-gbar-inner *), div[class^="gb_"][aria-label][aria-hidden] > div[class^="gb_"] > div[class^="gb_"] > .gb_jb:not(#gp-gbar-inner *), div[style $= ";background:#FFF;"]:not(#gp-gbar-inner *), [role="banner"][style*="background-color: rgb(255\, 255\, 255"]:not(#gp-gbar-inner *), .gb_i .gb_hb:not(#gp-gbar-inner *), .p2Ux4d:not(#gp-gbar-inner *), [key="feedback-panel-container"] header:not(#gp-gbar-inner *), [key="feedback-panel-container"] footer:not(#gp-gbar-inner *), .bTLhlf:not(#gp-gbar-inner *), .N2ncR:not(#gp-gbar-inner *), .y5Iqsb:not(#gp-gbar-inner *), .d2yxTb:not(#gp-gbar-inner *), .f6F9Be:not(#gp-gbar-inner *), .LVal7b:not(#gp-gbar-inner *), .LX3sZb div > [class*="gb_"][style="background:#FFF;"]:not(#gp-gbar-inner *), .ziuVxb:not(#gp-gbar-inner *), [class*="gb_"][style="background:#e9eef6;"]:not(#gp-gbar-inner *), [class*="gb_"][style="background:#FFF;"]:not(#gp-gbar-inner *), #credentials-picker-container > div:not(#gp-gbar-inner *), .EHzcec:not(#gp-gbar-inner *) /* #yDmH0d*/, .UFjXSc > .Lvwayc:not(#gp-gbar-inner *), .EIlDfe.LcUz9d:not(.tQj5Y.ghyPEc.IqBfM.ecJEib.EWZcud):not([style="touch-action: none;"]):not(#gp-gbar-inner *), .EE6QGf:not(#gp-gbar-inner *), .Sikpge:not(#gp-gbar-inner *), .WjBoXb:not(#gp-gbar-inner *), .yLgUuc > [jsshadow] button > span:not(#gp-gbar-inner *), .hcfe > header:not(#gp-gbar-inner *), .gaiabar > header#gb:not(#gp-gbar-inner *), gm-coplanar-drawer > div:not(#gp-gbar-inner *), .DZ13He:not(#gp-gbar-inner *), .CvDJxb:not(#gp-gbar-inner *),  .xRtCGb:not(#gp-gbar-inner *), .pGxpHc > header#gb:not(#gp-gbar-inner *), .O3yKUb:not(#gp-gbar-inner *), .g55egf.xQQEXb:not(#gp-gbar-inner *), .gb_Sa[role="dialog"]:not(#gp-gbar-inner *){
-			background-color: #161616 !important;
+			background-color: #1C1C1C !important;
 		}
 	/*}*/
 
@@ -5222,7 +5222,7 @@ filter: invert(92%) hue-rotate(180deg) saturate(100%) !important;
         background-color: @backgroundGlobalColor !important;
     }
 
-    /* This surface was grouped with #161616 elements; keep its background at #1C1C1C. */
+    /* This surface was grouped with #1C1C1C elements; keep its background at #1C1C1C. */
     .xrOgrb:not(#gp-gbar-inner *) {
         background-color: #1C1C1C !important;
     }
