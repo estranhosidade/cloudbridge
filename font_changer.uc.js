@@ -2,7 +2,7 @@
 // @name           Font Changer
 // @description    Manage Firefox interface and web-page fonts. Ctrl+Shift+F opens a centered, draggable font window.
 // @author         OpenAI
-// @version        7.2.5-close-icon-centering
+// @version        7.2.6-bookmark-control-height
 // ==/UserScript==
 
 (() => {
@@ -12,7 +12,7 @@
   // Configuration
   // ========================================================================
 
-  const VERSION = "7.2.5-close-icon-centering";
+  const VERSION = "7.2.6-bookmark-control-height";
   const PREFIX = "[FontChanger]";
   const RUNTIME_KEY = "__ucFontChangerRuntime_v6";
 
@@ -992,9 +992,21 @@
         gap: 6px;
         align-items: stretch;
       }
+      /* Keep the bookmark button exactly as tall as the selected-font roll. */
+      #${PANEL_ID} .fc-font-select-row > select,
+      #${PANEL_ID} .fc-font-select-row > .fc-selected-font-bookmark {
+        height: 34px;
+        min-height: 34px;
+        max-height: 34px;
+        box-sizing: border-box;
+      }
       #${PANEL_ID} .fc-selected-font-bookmark {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         min-width: 34px;
-        padding: 2px;
+        margin: 0;
+        padding: 0;
         font-size: 18px;
         line-height: 1;
       }
