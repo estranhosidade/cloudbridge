@@ -13,13 +13,19 @@ Do not replace this file with a simplified stylesheet or reformat the whole sour
 
 ## Non-negotiable behavior
 
-### 1. Do not override border radii
+### 1. Remove border-radius rules and preserve native defaults
 
-The intended behavior is to let Google determine its own border radii.
+The intended behavior is to preserve Google's **original/default border radii**. The stylesheet must not set, reset, normalize, or otherwise override them.
 
-- There must be **no** `border-radius`, `border-top-left-radius`, `border-top-right-radius`, `border-bottom-left-radius`, or `border-bottom-right-radius` declarations in the stylesheet.
-- Do not add a border-radius setting, variable, toggle, global reset, or replacement rule.
-- Do not set radii to `0`, `revert`, `unset`, or a custom value. The correct way to preserve Google's radii is to leave them alone.
+**Required cleanup — remove existing rules, not just avoid adding new ones:**
+
+- Search the complete stylesheet, including every `@-moz-document` scope and Less conditional, and **delete every declaration** for `border-radius`, `border-top-left-radius`, `border-top-right-radius`, `border-bottom-left-radius`, or `border-bottom-right-radius`. Also remove vendor-prefixed equivalents such as `-webkit-border-radius` or `-moz-border-radius`, if present.
+- Remove those declarations even when they are old, redundant, scoped to a rarely used page, or currently inactive.
+- If a rule contains other declarations, keep those other declarations and remove only the radius declaration. Remove the whole rule only when it becomes empty.
+- **Preserve the defaults by leaving the properties undeclared.** Do not replace a removed declaration with `0`, `none`, `initial`, `inherit`, `revert`, `unset`, or any custom radius. Do not add a global reset or a new rule intended to force a particular radius.
+- Do not add a border-radius setting, variable, or toggle.
+
+The expected result is **zero border-radius declarations** in the complete stylesheet, allowing Google's own styles (and normal browser defaults where applicable) to determine the shape of each element.
 
 ### 2. Never style descendants of `#gp-gbar-inner`
 
@@ -126,7 +132,7 @@ The existing final correction is in the broad Google-page scope, not a global ru
 
 At the time this document was added:
 
-- All 13 prior border-radius declarations had been removed; the source check found zero remaining border-radius declarations.
+- A historical source check at the time this note was written found zero remaining border-radius declarations after removing 13 known declarations. Treat that as a historical result only: always scan the complete current target file again, because later edits or a different stylesheet copy may reintroduce radius declarations.
 - Ordinary stylesheet selector branches had been guarded against descendants of `#gp-gbar-inner`.
 - Both explicit `#searchform` state rules used `@backgroundGlobalColor`.
 - A final correction at the end of the broad Google-page scope applied `@backgroundGlobalColor` to `#searchform`, its `.sfbg` layers, and `#gb`/banner.
@@ -161,7 +167,7 @@ Use this scoped Less/CSS rule:
 
 Keep the `#gp-gbar-inner` exclusion on both selector branches. Do not broaden this to `:root`, `html`, or `body` without explicitly checking inheritance into the protected Google bar. If a future page places its `#gp-gbar-inner` inside one of these main containers, choose a more specific content root that does not contain it.
 
-Current source-level checks after this change: `.xrOgrb` is no longer in the `#161616` group; it has a separate `#1C1C1C` rule; the `--YLNNHc` override is scoped to `.main` and `#main`; no border-radius declarations remain; and the existing Google-bar selector exclusions remain present.
+Historical source-level checks at that point: `.xrOgrb` was no longer in the `#161616` group; it had a separate `#1C1C1C` rule; the `--YLNNHc` override was scoped to `.main` and `#main`; the checked source contained no border-radius declarations; and the existing Google-bar selector exclusions were present. Re-run the complete border-radius scan on the current target file before relying on that historical result.
 
 
 ## Global shade normalization: `#161616` → `#1C1C1C`
