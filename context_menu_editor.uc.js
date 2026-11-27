@@ -5,7 +5,7 @@
 //                  including extension-created context-menu entries.
 //                  Uses the existing __menuEngine + menu-config.json contract.
 // @include         main
-// @version         2.6.6
+// @version         2.6.7
 // @compatibility   Zen Browser (primary); Firefox 100+ (shared fallback IDs)
 // ==/UserScript==
 
@@ -385,11 +385,17 @@
     const occurrenceBySignature = new Map();
 
     for (const node of nodes) {
-      if (trim(node.id) || node.hasAttribute(ANONYMOUS_KEY_ATTR)) continue;
+      if (trim(node.id)) continue;
 
+      // Count every anonymous sibling with this signature, including siblings
+      // that already have a key. A partially rebuilt popup can retain some
+      // nodes while replacing others; skipping keyed siblings shifted the
+      // occurrence number and assigned a different key to the replacement.
       const signature = anonymousNodeSignature(menuId, node, scopePath);
       const occurrence = (occurrenceBySignature.get(signature) || 0) + 1;
       occurrenceBySignature.set(signature, occurrence);
+
+      if (trim(node.getAttribute?.(ANONYMOUS_KEY_ATTR))) continue;
 
       let salt = occurrence;
       let key = `cme-${fnv1a(`${signature}\u001f${salt}`)}`;
@@ -4219,6 +4225,50 @@ function cleanEdgeSeparators(menuId) {
   // alone, one rule was attached to the live row and the other reappeared as an
   // offline row. Canonicalize one-to-one matches to the row's stable selector,
   // merging their settings and preserving pinned-tail placement.
+  // Recognize the simple label selectors written by older editor versions.
+  // They are inherently ambiguous when several items share a title, and an old
+  // selector can also name the wrong XUL element type after the fallback logic
+  // was corrected. Returning null keeps arbitrary CSS selectors untouched.
+  function legacyLabelSelectorText(selector) {
+    const match = trim(selector).match(
+      /^(?:menu|menuitem)\s*\[\s*label\s*=\s*(["'])([\s\S]*?)\1\s*\]$/
+    );
+    if (!match) return null;
+    return match[2].replace(/\\(["'\\])/g, "$1");
+  }
+
+  // A saved label selector may have been generated for <menuitem> even though
+  // the live entry is a <menu> (or vice versa). Only use this compatibility
+  // lookup when the original selector has no live matches at all.
+  function liveRowsForRule(liveRows, selector) {
+    const exact = liveRows.filter(row =>
+      selectorMatchesNode(row.el, selector)
+    );
+    if (exact.length) return exact;
+
+    const label = legacyLabelSelectorText(selector);
+    if (label === null) return exact;
+
+    return liveRows.filter(row => {
+      const node = row?.el;
+      const name = String(node?.localName || "").toLowerCase();
+      return (
+        (name === "menu" || name === "menuitem") &&
+        node.getAttribute?.("label") === label
+      );
+    });
+  }
+
+  function cloneRuleForSelector(rule, selector) {
+    return {
+      ...rule,
+      selector,
+      ...(Array.isArray(rule.contexts)
+        ? { contexts: [...rule.contexts] }
+        : {}),
+    };
+  }
+
   function reconcileLiveRuleSelectors(menuId, discoveredRows) {
     const menu = menuConfig(menuId, false);
     if (!menu) return false;
@@ -4234,25 +4284,73 @@ function cleanEdgeSeparators(menuId) {
     for (const rule of rules) {
       if (!rule?.selector || isSeparatorSelector(rule.selector)) continue;
 
-      const matches = liveRows.filter(
-        row => selectorMatchesNode(row.el, rule.selector)
-      );
-      // A selector that matches several real entries is ambiguous. Do not guess
-      // which rule to merge; only migrate selectors that identify exactly one.
-      if (matches.length !== 1) continue;
+      const matches = liveRowsForRule(liveRows, rule.selector);
+      if (!matches.length) continue;
 
-      const canonical = suggestSelector(matches[0]);
-      if (!canonical || canonical === rule.selector) continue;
+      const canonicalPairs = matches.map(row => ({
+        row,
+        selector: suggestSelector(row),
+      }));
+      const canonicalSelectors = canonicalPairs.map(item => item.selector);
 
-      const canonicalMatches = liveRows.filter(
-        row => selectorMatchesNode(row.el, canonical)
-      );
-      if (
-        canonicalMatches.length !== 1 ||
-        canonicalMatches[0].el !== matches[0].el
-      ) {
+      // A migration is safe only when each generated selector identifies this
+      // exact live node and no other node in the menu tree.
+      const selectorsAreUnique =
+        canonicalSelectors.every(Boolean) &&
+        new Set(canonicalSelectors).size === canonicalSelectors.length;
+      const selectorsAreExact = selectorsAreUnique && canonicalPairs.every(item => {
+        const canonicalMatches = liveRows.filter(row =>
+          selectorMatchesNode(row.el, item.selector)
+        );
+        return (
+          canonicalMatches.length === 1 &&
+          canonicalMatches[0].el === item.row.el
+        );
+      });
+      if (!selectorsAreExact) continue;
+
+      // A legacy label selector can match several real entries. Leaving it in
+      // place binds the rule to only the first row in buildRows(), while the
+      // remaining rows appear unmanaged and create yet more rules when edited.
+      // Expand it into one stable rule per actual node, carrying the original
+      // settings (including hidden:true) to every match.
+      if (canonicalPairs.length > 1) {
+        const sourcePinned = menu.pinnedTail.includes(rule);
+        const sourceList = sourcePinned ? menu.pinnedTail : menu.entries;
+        const sourceIndex = sourceList.indexOf(rule);
+        const template = cloneRuleForSelector(rule, rule.selector);
+        const replacements = [];
+
+        for (const item of canonicalPairs) {
+          const existing = findRule(menuId, item.selector);
+          if (existing && existing !== rule) {
+            const targetPinned = menu.pinnedTail.includes(existing);
+            mergeEntryFields(existing, template);
+
+            if (sourcePinned && !targetPinned) {
+              removeRule(menuId, existing);
+              menu.pinnedTail.push(existing);
+            }
+          } else {
+            replacements.push(
+              cloneRuleForSelector(template, item.selector)
+            );
+          }
+        }
+
+        removeRule(menuId, rule);
+        const destination = sourcePinned ? menu.pinnedTail : menu.entries;
+        destination.splice(
+          Math.max(0, Math.min(sourceIndex, destination.length)),
+          0,
+          ...replacements
+        );
+        changed = true;
         continue;
       }
+
+      const canonical = canonicalSelectors[0];
+      if (!canonical || canonical === rule.selector) continue;
 
       const existing = findRule(menuId, canonical);
       const sourcePinned = menu.pinnedTail.includes(rule);
@@ -4283,6 +4381,58 @@ function cleanEdgeSeparators(menuId) {
     }
 
     return changed;
+  }
+
+  // Include currently materialized descendants as well as root rows. A Share
+  // entry can live inside a submenu, and reconciling only the first popup leaves
+  // its old broad rule in place for the nested copy.
+  function collectLiveRowsForReconciliation(menuId, rootRows) {
+    const result = (rootRows || []).filter(
+      row => row?.el && row.type !== "separator"
+    );
+    const visitedPopups = new Set();
+
+    const visitMenu = (menuNode, parentSelector) => {
+      const popup = menuNode?.querySelector?.(":scope > menupopup");
+      if (!popup || visitedPopups.has(popup)) return;
+      visitedPopups.add(popup);
+
+      prepareAnonymousNodeKeys(menuId, popup, parentSelector);
+
+      for (const childNode of Array.from(popup.children || [])) {
+        const localName = String(childNode.localName || "").toLowerCase();
+        if (localName !== "menu" && localName !== "menuitem") continue;
+
+        const discovered = {
+          ...extensionMetaFromNode(childNode),
+          type: localName,
+          id: trim(childNode.id) || null,
+          label: trim(
+            childNode.getAttribute?.("label") ||
+            childNode.getAttribute?.("tooltiptext") ||
+            childNode.getAttribute?.("aria-label")
+          ),
+          tooltiptext: trim(childNode.getAttribute?.("tooltiptext")),
+          hidden: !!childNode.hidden,
+          disabled: !!childNode.disabled,
+          el: childNode,
+        };
+        result.push(discovered);
+
+        if (localName === "menu") {
+          const selector = suggestSelector(discovered);
+          if (selector) visitMenu(childNode, selector);
+        }
+      }
+    };
+
+    for (const row of rootRows || []) {
+      if (String(row?.el?.localName || "").toLowerCase() !== "menu") continue;
+      const selector = suggestSelector(row);
+      if (selector) visitMenu(row.el, selector);
+    }
+
+    return result;
   }
 
   // Collapse duplicate representations without collapsing two actual live XUL
@@ -4930,7 +5080,11 @@ function registryTitleFor(
 
   function buildRows(menuId) {
     const snapshot = discover(menuId);
-    reconcileLiveRuleSelectors(menuId, snapshot.rows || []);
+    const liveRows = collectLiveRowsForReconciliation(
+      menuId,
+      snapshot.rows || []
+    );
+    reconcileLiveRuleSelectors(menuId, liveRows);
     const menu = menuConfig(menuId, true);
 
     const rows = [];
