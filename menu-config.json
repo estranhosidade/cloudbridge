@@ -1,0 +1,1559 @@
+{
+  "version": 2,
+  "note": "Created by Context Menu Editor",
+  "menus": {
+    "contentAreaContextMenu": {
+      "reorder": true,
+      "entries": [
+        {
+          "selector": "sep:0",
+          "separator": true
+        },
+        {
+          "selector": "#context-viewsource-goToLine"
+        },
+        {
+          "selector": "#context-viewsource-wrapLongLines"
+        },
+        {
+          "selector": "#context-viewsource-highlightSyntax"
+        },
+        {
+          "selector": "sep:1",
+          "separator": true
+        },
+        {
+          "selector": "#spell-no-suggestions"
+        },
+        {
+          "selector": "#spell-add-to-dictionary"
+        },
+        {
+          "selector": "#spell-undo-add-to-dictionary"
+        },
+        {
+          "selector": "sep:2",
+          "separator": true
+        },
+        {
+          "selector": "#context-openlinkincurrent"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"the-tab-suspender_tabsuspender_internal-menuitem-\"]"
+        },
+        {
+          "selector": "#context-saveimage",
+          "hidden": true
+        },
+        {
+          "selector": "#context-openlinkincontainertab",
+          "hidden": true
+        },
+        {
+          "selector": "#context-openlinkintab"
+        },
+        {
+          "selector": "#open_links_in_tabs_gmail_com-menuitem-_openselectedlinks"
+        },
+        {
+          "selector": "#context-openlinkinsplitview"
+        },
+        {
+          "selector": "#context-openlinkinusercontext-menu",
+          "hidden": true
+        },
+        {
+          "selector": "#context-openlink",
+          "hidden": true
+        },
+        {
+          "selector": "#context-openlinkprivate"
+        },
+        {
+          "selector": "#context-openlinksmartwindow",
+          "hidden": true
+        },
+        {
+          "selector": "#context-previewlink",
+          "hidden": true
+        },
+        {
+          "selector": "#context-zenOpenLinkInGlance"
+        },
+        {
+          "selector": "#context-zenSplitLink"
+        },
+        {
+          "selector": "sep:3",
+          "separator": true
+        },
+        {
+          "selector": "#context-bookmarklink"
+        },
+        {
+          "selector": "#context-savelink",
+          "hidden": true
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"_531906d3-e22f-4a6c-a102-8057b88a1a63_-menuitem-\"]",
+          "contexts": [
+            "page",
+            "link"
+          ]
+        },
+        {
+          "selector": "#context-copyemail",
+          "hidden": true
+        },
+        {
+          "selector": "#context-copyphone",
+          "hidden": true
+        },
+        {
+          "selector": "#context-copylink"
+        },
+        {
+          "selector": "#copy_links_in_tabs_gmail_com-menuitem-_copyselectedlinks"
+        },
+        {
+          "selector": "#copy_elements_text_utb_dip_jp-menuitem-_copy_elements_text",
+          "contexts": [
+            "link"
+          ]
+        },
+        {
+          "selector": "#context-stripOnShareLink",
+          "hidden": true
+        },
+        {
+          "selector": "sep:4",
+          "separator": true
+        },
+        {
+          "selector": "#context-sendlinktodevice"
+        },
+        {
+          "selector": "sep:5",
+          "separator": true
+        },
+        {
+          "selector": "#context-media-play"
+        },
+        {
+          "selector": "#context-media-pause"
+        },
+        {
+          "selector": "#context-media-mute"
+        },
+        {
+          "selector": "#context-media-unmute"
+        },
+        {
+          "selector": "#context-media-playbackrate",
+          "hidden": true
+        },
+        {
+          "selector": "#media-speed-controller_gemini-cli_dev-menuitem-_media-speed-controller"
+        },
+        {
+          "selector": "#context-media-loop"
+        },
+        {
+          "selector": "#context-leave-dom-fullscreen"
+        },
+        {
+          "selector": "#context-video-fullscreen"
+        },
+        {
+          "selector": "#context-media-hidecontrols"
+        },
+        {
+          "selector": "#context-media-showcontrols"
+        },
+        {
+          "selector": "sep:6",
+          "separator": true
+        },
+        {
+          "selector": "#context-viewvideo"
+        },
+        {
+          "selector": "#context-video-pictureinpicture"
+        },
+        {
+          "selector": "sep:7",
+          "separator": true
+        },
+        {
+          "selector": "#context-reloadimage"
+        },
+        {
+          "selector": "#context-viewimage"
+        },
+        {
+          "selector": "#context-video-saveimage",
+          "hidden": true
+        },
+        {
+          "selector": "#context-savevideo"
+        },
+        {
+          "selector": "#context-saveaudio"
+        },
+        {
+          "selector": "#context-copyimage-contents"
+        },
+        {
+          "selector": "#context-copyimage"
+        },
+        {
+          "selector": "#context-copyvideourl"
+        },
+        {
+          "selector": "#_b578d554-3b0b-4f6b-8bbe-5decdd5915ae_-menuitem-1"
+        },
+        {
+          "selector": "#copytime_ff_com-menuitem-_copy-video-to-clipboard"
+        },
+        {
+          "selector": "#context-copyaudiourl"
+        },
+        {
+          "selector": "#context-sendimage",
+          "hidden": true
+        },
+        {
+          "selector": "#context-sendvideo",
+          "hidden": true
+        },
+        {
+          "selector": "#context-sendaudio",
+          "hidden": true
+        },
+        {
+          "selector": "#context-imagetext",
+          "hidden": true
+        },
+        {
+          "selector": "#context-viewimageinfo",
+          "hidden": true
+        },
+        {
+          "selector": "#context-viewimagedesc",
+          "hidden": true
+        },
+        {
+          "selector": "#context-visual-search",
+          "hidden": true
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"_2e5ff8c8-32fe-46d0-9fc8-6b8986621f3c_-menuitem-\"]",
+          "contexts": [
+            "image"
+          ]
+        },
+        {
+          "selector": "sep:8",
+          "separator": true
+        },
+        {
+          "selector": "#context-setDesktopBackground",
+          "hidden": true
+        },
+        {
+          "selector": "sep:9",
+          "separator": true
+        },
+        {
+          "selector": "#context-savepage",
+          "hidden": true
+        },
+        {
+          "selector": "#just-save-it_razielanarki_webextension-menuitem-_save"
+        },
+        {
+          "selector": "#fill-login"
+        },
+        {
+          "selector": "#fill-login-generated-password"
+        },
+        {
+          "selector": "#use-relay-mask"
+        },
+        {
+          "selector": "#manage-saved-logins"
+        },
+        {
+          "selector": "sep:10",
+          "separator": true
+        },
+        {
+          "selector": "#context-undo"
+        },
+        {
+          "selector": "#context-redo"
+        },
+        {
+          "selector": "sep:11",
+          "separator": true
+        },
+        {
+          "selector": "#context-cut"
+        },
+        {
+          "selector": "#context-copy"
+        },
+        {
+          "selector": "#context-copy-link-to-highlight"
+        },
+        {
+          "selector": "#context-paste"
+        },
+        {
+          "selector": "#context-paste-no-formatting",
+          "hidden": true
+        },
+        {
+          "selector": "#context-delete"
+        },
+        {
+          "selector": "#context-selectall"
+        },
+        {
+          "selector": "#context-pdfjs-comment-selection",
+          "hidden": true
+        },
+        {
+          "selector": "#context-pdfjs-highlight-selection"
+        },
+        {
+          "selector": "#context-reveal-password"
+        },
+        {
+          "selector": "#context-print-selection",
+          "hidden": true
+        },
+        {
+          "selector": "sep:12",
+          "separator": true
+        },
+        {
+          "selector": "#context-copy-clean-link-to-highlight",
+          "hidden": true
+        },
+        {
+          "selector": "#context-remove-highlight",
+          "hidden": true
+        },
+        {
+          "selector": "sep:13",
+          "separator": true
+        },
+        {
+          "selector": "#context-pdfjs-undo"
+        },
+        {
+          "selector": "#context-pdfjs-redo"
+        },
+        {
+          "selector": "sep:14",
+          "separator": true
+        },
+        {
+          "selector": "#context-pdfjs-cut"
+        },
+        {
+          "selector": "#context-pdfjs-copy"
+        },
+        {
+          "selector": "#context-pdfjs-paste"
+        },
+        {
+          "selector": "#context-pdfjs-delete"
+        },
+        {
+          "selector": "#context-pdfjs-select-all"
+        },
+        {
+          "selector": "sep:15",
+          "separator": true
+        },
+        {
+          "selector": "#context-pdfjs-copy-page"
+        },
+        {
+          "selector": "#context-pdfjs-cut-page"
+        },
+        {
+          "selector": "#context-pdfjs-delete-page"
+        },
+        {
+          "selector": "#context-pdfjs-save-page"
+        },
+        {
+          "selector": "sep:16",
+          "separator": true
+        },
+        {
+          "selector": "#context-take-screenshot",
+          "hidden": true
+        },
+        {
+          "selector": "#context-use-mini-window"
+        },
+        {
+          "selector": "sep:17",
+          "separator": true
+        },
+        {
+          "selector": "#context-add-engine"
+        },
+        {
+          "selector": "#context-searchselect"
+        },
+        {
+          "selector": "#context-searchselect-private"
+        },
+        {
+          "selector": "#context-translate-selection",
+          "hidden": true
+        },
+        {
+          "selector": "#context-ask-chat"
+        },
+        {
+          "selector": "#context-create-aitab"
+        },
+        {
+          "selector": "sep:18",
+          "separator": true
+        },
+        {
+          "selector": "#frame",
+          "hidden": true
+        },
+        {
+          "selector": "sep:19",
+          "separator": true
+        },
+        {
+          "selector": "#spell-check-enabled"
+        },
+        {
+          "selector": "#spell-add-dictionaries-main"
+        },
+        {
+          "selector": "#spell-dictionaries"
+        },
+        {
+          "selector": "sep:20",
+          "separator": true
+        },
+        {
+          "selector": "#context-bidi-text-direction-toggle",
+          "hidden": true
+        },
+        {
+          "selector": "#context-bidi-page-direction-toggle",
+          "hidden": true
+        },
+        {
+          "selector": "sep:21",
+          "separator": true
+        },
+        {
+          "selector": "#context-viewpartialsource-selection",
+          "hidden": true
+        },
+        {
+          "selector": "#context-viewsource",
+          "hidden": true
+        },
+        {
+          "selector": "#context-inspect-a11y",
+          "hidden": true
+        },
+        {
+          "selector": "#context-inspect"
+        },
+        {
+          "selector": "sep:22",
+          "separator": true
+        },
+        {
+          "selector": "#context-sendpagetodevice"
+        },
+        {
+          "selector": "sep:23",
+          "separator": true
+        },
+        {
+          "selector": "#context-media-eme-learnmore"
+        },
+        {
+          "selector": "#_036a55b4-5e72-4d05-a06c-cba2dfcc134a_-menuitem-_translate-web-page",
+          "label": "Translate",
+          "originalLabel": "Translate to Portuguese (Brazil)"
+        },
+        {
+          "selector": "#copy-frame-url_jeffersonscher_com-menuitem-_copy-frame-url"
+        },
+        {
+          "selector": "#archive-extension_save_com-menuitem-_archive-page"
+        },
+        {
+          "selector": "#ublock0_raymondhill_net-menuitem-_uBlock0-subscribeToList"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"tempora23912391_gmail_com-menuitem-\"]",
+          "contexts": [
+            "editable"
+          ]
+        },
+        {
+          "selector": "#archive-extension_save_com-menuitem-_archive-link"
+        },
+        {
+          "selector": "#languagetool-modified-11_3_1_local-menuitem-_languagetool-menu"
+        },
+        {
+          "selector": "#zia-context-multiview"
+        },
+        {
+          "selector": "#zia-context-multiview-replace"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"archive-extension_save_com-menuitem-\"]"
+        },
+        {
+          "selector": "#context-turn-on-highlight-menu"
+        },
+        {
+          "selector": "#summarize-it-sendtollm_context-menu_com-menuitem-_upload-page"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"integration_misterdownloadmanager_com-menuitem-\"]",
+          "parentSelector": "menu[ext-type=\"top-level-menu\"][id^=\"integration_misterdownloadmanager_com-menuitem-\"]"
+        },
+        {
+          "selector": "#integration_misterdownloadmanager_com-menuitem-_mdm-link",
+          "parentSelector": "menu[ext-type=\"top-level-menu\"][id^=\"integration_misterdownloadmanager_com-menuitem-\"]",
+          "label": "Download",
+          "originalLabel": "Download with Mister Download Manager"
+        },
+        {
+          "selector": "#integration_misterdownloadmanager_com-menuitem-_mdm-selected",
+          "parentSelector": "menu[ext-type=\"top-level-menu\"][id^=\"integration_misterdownloadmanager_com-menuitem-\"]",
+          "label": "Download",
+          "originalLabel": "Download selected links with Mister Download Manager"
+        },
+        {
+          "selector": "#integration_misterdownloadmanager_com-menuitem-_mdm-all",
+          "parentSelector": "menu[ext-type=\"top-level-menu\"][id^=\"integration_misterdownloadmanager_com-menuitem-\"]",
+          "label": "Download",
+          "originalLabel": "Download all links with Mister Download Manager"
+        }
+      ],
+      "pinnedTail": [],
+      "childOrders": []
+    },
+    "tabContextMenu": {
+      "reorder": true,
+      "entries": [
+        {
+          "selector": "#context_openANewTab"
+        },
+        {
+          "selector": "#context_moveTabToNewGroup"
+        },
+        {
+          "selector": "#context_moveSplitViewToNewGroup"
+        },
+        {
+          "selector": "#context_zenMoveToFolder"
+        },
+        {
+          "selector": "#context_moveTabToGroup"
+        },
+        {
+          "selector": "#context_ungroupTab"
+        },
+        {
+          "selector": "#context_ungroupSplitView"
+        },
+        {
+          "selector": "#context_zenSplitTabs"
+        },
+        {
+          "selector": "#context_zenShareSplitView",
+          "hidden": true
+        },
+        {
+          "selector": "#context_moveTabToSplitView"
+        },
+        {
+          "selector": "#context_separateSplitView"
+        },
+        {
+          "selector": "#context_reverseSplitView"
+        },
+        {
+          "selector": "sep:0",
+          "separator": true
+        },
+        {
+          "selector": "#context_reloadTab"
+        },
+        {
+          "selector": "#context_reloadSelectedTabs"
+        },
+        {
+          "selector": "#context_playTab"
+        },
+        {
+          "selector": "#context_playSelectedTabs"
+        },
+        {
+          "selector": "#context_toggleMuteTab"
+        },
+        {
+          "selector": "#context_toggleMuteSelectedTabs"
+        },
+        {
+          "selector": "#context_zen-add-essential"
+        },
+        {
+          "selector": "#context_zen-remove-essential"
+        },
+        {
+          "selector": "sep:1",
+          "separator": true
+        },
+        {
+          "selector": "#context_zen-edit-tab-title"
+        },
+        {
+          "selector": "#context_zen-edit-tab-icon"
+        },
+        {
+          "selector": "sep:2",
+          "separator": true
+        },
+        {
+          "selector": "#context_pinTab"
+        },
+        {
+          "selector": "#context_unpinTab"
+        },
+        {
+          "selector": "#context_pinSelectedTabs"
+        },
+        {
+          "selector": "#context_unpinSelectedTabs"
+        },
+        {
+          "selector": "#context_unloadTab"
+        },
+        {
+          "selector": "#context_duplicateTab",
+          "hidden": true
+        },
+        {
+          "selector": "#context_duplicateTabs",
+          "hidden": true
+        },
+        {
+          "selector": "sep:3",
+          "separator": true
+        },
+        {
+          "selector": "#context_askChat",
+          "hidden": true
+        },
+        {
+          "selector": "#context_askChatSummarize",
+          "hidden": true
+        },
+        {
+          "selector": "#context_createAITab",
+          "hidden": true
+        },
+        {
+          "selector": "sep:4",
+          "separator": true
+        },
+        {
+          "selector": "#context_bookmarkSelectedTabs"
+        },
+        {
+          "selector": "#context_bookmarkTab"
+        },
+        {
+          "selector": "#context_addNote"
+        },
+        {
+          "selector": "#context_editNote"
+        },
+        {
+          "selector": "#context_moveTabOptions"
+        },
+        {
+          "selector": "[data-context-menu-editor-key=\"cme-10vatwa\"]",
+          "hidden": true
+        },
+        {
+          "selector": "#context_reopenInContainer"
+        },
+        {
+          "selector": "#context_selectAllTabs"
+        },
+        {
+          "selector": "sep:5",
+          "separator": true
+        },
+        {
+          "selector": "#context_shareSelectedTabs",
+          "hidden": true
+        },
+        {
+          "selector": "sep:6",
+          "separator": true
+        },
+        {
+          "selector": "#context_sendTabToDevice"
+        },
+        {
+          "selector": "sep:7",
+          "separator": true
+        },
+        {
+          "selector": "#context_closeTab"
+        },
+        {
+          "selector": "#context_closeDuplicateTabs"
+        },
+        {
+          "selector": "#context_closeTabOptions"
+        },
+        {
+          "selector": "#context_undoCloseTab",
+          "hidden": true
+        },
+        {
+          "selector": "sep:8",
+          "separator": true
+        },
+        {
+          "selector": "#context_zen-add-domain-to-routing"
+        },
+        {
+          "selector": "sep:9",
+          "separator": true
+        },
+        {
+          "selector": "#context_fullscreenAutohide"
+        },
+        {
+          "selector": "#context_fullscreenExit"
+        },
+        {
+          "selector": "sep:10",
+          "separator": true
+        },
+        {
+          "selector": "#context_zen-edit-pinned-page"
+        },
+        {
+          "selector": "#context_zen-reset-pinned-tab"
+        },
+        {
+          "selector": "#context_zenAppsSidebarAdd"
+        },
+        {
+          "selector": "menuitem[label=\"Share\"]",
+          "hidden": true
+        },
+        {
+          "selector": "#archive-extension_save_com-menuitem-_archive-tab",
+          "hidden": true
+        },
+        {
+          "selector": "#the-tab-suspender_tabsuspender_internal-menuitem-_suspendPage",
+          "hidden": true
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"_531906d3-e22f-4a6c-a102-8057b88a1a63_-menuitem-\"]",
+          "hidden": true
+        },
+        {
+          "selector": "sep:11",
+          "separator": true
+        },
+        {
+          "selector": "#_b7ff41b7-4bda-456e-9c48-0a1c605518c4_-menuitem-_copy-archive-url",
+          "label": "Copy URL",
+          "originalLabel": "Copy Tab URL",
+          "hidden": true
+        },
+        {
+          "selector": "#_b1c253d4-e5f6-7890-ab12-cdef34567890_-menuitem-_copy-tab-url-menu"
+        },
+        {
+          "selector": "#_b1c2c3d4-e5f6-7890-ab12-cdef34567890_-menuitem-_copy-tab-title-menu",
+          "label": "Copy Title",
+          "originalLabel": "Copy Tab Title"
+        },
+        {
+          "selector": "#_a1b2c3d4-e5f6-7890-ab12-cdef34567890_-menuitem-_copy-tab-title-menu"
+        },
+        {
+          "selector": "#context_addTabToGroup"
+        },
+        {
+          "selector": "[data-context-menu-editor-key=\"cme-flv58b\"]",
+          "hidden": true
+        },
+        {
+          "selector": "#ztt-context-menu"
+        },
+        {
+          "selector": "sep:12",
+          "separator": true
+        },
+        {
+          "selector": "#ucjs-copy-tab-info-url"
+        },
+        {
+          "selector": "#ucjs-copy-tab-info-title"
+        },
+        {
+          "selector": "#ucjs-copy-tab-info-both"
+        },
+        {
+          "selector": "[data-context-menu-editor-key=\"cme-fvuqxa\"]",
+          "hidden": true
+        },
+        {
+          "selector": "[data-context-menu-editor-key=\"cme-g5ucm9\"]",
+          "hidden": true
+        },
+        {
+          "selector": "[data-context-menu-editor-key=\"cme-gftyb8\"]",
+          "hidden": true
+        }
+      ],
+      "pinnedTail": [],
+      "childOrders": []
+    },
+    "history-menu": {
+      "reorder": true,
+      "entries": [
+        {
+          "selector": "#menu_showAllHistory"
+        },
+        {
+          "selector": "#chatsHistoryMenu"
+        },
+        {
+          "selector": "#sanitizeItem"
+        },
+        {
+          "selector": "sep:0",
+          "separator": true
+        },
+        {
+          "selector": "#sync-tabs-menuitem"
+        },
+        {
+          "selector": "#historyRemoteTabsPromo"
+        },
+        {
+          "selector": "#historyRestoreLastSession"
+        },
+        {
+          "selector": "#hiddenTabsMenu"
+        },
+        {
+          "selector": "#menu_searchHistory"
+        },
+        {
+          "selector": "#historyUndoMenu"
+        },
+        {
+          "selector": "#historyUndoWindowMenu"
+        },
+        {
+          "selector": "sep:1",
+          "separator": true
+        },
+        {
+          "selector": "#recentChatsHeader"
+        },
+        {
+          "selector": "sep:2",
+          "separator": true
+        },
+        {
+          "selector": "#copy-frame-url_jeffersonscher_com-menuitem-_copy-frame-url"
+        },
+        {
+          "selector": "#just-save-it_razielanarki_webextension-menuitem-_save"
+        },
+        {
+          "selector": "#_b578d554-3b0b-4f6b-8bbe-5decdd5915ae_-menuitem-1"
+        },
+        {
+          "selector": "#archive-extension_save_com-menuitem-_archive-page"
+        },
+        {
+          "selector": "#copy_elements_text_utb_dip_jp-menuitem-_copy_elements_text"
+        },
+        {
+          "selector": "#copytime_ff_com-menuitem-_copy-video-to-clipboard"
+        },
+        {
+          "selector": "#media-speed-controller_gemini-cli_dev-menuitem-_media-speed-controller"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"tempora23912391_gmail_com-menuitem-\"]"
+        },
+        {
+          "selector": "#ublock0_raymondhill_net-menuitem-_uBlock0-subscribeToList"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"the-tab-suspender_tabsuspender_internal-menuitem-\"]"
+        },
+        {
+          "selector": "#_036a55b4-5e72-4d05-a06c-cba2dfcc134a_-menuitem-_translate-web-page"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"_2e5ff8c8-32fe-46d0-9fc8-6b8986621f3c_-menuitem-\"]"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"_531906d3-e22f-4a6c-a102-8057b88a1a63_-menuitem-\"]"
+        },
+        {
+          "selector": "#archive-extension_save_com-menuitem-_archive-link"
+        }
+      ],
+      "pinnedTail": [],
+      "childOrders": []
+    },
+    "sidebar-history-menu": {
+      "reorder": true,
+      "entries": [
+        {
+          "selector": "#sidebar-history-sort-by-date"
+        },
+        {
+          "selector": "#sidebar-history-sort-by-site"
+        },
+        {
+          "selector": "#sidebar-history-sort-by-date-and-site"
+        },
+        {
+          "selector": "#sidebar-history-sort-by-last-visited"
+        },
+        {
+          "selector": "sep:0",
+          "separator": true
+        },
+        {
+          "selector": "#sidebar-history-clear"
+        },
+        {
+          "selector": "#copy-frame-url_jeffersonscher_com-menuitem-_copy-frame-url"
+        },
+        {
+          "selector": "#just-save-it_razielanarki_webextension-menuitem-_save"
+        },
+        {
+          "selector": "#_b578d554-3b0b-4f6b-8bbe-5decdd5915ae_-menuitem-1"
+        },
+        {
+          "selector": "#archive-extension_save_com-menuitem-_archive-page"
+        },
+        {
+          "selector": "#copy_elements_text_utb_dip_jp-menuitem-_copy_elements_text"
+        },
+        {
+          "selector": "#copytime_ff_com-menuitem-_copy-video-to-clipboard"
+        },
+        {
+          "selector": "#media-speed-controller_gemini-cli_dev-menuitem-_media-speed-controller"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"tempora23912391_gmail_com-menuitem-\"]"
+        },
+        {
+          "selector": "#ublock0_raymondhill_net-menuitem-_uBlock0-subscribeToList"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"the-tab-suspender_tabsuspender_internal-menuitem-\"]"
+        },
+        {
+          "selector": "#_036a55b4-5e72-4d05-a06c-cba2dfcc134a_-menuitem-_translate-web-page"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"_2e5ff8c8-32fe-46d0-9fc8-6b8986621f3c_-menuitem-\"]"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"_531906d3-e22f-4a6c-a102-8057b88a1a63_-menuitem-\"]"
+        },
+        {
+          "selector": "#archive-extension_save_com-menuitem-_archive-link"
+        }
+      ],
+      "pinnedTail": [],
+      "childOrders": []
+    },
+    "sidebar-history-context-menu": {
+      "reorder": true,
+      "entries": [
+        {
+          "selector": "#sidebar-history-context-open-in-tab"
+        },
+        {
+          "selector": "#sidebar-history-context-menu-container-tab"
+        },
+        {
+          "selector": "#sidebar-history-context-open-in-window"
+        },
+        {
+          "selector": "#sidebar-history-context-open-in-private-window"
+        },
+        {
+          "selector": "sep:0",
+          "separator": true
+        },
+        {
+          "selector": "#sidebar-history-context-delete-page"
+        },
+        {
+          "selector": "#sidebar-history-context-forget-site"
+        },
+        {
+          "selector": "sep:1",
+          "separator": true
+        },
+        {
+          "selector": "#sidebar-history-context-copy-link"
+        },
+        {
+          "selector": "#sidebar-history-context-copy-page-title"
+        },
+        {
+          "selector": "sep:2",
+          "separator": true
+        },
+        {
+          "selector": "#sidebar-history-context-bookmark-page"
+        },
+        {
+          "selector": "#sidebar-history-context-open-all-in-tabs"
+        },
+        {
+          "selector": "sep:3",
+          "separator": true
+        },
+        {
+          "selector": "#sidebar-history-context-delete-pages"
+        },
+        {
+          "selector": "#copy-frame-url_jeffersonscher_com-menuitem-_copy-frame-url"
+        },
+        {
+          "selector": "#just-save-it_razielanarki_webextension-menuitem-_save"
+        },
+        {
+          "selector": "#_b578d554-3b0b-4f6b-8bbe-5decdd5915ae_-menuitem-1"
+        },
+        {
+          "selector": "#archive-extension_save_com-menuitem-_archive-page"
+        },
+        {
+          "selector": "#copy_elements_text_utb_dip_jp-menuitem-_copy_elements_text"
+        },
+        {
+          "selector": "#copytime_ff_com-menuitem-_copy-video-to-clipboard"
+        },
+        {
+          "selector": "#media-speed-controller_gemini-cli_dev-menuitem-_media-speed-controller"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"tempora23912391_gmail_com-menuitem-\"]"
+        },
+        {
+          "selector": "#ublock0_raymondhill_net-menuitem-_uBlock0-subscribeToList"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"the-tab-suspender_tabsuspender_internal-menuitem-\"]"
+        },
+        {
+          "selector": "#_036a55b4-5e72-4d05-a06c-cba2dfcc134a_-menuitem-_translate-web-page"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"_2e5ff8c8-32fe-46d0-9fc8-6b8986621f3c_-menuitem-\"]"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"_531906d3-e22f-4a6c-a102-8057b88a1a63_-menuitem-\"]"
+        }
+      ],
+      "pinnedTail": [],
+      "childOrders": []
+    },
+    "context_moveTabToSavedGroup": {
+      "reorder": true,
+      "entries": [
+        {
+          "selector": "#_a1b2c3d4-e5f6-7890-ab12-cdef34567890_-menuitem-_copy-tab-title-menu"
+        },
+        {
+          "selector": "#_b1c2c3d4-e5f6-7890-ab12-cdef34567890_-menuitem-_copy-tab-title-menu"
+        },
+        {
+          "selector": "#_b7ff41b7-4bda-456e-9c48-0a1c605518c4_-menuitem-_copy-archive-url"
+        },
+        {
+          "selector": "#archive-extension_save_com-menuitem-_archive-tab"
+        },
+        {
+          "selector": "#the-tab-suspender_tabsuspender_internal-menuitem-_suspendPage"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"_531906d3-e22f-4a6c-a102-8057b88a1a63_-menuitem-\"]"
+        }
+      ],
+      "pinnedTail": [],
+      "childOrders": []
+    },
+    "context_moveTabToSavedGroupPopupMenu": {
+      "reorder": true,
+      "entries": [
+        {
+          "selector": "#_a1b2c3d4-e5f6-7890-ab12-cdef34567890_-menuitem-_copy-tab-title-menu"
+        },
+        {
+          "selector": "#_b1c2c3d4-e5f6-7890-ab12-cdef34567890_-menuitem-_copy-tab-title-menu"
+        },
+        {
+          "selector": "#_b7ff41b7-4bda-456e-9c48-0a1c605518c4_-menuitem-_copy-archive-url"
+        },
+        {
+          "selector": "#archive-extension_save_com-menuitem-_archive-tab"
+        },
+        {
+          "selector": "#the-tab-suspender_tabsuspender_internal-menuitem-_suspendPage"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"_531906d3-e22f-4a6c-a102-8057b88a1a63_-menuitem-\"]"
+        }
+      ],
+      "pinnedTail": [],
+      "childOrders": []
+    },
+    "historyMenuPopup": {
+      "reorder": true,
+      "entries": [
+        {
+          "selector": "#menu_showAllHistory"
+        },
+        {
+          "selector": "#chatsHistoryMenu"
+        },
+        {
+          "selector": "#sanitizeItem"
+        },
+        {
+          "selector": "sep:0",
+          "separator": true
+        },
+        {
+          "selector": "#sync-tabs-menuitem"
+        },
+        {
+          "selector": "#historyRemoteTabsPromo"
+        },
+        {
+          "selector": "#historyRestoreLastSession"
+        },
+        {
+          "selector": "#hiddenTabsMenu"
+        },
+        {
+          "selector": "#menu_searchHistory"
+        },
+        {
+          "selector": "#historyUndoMenu"
+        },
+        {
+          "selector": "#historyUndoWindowMenu"
+        },
+        {
+          "selector": "sep:1",
+          "separator": true
+        },
+        {
+          "selector": "#recentChatsHeader"
+        },
+        {
+          "selector": "sep:2",
+          "separator": true
+        },
+        {
+          "selector": "#copy-frame-url_jeffersonscher_com-menuitem-_copy-frame-url"
+        },
+        {
+          "selector": "#just-save-it_razielanarki_webextension-menuitem-_save"
+        },
+        {
+          "selector": "#_b578d554-3b0b-4f6b-8bbe-5decdd5915ae_-menuitem-1"
+        },
+        {
+          "selector": "#archive-extension_save_com-menuitem-_archive-link"
+        },
+        {
+          "selector": "#copy_elements_text_utb_dip_jp-menuitem-_copy_elements_text"
+        },
+        {
+          "selector": "#copytime_ff_com-menuitem-_copy-video-to-clipboard"
+        },
+        {
+          "selector": "#media-speed-controller_gemini-cli_dev-menuitem-_media-speed-controller"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"tempora23912391_gmail_com-menuitem-\"]"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"the-tab-suspender_tabsuspender_internal-menuitem-\"]"
+        },
+        {
+          "selector": "#ublock0_raymondhill_net-menuitem-_uBlock0-subscribeToList"
+        },
+        {
+          "selector": "#_036a55b4-5e72-4d05-a06c-cba2dfcc134a_-menuitem-_translate-web-page"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"_2e5ff8c8-32fe-46d0-9fc8-6b8986621f3c_-menuitem-\"]"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"_531906d3-e22f-4a6c-a102-8057b88a1a63_-menuitem-\"]"
+        }
+      ],
+      "pinnedTail": [],
+      "childOrders": []
+    },
+    "sidebar-context-menu": {
+      "reorder": true,
+      "entries": [
+        {
+          "selector": "#sidebar-context-menu-manage-extension"
+        },
+        {
+          "selector": "#sidebar-context-menu-remove-extension"
+        },
+        {
+          "selector": "#sidebar-context-menu-report-extension"
+        },
+        {
+          "selector": "sep:0",
+          "separator": true
+        },
+        {
+          "selector": "#sidebar-context-menu-unpin-extension"
+        },
+        {
+          "selector": "#sidebar-context-menu-hide-sidebar"
+        },
+        {
+          "selector": "#sidebar-context-menu-customize-sidebar"
+        },
+        {
+          "selector": "#sidebar-context-menu-enable-vertical-tabs"
+        },
+        {
+          "selector": "#copy-frame-url_jeffersonscher_com-menuitem-_copy-frame-url"
+        },
+        {
+          "selector": "#just-save-it_razielanarki_webextension-menuitem-_save"
+        },
+        {
+          "selector": "#_b578d554-3b0b-4f6b-8bbe-5decdd5915ae_-menuitem-1"
+        },
+        {
+          "selector": "#archive-extension_save_com-menuitem-_archive-link"
+        },
+        {
+          "selector": "#copy_elements_text_utb_dip_jp-menuitem-_copy_elements_text"
+        },
+        {
+          "selector": "#copytime_ff_com-menuitem-_copy-video-to-clipboard"
+        },
+        {
+          "selector": "#media-speed-controller_gemini-cli_dev-menuitem-_media-speed-controller"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"tempora23912391_gmail_com-menuitem-\"]"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"the-tab-suspender_tabsuspender_internal-menuitem-\"]"
+        },
+        {
+          "selector": "#ublock0_raymondhill_net-menuitem-_uBlock0-subscribeToList"
+        },
+        {
+          "selector": "#_036a55b4-5e72-4d05-a06c-cba2dfcc134a_-menuitem-_translate-web-page"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"_2e5ff8c8-32fe-46d0-9fc8-6b8986621f3c_-menuitem-\"]"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"_531906d3-e22f-4a6c-a102-8057b88a1a63_-menuitem-\"]"
+        }
+      ],
+      "pinnedTail": [],
+      "childOrders": []
+    },
+    "sidebarMenu-popup": {
+      "reorder": true,
+      "entries": [
+        {
+          "selector": "#sidebar-switcher-bookmarks"
+        },
+        {
+          "selector": "#sidebar-switcher-history"
+        },
+        {
+          "selector": "#sidebar-switcher-tabs"
+        },
+        {
+          "selector": "#sidebar-switcher-megalist"
+        },
+        {
+          "selector": "sep:0",
+          "separator": true
+        },
+        {
+          "selector": "#sidebarswitcher_menu__531906d3-e22f-4a6c-a102-8057b88a1a63_-sidebar-action"
+        },
+        {
+          "selector": "#sidebarswitcher_menu__7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-sidebar-action"
+        },
+        {
+          "selector": "sep:1",
+          "separator": true
+        },
+        {
+          "selector": "#sidebar-reverse-position"
+        },
+        {
+          "selector": "sep:2",
+          "separator": true
+        },
+        {
+          "selector": "#sidebar-menu-close"
+        },
+        {
+          "selector": "#copy-frame-url_jeffersonscher_com-menuitem-_copy-frame-url"
+        },
+        {
+          "selector": "#just-save-it_razielanarki_webextension-menuitem-_save"
+        },
+        {
+          "selector": "#_b578d554-3b0b-4f6b-8bbe-5decdd5915ae_-menuitem-1"
+        },
+        {
+          "selector": "#archive-extension_save_com-menuitem-_archive-link"
+        },
+        {
+          "selector": "#copy_elements_text_utb_dip_jp-menuitem-_copy_elements_text"
+        },
+        {
+          "selector": "#copytime_ff_com-menuitem-_copy-video-to-clipboard"
+        },
+        {
+          "selector": "#media-speed-controller_gemini-cli_dev-menuitem-_media-speed-controller"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"tempora23912391_gmail_com-menuitem-\"]"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"the-tab-suspender_tabsuspender_internal-menuitem-\"]"
+        },
+        {
+          "selector": "#ublock0_raymondhill_net-menuitem-_uBlock0-subscribeToList"
+        },
+        {
+          "selector": "#_036a55b4-5e72-4d05-a06c-cba2dfcc134a_-menuitem-_translate-web-page"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"_2e5ff8c8-32fe-46d0-9fc8-6b8986621f3c_-menuitem-\"]"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"_531906d3-e22f-4a6c-a102-8057b88a1a63_-menuitem-\"]"
+        }
+      ],
+      "pinnedTail": [],
+      "childOrders": []
+    },
+    "placesContext": {
+      "reorder": true,
+      "entries": [
+        {
+          "selector": "#placesContext_open"
+        },
+        {
+          "selector": "#placesContext_openBookmarkContainer\\:tabs"
+        },
+        {
+          "selector": "#placesContext_openBookmarkLinks\\:tabs"
+        },
+        {
+          "selector": "#placesContext_open\\:newtab"
+        },
+        {
+          "selector": "#placesContext_open\\:newcontainertab"
+        },
+        {
+          "selector": "#placesContext_openContainer\\:tabs"
+        },
+        {
+          "selector": "#placesContext_openLinks\\:tabs"
+        },
+        {
+          "selector": "#placesContext_open\\:newwindow"
+        },
+        {
+          "selector": "#placesContext_open\\:newprivatewindow"
+        },
+        {
+          "selector": "#placesContext_showInFolder"
+        },
+        {
+          "selector": "#contentsharing_sharefolder"
+        },
+        {
+          "selector": "sep:0",
+          "separator": true
+        },
+        {
+          "selector": "#placesContext_show_bookmark\\:info"
+        },
+        {
+          "selector": "#placesContext_show\\:info"
+        },
+        {
+          "selector": "#placesContext_show_folder\\:info"
+        },
+        {
+          "selector": "#placesContext_deleteBookmark"
+        },
+        {
+          "selector": "#placesContext_removeTag"
+        },
+        {
+          "selector": "#placesContext_deleteFolder"
+        },
+        {
+          "selector": "#placesContext_delete"
+        },
+        {
+          "selector": "#placesContext_delete_history"
+        },
+        {
+          "selector": "#placesContext_deleteHost"
+        },
+        {
+          "selector": "#placesContext_sortBy\\:name"
+        },
+        {
+          "selector": "sep:1",
+          "separator": true
+        },
+        {
+          "selector": "#placesContext_cut"
+        },
+        {
+          "selector": "#placesContext_copy"
+        },
+        {
+          "selector": "#placesContext_paste_group"
+        },
+        {
+          "selector": "sep:2",
+          "separator": true
+        },
+        {
+          "selector": "#placesContext_new\\:bookmark"
+        },
+        {
+          "selector": "#placesContext_new\\:folder"
+        },
+        {
+          "selector": "#placesContext_new\\:separator"
+        },
+        {
+          "selector": "sep:3",
+          "separator": true
+        },
+        {
+          "selector": "#placesContext_paste"
+        },
+        {
+          "selector": "sep:4",
+          "separator": true
+        },
+        {
+          "selector": "#placesContext_createBookmark"
+        },
+        {
+          "selector": "#placesContext_showAllBookmarks"
+        },
+        {
+          "selector": "#copy-frame-url_jeffersonscher_com-menuitem-_copy-frame-url"
+        },
+        {
+          "selector": "#just-save-it_razielanarki_webextension-menuitem-_save"
+        },
+        {
+          "selector": "#_b578d554-3b0b-4f6b-8bbe-5decdd5915ae_-menuitem-1"
+        },
+        {
+          "selector": "#archive-extension_save_com-menuitem-_archive-link"
+        },
+        {
+          "selector": "#copy_elements_text_utb_dip_jp-menuitem-_copy_elements_text"
+        },
+        {
+          "selector": "#copytime_ff_com-menuitem-_copy-video-to-clipboard"
+        },
+        {
+          "selector": "#media-speed-controller_gemini-cli_dev-menuitem-_media-speed-controller"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"tempora23912391_gmail_com-menuitem-\"]"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"the-tab-suspender_tabsuspender_internal-menuitem-\"]"
+        },
+        {
+          "selector": "#ublock0_raymondhill_net-menuitem-_uBlock0-subscribeToList"
+        },
+        {
+          "selector": "#_036a55b4-5e72-4d05-a06c-cba2dfcc134a_-menuitem-_translate-web-page"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"_2e5ff8c8-32fe-46d0-9fc8-6b8986621f3c_-menuitem-\"]"
+        },
+        {
+          "selector": "menu[ext-type=\"top-level-menu\"][id^=\"_531906d3-e22f-4a6c-a102-8057b88a1a63_-menuitem-\"]"
+        },
+        {
+          "selector": "#archive-extension_save_com-menuitem-_archive-page"
+        }
+      ],
+      "pinnedTail": [],
+      "childOrders": []
+    }
+  }
+}
