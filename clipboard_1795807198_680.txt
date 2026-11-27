@@ -1,0 +1,8 @@
+﻿<a target="_blank" href="https://www.instagram.com/reel/DgEEcSlugsw/?avpt=MWlyYmVtNGc3ZmpsNA==" class="tweet-card-link box">
+            <img src="https://pbs.twimg.com/card_img/2126133042200645633/rmtjPPo0?format=jpg&amp;name=280x280" class="tweet-card-link-thumbnail">
+            <div class="tweet-card-link-text">
+                <span class="tweet-card-link-vanity">instagram.com</span><br>
+                <h3 class="tweet-card-link-title">FelipeGimenez7580 (@felipegimenez7580) • Instagram reel</h3>
+                
+            </div>
+        </a>
