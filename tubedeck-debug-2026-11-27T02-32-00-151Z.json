@@ -1,0 +1,3257 @@
+{
+  "application": "TubeDeck",
+  "version": "0.13.10",
+  "exportedAt": "2026-11-27T02:32:00.150Z",
+  "entryCount": 196,
+  "recorderEnabled": true,
+  "categories": {
+    "navigation": true,
+    "tabs": true,
+    "videos": true,
+    "player": true,
+    "iframe": true,
+    "iframeHooks": true,
+    "requests": true,
+    "settings": true,
+    "ui": true,
+    "lifecycle": true,
+    "errors": true
+  },
+  "retentionLimit": 6000,
+  "privacy": "Diagnostic event metadata only. Raw message bodies, comments, captions/transcripts, input text, cookies, authorization headers, API keys, continuation tokens and signed URL query strings are redacted or omitted.",
+  "entries": [
+    {
+      "timestamp": "2026-11-27T02:31:42.806Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 70,
+        "elapsedMs": 75762,
+        "iframeId": "tubedeck-embed-SIU_My35iXA-standby",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:42.807Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 71,
+        "elapsedMs": 75763,
+        "iframeId": "tubedeck-embed-SIU_My35iXA",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:43.121Z",
+      "source": "background",
+      "category": "tabs",
+      "level": "info",
+      "event": "tabs.activated",
+      "details": {
+        "tabId": 30,
+        "windowId": 1
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:43.807Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 72,
+        "elapsedMs": 76763,
+        "iframeId": "tubedeck-embed-SIU_My35iXA-standby",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:43.807Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 73,
+        "elapsedMs": 76763,
+        "iframeId": "tubedeck-embed-SIU_My35iXA",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:44.727Z",
+      "source": "iframe-content",
+      "category": "ui",
+      "level": "info",
+      "event": "ui.pointer-down",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/",
+        "sequence": 141,
+        "elapsedMs": 19412,
+        "tag": "div",
+        "id": "search-suggestion-1",
+        "classes": "search-suggestion-option",
+        "role": "option",
+        "route": "",
+        "href": "",
+        "x": 480,
+        "y": 89,
+        "pointerId": 0,
+        "pointerType": "mouse",
+        "button": 0,
+        "buttons": 1
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:44.745Z",
+      "source": "background",
+      "category": "tabs",
+      "level": "info",
+      "event": "tabs.updated",
+      "details": {
+        "tabId": 30,
+        "windowId": 1,
+        "active": true,
+        "status": "complete",
+        "discarded": false,
+        "pinned": false,
+        "host": "www.youtube.com",
+        "path": "/results",
+        "pageType": "search",
+        "changedFields": [
+          "status",
+          "url"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:44.734Z",
+      "source": "iframe-content",
+      "category": "navigation",
+      "level": "info",
+      "event": "navigation.route-requested",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/results",
+        "sequence": 142,
+        "elapsedMs": 19419,
+        "from": "home",
+        "to": "search",
+        "source": "history-traversal"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:44.735Z",
+      "source": "iframe-content",
+      "category": "navigation",
+      "level": "info",
+      "event": "navigation.seamless-skipped",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/results",
+        "sequence": 143,
+        "elapsedMs": 19420,
+        "route": "#/search?q=manual+do+mundo&type=video",
+        "reason": "explicit-selection"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:44.735Z",
+      "source": "iframe-content",
+      "category": "navigation",
+      "level": "info",
+      "event": "navigation.route-begin",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/results",
+        "sequence": 144,
+        "elapsedMs": 19420,
+        "from": "home",
+        "to": "search",
+        "historyEntryId": "td-6c465312-7213-45d1-a335-e310de12ab74"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:44.735Z",
+      "source": "iframe-content",
+      "category": "navigation",
+      "level": "info",
+      "event": "navigation.route",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/results",
+        "sequence": 145,
+        "elapsedMs": 19420,
+        "from": "home",
+        "to": "search",
+        "videoId": ""
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:44.739Z",
+      "source": "iframe-content",
+      "category": "navigation",
+      "level": "info",
+      "event": "navigation.cache.stored",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/results",
+        "sequence": 146,
+        "elapsedMs": 19424,
+        "route": "#/home",
+        "entryId": "td-247ff0fa-d870-4ea8-ab49-44bbba764dbd",
+        "cachedEntries": 1
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:44.740Z",
+      "source": "iframe-content",
+      "category": "navigation",
+      "level": "info",
+      "event": "navigation.cache.miss",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/results",
+        "sequence": 147,
+        "elapsedMs": 19425,
+        "route": "#/search?q=manual+do+mundo&type=video",
+        "entryId": "td-6c465312-7213-45d1-a335-e310de12ab74",
+        "cachedEntries": 1,
+        "reason": "entry-not-in-memory"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:44.741Z",
+      "source": "iframe-content",
+      "category": "requests",
+      "level": "info",
+      "event": "innertube.request",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/results",
+        "sequence": 148,
+        "elapsedMs": 19426,
+        "endpoint": "search",
+        "videoId": "",
+        "client": "WEB",
+        "hasContinuation": "[redacted]",
+        "cookieAuthRequested": "[redacted]",
+        "metadataOnly": false
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:44.769Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "extension.message.received",
+      "details": {
+        "type": "TUBEDECK_REQUEST",
+        "senderTabId": 30,
+        "senderFrameId": 0,
+        "sender": "https://www.youtube.com/"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:44.775Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "innertube.request",
+      "details": {
+        "endpoint": "search",
+        "client": "WEB",
+        "language": "default",
+        "videoId": "",
+        "hasContinuation": "[redacted]",
+        "cookieAuthRequested": "[redacted]",
+        "browserSessionRequested": true
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:44.775Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube Innertube search (WEB)",
+        "method": "POST",
+        "url": "https://www.youtube.com/youtubei/v1/search",
+        "timeoutMs": 22000
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:44.783Z",
+      "source": "background",
+      "category": "tabs",
+      "level": "info",
+      "event": "tabs.updated",
+      "details": {
+        "tabId": 30,
+        "windowId": 1,
+        "active": true,
+        "status": "complete",
+        "discarded": false,
+        "pinned": false,
+        "host": "www.youtube.com",
+        "path": "/results",
+        "pageType": "search",
+        "changedFields": [
+          "title"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:44.760Z",
+      "source": "iframe-content",
+      "category": "ui",
+      "level": "info",
+      "event": "ui.pointer-drag-move",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/results",
+        "sequence": 149,
+        "elapsedMs": 19445,
+        "tag": "a",
+        "id": "",
+        "classes": "",
+        "role": "",
+        "route": "subscriptions",
+        "href": "/feed/subscriptions",
+        "x": 480,
+        "y": 88,
+        "pointerId": 0,
+        "pointerType": "mouse",
+        "buttons": 1,
+        "movementX": 0,
+        "movementY": -1
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:44.810Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 74,
+        "elapsedMs": 77766,
+        "iframeId": "tubedeck-embed-SIU_My35iXA-standby",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:44.818Z",
+      "source": "iframe-content",
+      "category": "ui",
+      "level": "info",
+      "event": "ui.pointerup",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/results",
+        "sequence": 150,
+        "elapsedMs": 19503,
+        "tag": "a",
+        "id": "",
+        "classes": "",
+        "role": "",
+        "route": "subscriptions",
+        "href": "/feed/subscriptions",
+        "x": 479,
+        "y": 88,
+        "pointerId": 0,
+        "pointerType": "mouse",
+        "button": 0,
+        "buttons": 0
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:44.819Z",
+      "source": "iframe-content",
+      "category": "ui",
+      "level": "info",
+      "event": "ui.mouse-click",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/results",
+        "sequence": 151,
+        "elapsedMs": 19504,
+        "tag": "div",
+        "id": "tubedeck-app",
+        "classes": "",
+        "role": "",
+        "route": "",
+        "href": "",
+        "x": 479,
+        "y": 88,
+        "button": 0,
+        "buttons": 0,
+        "detail": 1,
+        "pointerType": "mouse"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.325Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube Innertube search (WEB)",
+        "method": "POST",
+        "url": "https://www.youtube.com/youtubei/v1/search",
+        "status": 200,
+        "ok": true,
+        "bytes": 548884,
+        "contentType": "application/json; charset=UTF-8",
+        "elapsedMs": 549
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.350Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "innertube.response",
+      "details": {
+        "endpoint": "search",
+        "client": "WEB",
+        "videoId": "",
+        "status": 200,
+        "elapsedMs": 552,
+        "responseKeys": [
+          "responseContext",
+          "estimatedResults",
+          "contents",
+          "trackingParams",
+          "header",
+          "topbar",
+          "targetId",
+          "frameworkUpdates"
+        ],
+        "playabilityStatus": "",
+        "reason": "",
+        "progressiveFormats": 0,
+        "adaptiveFormats": 0,
+        "hasHlsManifest": false,
+        "hasDashManifest": false,
+        "hasSabrStreaming": false,
+        "hasContinuation": "[redacted]"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.354Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.354Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.354Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.354Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.354Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.354Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.354Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.354Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.448Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 835,
+        "contentType": "application/json",
+        "elapsedMs": 97
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.449Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 807,
+        "contentType": "application/json",
+        "elapsedMs": 98
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.449Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 855,
+        "contentType": "application/json",
+        "elapsedMs": 97
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.515Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 817,
+        "contentType": "application/json",
+        "elapsedMs": 162
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.520Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 833,
+        "contentType": "application/json",
+        "elapsedMs": 166
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.529Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 791,
+        "contentType": "application/json",
+        "elapsedMs": 176
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.546Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 819,
+        "contentType": "application/json",
+        "elapsedMs": 193
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.572Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 837,
+        "contentType": "application/json",
+        "elapsedMs": 219
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.575Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.575Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.575Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.575Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.575Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.575Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.575Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.575Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.605Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 823,
+        "contentType": "application/json",
+        "elapsedMs": 33
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.606Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 861,
+        "contentType": "application/json",
+        "elapsedMs": 33
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.607Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 863,
+        "contentType": "application/json",
+        "elapsedMs": 34
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.607Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 819,
+        "contentType": "application/json",
+        "elapsedMs": 33
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.608Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 837,
+        "contentType": "application/json",
+        "elapsedMs": 34
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.609Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 889,
+        "contentType": "application/json",
+        "elapsedMs": 35
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.610Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 811,
+        "contentType": "application/json",
+        "elapsedMs": 36
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.616Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 859,
+        "contentType": "application/json",
+        "elapsedMs": 41
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.617Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.617Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.617Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.617Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.623Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 906,
+        "contentType": "application/json",
+        "elapsedMs": 7
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.625Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 827,
+        "contentType": "application/json",
+        "elapsedMs": 9
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.630Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 805,
+        "contentType": "application/json",
+        "elapsedMs": 13
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.634Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 869,
+        "contentType": "application/json",
+        "elapsedMs": 17
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.763Z",
+      "source": "iframe-content",
+      "category": "requests",
+      "level": "info",
+      "event": "innertube.result",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/results",
+        "sequence": 152,
+        "elapsedMs": 1022,
+        "endpoint": "search",
+        "videoId": "",
+        "client": "WEB",
+        "hasContinuation": "[redacted]",
+        "cookieAuthRequested": "[redacted]",
+        "metadataOnly": false,
+        "response": "[object]"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.813Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 75,
+        "elapsedMs": 78769,
+        "iframeId": "tubedeck-embed-SIU_My35iXA",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:45.814Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 76,
+        "elapsedMs": 78770,
+        "iframeId": "tubedeck-embed-SIU_My35iXA-standby",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:46.814Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 77,
+        "elapsedMs": 79770,
+        "iframeId": "tubedeck-embed-SIU_My35iXA",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:46.815Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 78,
+        "elapsedMs": 79771,
+        "iframeId": "tubedeck-embed-SIU_My35iXA-standby",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:47.816Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 79,
+        "elapsedMs": 80772,
+        "iframeId": "tubedeck-embed-SIU_My35iXA",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:47.817Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 80,
+        "elapsedMs": 80773,
+        "iframeId": "tubedeck-embed-SIU_My35iXA-standby",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:48.818Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 81,
+        "elapsedMs": 81774,
+        "iframeId": "tubedeck-embed-SIU_My35iXA",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:48.818Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 82,
+        "elapsedMs": 81774,
+        "iframeId": "tubedeck-embed-SIU_My35iXA-standby",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:49.818Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 83,
+        "elapsedMs": 82774,
+        "iframeId": "tubedeck-embed-SIU_My35iXA",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:49.819Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 84,
+        "elapsedMs": 82775,
+        "iframeId": "tubedeck-embed-SIU_My35iXA-standby",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:50.820Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 85,
+        "elapsedMs": 83776,
+        "iframeId": "tubedeck-embed-SIU_My35iXA",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:50.820Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 86,
+        "elapsedMs": 83776,
+        "iframeId": "tubedeck-embed-SIU_My35iXA-standby",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:51.820Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 87,
+        "elapsedMs": 84776,
+        "iframeId": "tubedeck-embed-SIU_My35iXA",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:51.821Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 88,
+        "elapsedMs": 84777,
+        "iframeId": "tubedeck-embed-SIU_My35iXA-standby",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:51.895Z",
+      "source": "iframe-content",
+      "category": "requests",
+      "level": "info",
+      "event": "innertube.request",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/results",
+        "sequence": 153,
+        "elapsedMs": 26580,
+        "endpoint": "search",
+        "videoId": "",
+        "client": "WEB",
+        "hasContinuation": "[redacted]",
+        "cookieAuthRequested": "[redacted]",
+        "metadataOnly": false
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:51.906Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "extension.message.received",
+      "details": {
+        "type": "TUBEDECK_REQUEST",
+        "senderTabId": 30,
+        "senderFrameId": 0,
+        "sender": "https://www.youtube.com/"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:51.910Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "innertube.request",
+      "details": {
+        "endpoint": "search",
+        "client": "WEB",
+        "language": "default",
+        "videoId": "",
+        "hasContinuation": "[redacted]",
+        "cookieAuthRequested": "[redacted]",
+        "browserSessionRequested": true
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:51.910Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube Innertube search (WEB)",
+        "method": "POST",
+        "url": "https://www.youtube.com/youtubei/v1/search",
+        "timeoutMs": 22000
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.414Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube Innertube search (WEB)",
+        "method": "POST",
+        "url": "https://www.youtube.com/youtubei/v1/search",
+        "status": 200,
+        "ok": true,
+        "bytes": 661944,
+        "contentType": "application/json; charset=UTF-8",
+        "elapsedMs": 502
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.427Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "innertube.response",
+      "details": {
+        "endpoint": "search",
+        "client": "WEB",
+        "videoId": "",
+        "status": 200,
+        "elapsedMs": 505,
+        "responseKeys": [
+          "responseContext",
+          "estimatedResults",
+          "trackingParams",
+          "header",
+          "topbar",
+          "onResponseReceivedCommands",
+          "isSafeSearchTriggered",
+          "frameworkUpdates"
+        ],
+        "playabilityStatus": "",
+        "reason": "",
+        "progressiveFormats": 0,
+        "adaptiveFormats": 0,
+        "hasHlsManifest": false,
+        "hasDashManifest": false,
+        "hasSabrStreaming": false,
+        "hasContinuation": "[redacted]"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.430Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.430Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.430Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.430Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.430Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.430Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.430Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.431Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.445Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 831,
+        "contentType": "application/json",
+        "elapsedMs": 18
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.446Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 847,
+        "contentType": "application/json",
+        "elapsedMs": 18
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.448Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 833,
+        "contentType": "application/json",
+        "elapsedMs": 20
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.449Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 863,
+        "contentType": "application/json",
+        "elapsedMs": 21
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.450Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 819,
+        "contentType": "application/json",
+        "elapsedMs": 20
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.458Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 853,
+        "contentType": "application/json",
+        "elapsedMs": 28
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.459Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 847,
+        "contentType": "application/json",
+        "elapsedMs": 30
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.459Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 803,
+        "contentType": "application/json",
+        "elapsedMs": 29
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.462Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.462Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.462Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.462Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.462Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.462Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.462Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.462Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.487Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 883,
+        "contentType": "application/json",
+        "elapsedMs": 28
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.489Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 807,
+        "contentType": "application/json",
+        "elapsedMs": 30
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.490Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 823,
+        "contentType": "application/json",
+        "elapsedMs": 30
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.491Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 807,
+        "contentType": "application/json",
+        "elapsedMs": 31
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.491Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 861,
+        "contentType": "application/json",
+        "elapsedMs": 31
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.492Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 827,
+        "contentType": "application/json",
+        "elapsedMs": 31
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.492Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 841,
+        "contentType": "application/json",
+        "elapsedMs": 31
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.493Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 881,
+        "contentType": "application/json",
+        "elapsedMs": 32
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.494Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.494Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.494Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.494Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.505Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 845,
+        "contentType": "application/json",
+        "elapsedMs": 12
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.506Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 879,
+        "contentType": "application/json",
+        "elapsedMs": 12
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.507Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 837,
+        "contentType": "application/json",
+        "elapsedMs": 13
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.507Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 823,
+        "contentType": "application/json",
+        "elapsedMs": 13
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.655Z",
+      "source": "background",
+      "category": "tabs",
+      "level": "info",
+      "event": "tabs.activated",
+      "details": {
+        "tabId": 29,
+        "windowId": 1
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.640Z",
+      "source": "iframe-content",
+      "category": "requests",
+      "level": "info",
+      "event": "innertube.result",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/results",
+        "sequence": 154,
+        "elapsedMs": 745,
+        "endpoint": "search",
+        "videoId": "",
+        "client": "WEB",
+        "hasContinuation": "[redacted]",
+        "cookieAuthRequested": "[redacted]",
+        "metadataOnly": false,
+        "response": "[object]"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.821Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 89,
+        "elapsedMs": 85777,
+        "iframeId": "tubedeck-embed-SIU_My35iXA",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.822Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 90,
+        "elapsedMs": 85778,
+        "iframeId": "tubedeck-embed-SIU_My35iXA-standby",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:52.954Z",
+      "source": "iframe-content",
+      "category": "requests",
+      "level": "info",
+      "event": "innertube.request",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/results",
+        "sequence": 155,
+        "elapsedMs": 27639,
+        "endpoint": "search",
+        "videoId": "",
+        "client": "WEB",
+        "hasContinuation": "[redacted]",
+        "cookieAuthRequested": "[redacted]",
+        "metadataOnly": false
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.003Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "extension.message.received",
+      "details": {
+        "type": "TUBEDECK_REQUEST",
+        "senderTabId": 30,
+        "senderFrameId": 0,
+        "sender": "https://www.youtube.com/"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.005Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "innertube.request",
+      "details": {
+        "endpoint": "search",
+        "client": "WEB",
+        "language": "default",
+        "videoId": "",
+        "hasContinuation": "[redacted]",
+        "cookieAuthRequested": "[redacted]",
+        "browserSessionRequested": true
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.005Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube Innertube search (WEB)",
+        "method": "POST",
+        "url": "https://www.youtube.com/youtubei/v1/search",
+        "timeoutMs": 22000
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.715Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube Innertube search (WEB)",
+        "method": "POST",
+        "url": "https://www.youtube.com/youtubei/v1/search",
+        "status": 200,
+        "ok": true,
+        "bytes": 576673,
+        "contentType": "application/json; charset=UTF-8",
+        "elapsedMs": 705
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.736Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "innertube.response",
+      "details": {
+        "endpoint": "search",
+        "client": "WEB",
+        "videoId": "",
+        "status": 200,
+        "elapsedMs": 709,
+        "responseKeys": [
+          "responseContext",
+          "estimatedResults",
+          "trackingParams",
+          "header",
+          "topbar",
+          "onResponseReceivedCommands",
+          "isSafeSearchTriggered",
+          "frameworkUpdates"
+        ],
+        "playabilityStatus": "",
+        "reason": "",
+        "progressiveFormats": 0,
+        "adaptiveFormats": 0,
+        "hasHlsManifest": false,
+        "hasDashManifest": false,
+        "hasSabrStreaming": false,
+        "hasContinuation": "[redacted]"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.740Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.740Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.740Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.741Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.741Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.741Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.741Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.741Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.823Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 91,
+        "elapsedMs": 86779,
+        "iframeId": "tubedeck-embed-SIU_My35iXA",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.823Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 92,
+        "elapsedMs": 86779,
+        "iframeId": "tubedeck-embed-SIU_My35iXA-standby",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.868Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 917,
+        "contentType": "application/json",
+        "elapsedMs": 131
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.868Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 835,
+        "contentType": "application/json",
+        "elapsedMs": 130
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.869Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 817,
+        "contentType": "application/json",
+        "elapsedMs": 131
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.877Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 919,
+        "contentType": "application/json",
+        "elapsedMs": 137
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.880Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 835,
+        "contentType": "application/json",
+        "elapsedMs": 141
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.884Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 819,
+        "contentType": "application/json",
+        "elapsedMs": 145
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.884Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 823,
+        "contentType": "application/json",
+        "elapsedMs": 145
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.885Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 849,
+        "contentType": "application/json",
+        "elapsedMs": 145
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.889Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.889Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.889Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.889Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.889Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.889Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.889Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.889Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.943Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 823,
+        "contentType": "application/json",
+        "elapsedMs": 58
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.944Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 797,
+        "contentType": "application/json",
+        "elapsedMs": 58
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.963Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 825,
+        "contentType": "application/json",
+        "elapsedMs": 77
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.963Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 849,
+        "contentType": "application/json",
+        "elapsedMs": 76
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.964Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 795,
+        "contentType": "application/json",
+        "elapsedMs": 77
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.964Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 829,
+        "contentType": "application/json",
+        "elapsedMs": 76
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.965Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 889,
+        "contentType": "application/json",
+        "elapsedMs": 77
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.965Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 811,
+        "contentType": "application/json",
+        "elapsedMs": 77
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.966Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.966Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.966Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.request",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "timeoutMs": 4500
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.998Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 841,
+        "contentType": "application/json",
+        "elapsedMs": 33
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:53.999Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 867,
+        "contentType": "application/json",
+        "elapsedMs": 33
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:54.000Z",
+      "source": "background",
+      "category": "requests",
+      "level": "info",
+      "event": "network.response",
+      "details": {
+        "label": "YouTube oEmbed metadata",
+        "method": "GET",
+        "url": "https://www.youtube.com/oembed",
+        "status": 200,
+        "ok": true,
+        "bytes": 863,
+        "contentType": "application/json",
+        "elapsedMs": 34
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:54.176Z",
+      "source": "iframe-content",
+      "category": "requests",
+      "level": "info",
+      "event": "innertube.result",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/results",
+        "sequence": 156,
+        "elapsedMs": 1221,
+        "endpoint": "search",
+        "videoId": "",
+        "client": "WEB",
+        "hasContinuation": "[redacted]",
+        "cookieAuthRequested": "[redacted]",
+        "metadataOnly": false,
+        "response": "[object]"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:54.392Z",
+      "source": "iframe-content",
+      "category": "ui",
+      "level": "info",
+      "event": "ui.pointer-down",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/debug",
+        "sequence": 16,
+        "elapsedMs": 53285,
+        "tag": "button",
+        "id": "",
+        "classes": "action-button",
+        "role": "",
+        "route": "",
+        "href": "",
+        "x": 124,
+        "y": 143,
+        "pointerId": 0,
+        "pointerType": "mouse",
+        "button": 0,
+        "buttons": 1
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:54.472Z",
+      "source": "iframe-content",
+      "category": "ui",
+      "level": "info",
+      "event": "ui.pointer-drag-move",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/debug",
+        "sequence": 17,
+        "elapsedMs": 53365,
+        "tag": "button",
+        "id": "",
+        "classes": "action-button",
+        "role": "",
+        "route": "",
+        "href": "",
+        "x": 123,
+        "y": 143,
+        "pointerId": 0,
+        "pointerType": "mouse",
+        "buttons": 1,
+        "movementX": -1,
+        "movementY": 0
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:54.502Z",
+      "source": "iframe-content",
+      "category": "ui",
+      "level": "info",
+      "event": "ui.pointerup",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/debug",
+        "sequence": 18,
+        "elapsedMs": 53395,
+        "tag": "button",
+        "id": "",
+        "classes": "action-button",
+        "role": "",
+        "route": "",
+        "href": "",
+        "x": 123,
+        "y": 143,
+        "pointerId": 0,
+        "pointerType": "mouse",
+        "button": 0,
+        "buttons": 0
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:54.504Z",
+      "source": "iframe-content",
+      "category": "ui",
+      "level": "info",
+      "event": "ui.mouse-click",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/debug",
+        "sequence": 19,
+        "elapsedMs": 53397,
+        "tag": "button",
+        "id": "",
+        "classes": "action-button",
+        "role": "",
+        "route": "",
+        "href": "",
+        "x": 123,
+        "y": 143,
+        "button": 0,
+        "buttons": 0,
+        "detail": 1,
+        "pointerType": "mouse"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:54.504Z",
+      "source": "iframe-content",
+      "category": "settings",
+      "level": "info",
+      "event": "settings.debug-monitor-live-changed",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/debug",
+        "sequence": 20,
+        "elapsedMs": 53397,
+        "paused": true,
+        "source": "terminal-button",
+        "recording": true
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:54.824Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 93,
+        "elapsedMs": 87780,
+        "iframeId": "tubedeck-embed-SIU_My35iXA",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:54.824Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 94,
+        "elapsedMs": 87780,
+        "iframeId": "tubedeck-embed-SIU_My35iXA-standby",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:55.825Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 95,
+        "elapsedMs": 88781,
+        "iframeId": "tubedeck-embed-SIU_My35iXA",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:55.825Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 96,
+        "elapsedMs": 88781,
+        "iframeId": "tubedeck-embed-SIU_My35iXA-standby",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:56.826Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 97,
+        "elapsedMs": 89782,
+        "iframeId": "tubedeck-embed-SIU_My35iXA",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:56.827Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 98,
+        "elapsedMs": 89783,
+        "iframeId": "tubedeck-embed-SIU_My35iXA-standby",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:57.828Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 99,
+        "elapsedMs": 90784,
+        "iframeId": "tubedeck-embed-SIU_My35iXA",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:57.828Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 100,
+        "elapsedMs": 90784,
+        "iframeId": "tubedeck-embed-SIU_My35iXA-standby",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:58.828Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 101,
+        "elapsedMs": 91784,
+        "iframeId": "tubedeck-embed-SIU_My35iXA",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:58.829Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 102,
+        "elapsedMs": 91785,
+        "iframeId": "tubedeck-embed-SIU_My35iXA-standby",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:59.830Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 103,
+        "elapsedMs": 92786,
+        "iframeId": "tubedeck-embed-SIU_My35iXA",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:59.830Z",
+      "source": "iframe-content",
+      "category": "iframe",
+      "level": "info",
+      "event": "iframe.parent-command-sent",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/watch",
+        "videoId": "SIU_My35iXA",
+        "sequence": 104,
+        "elapsedMs": 92786,
+        "iframeId": "tubedeck-embed-SIU_My35iXA-standby",
+        "command": "getCurrentTime"
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:31:59.996Z",
+      "source": "iframe-content",
+      "category": "ui",
+      "level": "info",
+      "event": "ui.pointer-down",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/debug",
+        "sequence": 21,
+        "elapsedMs": 58889,
+        "tag": "button",
+        "id": "",
+        "classes": "action-button",
+        "role": "",
+        "route": "",
+        "href": "",
+        "x": 357,
+        "y": 152,
+        "pointerId": 0,
+        "pointerType": "mouse",
+        "button": 0,
+        "buttons": 1
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:32:00.107Z",
+      "source": "iframe-content",
+      "category": "ui",
+      "level": "info",
+      "event": "ui.pointerup",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/debug",
+        "sequence": 22,
+        "elapsedMs": 59000,
+        "tag": "button",
+        "id": "",
+        "classes": "action-button",
+        "role": "",
+        "route": "",
+        "href": "",
+        "x": 357,
+        "y": 152,
+        "pointerId": 0,
+        "pointerType": "mouse",
+        "button": 0,
+        "buttons": 0
+      }
+    },
+    {
+      "timestamp": "2026-11-27T02:32:00.108Z",
+      "source": "iframe-content",
+      "category": "ui",
+      "level": "info",
+      "event": "ui.mouse-click",
+      "details": {
+        "frame": "iframe",
+        "host": "www.youtube.com",
+        "path": "/debug",
+        "sequence": 23,
+        "elapsedMs": 59001,
+        "tag": "button",
+        "id": "",
+        "classes": "action-button",
+        "role": "",
+        "route": "",
+        "href": "",
+        "x": 357,
+        "y": 152,
+        "button": 0,
+        "buttons": 0,
+        "detail": 1,
+        "pointerType": "mouse"
+      }
+    }
+  ]
+}
