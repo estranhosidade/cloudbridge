@@ -2454,13 +2454,12 @@
         }
 
         /* Outer margin matching Zen's element separation for exact visual symmetry */
-        :root[zentral-apps-placement="vertical-bar"]:not([zentral-apps-autohide="true"])[zen-right-side="true"] #zentral-apps-vertical-bar,
-        :root[zentral-apps-placement="vertical-bar"]:not([zentral-apps-autohide="true"])[zen-sidebar-right="true"] #zentral-apps-vertical-bar {
+        :root[zentral-apps-placement="vertical-bar"]:not([zentral-apps-autohide="true"])[zentral-apps-native-sidebar-side="right"] #zentral-apps-vertical-bar {
           margin-left: var(--zen-element-separation, 6px) !important;
           margin-right: 0 !important;
         }
 
-        :root[zentral-apps-placement="vertical-bar"]:not([zentral-apps-autohide="true"]):not([zen-right-side="true"]):not([zen-sidebar-right="true"]) #zentral-apps-vertical-bar {
+        :root[zentral-apps-placement="vertical-bar"]:not([zentral-apps-autohide="true"]):not([zentral-apps-native-sidebar-side="right"]) #zentral-apps-vertical-bar {
           margin-right: var(--zen-element-separation, 6px) !important;
           margin-left: 0 !important;
         }
@@ -2513,21 +2512,19 @@
         }
 
         /* Autohide Mode B: Position on Left (Sidebar on Right) */
-        :root[zentral-apps-autohide="true"][zentral-apps-placement="vertical-bar"][zen-right-side="true"] #zentral-apps-vertical-bar,
-        :root[zentral-apps-autohide="true"][zentral-apps-placement="vertical-bar"][zen-sidebar-right="true"] #zentral-apps-vertical-bar {
+        :root[zentral-apps-autohide="true"][zentral-apps-placement="vertical-bar"][zentral-apps-native-sidebar-side="right"] #zentral-apps-vertical-bar {
           left: 8px !important;
           right: auto !important;
         }
 
         /* Autohide Mode B: Position on Right (Sidebar on Left) */
-        :root[zentral-apps-autohide="true"][zentral-apps-placement="vertical-bar"]:not([zen-right-side="true"]):not([zen-sidebar-right="true"]) #zentral-apps-vertical-bar {
+        :root[zentral-apps-autohide="true"][zentral-apps-placement="vertical-bar"]:not([zentral-apps-native-sidebar-side="right"]) #zentral-apps-vertical-bar {
           right: 8px !important;
           left: auto !important;
         }
 
         /* Autohide Mode B: Idle/Collapsed State on Left */
-        :root[zentral-apps-autohide="true"][zentral-apps-placement="vertical-bar"][zen-right-side="true"] #zentral-apps-vertical-bar:not([data-revealed="true"]):not([zentral-app-panel-open="true"]),
-        :root[zentral-apps-autohide="true"][zentral-apps-placement="vertical-bar"][zen-sidebar-right="true"] #zentral-apps-vertical-bar:not([data-revealed="true"]):not([zentral-app-panel-open="true"]) {
+        :root[zentral-apps-autohide="true"][zentral-apps-placement="vertical-bar"][zentral-apps-native-sidebar-side="right"] #zentral-apps-vertical-bar:not([data-revealed="true"]):not([zentral-app-panel-open="true"]) {
           transform: translateX(calc(-100% - 16px)) !important;
           opacity: 0 !important;
           pointer-events: none !important;
@@ -2535,7 +2532,7 @@
         }
 
         /* Autohide Mode B: Idle/Collapsed State on Right */
-        :root[zentral-apps-autohide="true"][zentral-apps-placement="vertical-bar"]:not([zen-right-side="true"]):not([zen-sidebar-right="true"]) #zentral-apps-vertical-bar:not([data-revealed="true"]):not([zentral-app-panel-open="true"]) {
+        :root[zentral-apps-autohide="true"][zentral-apps-placement="vertical-bar"]:not([zentral-apps-native-sidebar-side="right"]) #zentral-apps-vertical-bar:not([data-revealed="true"]):not([zentral-app-panel-open="true"]) {
           transform: translateX(calc(100% + 16px)) !important;
           opacity: 0 !important;
           pointer-events: none !important;
@@ -2856,13 +2853,12 @@
           background: transparent !important;
         }
 
-        :root[zentral-apps-placement="vertical-bar"][zen-right-side="true"] #zentral-apps-vertical-bar-trigger,
-        :root[zentral-apps-placement="vertical-bar"][zen-sidebar-right="true"] #zentral-apps-vertical-bar-trigger {
+        :root[zentral-apps-placement="vertical-bar"][zentral-apps-native-sidebar-side="right"] #zentral-apps-vertical-bar-trigger {
           left: 0 !important;
           right: auto !important;
         }
 
-        :root[zentral-apps-placement="vertical-bar"]:not([zen-right-side="true"]):not([zen-sidebar-right="true"]) #zentral-apps-vertical-bar-trigger {
+        :root[zentral-apps-placement="vertical-bar"]:not([zentral-apps-native-sidebar-side="right"]) #zentral-apps-vertical-bar-trigger {
           right: 0 !important;
           left: auto !important;
         }
@@ -2882,13 +2878,12 @@
           pointer-events: auto !important;
         }
 
-        :root[zentral-apps-placement="vertical-bar"][zen-right-side="true"] .zen-app-vb-hover-zone,
-        :root[zentral-apps-placement="vertical-bar"][zen-sidebar-right="true"] .zen-app-vb-hover-zone {
+        :root[zentral-apps-placement="vertical-bar"][zentral-apps-native-sidebar-side="right"] .zen-app-vb-hover-zone {
           right: -24px !important;
           left: auto !important;
         }
 
-        :root[zentral-apps-placement="vertical-bar"]:not([zen-right-side="true"]):not([zen-sidebar-right="true"]) .zen-app-vb-hover-zone {
+        :root[zentral-apps-placement="vertical-bar"]:not([zentral-apps-native-sidebar-side="right"]) .zen-app-vb-hover-zone {
           left: -24px !important;
           right: auto !important;
         }
@@ -5741,7 +5736,14 @@
     updateVerticalBarBounds() {
       const vb = this.#dom.verticalBar;
       if (!vb || !this.isPlacementVerticalBar()) return;
-      
+
+      // Keep all vertical-bar CSS aligned with the same fallback-aware side detection
+      // used by repositionGrid() when it physically places the bar in the browser frame.
+      document.documentElement.setAttribute(
+        "zentral-apps-native-sidebar-side",
+        this.isSidebarRight() ? "right" : "left"
+      );
+
       const gap = 12;
       let top = gap;
 
@@ -7123,7 +7125,7 @@
 
       this.#sideObserver = new window.MutationObserver((mutations) => {
         for (const m of mutations) {
-          if (m.attributeName === "zen-right-side") {
+          if (m.attributeName === "zen-right-side" || m.attributeName === "zen-sidebar-right") {
             this.repositionGrid();
             this.renderGrid();
             if (this.#state.activeAppId && this.#dom.root?.hasAttribute("open")) this.positionPanel();
@@ -7140,7 +7142,7 @@
       });
       this.#sideObserver.observe(document.documentElement, {
         attributes: true,
-        attributeFilter: ["zen-right-side", "zen-sidebar-collapsed", "zen-compact-mode", "zen-sidebar-expanded", "zen-sidebar-hidden", "style"]
+        attributeFilter: ["zen-right-side", "zen-sidebar-right", "zen-sidebar-collapsed", "zen-compact-mode", "zen-sidebar-expanded", "zen-sidebar-hidden", "style"]
       });
 
       const toolboxEl = document.getElementById("navigator-toolbox");
