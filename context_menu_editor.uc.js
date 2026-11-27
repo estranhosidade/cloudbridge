@@ -4378,6 +4378,10 @@ function cleanEdgeSeparators(menuId) {
       // This is a lossless config migration; mark it as pending save so the old
       // alias selectors do not return on the next browser restart.
       state.dirty = true;
+      // The migration replaces broad selectors with exact node selectors.
+      // Re-run the live executor now so an already-open popup stays hidden
+      // during the transition instead of waiting for its next popupshowing.
+      applyHiddenStyles();
     }
 
     return changed;
