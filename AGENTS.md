@@ -40,6 +40,42 @@ When adding or changing a rule:
 - Less directives and at-rules (such as `@-moz-document` and `& when (...)`) are structural syntax, not ordinary selector branches; preserve them rather than blindly appending selector text to them.
 
 **Specificity caution:** the current `:not(#gp-gbar-inner *)` guard is not zero-specificity. Its argument contains an ID selector, so it contributes ID-level specificity. Do not claim otherwise. If considering a migration to a zero-specificity guard such as `:where(:not(#gp-gbar-inner *))`, assess the impact on cascade behavior and the considerable source-size increase before changing thousands of occurrences. Do not perform a blind global replacement.
+**Critical selector-syntax warning — pseudo-elements (`::before` / `::after`)**
+
+The `:not(#gp-gbar-inner *)` guard is a **pseudo-class on the element**, not a pseudo-element. It must be inserted into the element's compound selector **before** the pseudo-element token.
+
+Valid:
+
+```css
+.example:not(#gp-gbar-inner *)::before { ... }
+.example:hover:not(#gp-gbar-inner *)::after { ... }
+```
+
+Invalid — these forms corrupt the pseudo-element syntax, so the selector no longer matches:
+
+```css
+.example::not(#gp-gbar-inner *):before
+.example::not(#gp-gbar-inner *):after
+```
+
+**Never insert the guard by blindly searching for the last colon or by inserting it immediately after a detected `::`.** A naive selector-string rewrite can split the pseudo-element token and turn a valid `::before` / `::after` selector into an invalid `::not(...):before` / `::not(...):after` selector. This can silently disable rules that paint backgrounds, overlays, borders, and other visible UI; the page may fall back to Google's white defaults.
+
+When adding guards programmatically:
+
+- Split selector lists only on **top-level commas**, outside brackets, parentheses, strings, and comments.
+- Parse each selector branch and identify the pseudo-element token (`::before`, `::after`, `::first-line`, `::first-letter`, `::selection`, etc.; also account for legacy single-colon spellings such as `:before`).
+- Insert `:not(#gp-gbar-inner *)` on the originating element, immediately **before** the pseudo-element token. Preserve existing pseudo-classes and their arguments.
+- Do not append guards to at-rules, Less directives, or structural syntax.
+
+**Mandatory post-edit checks:**
+
+- Search the complete stylesheet for the malformed pattern `::not(#gp-gbar-inner *)`; the expected count is **zero**.
+- Inspect every guarded pseudo-element selector and confirm its shape is `:not(#gp-gbar-inner *)::before` / `:not(#gp-gbar-inner *)::after`, never `::not(...):before` / `::not(...):after`.
+- Parse or compile the complete UserStyle after selector rewriting; balanced braces alone do not prove selectors are valid.
+- If a large automated guard migration is necessary, test representative pseudo-elements and confirm the generated selectors before applying it to the entire file.
+
+**Regression history (2026-11-27):** a bulk guard insertion incorrectly positioned the guard in **386 pseudo-element selectors** (261 `::before`, 125 `::after`). Those selectors stopped matching and contributed to Google surfaces falling back to white. The selectors were repaired by moving the guard back onto the originating element, before the pseudo-element. The repaired stylesheet was fetched after commit and verified to contain zero `::not(#gp-gbar-inner *)` patterns. This incident is a permanent warning against blind colon-based selector rewriting.
+
 
 ### 3. Keep the Google Search top strip the same color as the main page
 
