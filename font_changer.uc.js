@@ -2,7 +2,7 @@
 // @name           Font Changer
 // @description    Manage Firefox interface and web-page fonts. Ctrl+Shift+F opens a centered, draggable font window.
 // @author         OpenAI
-// @version        7.2.4-navigation-safe-shadow-scan
+// @version        7.2.5-close-icon-centering
 // ==/UserScript==
 
 (() => {
@@ -12,7 +12,7 @@
   // Configuration
   // ========================================================================
 
-  const VERSION = "7.2.4-navigation-safe-shadow-scan";
+  const VERSION = "7.2.5-close-icon-centering";
   const PREFIX = "[FontChanger]";
   const RUNTIME_KEY = "__ucFontChangerRuntime_v6";
 
@@ -878,16 +878,27 @@
         white-space: nowrap;
       }
       #${PANEL_ID} .fc-close {
-        flex: 0 0 auto;
-        min-width: 27px;
-        min-height: 27px;
-        padding: 2px 7px;
+        display: inline-flex;
+        flex: 0 0 28px;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        min-height: 28px;
+        margin: 0;
+        padding: 0;
+        appearance: none;
+        -moz-appearance: none;
         border: 1px solid transparent;
         border-radius: 6px;
         background: transparent;
         color: inherit;
-        font-size: 17px;
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        font-weight: 400;
         line-height: 1;
+        text-align: center;
         cursor: pointer;
       }
       #${PANEL_ID} .fc-close:hover {
