@@ -1,0 +1,1451 @@
+﻿========== LOGS DE ARMAZENAMENTO ==========
+
+LogName                                                   IsEnabled RecordCount
+-------                                                   --------- -----------
+Microsoft-Windows-Storsvc/Diagnostic                           True        4156
+Microsoft-Windows-Store/Operational                            True       30104
+Microsoft-Windows-StorageVolume/Operational                    True        1832
+Microsoft-Windows-StorageVolume/Diagnostic                     True           0
+Microsoft-Windows-StorageSpaces-SpaceManager/Operational       True           0
+Microsoft-Windows-StorageSpaces-SpaceManager/Diagnostic        True           0
+Microsoft-Windows-StorageSpaces-Parser/Operational             True           0
+Microsoft-Windows-StorageSpaces-Parser/Diagnostic              True           0
+Microsoft-Windows-StorageSpaces-ManagementAgent/WHC            True           0
+Microsoft-Windows-StorageSpaces-Driver/Operational             True        1843
+Microsoft-Windows-StorageSpaces-Driver/Diagnostic              True           0
+Microsoft-Windows-StorageSpaces-Api/Operational                True           0
+Microsoft-Windows-StorageSettings/Diagnostic                   True        7568
+Microsoft-Windows-StorageManagement/Operational                True       10773
+Microsoft-Windows-StorageManagement-PartUtil/Operational       True           5
+Microsoft-Windows-Storage-Tiering/Admin                        True           0
+Microsoft-Windows-Storage-Storport/Operational                 True       13189
+Microsoft-Windows-Storage-Storport/Health                      True        3853
+Microsoft-Windows-Storage-Storport/Admin                      False
+Microsoft-Windows-Storage-NvmeDisk/Operational                 True           0
+Microsoft-Windows-Storage-Disk/Operational                    False
+Microsoft-Windows-Storage-Disk/Admin                          False
+Microsoft-Windows-Storage-ClassPnP/Operational                 True       12060
+Microsoft-Windows-Storage-ClassPnP/Admin                      False
+Microsoft-Windows-Storage-ATAPort/Operational                 False
+Microsoft-Windows-Storage-ATAPort/Admin                       False
+Microsoft-Windows-PersistentMemory-PmemDisk/Operational        True           0
+Microsoft-Windows-Ntfs/WHC                                     True         746
+Microsoft-Windows-Ntfs/Operational                             True       39409
+Microsoft-Windows-Kernel-StoreMgr/Operational                  True           0
+Microsoft-Windows-Hyper-V-StorageVSP-Admin                     True         907
+Microsoft-Windows-FileHistory-Engine/BackupLog                 True           0
+Microsoft-Windows-FileHistory-Core/WHC                         True           0
+Microsoft-Windows-EnhancedStorage-EhStorClass/Operational      True           0
+Microsoft-Windows-DiskDiagnosticResolver/Operational           True           0
+Microsoft-Windows-DiskDiagnosticDataCollector/Operational      True           0
+Microsoft-Windows-DiskDiagnostic/Operational                   True           0
+Microsoft-Windows-CloudStore/Operational                       True        2040
+Microsoft-Windows-CloudStore/Initialization                    True         494
+Microsoft-Windows-CloudStore/Debug                            False
+Microsoft-Windows-CloudRestoreLauncher/Operational             True        1899
+
+
+
+========== PROVEDORES STOR ==========
+iaStorAVC
+iaStorV
+Microsoft-Windows-CloudRestoreLauncher
+Microsoft-Windows-CloudStore
+Microsoft-Windows-EnhancedStorage-ClassDriver
+Microsoft-Windows-EnhancedStorage-EhStorTcgDrv
+Microsoft-Windows-FileHistory-Catalog
+Microsoft-Windows-FileHistory-ConfigManager
+Microsoft-Windows-FileHistory-Core
+Microsoft-Windows-FileHistory-Engine
+Microsoft-Windows-FileHistory-EventListener
+Microsoft-Windows-FileHistory-Service
+Microsoft-Windows-FileHistory-UI
+Microsoft-Windows-Hyper-V-Guest-Drivers-Storage-Filter
+Microsoft-Windows-Hyper-V-StorageVSP
+Microsoft-Windows-Hyper-V-SynthStor
+Microsoft-Windows-Kernel-StoreMgr
+Microsoft-Windows-Minstore
+Microsoft-Windows-Privacy-Auditing-Activity-History-Privacy-Settings
+Microsoft-Windows-Sdstor
+Microsoft-Windows-Security-IdentityStore
+Microsoft-Windows-Storage-Tiering
+Microsoft-Windows-Storage-Tiering-IoHeat
+Microsoft-Windows-StorageManagement
+Microsoft-Windows-StorageManagement-PartUtil
+Microsoft-Windows-StorageManagement-WSP-FS
+Microsoft-Windows-StorageManagement-WSP-Health
+Microsoft-Windows-StorageManagement-WSP-Host
+Microsoft-Windows-StorageManagement-WSP-Spaces
+Microsoft-Windows-StorageSettings
+Microsoft-Windows-StorageSpaces-Api
+Microsoft-Windows-StorageSpaces-Driver
+Microsoft-Windows-StorageSpaces-ManagementAgent
+Microsoft-Windows-StorageSpaces-Parser
+Microsoft-Windows-StorageSpaces-SpaceManager
+Microsoft-Windows-StorageVolume
+Microsoft-Windows-StorDiag
+Microsoft-Windows-Store
+Microsoft-Windows-StorPort
+Microsoft-Windows-Storsvc
+Microsoft-Windows-System-Restore
+Microsoft-Windows-UserDataAccess-CallHistoryClient
+Microsoft-Windows-UserDataAccess-UnifiedStore
+nvstor
+stexstor
+storahci
+stornvme
+System Restore
+UASPStor
+Windows-ApplicationModel-Store-SDK
+
+========== EVENTOS DE DISCO ==========
+
+
+TimeCreated      : 23/11/2026 12:00:39
+Id               : 153
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x1bc2a888 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 23/11/2026 12:00:59
+Id               : 153
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x215c758 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 23/11/2026 12:01:01
+Id               : 153
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x40e78a8 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 23/11/2026 12:01:42
+Id               : 153
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x14c61688 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 23/11/2026 12:01:46
+Id               : 153
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0xd91b8f8 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 23/11/2026 12:04:00
+Id               : 153
+ProviderName     : Microsoft-Windows-Kernel-Boot
+LevelDisplayName : Informações
+Message          : A segurança baseada em virtualização (políticas: VBS Enabled,VSM Required,Boot Chain Signer Soft Enforced) está enabled due to HyperV.
+
+TimeCreated      : 23/11/2026 12:04:00
+Id               : 129
+ProviderName     : Microsoft-Windows-Hyper-V-Hypervisor
+LevelDisplayName : Informações
+Message          : O hipervisor inicializou o remapeamento de E/S.
+
+                   Hardware presente: true
+                   Hardware habilitado: true
+                   Política: 0x0
+                   Recursos habilitados: 0x43
+                   Informações internas: 0x0
+                   Problemas: 0x0
+                   Informações adicionais: 0x0
+
+TimeCreated      : 23/11/2026 12:04:03
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume C: (\Device\HarddiskVolume3) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 23/11/2026 12:04:04
+Id               : 7
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+LevelDisplayName : Informações
+Message          : Miniport NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Friendly Name: WSL (Hyper-V firewall)) successfully initialized.
+
+TimeCreated      : 23/11/2026 12:04:06
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 0 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 23/11/2026 12:04:06
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 2 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 23/11/2026 12:04:06
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 4 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 23/11/2026 12:04:06
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 6 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 23/11/2026 12:04:06
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 1 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 23/11/2026 12:04:06
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 3 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 23/11/2026 12:04:06
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 5 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 23/11/2026 12:04:06
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 7 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 23/11/2026 12:04:06
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume \\?\Volume{14172f04-15e8-4043-a599-5c988151f4b9} (\Device\HarddiskVolume4) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 23/11/2026 12:04:11
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume E: (\Device\HarddiskVolume5) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 23/11/2026 12:04:13
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume D: (\Device\HarddiskVolume6) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 23/11/2026 12:04:57
+Id               : 7
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+LevelDisplayName : Informações
+Message          : Miniport NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Friendly Name: WSL (Hyper-V firewall)) successfully initialized.
+
+TimeCreated      : 23/11/2026 12:25:59
+Id               : 7
+ProviderName     : disk
+LevelDisplayName : Erro
+Message          : O dispositivo, \Device\Harddisk1\DR1, possui um setor defeituoso.
+
+TimeCreated      : 23/11/2026 14:07:52
+Id               : 51
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+Id               : 51
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+Id               : 51
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+Id               : 51
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+Id               : 51
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+Id               : 51
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+Id               : 51
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+Id               : 51
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+Id               : 51
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+Id               : 51
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+Id               : 51
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+Id               : 51
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+Id               : 51
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+Id               : 51
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+Id               : 157
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : O disco 1 foi removido inesperadamente.
+
+TimeCreated      : 24/11/2026 05:54:22
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume E: (\Device\HarddiskVolume7) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 24/11/2026 06:54:34
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume Windows (\Device\HarddiskVolumeShadowCopy2) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 24/11/2026 18:48:12
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume Windows (\Device\HarddiskVolumeShadowCopy3) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 24/11/2026 18:48:19
+Id               : 11
+ProviderName     : Microsoft-Windows-Kernel-General
+LevelDisplayName : Informações
+Message          : A fase inicial TxR no hive \??\GLOBALROOT\Device\HarddiskVolumeShadowCopy3\WINDOWS\System32\config\SYSTEM (TM: {e884c07a-e7d8-11f1-bfea-e0ad47305f78}, RM: {e884c079-e7d8-11f1-bfea-e0ad47305f78}) foi concluída com o
+                   resultado=0xC00000A2 (Código interno=7).
+
+TimeCreated      : 24/11/2026 18:48:19
+Id               : 11
+ProviderName     : Microsoft-Windows-Kernel-General
+LevelDisplayName : Informações
+Message          : A fase inicial TxR no hive \??\GLOBALROOT\Device\HarddiskVolumeShadowCopy3\WINDOWS\System32\config\DRIVERS (TM: {e884c07d-e7d8-11f1-bfea-e0ad47305f78}, RM: {e884c07c-e7d8-11f1-bfea-e0ad47305f78}) foi concluída com o
+                   resultado=0xC00000A2 (Código interno=7).
+
+TimeCreated      : 24/11/2026 18:48:20
+Id               : 11
+ProviderName     : Microsoft-Windows-Kernel-General
+LevelDisplayName : Informações
+Message          : A fase inicial TxR no hive \??\GLOBALROOT\Device\HarddiskVolumeShadowCopy3\WINDOWS\System32\config\SOFTWARE (TM: {e884c080-e7d8-11f1-bfea-e0ad47305f78}, RM: {e884c07f-e7d8-11f1-bfea-e0ad47305f78}) foi concluída com o
+                   resultado=0xC00000A2 (Código interno=7).
+
+TimeCreated      : 25/11/2026 04:58:15
+Id               : 157
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : O disco 1 foi removido inesperadamente.
+
+TimeCreated      : 26/11/2026 02:52:44
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume E: (\Device\HarddiskVolume8) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 26/11/2026 04:37:50
+Id               : 157
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : O disco 1 foi removido inesperadamente.
+
+TimeCreated      : 26/11/2026 14:32:48
+Id               : 153
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0xefe1960 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 26/11/2026 14:32:52
+Id               : 153
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x12d96158 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 26/11/2026 14:45:29
+Id               : 153
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x14a1ced0 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 26/11/2026 14:45:32
+Id               : 153
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x168efcf8 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 26/11/2026 15:56:37
+Id               : 153
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0xe584c00 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 26/11/2026 15:56:37
+Id               : 153
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0xd10735a para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 26/11/2026 15:56:41
+Id               : 153
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x168e9eb0 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 27/11/2026 03:30:07
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume E: (\Device\HarddiskVolume9) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 27/11/2026 07:38:23
+Id               : 153
+ProviderName     : Microsoft-Windows-Kernel-Boot
+LevelDisplayName : Informações
+Message          : A segurança baseada em virtualização (políticas: VBS Enabled,VSM Required,Boot Chain Signer Soft Enforced) está enabled due to HyperV.
+
+TimeCreated      : 27/11/2026 07:38:23
+Id               : 129
+ProviderName     : Microsoft-Windows-Hyper-V-Hypervisor
+LevelDisplayName : Informações
+Message          : O hipervisor inicializou o remapeamento de E/S.
+
+                   Hardware presente: true
+                   Hardware habilitado: true
+                   Política: 0x0
+                   Recursos habilitados: 0x43
+                   Informações internas: 0x0
+                   Problemas: 0x0
+                   Informações adicionais: 0x0
+
+TimeCreated      : 27/11/2026 07:38:23
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume C: (\Device\HarddiskVolume3) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 27/11/2026 07:38:24
+Id               : 7
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+LevelDisplayName : Informações
+Message          : Miniport NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Friendly Name: WSL (Hyper-V firewall)) successfully initialized.
+
+TimeCreated      : 27/11/2026 07:38:26
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 0 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 07:38:26
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 2 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 07:38:26
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 4 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 07:38:26
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 6 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 07:38:26
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 1 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 07:38:26
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 3 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 07:38:26
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 5 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 07:38:26
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 7 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 07:38:26
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume \\?\Volume{14172f04-15e8-4043-a599-5c988151f4b9} (\Device\HarddiskVolume4) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 27/11/2026 07:38:27
+Id               : 15
+ProviderName     : Microsoft-Windows-Kernel-General
+LevelDisplayName : Informações
+Message          : O hive \SystemRoot\System32\Config\SOFTWARE foi reorganizado com tamanho inicial de 98856960 bytes e tamanho final de 98738176 bytes.
+
+TimeCreated      : 27/11/2026 07:38:39
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume E: (\Device\HarddiskVolume5) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 27/11/2026 07:38:41
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume D: (\Device\HarddiskVolume6) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 27/11/2026 07:38:46
+Id               : 15
+ProviderName     : Microsoft-Windows-Kernel-General
+LevelDisplayName : Informações
+Message          : O hive \??\C:\Users\Eric\ntuser.dat foi reorganizado com tamanho inicial de 8474624 bytes e tamanho final de 8220672 bytes.
+
+TimeCreated      : 27/11/2026 07:39:33
+Id               : 7
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+LevelDisplayName : Informações
+Message          : Miniport NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Friendly Name: WSL (Hyper-V firewall)) successfully initialized.
+
+TimeCreated      : 27/11/2026 15:59:23
+Id               : 153
+ProviderName     : Microsoft-Windows-Kernel-Boot
+LevelDisplayName : Informações
+Message          : A segurança baseada em virtualização (políticas: VBS Enabled,VSM Required,Boot Chain Signer Soft Enforced) está enabled due to HyperV.
+
+TimeCreated      : 27/11/2026 15:59:23
+Id               : 129
+ProviderName     : Microsoft-Windows-Hyper-V-Hypervisor
+LevelDisplayName : Informações
+Message          : O hipervisor inicializou o remapeamento de E/S.
+
+                   Hardware presente: true
+                   Hardware habilitado: true
+                   Política: 0x0
+                   Recursos habilitados: 0x43
+                   Informações internas: 0x0
+                   Problemas: 0x0
+                   Informações adicionais: 0x0
+
+TimeCreated      : 27/11/2026 15:59:24
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume C: (\Device\HarddiskVolume3) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 27/11/2026 15:59:25
+Id               : 7
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+LevelDisplayName : Informações
+Message          : Miniport NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Friendly Name: WSL (Hyper-V firewall)) successfully initialized.
+
+TimeCreated      : 27/11/2026 15:59:26
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 0 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 15:59:26
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 2 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 15:59:26
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 4 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 15:59:26
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 6 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 15:59:26
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 1 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 15:59:26
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 3 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 15:59:26
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 5 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 15:59:26
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 7 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 15:59:26
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume \\?\Volume{14172f04-15e8-4043-a599-5c988151f4b9} (\Device\HarddiskVolume4) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 27/11/2026 15:59:36
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume E: (\Device\HarddiskVolume5) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 27/11/2026 15:59:38
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume D: (\Device\HarddiskVolume6) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 27/11/2026 16:00:26
+Id               : 7
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+LevelDisplayName : Informações
+Message          : Miniport NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Friendly Name: WSL (Hyper-V firewall)) successfully initialized.
+
+TimeCreated      : 27/11/2026 16:20:42
+Id               : 153
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x59350f8 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 27/11/2026 16:20:53
+Id               : 153
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0xd5deb2 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 27/11/2026 16:20:57
+Id               : 153
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x266c828 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 27/11/2026 16:21:05
+Id               : 153
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0xb5f39b0 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 27/11/2026 16:21:30
+Id               : 153
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x1af0cc38 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 27/11/2026 16:30:14
+Id               : 153
+ProviderName     : Microsoft-Windows-Kernel-Boot
+LevelDisplayName : Informações
+Message          : A segurança baseada em virtualização (políticas: VBS Enabled,VSM Required,Boot Chain Signer Soft Enforced) está enabled due to HyperV.
+
+TimeCreated      : 27/11/2026 16:30:14
+Id               : 129
+ProviderName     : Microsoft-Windows-Hyper-V-Hypervisor
+LevelDisplayName : Informações
+Message          : O hipervisor inicializou o remapeamento de E/S.
+
+                   Hardware presente: true
+                   Hardware habilitado: true
+                   Política: 0x0
+                   Recursos habilitados: 0x43
+                   Informações internas: 0x0
+                   Problemas: 0x0
+                   Informações adicionais: 0x0
+
+TimeCreated      : 27/11/2026 16:30:15
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume C: (\Device\HarddiskVolume3) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 27/11/2026 16:30:16
+Id               : 7
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+LevelDisplayName : Informações
+Message          : Miniport NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Friendly Name: WSL (Hyper-V firewall)) successfully initialized.
+
+TimeCreated      : 27/11/2026 16:30:18
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 0 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 16:30:18
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 2 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 16:30:18
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 4 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 16:30:18
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 6 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 16:30:18
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 1 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 16:30:18
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 3 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 16:30:18
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 5 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 16:30:18
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 7 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 27/11/2026 16:30:18
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume \\?\Volume{14172f04-15e8-4043-a599-5c988151f4b9} (\Device\HarddiskVolume4) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 27/11/2026 16:30:25
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume E: (\Device\HarddiskVolume5) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 27/11/2026 16:30:52
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume D: (\Device\HarddiskVolume8) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 27/11/2026 16:30:58
+Id               : 7
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+LevelDisplayName : Informações
+Message          : Miniport NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Friendly Name: WSL (Hyper-V firewall)) successfully initialized.
+
+TimeCreated      : 27/11/2026 16:46:48
+Id               : 153
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0xc08e928 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 27/11/2026 16:47:14
+Id               : 129
+ProviderName     : storahci
+LevelDisplayName : Aviso
+Message          : Redefinir para dispositivo, \Device\RaidPort0, emitido.
+
+TimeCreated      : 27/11/2026 16:48:08
+Id               : 153
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x168f53e8 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 27/11/2026 16:48:35
+Id               : 129
+ProviderName     : storahci
+LevelDisplayName : Aviso
+Message          : Redefinir para dispositivo, \Device\RaidPort0, emitido.
+
+TimeCreated      : 27/11/2026 18:06:58
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume Windows (\Device\HarddiskVolumeShadowCopy1) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 27/11/2026 18:07:06
+Id               : 11
+ProviderName     : Microsoft-Windows-Kernel-General
+LevelDisplayName : Informações
+Message          : A fase inicial TxR no hive \??\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\WINDOWS\System32\config\SYSTEM (TM: {f834abe2-ea98-11f1-bfed-e0ad47305f78}, RM: {f834abe1-ea98-11f1-bfed-e0ad47305f78}) foi concluída com o
+                   resultado=0xC00000A2 (Código interno=7).
+
+TimeCreated      : 27/11/2026 18:07:06
+Id               : 11
+ProviderName     : Microsoft-Windows-Kernel-General
+LevelDisplayName : Informações
+Message          : A fase inicial TxR no hive \??\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\WINDOWS\System32\config\DRIVERS (TM: {f834abe5-ea98-11f1-bfed-e0ad47305f78}, RM: {f834abe4-ea98-11f1-bfed-e0ad47305f78}) foi concluída com o
+                   resultado=0xC00000A2 (Código interno=7).
+
+TimeCreated      : 27/11/2026 18:07:07
+Id               : 11
+ProviderName     : Microsoft-Windows-Kernel-General
+LevelDisplayName : Informações
+Message          : A fase inicial TxR no hive \??\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\WINDOWS\System32\config\SOFTWARE (TM: {f834abe8-ea98-11f1-bfed-e0ad47305f78}, RM: {f834abe7-ea98-11f1-bfed-e0ad47305f78}) foi concluída com o
+                   resultado=0xC00000A2 (Código interno=7).
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 153
+ProviderName     : Microsoft-Windows-Kernel-Boot
+LevelDisplayName : Informações
+Message          : A segurança baseada em virtualização (políticas: VBS Enabled,VSM Required,Boot Chain Signer Soft Enforced) está enabled due to HyperV.
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 129
+ProviderName     : Microsoft-Windows-Hyper-V-Hypervisor
+LevelDisplayName : Informações
+Message          : O hipervisor inicializou o remapeamento de E/S.
+
+                   Hardware presente: true
+                   Hardware habilitado: true
+                   Política: 0x0
+                   Recursos habilitados: 0x43
+                   Informações internas: 0x0
+                   Problemas: 0x0
+                   Informações adicionais: 0x0
+
+TimeCreated      : 28/11/2026 13:33:35
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume C: (\Device\HarddiskVolume3) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 7
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+LevelDisplayName : Informações
+Message          : Miniport NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Friendly Name: WSL (Hyper-V firewall)) successfully initialized.
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 0 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 2 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 4 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 6 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 1 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 3 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 5 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 7 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume \\?\Volume{14172f04-15e8-4043-a599-5c988151f4b9} (\Device\HarddiskVolume4) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 28/11/2026 13:33:43
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume E: (\Device\HarddiskVolume5) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 28/11/2026 13:33:45
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume D: (\Device\HarddiskVolume6) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 28/11/2026 13:34:22
+Id               : 7
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+LevelDisplayName : Informações
+Message          : Miniport NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Friendly Name: WSL (Hyper-V firewall)) successfully initialized.
+
+TimeCreated      : 28/11/2026 13:56:47
+Id               : 153
+ProviderName     : Microsoft-Windows-Kernel-Boot
+LevelDisplayName : Informações
+Message          : A segurança baseada em virtualização (políticas: VBS Enabled,VSM Required,Boot Chain Signer Soft Enforced) está enabled due to HyperV.
+
+TimeCreated      : 28/11/2026 13:56:47
+Id               : 129
+ProviderName     : Microsoft-Windows-Hyper-V-Hypervisor
+LevelDisplayName : Informações
+Message          : O hipervisor inicializou o remapeamento de E/S.
+
+                   Hardware presente: true
+                   Hardware habilitado: true
+                   Política: 0x0
+                   Recursos habilitados: 0x43
+                   Informações internas: 0x0
+                   Problemas: 0x0
+                   Informações adicionais: 0x0
+
+TimeCreated      : 28/11/2026 13:56:49
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume C: (\Device\HarddiskVolume3) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 28/11/2026 13:56:50
+Id               : 7
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+LevelDisplayName : Informações
+Message          : Miniport NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Friendly Name: WSL (Hyper-V firewall)) successfully initialized.
+
+TimeCreated      : 28/11/2026 13:56:51
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 0 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:56:51
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 2 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:56:51
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 4 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:56:51
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 6 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:56:51
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 1 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:56:51
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 3 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:56:51
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 5 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:56:51
+Id               : 55
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+LevelDisplayName : Informações
+Message          : O processador 7 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:56:52
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume \\?\Volume{14172f04-15e8-4043-a599-5c988151f4b9} (\Device\HarddiskVolume4) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 28/11/2026 13:56:56
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume E: (\Device\HarddiskVolume5) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 28/11/2026 13:56:59
+Id               : 98
+ProviderName     : Microsoft-Windows-Ntfs
+LevelDisplayName : Informações
+Message          : Volume D: (\Device\HarddiskVolume6) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 28/11/2026 13:57:43
+Id               : 7
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+LevelDisplayName : Informações
+Message          : Miniport NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Friendly Name: WSL (Hyper-V firewall)) successfully initialized.
+
+TimeCreated      : 28/11/2026 14:30:45
+Id               : 153
+ProviderName     : disk
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0xb278 para o Disco 1 (nome PDO: \Device\0000005c) foi repetida.
+
+
+
+
+========== PESQUISA DO GUID ==========
+
+Pesquisando: HKLM:\SYSTEM\CurrentControlSet\Enum
+
+Pesquisando: HKLM:\SYSTEM\CurrentControlSet\Control\Class
+
+Pesquisando: HKLM:\SYSTEM\CurrentControlSet\Control\DeviceClasses
