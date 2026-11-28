@@ -1,0 +1,1598 @@
+﻿TimeCreated      : 28/11/2026 13:33:34
+Id               : 12
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-General
+Message          : Sistema operacional iniciado na hora do sistema ‎2026‎-‎11‎-‎28T16:33:34.500000000Z.
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 25
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-General
+Message          : A hora do sistema foi inicializada para ‎2026‎-‎11‎-‎28T16:33:34.500000000Z.
+
+                   Tempo do carregador: ‎2026‎-‎11‎-‎28T16:33:34.000000000Z
+                   Sinalizadores de inicialização internos: 0x2
+                   Código de erro HAL RTC: 0x0
+                   Hora RTC está em UTC: false
+                   Inicialização suave: false
+                   Êxito: true
+                   Fase: 0
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 153
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-Boot
+Message          : A segurança baseada em virtualização (políticas: VBS Enabled,VSM Required,Boot Chain Signer Soft Enforced) está enabled due to HyperV.
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 18
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-Boot
+Message          : Há 0x1 opções de inicialização no sistema.
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 32
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-Boot
+Message          : O bootmgr gastou 0 ms aguardando a entrada do usuário.
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 20
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-Boot
+Message          : O status bem-sucedido do último desligamento era false. O status bem-sucedido da última inicialização era true.
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 247
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-Boot
+Message          : Não é possível carregar Pluton-Windows firmware. StatusCode: STATUS_SUCCESS, Motivo: Failed to apply firmware.
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 238
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-Boot
+Message          : Diferença de fuso horário EFI: 2047. Sinalizadores de horário de verão: 0. Tempo do firmware: ‎2026‎-‎11‎-‎28T13:33:34.000000000Z.
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 25
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-Boot
+Message          : A política do menu de inicialização era 0x1.
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 27
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-Boot
+Message          : O tipo de inicialização era 0x0.
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 1
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-Hypervisor
+Message          : Hipervisor iniciado com êxito.
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 2
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-Hypervisor
+Message          : O tipo de agendador de hipervisor é 0x4.
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 129
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-Hypervisor
+Message          : O hipervisor inicializou o remapeamento de E/S.
+
+                   Hardware presente: true
+                   Hardware habilitado: true
+                   Política: 0x0
+                   Recursos habilitados: 0x43
+                   Informações internas: 0x0
+                   Problemas: 0x0
+                   Informações adicionais: 0x0
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 156
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-Hypervisor
+Message          : Mitigações configuradas do hipervisor para CVE-2018-3646 para máquinas virtuais.
+
+                   Processador não afetado: false
+                   Família de processadores não afetada: false
+                   O processador suporta a liberação de cache: true
+                   HyperThreading ativado: true
+                   O hipervisor pai aplica mitigações: false
+                   Mitigações desabilitadas por bcdedit: false
+                   Mitigações habilitadas: true
+                   Limpeza de cache necessária: true
+
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 165
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-Hypervisor
+Message          : O hipervisor configurou mitigações para CVE-2019-11091, CVE-2018-12126, CVE-2018-12127, CVE-2018-12130 para máquinas virtuais.
+
+                   Processador não afetado: false
+                   Família de processadores não afetada: false
+                   O processador dá suporte à liberação de buffer de microarquitetura:liberação de buffer  true
+                   necessária: true
+
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 167
+LevelDisplayName : Aviso
+ProviderName     : Microsoft-Windows-Hyper-V-Hypervisor
+Message          : O hipervisor não habilitou mitigações para vulnerabilidades de canal lateral para máquinas virtuais porque o HyperThreading está habilitado. Para habilitar as mitigações para máquinas virtuais, desabilite o
+                   HyperThreading.
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 3
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-IsolatedUserMode
+Message          : Secure Kernel started with status STATUS_SUCCESS and flags 17440.
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 30
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-Boot
+Message          : O firmware relatou métricas de inicialização.
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 20
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-General
+Message          : A configuração de segundo bissexto foi atualizada.
+                   Motivo: Leap second data initialized from registry during boot
+                   Segundos bissextos habilitados: true
+                   Nova contagem de segundos bissextos: 0
+                   Contagem antiga de segundos bissextos: 0
+
+TimeCreated      : 28/11/2026 13:33:34
+Id               : 16
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-HAL
+Message          : O relatório de falhas da IOMMU foi inicializado.
+
+TimeCreated      : 28/11/2026 13:33:35
+Id               : 6
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-FilterManager
+Message          : Filtro do Sistema de Arquivos 'FileInfo' (10.0, ‎2093‎-‎04‎-‎01T22:29:43.000000000Z) carregou e registrou com sucesso o Gerenciador de Filtros.
+
+TimeCreated      : 28/11/2026 13:33:35
+Id               : 6
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-FilterManager
+Message          : Filtro do Sistema de Arquivos 'Wof' (10.0, ‎2042‎-‎09‎-‎04T00:09:15.000000000Z) carregou e registrou com sucesso o Gerenciador de Filtros.
+
+TimeCreated      : 28/11/2026 13:33:35
+Id               : 98
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Ntfs
+Message          : Volume C: (\Device\HarddiskVolume3) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 6
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-FilterManager
+Message          : Filtro do Sistema de Arquivos 'FileCrypt' (10.0, ‎2075‎-‎08‎-‎31T19:07:07.000000000Z) carregou e registrou com sucesso o Gerenciador de Filtros.
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 6
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-FilterManager
+Message          : Filtro do Sistema de Arquivos 'UCPD' (10.0, ‎2002‎-‎09‎-‎03T09:00:51.000000000Z) carregou e registrou com sucesso o Gerenciador de Filtros.
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 7036
+LevelDisplayName : Informações
+ProviderName     : VfpExt
+Message          : O serviço  entrou no estado Driver load start.
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 7036
+LevelDisplayName : Informações
+ProviderName     : VfpExt
+Message          : O serviço  entrou no estado Driver load complete.
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 6
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-FilterManager
+Message          : Filtro do Sistema de Arquivos 'npsvctrig' (10.0, ‎1978‎-‎05‎-‎14T06:13:30.000000000Z) carregou e registrou com sucesso o Gerenciador de Filtros.
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 125
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-Power
+Message          : A zona termal ACPI \_TZ.TZ00 foi enumerada.
+                   _PSV = 0K
+                   _TC1 = 0
+                   _TC2 = 0
+                   _TSP = 0ms
+                   _AC0 = 358K
+                   _AC1 = 328K
+                   _AC2 = 273K
+                   _AC3 = 273K
+                   _AC4 = 273K
+                   _AC5 = 0K
+                   _AC6 = 0K
+                   _AC7 = 0K
+                   _AC8 = 0K
+                   _AC9 = 0K
+                   _CRT = 379K
+                   _HOT = 0K
+                   restrição mínima = 0
+                   _CR3 = 0K
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 125
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-Power
+Message          : A zona termal ACPI \_TZ.TZ01 foi enumerada.
+                   _PSV = 379K
+                   _TC1 = 1
+                   _TC2 = 5
+                   _TSP = 1000ms
+                   _AC0 = 0K
+                   _AC1 = 0K
+                   _AC2 = 0K
+                   _AC3 = 0K
+                   _AC4 = 0K
+                   _AC5 = 0K
+                   _AC6 = 0K
+                   _AC7 = 0K
+                   _AC8 = 0K
+                   _AC9 = 0K
+                   _CRT = 379K
+                   _HOT = 0K
+                   restrição mínima = 0
+                   _CR3 = 0K
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 41
+LevelDisplayName : Nível Crítico
+ProviderName     : Microsoft-Windows-Kernel-Power
+Message          : O sistema foi reiniciado sem um desligamento correto primeiro. Esse erro pode ser causado quando o sistema para de responder, trava ou fica sem energia inesperadamente.
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 172
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-Power
+Message          : Estado de conectividade em espera: Disconnected, Motivo: NIC compliance
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 277
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : build do vmswitch.sys 26100.amd64.ge_release_svc_prod3, depuração false, oficial true, 1 1
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 292
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para Porta 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL (Hyper-V firewall)) Anterior: Desabilitado, Atual: Habilitado. Motivo: Criação de porta
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 67
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Porta 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL (Hyper-V firewall)) criada com êxito no comutador 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 291
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para NIC 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL (Hyper-V firewall)) IPv4 Anterior: Desabilitado, IPv4 Atual: Desabilitado, IPv6 Anterior: Desabilitado, IPv6 Atual:
+                   Desabilitado. Motivo: Criar NIC
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 233
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Operação ' Create ' bem-sucedida na 790E58B4-7939-4434-9358-89AE7DDBE87E de NIC (nome amigável: WSL (Hyper-V firewall)), ID de instância {00000000-0000-0000-0000-000000000000}.
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 232
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : NIC 790E58B4-7939-4434-9358-89AE7DDBE87E (Friendly Name: WSL (Hyper-V firewall)) successfully connected to port 790E58B4-7939-4434-9358-89AE7DDBE87E (Friendly Name: WSL (Hyper-V firewall)) on switch
+                   790E58B4-7939-4434-9358-89AE7DDBE87E(Friendly Name: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 9
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Switch 790E58B4-7939-4434-9358-89AE7DDBE87E (Friendly Name: WSL (Hyper-V firewall)) successfully initialized.
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 292
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para Porta 790E58B4-7939-4434-9358-89AE7DDBE87F (Nome Amigável: Host Vnic 790E58B4-7939-4434-9358-89AE7DDBE87E) Anterior: Desabilitado, Atual: Habilitado. Motivo: Criação de porta
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 264
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Porta Interna ou Externa 790E58B4-7939-4434-9358-89AE7DDBE87F (Nome Amigável: Host Vnic 790E58B4-7939-4434-9358-89AE7DDBE87E) criada com êxito no comutador 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL
+                   (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 291
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Nome Amigável: WSL (Hyper-V firewall)) IPv4 Anterior: Desabilitado, IPv4 Atual: Desabilitado, IPv6 Anterior: Desabilitado, IPv6 Atual:
+                   Desabilitado. Motivo: Criar NIC
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 233
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Operação ' Create ' bem-sucedida na 790E58B4-7939-4434-9358-89AE7DDBE87F de NIC (nome amigável: WSL (Hyper-V firewall)), ID de instância {00000000-0000-0000-0000-000000000000}.
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 291
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Nome Amigável: WSL (Hyper-V firewall)) IPv4 Anterior: Desabilitado, IPv4 Atual: Desabilitado, IPv6 Anterior: Desabilitado, IPv6 Atual:
+                   Desabilitado. Motivo: Iniciar NIC
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 7
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Miniport NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Friendly Name: WSL (Hyper-V firewall)) successfully initialized.
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 232
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Friendly Name: WSL (Hyper-V firewall)) successfully connected to port 790E58B4-7939-4434-9358-89AE7DDBE87F (Friendly Name: Host Vnic 790E58B4-7939-4434-9358-89AE7DDBE87E) on
+                   switch 790E58B4-7939-4434-9358-89AE7DDBE87E(Friendly Name: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:33:36
+Id               : 5
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Miniport NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Friendly Name: WSL (Hyper-V firewall)) successfully enabled
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 55
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+Message          : O processador 0 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 55
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+Message          : O processador 2 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 55
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+Message          : O processador 4 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 55
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+Message          : O processador 6 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 55
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+Message          : O processador 1 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 55
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+Message          : O processador 3 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 55
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+Message          : O processador 5 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 7036
+LevelDisplayName : Informações
+ProviderName     : VfpExt
+Message          : O serviço  entrou no estado Filter restart start.
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 7036
+LevelDisplayName : Informações
+ProviderName     : VfpExt
+Message          : O serviço  entrou no estado Filter restart complete.
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 7036
+LevelDisplayName : Informações
+ProviderName     : VfpExt
+Message          : O serviço  entrou no estado Filter attach complete.
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 7036
+LevelDisplayName : Informações
+ProviderName     : VfpExt
+Message          : O serviço  entrou no estado Filter attach start.
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 55
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-Processor-Power
+Message          : O processador 7 no grupo 0 expõe os seguintes recursos de gerenciamento de energia:
+
+                   Tipo de estado ocioso: ACPI Idle (C) States (3 estado(s))
+
+                   Tipo de estado de desempenho: ACPI Performance (P) / Throttle (T) States
+                   Frequência Nominal (MHz): 3401
+                   Percentual de desempenho máximo: 100
+                   Percentual de desempenho mínimo: 47
+                   Percentual de aceleração mínimo: 47
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 98
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Ntfs
+Message          : Volume \\?\Volume{14172f04-15e8-4043-a599-5c988151f4b9} (\Device\HarddiskVolume4) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 28/11/2026 13:33:38
+Id               : 24
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-General
+Message          : As informações de fuso horário foram atualizadas com o motivo de saída 0. O ajuste do fuso horário atual é 180.
+
+TimeCreated      : 28/11/2026 13:33:41
+Id               : 18
+LevelDisplayName : Informações
+ProviderName     : BTHUSB
+Message          : O Windows não pode armazenar códigos de autenticação Bluetooth (chaves de link) no adaptador local. Os teclados Bluetooth podem não funcionar no BIOS do sistema durante a inicialização.
+
+TimeCreated      : 28/11/2026 13:33:41
+Id               : 34
+LevelDisplayName : Aviso
+ProviderName     : BTHUSB
+Message          : O adaptador local não dá suporte a um estado de controlador de baixo consumo importante para compatibilidade com modo periférico. O valor mínimo necessário de máscara de estado com suporte é 0x2491f7fffff; valor
+                   obtido: 0xffffffff. A funcionalidade de periférico de baixo consumo não estará disponível.
+
+TimeCreated      : 28/11/2026 13:33:43
+Id               : 98
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Ntfs
+Message          : Volume E: (\Device\HarddiskVolume5) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 28/11/2026 13:33:44
+Id               : 19
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Wininit
+Message          : Status da criação do temporizador de Segurança Baseada em Virtualização
+
+                   HRESULT: A operação foi concluída com êxito.
+                   Novo temporizador de trava necessário: false
+                   Novo temporizador de trava aguardando a conclusão da atualização do sistema: false
+                   Temporizador de trava anterior existente, mas desabilitado pelo registro: false
+                   Arquivo de política existente: false
+
+
+TimeCreated      : 28/11/2026 13:33:44
+Id               : 25
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Wininit
+Message          : Antiversão do Aplicativo de Inicialização: timer anterior retomado com status:
+
+                   HRESULT: A operação foi concluída com êxito.
+                   Timer anterior presente: false
+                   Hora de início: ‎1601‎-‎01‎-‎01T00:00:00.000000000Z
+                   Período de cortesia: 0
+                   Tentativa de imposição de recuperação bem-sucedida: false
+
+
+TimeCreated      : 28/11/2026 13:33:44
+Id               : 23
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Wininit
+Message          : Antiversão do Aplicativo de Inicialização: Inicialização Concluída com status:
+                   HRESULT: A operação foi concluída com êxito.
+                   Novo timer necessário: false
+                   Novo timer aguardando conclusão da atualização do sistema: false
+                   O timer de trava anterior existe, mas foi desabilitado pelo Registro: false
+
+
+TimeCreated      : 28/11/2026 13:33:45
+Id               : 14
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Wininit
+Message          : Credential Guard configuration:
+
+                   Registry Configuration: 0x0
+                   Test Configuration: 0
+                   Auto Enablement: 0
+
+TimeCreated      : 28/11/2026 13:33:45
+Id               : 5
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-IsolatedUserMode
+Message          : Secure Trustlet NULL Id 0 and Pid 0 started with status STATUS_SUCCESS.
+
+TimeCreated      : 28/11/2026 13:33:45
+Id               : 1
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-IsolatedUserMode
+Message          : Secure Trustlet \??\C:\WINDOWS\system32\lsaiso.exe Id 1 and Pid 1136 started with status STATUS_SUCCESS.
+
+TimeCreated      : 28/11/2026 13:33:45
+Id               : 18
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Wininit
+Message          : O Isolamento da Chave VBS foi iniciado e protegerá as chaves isoladas do VSM.
+
+TimeCreated      : 28/11/2026 13:33:45
+Id               : 12
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Wininit
+Message          : LSASS.exe iniciado como processo protegido com o nível: 4.
+
+TimeCreated      : 28/11/2026 13:33:45
+Id               : 6156
+LevelDisplayName : Informações
+ProviderName     : LsaSrv
+Message          : Status da habilitação automática do Credential Guard.
+
+                   Requisitos de Hardware para Segurança Baseada em Virtualização:      1
+                   Domínio Ingressado:  0
+                   Associado ao Azure AD:       0
+                    Licenciado para o Credential Guard: 0
+                   Controlador de Domínio:      0
+
+TimeCreated      : 28/11/2026 13:33:45
+Id               : 5
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-IsolatedUserMode
+Message          : Secure Trustlet NULL Id 0 and Pid 0 started with status STATUS_SUCCESS.
+
+TimeCreated      : 28/11/2026 13:33:45
+Id               : 98
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Ntfs
+Message          : Volume D: (\Device\HarddiskVolume6) está íntegro. Nenhuma ação é necessária.
+
+TimeCreated      : 28/11/2026 13:33:45
+Id               : 16962
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Directory-Services-SAM
+Message          : As chamadas remotas ao banco de dados SAM estão sendo restritas usando o descritor de segurança padrão: O:SYG:SYD:(A;;RC;;;BA).
+                   Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkId=787651.
+
+TimeCreated      : 28/11/2026 13:33:45
+Id               : 16977
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Directory-Services-SAM
+Message          : O domínio tem as seguintes configurações de comprimento mínimo para senha.
+
+                   MinimumPasswordLength: 0
+
+                   RelaxMinimumPasswordLengthLimits: 0
+
+                   MinimumPasswordLengthAudit: -1
+
+                   Para mais informações, consulte https://go.microsoft.com/fwlink/?LinkId=2097191.
+
+
+TimeCreated      : 28/11/2026 13:33:45
+Id               : 16983
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Directory-Services-SAM
+Message          : O gerenciador de contas de segurança agora registra eventos resumidos periódicos para clientes remotos que invocam chamadas herdadas do método RPC para alterar ou definir senhas.
+
+                   Para mais informações, confira https://go.microsoft.com/fwlink/?linkid=2150956.
+
+
+TimeCreated      : 28/11/2026 13:33:47
+Id               : 6
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-FilterManager
+Message          : Filtro do Sistema de Arquivos 'bfs' (10.0, ‎1973‎-‎10‎-‎29T00:14:20.000000000Z) carregou e registrou com sucesso o Gerenciador de Filtros.
+
+TimeCreated      : 28/11/2026 13:33:47
+Id               : 6
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-FilterManager
+Message          : Filtro do Sistema de Arquivos 'wcifs' (10.0, ‎2090‎-‎05‎-‎02T00:18:34.000000000Z) carregou e registrou com sucesso o Gerenciador de Filtros.
+
+TimeCreated      : 28/11/2026 13:33:47
+Id               : 6
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-FilterManager
+Message          : Filtro do Sistema de Arquivos 'luafv' (10.0, ‎2023‎-‎10‎-‎19T13:25:05.000000000Z) carregou e registrou com sucesso o Gerenciador de Filtros.
+
+TimeCreated      : 28/11/2026 13:33:47
+Id               : 6
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-FilterManager
+Message          : Filtro do Sistema de Arquivos 'CldFlt' (10.0, ‎2055‎-‎04‎-‎09T08:20:33.000000000Z) carregou e registrou com sucesso o Gerenciador de Filtros.
+
+TimeCreated      : 28/11/2026 13:33:47
+Id               : 1
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-FilterManager
+Message          : Filtro do Sistema de Arquivos 'CldFlt' (Versão 10.0, ‎2055‎-‎04‎-‎09T08:20:33.000000000Z) descarregado com sucesso.
+
+TimeCreated      : 28/11/2026 13:33:47
+Id               : 6
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-FilterManager
+Message          : Filtro do Sistema de Arquivos 'CldFlt' (10.0, ‎2055‎-‎04‎-‎09T08:20:33.000000000Z) carregou e registrou com sucesso o Gerenciador de Filtros.
+
+TimeCreated      : 28/11/2026 13:33:47
+Id               : 6
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-FilterManager
+Message          : Filtro do Sistema de Arquivos 'UnionFS' (10.0, ‎2094‎-‎08‎-‎28T22:24:25.000000000Z) carregou e registrou com sucesso o Gerenciador de Filtros.
+
+TimeCreated      : 28/11/2026 13:33:47
+Id               : 6
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-FilterManager
+Message          : Filtro do Sistema de Arquivos 'storqosflt' (10.0, ‎2016‎-‎11‎-‎04T08:45:41.000000000Z) carregou e registrou com sucesso o Gerenciador de Filtros.
+
+TimeCreated      : 28/11/2026 13:33:47
+Id               : 6
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-FilterManager
+Message          : Filtro do Sistema de Arquivos 'bindflt' (10.0, ‎2001‎-‎02‎-‎18T21:05:07.000000000Z) carregou e registrou com sucesso o Gerenciador de Filtros.
+
+TimeCreated      : 28/11/2026 13:33:47
+Id               : 50036
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Dhcp-Client
+Message          : O serviço do cliente DHCPv4 foi iniciado
+
+TimeCreated      : 28/11/2026 13:33:47
+Id               : 50103
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Dhcp-Client
+Message          : Cliente DHCPv4 registrado para notificação de desligamento
+
+TimeCreated      : 28/11/2026 13:33:47
+Id               : 50036
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Dhcp-Client
+Message          : O serviço do cliente DHCPv4 foi iniciado
+
+TimeCreated      : 28/11/2026 13:33:47
+Id               : 51046
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-DHCPv6-Client
+Message          : O serviço do cliente DHCPv6 foi iniciado
+
+TimeCreated      : 28/11/2026 13:33:47
+Id               : 6008
+LevelDisplayName : Erro
+ProviderName     : EventLog
+Message          : O desligamento do sistema que ocorreu às 13:23:40 do dia ‎28/‎11/‎2026 não era esperado.
+
+TimeCreated      : 28/11/2026 13:33:47
+Id               : 6009
+LevelDisplayName : Informações
+ProviderName     : EventLog
+Message          : Microsoft (R) Windows (R) 10.00. 26100  Multiprocessor Free.
+
+TimeCreated      : 28/11/2026 13:33:47
+Id               : 6005
+LevelDisplayName : Informações
+ProviderName     : EventLog
+Message          : O serviço Log de eventos foi iniciado.
+
+TimeCreated      : 28/11/2026 13:33:47
+Id               : 6013
+LevelDisplayName : Informações
+ProviderName     : EventLog
+Message          : O tempo de ativação do sistema é 13 segundos.
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 112
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-HttpService
+Message          : Tentativa de reservar url http://*:5357/. Status 0x0. ID do processo 0x4 caminho executável , Usuário S-1-5-18
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 112
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-HttpService
+Message          : Tentativa de reservar url http://+:80/Temporary_Listen_Addresses/. Status 0x0. ID do processo 0x4 caminho executável , Usuário S-1-5-18
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 112
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-HttpService
+Message          : Tentativa de reservar url https://*:5358/. Status 0x0. ID do processo 0x4 caminho executável , Usuário S-1-5-18
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 112
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-HttpService
+Message          : Tentativa de reservar url http://*:2869/. Status 0x0. ID do processo 0x4 caminho executável , Usuário S-1-5-18
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 112
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-HttpService
+Message          : Tentativa de reservar url https://+:5986/wsman/. Status 0x0. ID do processo 0x4 caminho executável , Usuário S-1-5-18
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 112
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-HttpService
+Message          : Tentativa de reservar url http://+:47001/wsman/. Status 0x0. ID do processo 0x4 caminho executável , Usuário S-1-5-18
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 112
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-HttpService
+Message          : Tentativa de reservar url http://+:5985/wsman/. Status 0x0. ID do processo 0x4 caminho executável , Usuário S-1-5-18
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 112
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-HttpService
+Message          : Tentativa de reservar url http://+:10247/apps/. Status 0x0. ID do processo 0x4 caminho executável , Usuário S-1-5-18
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 112
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-HttpService
+Message          : Tentativa de reservar url http://+:10246/MDEServer/. Status 0x0. ID do processo 0x4 caminho executável , Usuário S-1-5-18
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 112
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-HttpService
+Message          : Tentativa de reservar url https://+:3392/rdp/. Status 0x0. ID do processo 0x4 caminho executável , Usuário S-1-5-18
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 112
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-HttpService
+Message          : Tentativa de reservar url https://+:443/sra_{BA195980-CD49-458b-9E23-C84EE0ADCD75}/. Status 0x0. ID do processo 0x4 caminho executável , Usuário S-1-5-18
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 7000
+LevelDisplayName : Erro
+ProviderName     : Service Control Manager
+Message          : Não foi possível iniciar o serviço Apache2.4 devido ao seguinte erro:
+                   O sistema não pode encontrar o arquivo especificado.
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 7000
+LevelDisplayName : Erro
+ProviderName     : Service Control Manager
+Message          : Não foi possível iniciar o serviço mysql devido ao seguinte erro:
+                   O sistema não pode encontrar o arquivo especificado.
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 7036
+LevelDisplayName : Informações
+ProviderName     : VfpExt
+Message          : O serviço  entrou no estado Filter pause complete.
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 7036
+LevelDisplayName : Informações
+ProviderName     : VfpExt
+Message          : O serviço  entrou no estado Filter pause start.
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 7036
+LevelDisplayName : Informações
+ProviderName     : VfpExt
+Message          : O serviço  entrou no estado Filter detach complete.
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 7036
+LevelDisplayName : Informações
+ProviderName     : VfpExt
+Message          : O serviço  entrou no estado Filter detach start.
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 234
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : NIC 790E58B4-7939-4434-9358-89AE7DDBE87E successfully disconnected from port 790E58B4-7939-4434-9358-89AE7DDBE87E.
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 69
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Porta 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL (Hyper-V firewall)) excluída com êxito - opção 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 234
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : NIC 790E58B4-7939-4434-9358-89AE7DDBE87F successfully disconnected from port 790E58B4-7939-4434-9358-89AE7DDBE87F.
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 69
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Porta 790E58B4-7939-4434-9358-89AE7DDBE87F (Nome Amigável: Host Vnic 790E58B4-7939-4434-9358-89AE7DDBE87E) excluída com êxito - opção 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 71
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Exclusão concluída para 790E58B4-7939-4434-9358-89AE7DDBE87F porta (Nome Amigável: Host Vnic 790E58B4-7939-4434-9358-89AE7DDBE87E).
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 71
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Exclusão concluída para 790E58B4-7939-4434-9358-89AE7DDBE87E porta (Nome Amigável: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 233
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Operação ' Delete ' bem-sucedida na 790E58B4-7939-4434-9358-89AE7DDBE87E de NIC (nome amigável: WSL (Hyper-V firewall)), ID de instância {00000000-0000-0000-0000-000000000000}.
+
+TimeCreated      : 28/11/2026 13:33:48
+Id               : 62
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Opção 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL (Hyper-V firewall)) excluída com êxito.
+
+TimeCreated      : 28/11/2026 13:33:49
+Id               : 12
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-UserModePowerService
+Message          : O processo C:\Windows\System32\DriverStore\FileRepository\u0390451.inf_amd64_39377efdd62734d1\B390182\atieclxx.exe (ID do processo:3356) redefiniu o esquema de política de {8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c} para
+                   {8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c}
+
+TimeCreated      : 28/11/2026 13:33:49
+Id               : 7001
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Winlogon
+Message          : Notificação de Logon do Usuário para Programa de Aperfeiçoamento da Experiência do Usuário
+
+TimeCreated      : 28/11/2026 13:33:52
+Id               : 4000
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-WLAN-AutoConfig
+Message          : Serviço de Configuração Automática de WLAN iniciado com êxito.
+
+
+TimeCreated      : 28/11/2026 13:33:52
+Id               : 10016
+LevelDisplayName : Aviso
+ProviderName     : Microsoft-Windows-DistributedCOM
+Message          : As configurações de permissão específico do aplicativo não concedem permissão Local Ativação para o aplicativo de Servidor COM com CLSID
+                   {6B3B8D23-FA8D-40B9-8DBD-B950333E2C52}
+                    e APPID
+                   {4839DDB7-58C2-48F5-8283-E1D1807D0D7D}
+                    ao usuário AUTORIDADE NT\SERVIÇO LOCAL SID (S-1-5-19) do endereço LocalHost (Usando LRPC) que está sendo executado no contêiner de aplicativos Não Disponível SID (Não Disponível). Essa permissão de segurança pode
+                   ser modificada com a ferramenta administrativa Serviços de Componentes.
+
+TimeCreated      : 28/11/2026 13:33:52
+Id               : 10016
+LevelDisplayName : Aviso
+ProviderName     : Microsoft-Windows-DistributedCOM
+Message          : As configurações de permissão específico do aplicativo não concedem permissão Local Ativação para o aplicativo de Servidor COM com CLSID
+                   {6B3B8D23-FA8D-40B9-8DBD-B950333E2C52}
+                    e APPID
+                   {4839DDB7-58C2-48F5-8283-E1D1807D0D7D}
+                    ao usuário AUTORIDADE NT\SERVIÇO LOCAL SID (S-1-5-19) do endereço LocalHost (Usando LRPC) que está sendo executado no contêiner de aplicativos Não Disponível SID (Não Disponível). Essa permissão de segurança pode
+                   ser modificada com a ferramenta administrativa Serviços de Componentes.
+
+TimeCreated      : 28/11/2026 13:33:52
+Id               : 233
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Operação ' Delete ' bem-sucedida na 790E58B4-7939-4434-9358-89AE7DDBE87F de NIC (nome amigável: WSL (Hyper-V firewall)), ID de instância {1a31d18e-406d-4683-901c-20dc70f2e1a2}.
+
+TimeCreated      : 28/11/2026 13:34:04
+Id               : 7026
+LevelDisplayName : Informações
+ProviderName     : Service Control Manager
+Message          : O(s) seguinte(s) driver(s) de início do sistema ou de inicialização não foram carregados:
+                   aehd
+                   dam
+                   EhStorClass
+
+TimeCreated      : 28/11/2026 13:34:14
+Id               : 16
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-General
+Message          : O histórico de acesso no hive \??\C:\Users\Eric\AppData\Local\Packages\Microsoft.YourPhone_8wekyb3d8bbwe\Settings\settings.dat foi limpo, atualizando 47 chaves e criando 6 páginas modificadas.
+
+TimeCreated      : 28/11/2026 13:34:15
+Id               : 16
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-General
+Message          : O histórico de acesso no hive \??\C:\Users\Eric\AppData\Local\Packages\Microsoft.YourPhone_8wekyb3d8bbwe\SystemAppData\Helium\User.dat foi limpo, atualizando 8 chaves e criando 2 páginas modificadas.
+
+TimeCreated      : 28/11/2026 13:34:15
+Id               : 16
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Kernel-General
+Message          : O histórico de acesso no hive \??\C:\ProgramData\Packages\Microsoft.YourPhone_8wekyb3d8bbwe\S-1-5-21-2890740107-2901144207-3446394783-1001\SystemAppData\Helium\Cache\f045f1f3060521b1_COM15.dat foi limpo, atualizando
+                   1 chaves e criando 1 páginas modificadas.
+
+TimeCreated      : 28/11/2026 13:34:22
+Id               : 292
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para Porta 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL (Hyper-V firewall)) Anterior: Desabilitado, Atual: Habilitado. Motivo: Criação de porta
+
+TimeCreated      : 28/11/2026 13:34:22
+Id               : 67
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Porta 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL (Hyper-V firewall)) criada com êxito no comutador 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:34:22
+Id               : 291
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para NIC 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL (Hyper-V firewall)) IPv4 Anterior: Desabilitado, IPv4 Atual: Desabilitado, IPv6 Anterior: Desabilitado, IPv6 Atual:
+                   Desabilitado. Motivo: Criar NIC
+
+TimeCreated      : 28/11/2026 13:34:22
+Id               : 233
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Operação ' Create ' bem-sucedida na 790E58B4-7939-4434-9358-89AE7DDBE87E de NIC (nome amigável: WSL (Hyper-V firewall)), ID de instância {00000000-0000-0000-0000-000000000000}.
+
+TimeCreated      : 28/11/2026 13:34:22
+Id               : 232
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : NIC 790E58B4-7939-4434-9358-89AE7DDBE87E (Friendly Name: WSL (Hyper-V firewall)) successfully connected to port 790E58B4-7939-4434-9358-89AE7DDBE87E (Friendly Name: WSL (Hyper-V firewall)) on switch
+                   790E58B4-7939-4434-9358-89AE7DDBE87E(Friendly Name: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:34:22
+Id               : 9
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Switch 790E58B4-7939-4434-9358-89AE7DDBE87E (Friendly Name: WSL (Hyper-V firewall)) successfully initialized.
+
+TimeCreated      : 28/11/2026 13:34:22
+Id               : 7036
+LevelDisplayName : Informações
+ProviderName     : VfpExt
+Message          : O serviço  entrou no estado Filter restart start.
+
+TimeCreated      : 28/11/2026 13:34:22
+Id               : 7036
+LevelDisplayName : Informações
+ProviderName     : VfpExt
+Message          : O serviço  entrou no estado Filter restart complete.
+
+TimeCreated      : 28/11/2026 13:34:22
+Id               : 7036
+LevelDisplayName : Informações
+ProviderName     : VfpExt
+Message          : O serviço  entrou no estado Filter attach start.
+
+TimeCreated      : 28/11/2026 13:34:22
+Id               : 7036
+LevelDisplayName : Informações
+ProviderName     : VfpExt
+Message          : O serviço  entrou no estado Filter attach complete.
+
+TimeCreated      : 28/11/2026 13:34:22
+Id               : 292
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para Porta 790E58B4-7939-4434-9358-89AE7DDBE87F (Nome Amigável: Host Vnic 790E58B4-7939-4434-9358-89AE7DDBE87E) Anterior: Desabilitado, Atual: Habilitado. Motivo: Criação de porta
+
+TimeCreated      : 28/11/2026 13:34:22
+Id               : 264
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Porta Interna ou Externa 790E58B4-7939-4434-9358-89AE7DDBE87F (Nome Amigável: Host Vnic 790E58B4-7939-4434-9358-89AE7DDBE87E) criada com êxito no comutador 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL
+                   (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:34:22
+Id               : 291
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Nome Amigável: WSL (Hyper-V firewall)) IPv4 Anterior: Desabilitado, IPv4 Atual: Desabilitado, IPv6 Anterior: Desabilitado, IPv6 Atual:
+                   Desabilitado. Motivo: Criar NIC
+
+TimeCreated      : 28/11/2026 13:34:22
+Id               : 233
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Operação ' Create ' bem-sucedida na 790E58B4-7939-4434-9358-89AE7DDBE87F de NIC (nome amigável: WSL (Hyper-V firewall)), ID de instância {00000000-0000-0000-0000-000000000000}.
+
+TimeCreated      : 28/11/2026 13:34:22
+Id               : 291
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Nome Amigável: WSL (Hyper-V firewall)) IPv4 Anterior: Desabilitado, IPv4 Atual: Desabilitado, IPv6 Anterior: Desabilitado, IPv6 Atual:
+                   Desabilitado. Motivo: Iniciar NIC
+
+TimeCreated      : 28/11/2026 13:34:22
+Id               : 7
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Miniport NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Friendly Name: WSL (Hyper-V firewall)) successfully initialized.
+
+TimeCreated      : 28/11/2026 13:34:23
+Id               : 232
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : NIC 790E58B4-7939-4434-9358-89AE7DDBE87F (Friendly Name: WSL (Hyper-V firewall)) successfully connected to port 790E58B4-7939-4434-9358-89AE7DDBE87F (Friendly Name: Host Vnic 790E58B4-7939-4434-9358-89AE7DDBE87E) on
+                   switch 790E58B4-7939-4434-9358-89AE7DDBE87E(Friendly Name: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:34:23
+Id               : 292
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para Porta 5745956D-F6F4-4F5F-BF65-89236EE1BEF6 (Nome Amigável: 5745956D-F6F4-4F5F-BF65-89236EE1BEF6) Anterior: Desabilitado, Atual: Habilitado. Motivo: Criação de porta
+
+TimeCreated      : 28/11/2026 13:34:23
+Id               : 67
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Porta 5745956D-F6F4-4F5F-BF65-89236EE1BEF6 (Nome Amigável: 5745956D-F6F4-4F5F-BF65-89236EE1BEF6) criada com êxito no comutador 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:34:23
+Id               : 291
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para NIC 9C3EB565-2374-4A77-9CFE-D099542CC591--5745956D-F6F4-4F5F-BF65-89236EE1BEF6 (Nome Amigável: ) IPv4 Anterior: Desabilitado, IPv4 Atual: Desabilitado, IPv6 Anterior: Desabilitado,
+                   IPv6 Atual: Desabilitado. Motivo: Criar NIC
+
+TimeCreated      : 28/11/2026 13:34:23
+Id               : 233
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Operação ' Create ' bem-sucedida na 9C3EB565-2374-4A77-9CFE-D099542CC591--5745956D-F6F4-4F5F-BF65-89236EE1BEF6 de NIC (nome amigável: ), ID de instância {00000000-0000-0000-0000-000000000000}.
+
+TimeCreated      : 28/11/2026 13:34:23
+Id               : 232
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : NIC 9C3EB565-2374-4A77-9CFE-D099542CC591--5745956D-F6F4-4F5F-BF65-89236EE1BEF6 (Friendly Name: ) successfully connected to port 5745956D-F6F4-4F5F-BF65-89236EE1BEF6 (Friendly Name:
+                   5745956D-F6F4-4F5F-BF65-89236EE1BEF6) on switch 790E58B4-7939-4434-9358-89AE7DDBE87E(Friendly Name: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:34:23
+Id               : 102
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Networking driver in 9C3EB565-2374-4A77-9CFE-D099542CC591 is loaded and the protocol version is negotiated to the most recent version (Virtual machine ID 9C3EB565-2374-4A77-9CFE-D099542CC591).
+
+TimeCreated      : 28/11/2026 13:34:23
+Id               : 291
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para NIC 9C3EB565-2374-4A77-9CFE-D099542CC591--5745956D-F6F4-4F5F-BF65-89236EE1BEF6 (Nome Amigável: ) IPv4 Anterior: Desabilitado, IPv4 Atual: Desabilitado, IPv6 Anterior: Desabilitado,
+                   IPv6 Atual: Desabilitado. Motivo: Conexão NIC
+
+TimeCreated      : 28/11/2026 13:34:40
+Id               : 1014
+LevelDisplayName : Aviso
+ProviderName     : Microsoft-Windows-DNS-Client
+Message          : A resolução de nome para o dht.transmissionbt.com atingiu o tempo limite depois que nenhum dos servidores DNS configurados respondeu. PID do 11936.
+
+TimeCreated      : 28/11/2026 13:35:03
+Id               : 10016
+LevelDisplayName : Aviso
+ProviderName     : Microsoft-Windows-DistributedCOM
+Message          : As configurações de permissão específico do aplicativo não concedem permissão Local Ativação para o aplicativo de Servidor COM com CLSID
+                   {2593F8B9-4EAF-457C-B68A-50F6B8EA6B54}
+                    e APPID
+                   {15C20B67-12E7-4BB6-92BB-7AFF07997402}
+                    ao usuário DESKTOP-TKN23\Eric SID (S-1-5-21-2890740107-2901144207-3446394783-1001) do endereço LocalHost (Usando LRPC) que está sendo executado no contêiner de aplicativos Não Disponível SID (Não Disponível). Essa
+                   permissão de segurança pode ser modificada com a ferramenta administrativa Serviços de Componentes.
+
+TimeCreated      : 28/11/2026 13:35:03
+Id               : 10016
+LevelDisplayName : Aviso
+ProviderName     : Microsoft-Windows-DistributedCOM
+Message          : As configurações de permissão específico do aplicativo não concedem permissão Local Ativação para o aplicativo de Servidor COM com CLSID
+                   {2593F8B9-4EAF-457C-B68A-50F6B8EA6B54}
+                    e APPID
+                   {15C20B67-12E7-4BB6-92BB-7AFF07997402}
+                    ao usuário DESKTOP-TKN23\Eric SID (S-1-5-21-2890740107-2901144207-3446394783-1001) do endereço LocalHost (Usando LRPC) que está sendo executado no contêiner de aplicativos Não Disponível SID (Não Disponível). Essa
+                   permissão de segurança pode ser modificada com a ferramenta administrativa Serviços de Componentes.
+
+TimeCreated      : 28/11/2026 13:35:03
+Id               : 10016
+LevelDisplayName : Aviso
+ProviderName     : Microsoft-Windows-DistributedCOM
+Message          : As configurações de permissão específico do aplicativo não concedem permissão Local Ativação para o aplicativo de Servidor COM com CLSID
+                   {2593F8B9-4EAF-457C-B68A-50F6B8EA6B54}
+                    e APPID
+                   {15C20B67-12E7-4BB6-92BB-7AFF07997402}
+                    ao usuário DESKTOP-TKN23\Eric SID (S-1-5-21-2890740107-2901144207-3446394783-1001) do endereço LocalHost (Usando LRPC) que está sendo executado no contêiner de aplicativos Não Disponível SID (Não Disponível). Essa
+                   permissão de segurança pode ser modificada com a ferramenta administrativa Serviços de Componentes.
+
+TimeCreated      : 28/11/2026 13:35:03
+Id               : 10016
+LevelDisplayName : Aviso
+ProviderName     : Microsoft-Windows-DistributedCOM
+Message          : As configurações de permissão específico do aplicativo não concedem permissão Local Ativação para o aplicativo de Servidor COM com CLSID
+                   {2593F8B9-4EAF-457C-B68A-50F6B8EA6B54}
+                    e APPID
+                   {15C20B67-12E7-4BB6-92BB-7AFF07997402}
+                    ao usuário DESKTOP-TKN23\Eric SID (S-1-5-21-2890740107-2901144207-3446394783-1001) do endereço LocalHost (Usando LRPC) que está sendo executado no contêiner de aplicativos Não Disponível SID (Não Disponível). Essa
+                   permissão de segurança pode ser modificada com a ferramenta administrativa Serviços de Componentes.
+
+TimeCreated      : 28/11/2026 13:35:48
+Id               : 10016
+LevelDisplayName : Aviso
+ProviderName     : Microsoft-Windows-DistributedCOM
+Message          : As configurações de permissão específico do aplicativo não concedem permissão Local Ativação para o aplicativo de Servidor COM com CLSID
+                   {2593F8B9-4EAF-457C-B68A-50F6B8EA6B54}
+                    e APPID
+                   {15C20B67-12E7-4BB6-92BB-7AFF07997402}
+                    ao usuário DESKTOP-TKN23\Eric SID (S-1-5-21-2890740107-2901144207-3446394783-1001) do endereço LocalHost (Usando LRPC) que está sendo executado no contêiner de aplicativos Não Disponível SID (Não Disponível). Essa
+                   permissão de segurança pode ser modificada com a ferramenta administrativa Serviços de Componentes.
+
+TimeCreated      : 28/11/2026 13:35:48
+Id               : 10016
+LevelDisplayName : Aviso
+ProviderName     : Microsoft-Windows-DistributedCOM
+Message          : As configurações de permissão específico do aplicativo não concedem permissão Local Ativação para o aplicativo de Servidor COM com CLSID
+                   {2593F8B9-4EAF-457C-B68A-50F6B8EA6B54}
+                    e APPID
+                   {15C20B67-12E7-4BB6-92BB-7AFF07997402}
+                    ao usuário DESKTOP-TKN23\Eric SID (S-1-5-21-2890740107-2901144207-3446394783-1001) do endereço LocalHost (Usando LRPC) que está sendo executado no contêiner de aplicativos Não Disponível SID (Não Disponível). Essa
+                   permissão de segurança pode ser modificada com a ferramenta administrativa Serviços de Componentes.
+
+TimeCreated      : 28/11/2026 13:35:48
+Id               : 10016
+LevelDisplayName : Aviso
+ProviderName     : Microsoft-Windows-DistributedCOM
+Message          : As configurações de permissão específico do aplicativo não concedem permissão Local Ativação para o aplicativo de Servidor COM com CLSID
+                   {2593F8B9-4EAF-457C-B68A-50F6B8EA6B54}
+                    e APPID
+                   {15C20B67-12E7-4BB6-92BB-7AFF07997402}
+                    ao usuário DESKTOP-TKN23\Eric SID (S-1-5-21-2890740107-2901144207-3446394783-1001) do endereço LocalHost (Usando LRPC) que está sendo executado no contêiner de aplicativos Não Disponível SID (Não Disponível). Essa
+                   permissão de segurança pode ser modificada com a ferramenta administrativa Serviços de Componentes.
+
+TimeCreated      : 28/11/2026 13:35:48
+Id               : 10016
+LevelDisplayName : Aviso
+ProviderName     : Microsoft-Windows-DistributedCOM
+Message          : As configurações de permissão específico do aplicativo não concedem permissão Local Ativação para o aplicativo de Servidor COM com CLSID
+                   {2593F8B9-4EAF-457C-B68A-50F6B8EA6B54}
+                    e APPID
+                   {15C20B67-12E7-4BB6-92BB-7AFF07997402}
+                    ao usuário DESKTOP-TKN23\Eric SID (S-1-5-21-2890740107-2901144207-3446394783-1001) do endereço LocalHost (Usando LRPC) que está sendo executado no contêiner de aplicativos Não Disponível SID (Não Disponível). Essa
+                   permissão de segurança pode ser modificada com a ferramenta administrativa Serviços de Componentes.
+
+TimeCreated      : 28/11/2026 13:36:07
+Id               : 234
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : NIC 9C3EB565-2374-4A77-9CFE-D099542CC591--5745956D-F6F4-4F5F-BF65-89236EE1BEF6 successfully disconnected from port .
+
+TimeCreated      : 28/11/2026 13:36:07
+Id               : 234
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : NIC 9C3EB565-2374-4A77-9CFE-D099542CC591--5745956D-F6F4-4F5F-BF65-89236EE1BEF6 successfully disconnected from port .
+
+TimeCreated      : 28/11/2026 13:36:07
+Id               : 233
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Operação ' Delete ' bem-sucedida na 9C3EB565-2374-4A77-9CFE-D099542CC591--5745956D-F6F4-4F5F-BF65-89236EE1BEF6 de NIC (nome amigável: ), ID de instância {00000000-0000-0000-0000-000000000000}.
+
+TimeCreated      : 28/11/2026 13:36:07
+Id               : 69
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Porta 5745956D-F6F4-4F5F-BF65-89236EE1BEF6 (Nome Amigável: 5745956D-F6F4-4F5F-BF65-89236EE1BEF6) excluída com êxito - opção 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:36:07
+Id               : 71
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Exclusão concluída para 5745956D-F6F4-4F5F-BF65-89236EE1BEF6 porta (Nome Amigável: 5745956D-F6F4-4F5F-BF65-89236EE1BEF6).
+
+TimeCreated      : 28/11/2026 13:37:01
+Id               : 292
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para Porta F98F28BD-B36E-4437-A6F3-160AADD5F520 (Nome Amigável: F98F28BD-B36E-4437-A6F3-160AADD5F520) Anterior: Desabilitado, Atual: Habilitado. Motivo: Criação de porta
+
+TimeCreated      : 28/11/2026 13:37:01
+Id               : 67
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Porta F98F28BD-B36E-4437-A6F3-160AADD5F520 (Nome Amigável: F98F28BD-B36E-4437-A6F3-160AADD5F520) criada com êxito no comutador 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:37:01
+Id               : 291
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para NIC 3AFC6F8B-DE9A-4449-8018-797F45CA1BFF--F98F28BD-B36E-4437-A6F3-160AADD5F520 (Nome Amigável: ) IPv4 Anterior: Desabilitado, IPv4 Atual: Desabilitado, IPv6 Anterior: Desabilitado,
+                   IPv6 Atual: Desabilitado. Motivo: Criar NIC
+
+TimeCreated      : 28/11/2026 13:37:01
+Id               : 233
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Operação ' Create ' bem-sucedida na 3AFC6F8B-DE9A-4449-8018-797F45CA1BFF--F98F28BD-B36E-4437-A6F3-160AADD5F520 de NIC (nome amigável: ), ID de instância {00000000-0000-0000-0000-000000000000}.
+
+TimeCreated      : 28/11/2026 13:37:01
+Id               : 232
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : NIC 3AFC6F8B-DE9A-4449-8018-797F45CA1BFF--F98F28BD-B36E-4437-A6F3-160AADD5F520 (Friendly Name: ) successfully connected to port F98F28BD-B36E-4437-A6F3-160AADD5F520 (Friendly Name:
+                   F98F28BD-B36E-4437-A6F3-160AADD5F520) on switch 790E58B4-7939-4434-9358-89AE7DDBE87E(Friendly Name: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:37:01
+Id               : 102
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Networking driver in 3AFC6F8B-DE9A-4449-8018-797F45CA1BFF is loaded and the protocol version is negotiated to the most recent version (Virtual machine ID 3AFC6F8B-DE9A-4449-8018-797F45CA1BFF).
+
+TimeCreated      : 28/11/2026 13:37:01
+Id               : 291
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para NIC 3AFC6F8B-DE9A-4449-8018-797F45CA1BFF--F98F28BD-B36E-4437-A6F3-160AADD5F520 (Nome Amigável: ) IPv4 Anterior: Desabilitado, IPv4 Atual: Desabilitado, IPv6 Anterior: Desabilitado,
+                   IPv6 Atual: Desabilitado. Motivo: Conexão NIC
+
+TimeCreated      : 28/11/2026 13:37:01
+Id               : 291
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para NIC 3AFC6F8B-DE9A-4449-8018-797F45CA1BFF--F98F28BD-B36E-4437-A6F3-160AADD5F520 (Nome Amigável: ) IPv4 Anterior: Desabilitado, IPv4 Atual: Habilitado, IPv6 Anterior: Desabilitado,
+                   IPv6 Atual: Habilitado. Motivo: OID RSC
+
+TimeCreated      : 28/11/2026 13:38:56
+Id               : 234
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : NIC 3AFC6F8B-DE9A-4449-8018-797F45CA1BFF--F98F28BD-B36E-4437-A6F3-160AADD5F520 successfully disconnected from port .
+
+TimeCreated      : 28/11/2026 13:38:57
+Id               : 234
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : NIC 3AFC6F8B-DE9A-4449-8018-797F45CA1BFF--F98F28BD-B36E-4437-A6F3-160AADD5F520 successfully disconnected from port .
+
+TimeCreated      : 28/11/2026 13:38:57
+Id               : 233
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Operação ' Delete ' bem-sucedida na 3AFC6F8B-DE9A-4449-8018-797F45CA1BFF--F98F28BD-B36E-4437-A6F3-160AADD5F520 de NIC (nome amigável: ), ID de instância {00000000-0000-0000-0000-000000000000}.
+
+TimeCreated      : 28/11/2026 13:38:57
+Id               : 69
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Porta F98F28BD-B36E-4437-A6F3-160AADD5F520 (Nome Amigável: F98F28BD-B36E-4437-A6F3-160AADD5F520) excluída com êxito - opção 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:38:57
+Id               : 71
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Exclusão concluída para F98F28BD-B36E-4437-A6F3-160AADD5F520 porta (Nome Amigável: F98F28BD-B36E-4437-A6F3-160AADD5F520).
+
+TimeCreated      : 28/11/2026 13:40:27
+Id               : 292
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para Porta 19263BE5-FEB3-4590-BC38-80633961B855 (Nome Amigável: 19263BE5-FEB3-4590-BC38-80633961B855) Anterior: Desabilitado, Atual: Habilitado. Motivo: Criação de porta
+
+TimeCreated      : 28/11/2026 13:40:27
+Id               : 67
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Porta 19263BE5-FEB3-4590-BC38-80633961B855 (Nome Amigável: 19263BE5-FEB3-4590-BC38-80633961B855) criada com êxito no comutador 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:40:27
+Id               : 291
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para NIC 5A315AD7-3E60-4415-87C2-0FB4828CB468--19263BE5-FEB3-4590-BC38-80633961B855 (Nome Amigável: ) IPv4 Anterior: Desabilitado, IPv4 Atual: Desabilitado, IPv6 Anterior: Desabilitado,
+                   IPv6 Atual: Desabilitado. Motivo: Criar NIC
+
+TimeCreated      : 28/11/2026 13:40:27
+Id               : 233
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Operação ' Create ' bem-sucedida na 5A315AD7-3E60-4415-87C2-0FB4828CB468--19263BE5-FEB3-4590-BC38-80633961B855 de NIC (nome amigável: ), ID de instância {00000000-0000-0000-0000-000000000000}.
+
+TimeCreated      : 28/11/2026 13:40:27
+Id               : 232
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : NIC 5A315AD7-3E60-4415-87C2-0FB4828CB468--19263BE5-FEB3-4590-BC38-80633961B855 (Friendly Name: ) successfully connected to port 19263BE5-FEB3-4590-BC38-80633961B855 (Friendly Name:
+                   19263BE5-FEB3-4590-BC38-80633961B855) on switch 790E58B4-7939-4434-9358-89AE7DDBE87E(Friendly Name: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:40:27
+Id               : 102
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Networking driver in 5A315AD7-3E60-4415-87C2-0FB4828CB468 is loaded and the protocol version is negotiated to the most recent version (Virtual machine ID 5A315AD7-3E60-4415-87C2-0FB4828CB468).
+
+TimeCreated      : 28/11/2026 13:40:27
+Id               : 291
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para NIC 5A315AD7-3E60-4415-87C2-0FB4828CB468--19263BE5-FEB3-4590-BC38-80633961B855 (Nome Amigável: ) IPv4 Anterior: Desabilitado, IPv4 Atual: Desabilitado, IPv6 Anterior: Desabilitado,
+                   IPv6 Atual: Desabilitado. Motivo: Conexão NIC
+
+TimeCreated      : 28/11/2026 13:40:27
+Id               : 291
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para NIC 5A315AD7-3E60-4415-87C2-0FB4828CB468--19263BE5-FEB3-4590-BC38-80633961B855 (Nome Amigável: ) IPv4 Anterior: Desabilitado, IPv4 Atual: Habilitado, IPv6 Anterior: Desabilitado,
+                   IPv6 Atual: Habilitado. Motivo: OID RSC
+
+TimeCreated      : 28/11/2026 13:41:29
+Id               : 10016
+LevelDisplayName : Aviso
+ProviderName     : Microsoft-Windows-DistributedCOM
+Message          : As configurações de permissão específico do aplicativo não concedem permissão Local Ativação para o aplicativo de Servidor COM com CLSID
+                   {2593F8B9-4EAF-457C-B68A-50F6B8EA6B54}
+                    e APPID
+                   {15C20B67-12E7-4BB6-92BB-7AFF07997402}
+                    ao usuário DESKTOP-TKN23\Eric SID (S-1-5-21-2890740107-2901144207-3446394783-1001) do endereço LocalHost (Usando LRPC) que está sendo executado no contêiner de aplicativos Não Disponível SID (Não Disponível). Essa
+                   permissão de segurança pode ser modificada com a ferramenta administrativa Serviços de Componentes.
+
+TimeCreated      : 28/11/2026 13:41:29
+Id               : 10016
+LevelDisplayName : Aviso
+ProviderName     : Microsoft-Windows-DistributedCOM
+Message          : As configurações de permissão específico do aplicativo não concedem permissão Local Ativação para o aplicativo de Servidor COM com CLSID
+                   {2593F8B9-4EAF-457C-B68A-50F6B8EA6B54}
+                    e APPID
+                   {15C20B67-12E7-4BB6-92BB-7AFF07997402}
+                    ao usuário DESKTOP-TKN23\Eric SID (S-1-5-21-2890740107-2901144207-3446394783-1001) do endereço LocalHost (Usando LRPC) que está sendo executado no contêiner de aplicativos Não Disponível SID (Não Disponível). Essa
+                   permissão de segurança pode ser modificada com a ferramenta administrativa Serviços de Componentes.
+
+TimeCreated      : 28/11/2026 13:41:29
+Id               : 10016
+LevelDisplayName : Aviso
+ProviderName     : Microsoft-Windows-DistributedCOM
+Message          : As configurações de permissão específico do aplicativo não concedem permissão Local Ativação para o aplicativo de Servidor COM com CLSID
+                   {2593F8B9-4EAF-457C-B68A-50F6B8EA6B54}
+                    e APPID
+                   {15C20B67-12E7-4BB6-92BB-7AFF07997402}
+                    ao usuário DESKTOP-TKN23\Eric SID (S-1-5-21-2890740107-2901144207-3446394783-1001) do endereço LocalHost (Usando LRPC) que está sendo executado no contêiner de aplicativos Não Disponível SID (Não Disponível). Essa
+                   permissão de segurança pode ser modificada com a ferramenta administrativa Serviços de Componentes.
+
+TimeCreated      : 28/11/2026 13:41:29
+Id               : 10016
+LevelDisplayName : Aviso
+ProviderName     : Microsoft-Windows-DistributedCOM
+Message          : As configurações de permissão específico do aplicativo não concedem permissão Local Ativação para o aplicativo de Servidor COM com CLSID
+                   {2593F8B9-4EAF-457C-B68A-50F6B8EA6B54}
+                    e APPID
+                   {15C20B67-12E7-4BB6-92BB-7AFF07997402}
+                    ao usuário DESKTOP-TKN23\Eric SID (S-1-5-21-2890740107-2901144207-3446394783-1001) do endereço LocalHost (Usando LRPC) que está sendo executado no contêiner de aplicativos Não Disponível SID (Não Disponível). Essa
+                   permissão de segurança pode ser modificada com a ferramenta administrativa Serviços de Componentes.
+
+TimeCreated      : 28/11/2026 13:41:44
+Id               : 234
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : NIC 5A315AD7-3E60-4415-87C2-0FB4828CB468--19263BE5-FEB3-4590-BC38-80633961B855 successfully disconnected from port .
+
+TimeCreated      : 28/11/2026 13:41:44
+Id               : 234
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : NIC 5A315AD7-3E60-4415-87C2-0FB4828CB468--19263BE5-FEB3-4590-BC38-80633961B855 successfully disconnected from port .
+
+TimeCreated      : 28/11/2026 13:41:44
+Id               : 233
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Operação ' Delete ' bem-sucedida na 5A315AD7-3E60-4415-87C2-0FB4828CB468--19263BE5-FEB3-4590-BC38-80633961B855 de NIC (nome amigável: ), ID de instância {00000000-0000-0000-0000-000000000000}.
+
+TimeCreated      : 28/11/2026 13:41:44
+Id               : 69
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Porta 19263BE5-FEB3-4590-BC38-80633961B855 (Nome Amigável: 19263BE5-FEB3-4590-BC38-80633961B855) excluída com êxito - opção 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:41:44
+Id               : 71
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Exclusão concluída para 19263BE5-FEB3-4590-BC38-80633961B855 porta (Nome Amigável: 19263BE5-FEB3-4590-BC38-80633961B855).
+
+TimeCreated      : 28/11/2026 13:41:52
+Id               : 292
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para Porta BEB73476-0DB5-4A4E-A582-A038E38BFAB3 (Nome Amigável: BEB73476-0DB5-4A4E-A582-A038E38BFAB3) Anterior: Desabilitado, Atual: Habilitado. Motivo: Criação de porta
+
+TimeCreated      : 28/11/2026 13:41:52
+Id               : 67
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Porta BEB73476-0DB5-4A4E-A582-A038E38BFAB3 (Nome Amigável: BEB73476-0DB5-4A4E-A582-A038E38BFAB3) criada com êxito no comutador 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:41:52
+Id               : 291
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para NIC BFBE01B8-D30E-491E-B8C8-1CA3E1E15FB4--BEB73476-0DB5-4A4E-A582-A038E38BFAB3 (Nome Amigável: ) IPv4 Anterior: Desabilitado, IPv4 Atual: Desabilitado, IPv6 Anterior: Desabilitado,
+                   IPv6 Atual: Desabilitado. Motivo: Criar NIC
+
+TimeCreated      : 28/11/2026 13:41:52
+Id               : 233
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Operação ' Create ' bem-sucedida na BFBE01B8-D30E-491E-B8C8-1CA3E1E15FB4--BEB73476-0DB5-4A4E-A582-A038E38BFAB3 de NIC (nome amigável: ), ID de instância {00000000-0000-0000-0000-000000000000}.
+
+TimeCreated      : 28/11/2026 13:41:52
+Id               : 232
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : NIC BFBE01B8-D30E-491E-B8C8-1CA3E1E15FB4--BEB73476-0DB5-4A4E-A582-A038E38BFAB3 (Friendly Name: ) successfully connected to port BEB73476-0DB5-4A4E-A582-A038E38BFAB3 (Friendly Name:
+                   BEB73476-0DB5-4A4E-A582-A038E38BFAB3) on switch 790E58B4-7939-4434-9358-89AE7DDBE87E(Friendly Name: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:41:52
+Id               : 102
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Networking driver in BFBE01B8-D30E-491E-B8C8-1CA3E1E15FB4 is loaded and the protocol version is negotiated to the most recent version (Virtual machine ID BFBE01B8-D30E-491E-B8C8-1CA3E1E15FB4).
+
+TimeCreated      : 28/11/2026 13:41:52
+Id               : 291
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para NIC BFBE01B8-D30E-491E-B8C8-1CA3E1E15FB4--BEB73476-0DB5-4A4E-A582-A038E38BFAB3 (Nome Amigável: ) IPv4 Anterior: Desabilitado, IPv4 Atual: Desabilitado, IPv6 Anterior: Desabilitado,
+                   IPv6 Atual: Desabilitado. Motivo: Conexão NIC
+
+TimeCreated      : 28/11/2026 13:41:52
+Id               : 291
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Descarregamento RSC modificado para NIC BFBE01B8-D30E-491E-B8C8-1CA3E1E15FB4--BEB73476-0DB5-4A4E-A582-A038E38BFAB3 (Nome Amigável: ) IPv4 Anterior: Desabilitado, IPv4 Atual: Habilitado, IPv6 Anterior: Desabilitado,
+                   IPv6 Atual: Habilitado. Motivo: OID RSC
+
+TimeCreated      : 28/11/2026 13:43:09
+Id               : 234
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : NIC BFBE01B8-D30E-491E-B8C8-1CA3E1E15FB4--BEB73476-0DB5-4A4E-A582-A038E38BFAB3 successfully disconnected from port .
+
+TimeCreated      : 28/11/2026 13:43:09
+Id               : 234
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : NIC BFBE01B8-D30E-491E-B8C8-1CA3E1E15FB4--BEB73476-0DB5-4A4E-A582-A038E38BFAB3 successfully disconnected from port .
+
+TimeCreated      : 28/11/2026 13:43:09
+Id               : 233
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Operação ' Delete ' bem-sucedida na BFBE01B8-D30E-491E-B8C8-1CA3E1E15FB4--BEB73476-0DB5-4A4E-A582-A038E38BFAB3 de NIC (nome amigável: ), ID de instância {00000000-0000-0000-0000-000000000000}.
+
+TimeCreated      : 28/11/2026 13:43:09
+Id               : 69
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Porta BEB73476-0DB5-4A4E-A582-A038E38BFAB3 (Nome Amigável: BEB73476-0DB5-4A4E-A582-A038E38BFAB3) excluída com êxito - opção 790E58B4-7939-4434-9358-89AE7DDBE87E (Nome Amigável: WSL (Hyper-V firewall)).
+
+TimeCreated      : 28/11/2026 13:43:09
+Id               : 71
+LevelDisplayName : Informações
+ProviderName     : Microsoft-Windows-Hyper-V-VmSwitch
+Message          : Exclusão concluída para BEB73476-0DB5-4A4E-A582-A038E38BFAB3 porta (Nome Amigável: BEB73476-0DB5-4A4E-A582-A038E38BFAB3).
+
+TimeCreated      : 28/11/2026 13:48:34
+Id               : 10016
+LevelDisplayName : Aviso
+ProviderName     : Microsoft-Windows-DistributedCOM
+Message          : As configurações de permissão específico do aplicativo não concedem permissão Local Ativação para o aplicativo de Servidor COM com CLSID
+                   {2593F8B9-4EAF-457C-B68A-50F6B8EA6B54}
+                    e APPID
+                   {15C20B67-12E7-4BB6-92BB-7AFF07997402}
+                    ao usuário DESKTOP-TKN23\Eric SID (S-1-5-21-2890740107-2901144207-3446394783-1001) do endereço LocalHost (Usando LRPC) que está sendo executado no contêiner de aplicativos Não Disponível SID (Não Disponível). Essa
+                   permissão de segurança pode ser modificada com a ferramenta administrativa Serviços de Componentes.
+
+TimeCreated      : 28/11/2026 13:48:34
+Id               : 10016
+LevelDisplayName : Aviso
+ProviderName     : Microsoft-Windows-DistributedCOM
+Message          : As configurações de permissão específico do aplicativo não concedem permissão Local Ativação para o aplicativo de Servidor COM com CLSID
+                   {2593F8B9-4EAF-457C-B68A-50F6B8EA6B54}
+                    e APPID
+                   {15C20B67-12E7-4BB6-92BB-7AFF07997402}
+                    ao usuário DESKTOP-TKN23\Eric SID (S-1-5-21-2890740107-2901144207-3446394783-1001) do endereço LocalHost (Usando LRPC) que está sendo executado no contêiner de aplicativos Não Disponível SID (Não Disponível). Essa
+                   permissão de segurança pode ser modificada com a ferramenta administrativa Serviços de Componentes.
+
+TimeCreated      : 28/11/2026 13:48:34
+Id               : 10016
+LevelDisplayName : Aviso
+ProviderName     : Microsoft-Windows-DistributedCOM
+Message          : As configurações de permissão específico do aplicativo não concedem permissão Local Ativação para o aplicativo de Servidor COM com CLSID
+                   {2593F8B9-4EAF-457C-B68A-50F6B8EA6B54}
+                    e APPID
+                   {15C20B67-12E7-4BB6-92BB-7AFF07997402}
+                    ao usuário DESKTOP-TKN23\Eric SID (S-1-5-21-2890740107-2901144207-3446394783-1001) do endereço LocalHost (Usando LRPC) que está sendo executado no contêiner de aplicativos Não Disponível SID (Não Disponível). Essa
+                   permissão de segurança pode ser modificada com a ferramenta administrativa Serviços de Componentes.
+
+TimeCreated      : 28/11/2026 13:48:34
+Id               : 10016
+LevelDisplayName : Aviso
+ProviderName     : Microsoft-Windows-DistributedCOM
+Message          : As configurações de permissão específico do aplicativo não concedem permissão Local Ativação para o aplicativo de Servidor COM com CLSID
+                   {2593F8B9-4EAF-457C-B68A-50F6B8EA6B54}
+                    e APPID
+                   {15C20B67-12E7-4BB6-92BB-7AFF07997402}
+                    ao usuário DESKTOP-TKN23\Eric SID (S-1-5-21-2890740107-2901144207-3446394783-1001) do endereço LocalHost (Usando LRPC) que está sendo executado no contêiner de aplicativos Não Disponível SID (Não Disponível). Essa
+                   permissão de segurança pode ser modificada com a ferramenta administrativa Serviços de Componentes.
+
+
+
+PS C:\WINDOWS\system32>
