@@ -828,6 +828,7 @@
         if (this.#layoutObserver) {
           try { Services.prefs.removeObserver("zen.view.use-single-toolbar", this.#layoutObserver); } catch (_) {}
           try { Services.prefs.removeObserver("zen.view.sidebar-expanded", this.#layoutObserver); } catch (_) {}
+          try { Services.prefs.removeObserver("zen.tabs.vertical.right-side", this.#layoutObserver); } catch (_) {}
           this.#layoutObserver = null;
         }
 
@@ -1235,25 +1236,35 @@
      * @returns {boolean} True if sidebar is on the right side.
      */
     isSidebarRight() {
-      // 1. Direct Zen root attributes
-      if (document.documentElement.getAttribute("zen-right-side") === "true") return true;
-      if (document.documentElement.getAttribute("zen-sidebar-right") === "true") return true;
-      if (document.documentElement.getAttribute("zen-right-side") === "false") return false;
-      if (document.documentElement.getAttribute("zen-sidebar-right") === "false") return false;
+      // Zen's own vertical-tabs preference is the source of truth.
+      // Do not infer this from #sidebar-box: that element can be a web
+      // sidebar or another panel and is not necessarily the native tab sidebar.
+      try {
+        return Services.prefs.getBoolPref("zen.tabs.vertical.right-side");
+      } catch (_) {}
 
-      // 2. Physical DOM measurement of the sidebar container
-      const sidebarBox = document.getElementById("sidebar-box") ||
+      // Compatibility fallback for older Zen builds where the native
+      // preference is unavailable.
+      const root = document.documentElement;
+      const rightSideAttr = root.getAttribute("zen-right-side");
+      const sidebarRightAttr = root.getAttribute("zen-sidebar-right");
+
+      if (rightSideAttr === "true" || sidebarRightAttr === "true") return true;
+      if (rightSideAttr === "false" || sidebarRightAttr === "false") return false;
+
+      // Measure Zen's actual navigation toolbox / vertical-tabs container.
+      const sidebarBox = document.getElementById("navigator-toolbox") ||
+                         document.getElementById("vertical-tabs") ||
                          document.getElementById("sidebar-container") ||
-                         document.getElementById("vertical-tabs");
+                         document.getElementById("sidebar-box");
       if (sidebarBox && sidebarBox.isConnected) {
         const rect = sidebarBox.getBoundingClientRect();
-        if (rect.width > 0) {
+        if (rect.width > 0 && rect.width < window.innerWidth * 0.6) {
           return (rect.left + rect.width / 2) > (window.innerWidth / 2);
         }
       }
 
-      // 3. Fallback preferences
-      if (Core.getNativePref("zen.tabs.vertical.right-side", false)) return true;
+      // Last-resort compatibility preferences.
       if (Core.getNativePref("zen.view.sidebar-right", false)) return true;
       if (Core.getNativePref("zen.view.sidebar-on-right", false)) return true;
 
@@ -6983,6 +6994,10 @@
 
             const browserEl = document.getElementById("browser") || document.body || document.documentElement;
             const isRightSidebar = this.isSidebarRight();
+            document.documentElement.setAttribute(
+              "zentral-apps-native-sidebar-side",
+              isRightSidebar ? "right" : "left"
+            );
 
             if (isRightSidebar) {
               if (vb.parentNode !== browserEl || browserEl.firstChild !== vb) {
@@ -7175,12 +7190,21 @@
       }
 
       this.#layoutObserver = (subject, topic, data) => {
+        if (data === "zen.tabs.vertical.right-side") {
+          // Recalculate the appbar edge whenever Zen moves its native sidebar.
+          this.scheduleRepositionGrid(80);
+          if (this.#state.activeAppId && this.#dom.root?.hasAttribute("open")) {
+            this.positionPanel();
+          }
+          return;
+        }
         if (data === "zen.view.use-single-toolbar" || data === "zen.view.sidebar-expanded") {
           this.scheduleRepositionGrid(150);
         }
       };
       Services.prefs.addObserver("zen.view.use-single-toolbar", this.#layoutObserver, false);
       Services.prefs.addObserver("zen.view.sidebar-expanded", this.#layoutObserver, false);
+      Services.prefs.addObserver("zen.tabs.vertical.right-side", this.#layoutObserver, false);
 
       const sidebarBox = document.getElementById("tabbrowser-tabbox") ||
                          document.getElementById("sidebar-box") ||
