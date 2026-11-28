@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name         ⚡ Gbar
-// @version      1.6.14
-// @description  Vertical-aware search box with live Google suggestions, configurable navigation, Google-only custom favicon, configurable AI Mode query behavior, device-theme-aware settings, URL cleanup, redirect link cleaning, direct links, and image downloads.
+// @version      1.6.15
+// @description  Vertical-aware search box with live Google suggestions, configurable navigation including Google Books, Google-only custom favicon, configurable AI Mode query behavior, device-theme-aware settings, URL cleanup, redirect link cleaning, direct links, and image downloads.
 // @include      https://scholar.google.com*
 // @include      https://www.google.com/
 // @include      https://www.google.com/search?q=*&*=gws-wiz-modeless-web-only*
@@ -3223,6 +3223,11 @@ href: "https://drive.google.com",
 text: "Drive",
 },
 {
+id: "books",
+href: "https://www.google.com/search?udm=36",
+text: "Books",
+},
+{
 id: "scholar",
 href: "https://scholar.google.com",
 text: "Scholar",
@@ -3398,6 +3403,10 @@ document.querySelector("#gp-gbar-news").href =
 if (document.querySelector("#gp-gbar-web")) {
 document.querySelector("#gp-gbar-web").href =
 `https://www.google.com/search?q=${encodedQuery}&udm=14`;
+}
+if (document.querySelector("#gp-gbar-books")) {
+document.querySelector("#gp-gbar-books").href =
+`https://www.google.com/search?q=${encodedQuery}&udm=36`;
 }
 if (document.querySelector("#gp-gbar-scholar")) {
 document.querySelector("#gp-gbar-scholar").href =
@@ -3911,6 +3920,11 @@ else if (href.includes("scholar.google.com")) {
 setActiveLink("#gp-gbar-scholar");
 html.setAttribute("location", "scholar");
 updateGbarLinks();
+}
+// Google Books search results.
+else if (href.includes("udm=36")) {
+setActiveLink("#gp-gbar-books");
+html.setAttribute("location", "books");
 }
 // Standard Google web search and configured Search URL prefixes.
 else if (
