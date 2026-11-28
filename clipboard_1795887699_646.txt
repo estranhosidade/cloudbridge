@@ -1,0 +1,579 @@
+﻿
+TimeCreated      : 22/11/2026 06:21:01
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk2\DR3 durante uma operação de paginação.
+
+TimeCreated      : 22/11/2026 06:21:01
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk2\DR3 durante uma operação de paginação.
+
+TimeCreated      : 22/11/2026 06:21:01
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk2\DR3 durante uma operação de paginação.
+
+TimeCreated      : 22/11/2026 06:21:01
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk2\DR3 durante uma operação de paginação.
+
+TimeCreated      : 22/11/2026 06:21:01
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk2\DR3 durante uma operação de paginação.
+
+TimeCreated      : 22/11/2026 06:21:01
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk2\DR3 durante uma operação de paginação.
+
+TimeCreated      : 22/11/2026 06:21:01
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk2\DR3 durante uma operação de paginação.
+
+TimeCreated      : 22/11/2026 06:21:01
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk2\DR3 durante uma operação de paginação.
+
+TimeCreated      : 22/11/2026 06:21:01
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk2\DR3 durante uma operação de paginação.
+
+TimeCreated      : 22/11/2026 06:21:01
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk2\DR3 durante uma operação de paginação.
+
+TimeCreated      : 22/11/2026 06:21:01
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk2\DR3 durante uma operação de paginação.
+
+TimeCreated      : 22/11/2026 06:21:01
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk2\DR3 durante uma operação de paginação.
+
+TimeCreated      : 22/11/2026 06:21:01
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk2\DR3 durante uma operação de paginação.
+
+TimeCreated      : 22/11/2026 06:21:01
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk2\DR3 durante uma operação de paginação.
+
+TimeCreated      : 22/11/2026 06:21:01
+ProviderName     : disk
+Id               : 157
+LevelDisplayName : Aviso
+Message          : O disco 2 foi removido inesperadamente.
+
+TimeCreated      : 22/11/2026 06:21:01
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk2\DR3 durante uma operação de paginação.
+
+TimeCreated      : 22/11/2026 06:21:01
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk2\DR3 durante uma operação de paginação.
+
+TimeCreated      : 22/11/2026 20:32:30
+ProviderName     : disk
+Id               : 157
+LevelDisplayName : Aviso
+Message          : O disco 2 foi removido inesperadamente.
+
+TimeCreated      : 23/11/2026 11:55:53
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x1b9e48a para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 23/11/2026 11:55:57
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0xf0bd8b0 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 23/11/2026 11:58:58
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x9b25b60 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 23/11/2026 11:59:02
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x9b27328 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 23/11/2026 11:59:16
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0xdc97860 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 23/11/2026 11:59:48
+ProviderName     : storahci
+Id               : 129
+LevelDisplayName : Aviso
+Message          : Redefinir para dispositivo, \Device\RaidPort0, emitido.
+
+TimeCreated      : 23/11/2026 11:59:53
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x60d9c90 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 23/11/2026 12:00:26
+ProviderName     : storahci
+Id               : 129
+LevelDisplayName : Aviso
+Message          : Redefinir para dispositivo, \Device\RaidPort0, emitido.
+
+TimeCreated      : 23/11/2026 12:00:34
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0xdd74df8 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 23/11/2026 12:00:37
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0xc75b13a para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 23/11/2026 12:00:39
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x1bc2a888 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 23/11/2026 12:00:59
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x215c758 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 23/11/2026 12:01:01
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x40e78a8 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 23/11/2026 12:01:42
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x14c61688 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 23/11/2026 12:01:46
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0xd91b8f8 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 23/11/2026 12:25:59
+ProviderName     : disk
+Id               : 7
+LevelDisplayName : Erro
+Message          : O dispositivo, \Device\Harddisk1\DR1, possui um setor defeituoso.
+
+TimeCreated      : 23/11/2026 14:07:52
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+ProviderName     : disk
+Id               : 51
+LevelDisplayName : Aviso
+Message          : Erro detectado no dispositivo \Device\Harddisk1\DR1 durante uma operação de paginação.
+
+TimeCreated      : 23/11/2026 14:07:52
+ProviderName     : disk
+Id               : 157
+LevelDisplayName : Aviso
+Message          : O disco 1 foi removido inesperadamente.
+
+TimeCreated      : 25/11/2026 04:58:15
+ProviderName     : disk
+Id               : 157
+LevelDisplayName : Aviso
+Message          : O disco 1 foi removido inesperadamente.
+
+TimeCreated      : 26/11/2026 04:37:50
+ProviderName     : disk
+Id               : 157
+LevelDisplayName : Aviso
+Message          : O disco 1 foi removido inesperadamente.
+
+TimeCreated      : 26/11/2026 14:32:48
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0xefe1960 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 26/11/2026 14:32:52
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x12d96158 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 26/11/2026 14:45:29
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x14a1ced0 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 26/11/2026 14:45:32
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x168efcf8 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 26/11/2026 15:56:37
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0xe584c00 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 26/11/2026 15:56:37
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0xd10735a para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 26/11/2026 15:56:41
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x168e9eb0 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 27/11/2026 16:20:42
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x59350f8 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 27/11/2026 16:20:53
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0xd5deb2 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 27/11/2026 16:20:57
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x266c828 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 27/11/2026 16:21:05
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0xb5f39b0 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 27/11/2026 16:21:30
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x1af0cc38 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 27/11/2026 16:46:48
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0xc08e928 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 27/11/2026 16:47:14
+ProviderName     : storahci
+Id               : 129
+LevelDisplayName : Aviso
+Message          : Redefinir para dispositivo, \Device\RaidPort0, emitido.
+
+TimeCreated      : 27/11/2026 16:48:08
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0x168f53e8 para o Disco 0 (nome PDO: \Device\00000038) foi repetida.
+
+TimeCreated      : 27/11/2026 16:48:35
+ProviderName     : storahci
+Id               : 129
+LevelDisplayName : Aviso
+Message          : Redefinir para dispositivo, \Device\RaidPort0, emitido.
+
+TimeCreated      : 28/11/2026 14:30:45
+ProviderName     : disk
+Id               : 153
+LevelDisplayName : Aviso
+Message          : A operação de ES no endereço de bloco lógico 0xb278 para o Disco 1 (nome PDO: \Device\0000005c) foi repetida.
+
+
+
+PS C:\Users\Eric> ^C
+PS C:\Users\Eric> ^C
+PS C:\Users\Eric> Write-Host "`n========== SISTEMA ==========" -ForegroundColor Cyan
+
+========== SISTEMA ==========
+PS C:\Users\Eric>
+PS C:\Users\Eric> Get-CimInstance Win32_ComputerSystem |
+>> Format-List Manufacturer, Model, SystemType
+
+
+Manufacturer : To be filled by O.E.M.
+Model        : To be filled by O.E.M.
+SystemType   : x64-based PC
+
+
+
+PS C:\Users\Eric>
+PS C:\Users\Eric> Write-Host "`n========== PLACA-MAE ==========" -ForegroundColor Cyan
+
+========== PLACA-MAE ==========
+PS C:\Users\Eric>
+PS C:\Users\Eric> Get-CimInstance Win32_BaseBoard |
+>> Format-List Manufacturer, Product, Version
+
+
+Manufacturer : INTEL Corporation
+Product      : H61
+Version      : To be filled by O.E.M.
+
+
+
+PS C:\Users\Eric>
+PS C:\Users\Eric> Write-Host "`n========== BIOS ==========" -ForegroundColor Cyan
+
+========== BIOS ==========
+PS C:\Users\Eric>
+PS C:\Users\Eric> Get-CimInstance Win32_BIOS |
+>> Format-List Manufacturer, SMBIOSBIOSVersion, ReleaseDate
+
+
+Manufacturer      : American Megatrends Inc.
+SMBIOSBIOSVersion : 4.6.5
+ReleaseDate       : 28/09/2021 21:00:00
+
+
+
+PS C:\Users\Eric>
+PS C:\Users\Eric> Write-Host "`n========== CONTROLADORA SATA ==========" -ForegroundColor Cyan
+
+========== CONTROLADORA SATA ==========
+PS C:\Users\Eric>
+PS C:\Users\Eric> Get-PnpDevice -InstanceId "PCI\VEN_8086&DEV_1C02*" |
+>> Format-List Status, Class, FriendlyName, InstanceId
+
+
+Status       : OK
+Class        : HDC
+FriendlyName : Controlador AHCI SATA Padrão
+InstanceId   : PCI\VEN_8086&DEV_1C02&SUBSYS_1C028086&REV_05\3&11583659&0&FA
+
+
+
+PS C:\Users\Eric> ^C
+PS C:\Users\Eric> Write-Host "`n========== PROCESSADOR ==========" -ForegroundColor Cyan
+
+========== PROCESSADOR ==========
+PS C:\Users\Eric> Get-CimInstance Win32_Processor |
+>> Format-List Name, Manufacturer, NumberOfCores, NumberOfLogicalProcessors
+
+
+Name                      : Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+Manufacturer              : GenuineIntel
+NumberOfCores             : 4
+NumberOfLogicalProcessors : 8
+
+
+
+PS C:\Users\Eric>
+PS C:\Users\Eric> Write-Host "`n========== DISPOSITIVOS INTEL PCI ==========" -ForegroundColor Cyan
+
+========== DISPOSITIVOS INTEL PCI ==========
+PS C:\Users\Eric> Get-PnpDevice -PresentOnly |
+>> Where-Object {
+>>     $_.InstanceId -match '^PCI\\VEN_8086'
+>> } |
+>> Select-Object Status, Class, FriendlyName, InstanceId |
+>> Format-List
+
+
+Status       : OK
+Class        : USB
+FriendlyName : Intel(R) 6 Series/C200 Series Chipset Family USB Enhanced Host Controller - 1C2D
+InstanceId   : PCI\VEN_8086&DEV_1C2D&SUBSYS_1C2D8086&REV_05\3&11583659&0&D0
+
+Status       : OK
+Class        : System
+FriendlyName : Controlador de Memória
+InstanceId   : PCI\VEN_8086&DEV_0150&SUBSYS_01508086&REV_09\3&11583659&0&00
+
+Status       : OK
+Class        : System
+FriendlyName : Ponte PCI para PCI
+InstanceId   : PCI\VEN_8086&DEV_1C1A&SUBSYS_1C1A8086&REV_B5\3&11583659&0&E5
+
+Status       : OK
+Class        : HDC
+FriendlyName : Controlador AHCI SATA Padrão
+InstanceId   : PCI\VEN_8086&DEV_1C02&SUBSYS_1C028086&REV_05\3&11583659&0&FA
+
+Status       : OK
+Class        : System
+FriendlyName : Controlador LPC
+InstanceId   : PCI\VEN_8086&DEV_1C5C&SUBSYS_1C5C8086&REV_05\3&11583659&0&F8
+
+Status       : OK
+Class        : System
+FriendlyName : Ponte PCI para PCI
+InstanceId   : PCI\VEN_8086&DEV_0151&SUBSYS_01518086&REV_09\3&11583659&0&08
+
+Status       : OK
+Class        : System
+FriendlyName : Ponte PCI para PCI
+InstanceId   : PCI\VEN_8086&DEV_1C10&SUBSYS_1C108086&REV_B5\3&11583659&0&E0
+
+Status       : OK
+Class        : System
+FriendlyName : Controlador de High Definition Audio
+InstanceId   : PCI\VEN_8086&DEV_1C20&SUBSYS_1C208086&REV_05\3&11583659&0&D8
+
+Status       : OK
+Class        : System
+FriendlyName : Controlador de Barramento SM
+InstanceId   : PCI\VEN_8086&DEV_1C22&SUBSYS_1C228086&REV_05\3&11583659&0&FB
+
+Status       : OK
+Class        : USB
+FriendlyName : Intel(R) 6 Series/C200 Series Chipset Family USB Enhanced Host Controller - 1C26
+InstanceId   : PCI\VEN_8086&DEV_1C26&SUBSYS_1C268086&REV_05\3&11583659&0&E8
+
+
+
+PS C:\Users\Eric>
+PS C:\Users\Eric> Write-Host "`n========== CONFIGURACAO DOS DISCOS ==========" -ForegroundColor Cyan
+
+========== CONFIGURACAO DOS DISCOS ==========
+PS C:\Users\Eric> Get-Disk |
+>> Format-Table Number, FriendlyName, BusType, OperationalStatus,
+>>     IsBoot, IsSystem, PartitionStyle -AutoSize
+
+Number FriendlyName     BusType OperationalStatus IsBoot IsSystem PartitionStyle
+------ ------------     ------- ----------------- ------ -------- --------------
+     0 HKM256S22A-TMCHV SATA    Online              True     True GPT
+     2 SAMSUNG HM320II  USB     Online             False    False MBR
+     1 SAMSUNG HM321HI  USB     Online             False    False GPT
+
+
+PS C:\Users\Eric>
+PS C:\Users\Eric> Write-Host "`n========== MODO SATA NO REGISTRO ==========" -ForegroundColor Cyan
+
+========== MODO SATA NO REGISTRO ==========
+PS C:\Users\Eric> Get-ItemProperty `
+>>     "HKLM:\SYSTEM\CurrentControlSet\Services\storahci" |
+>> Format-List Start, StartOverride
+
+
+Start : 0
+
+
